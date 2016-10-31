@@ -15,7 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let cvc = ChallengesViewController()
+        let nvc = UINavigationController(rootViewController: cvc);
+        
+        window?.rootViewController = nvc
+        window?.backgroundColor = UIColor.white
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
