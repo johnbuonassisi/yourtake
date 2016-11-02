@@ -22,21 +22,24 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HHy-15-NQu">
-                    <rect key="frame" x="127" y="79" width="121" height="29"/>
+                    <rect key="frame" x="16" y="79" width="343" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
-                        <segment title="First"/>
-                        <segment title="Second"/>
+                        <segment title="Your Challenges"/>
+                        <segment title="Friend Challenges"/>
                     </segments>
+                    <connections>
+                        <action selector="segmentChanges:" destination="-1" eventType="valueChanged" id="tnz-Nz-Z84"/>
+                    </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="13A-3U-HqL">
-                    <rect key="frame" x="8" y="135" width="367" height="532"/>
+                    <rect key="frame" x="0.0" y="135" width="375" height="532"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="-45" y="-97"/>
+            <point key="canvasLocation" x="-45.5" y="-97.5"/>
         </view>
     </objects>
 </document>

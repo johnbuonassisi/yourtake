@@ -17,6 +17,8 @@
 		523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074B01DC71692002EB030 /* John_Challenge.jpg */; };
 		525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */; };
 		525F847A1DC86F05006D2E2F /* ChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525F84791DC86F05006D2E2F /* ChallengeViewController.xib */; };
+		525F847C1DC9A6AE006D2E2F /* ChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */; };
+		525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525F847D1DC9A86A006D2E2F /* ChallengeCell.swift */; };
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -32,6 +34,8 @@
 		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge.jpg; path = "Supporting Files/John_Challenge.jpg"; sourceTree = "<group>"; };
 		525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeViewController.swift; path = "View Controllers/ChallengeViewController.swift"; sourceTree = "<group>"; };
 		525F84791DC86F05006D2E2F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeViewController.xib; path = "View Controllers/ChallengeViewController.xib"; sourceTree = "<group>"; };
+		525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeCell.xib; path = Views/ChallengeCell.xib; sourceTree = "<group>"; };
+		525F847D1DC9A86A006D2E2F /* ChallengeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeCell.swift; path = Views/ChallengeCell.swift; sourceTree = "<group>"; };
 		528509881DC6F9470083CC55 /* YourTake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5285098B1DC6F9470083CC55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Main/AppDelegate.swift; sourceTree = "<group>"; };
 		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting Files/Assets.xcassets"; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 		5285099F1DC6F99B0083CC55 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */,
+				525F847D1DC9A86A006D2E2F /* ChallengeCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -189,6 +195,7 @@
 				525F847A1DC86F05006D2E2F /* ChallengeViewController.xib in Resources */,
 				523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */,
 				523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */,
+				525F847C1DC9A6AE006D2E2F /* ChallengeCell.xib in Resources */,
 				523074B11DC71692002EB030 /* John_Challenge_Andrea.jpg in Resources */,
 				523074B31DC71692002EB030 /* John_Challenge_Ashling.jpg in Resources */,
 			);
@@ -202,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				523074A91DC70C4F002EB030 /* User.swift in Sources */,
+				525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */,
 				525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */,
 				523074A71DC704DE002EB030 /* Challenge.swift in Sources */,
 				5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */,
