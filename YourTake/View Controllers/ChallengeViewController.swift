@@ -38,6 +38,7 @@ class ChallengeViewController: UIViewController,
                                    target: self,
                                    action: #selector(ChallengeViewController.newChallenge))
         navigationItem.rightBarButtonItem = rbbi
+    
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -83,6 +84,19 @@ class ChallengeViewController: UIViewController,
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
+        layout.itemSize = CGSize(width: 180, height: 180)
+        layout.sectionInset = UIEdgeInsetsMake(5, 5, 0, 5)
+        
+        let svc = SubmissionsViewController(collectionViewLayout: layout, challengeIndex: indexPath.row)
+        navigationController?.pushViewController(svc, animated: true)
+    }
+    
     @IBAction func segmentChanges(_ sender: UISegmentedControl)
     {
         tableView.reloadData()
@@ -90,7 +104,7 @@ class ChallengeViewController: UIViewController,
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool
     {
-        return false
+        return true
     }
     
     func newChallenge()

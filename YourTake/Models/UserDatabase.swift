@@ -20,12 +20,14 @@ class UserDatabase: NSObject {
         let john = User(name: "John", friends: johnsFriends)
         
         let johnsChallengeImage : UIImage = UIImage(named: "John_Challenge.jpg", in: nil, compatibleWith: nil)!
+        let johnsChallengeImage2 : UIImage = UIImage(named: "John_Challenge_2.jpg", in: nil, compatibleWith: nil)!
         let ashlingsResponse : UIImage = UIImage(named: "John_Challenge_Ashling.jpg", in: nil, compatibleWith: nil)!
         let petersResponse : UIImage = UIImage(named: "John_Challenge_Peter.jpg", in: nil, compatibleWith: nil)!
         let andreasResponse : UIImage = UIImage(named: "John_Challenge_Andrea.jpg", in: nil, compatibleWith: nil)!
         let anthonysResponse : UIImage = UIImage(named: "John_Challenge_Anthony.jpg", in: nil, compatibleWith: nil)!
         
-        john.challenges = [Challenge.init(owner: john, image: johnsChallengeImage, friends: johnsFriends)]
+        john.challenges = [Challenge.init(owner: john, image: johnsChallengeImage, friends: johnsFriends),
+                           Challenge.init(owner: john, image: johnsChallengeImage2, friends: johnsFriends)]
         john.challenges![0].submissions = [ashlingsResponse,
                                            petersResponse,
                                            andreasResponse,
