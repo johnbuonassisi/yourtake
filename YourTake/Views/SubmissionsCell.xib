@@ -6,45 +6,68 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Cuk-4e-ygP" customClass="SubmissionsCell" customModule="YourTake" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
+            <rect key="frame" x="0.0" y="0.0" width="180" height="215"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
+                <rect key="frame" x="0.0" y="0.0" width="180" height="215"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zfk-86-2Wv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
+                        <rect key="frame" x="0.0" y="35" width="180" height="180"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDJ-Rf-wxo">
-                        <rect key="frame" x="8" y="8" width="359" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="apS-O7-pLR">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="35"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JohnnyB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBo-in-5a7">
+                                <rect key="frame" x="4" y="7" width="117" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIP-rU-8a9">
+                                <rect key="frame" x="161" y="7" width="11" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCP-Qs-xyV">
+                                <rect key="frame" x="129" y="3" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="NotLiked"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="zDJ-Rf-wxo" firstAttribute="top" secondItem="Cuk-4e-ygP" secondAttribute="top" constant="8" id="NEB-aB-LAA"/>
-                <constraint firstItem="Zfk-86-2Wv" firstAttribute="leading" secondItem="Cuk-4e-ygP" secondAttribute="leading" id="Svb-5V-SXc"/>
-                <constraint firstAttribute="trailing" secondItem="zDJ-Rf-wxo" secondAttribute="trailing" constant="8" id="TxS-6p-h5Y"/>
-                <constraint firstItem="Zfk-86-2Wv" firstAttribute="top" secondItem="Cuk-4e-ygP" secondAttribute="top" id="adm-3Q-HTk"/>
-                <constraint firstAttribute="bottom" secondItem="zDJ-Rf-wxo" secondAttribute="bottom" constant="280" id="ag3-NY-V6d"/>
-                <constraint firstAttribute="bottom" secondItem="Zfk-86-2Wv" secondAttribute="bottom" id="jmk-u6-ypR"/>
-                <constraint firstItem="zDJ-Rf-wxo" firstAttribute="leading" secondItem="Cuk-4e-ygP" secondAttribute="leading" constant="8" id="mMx-21-GmF"/>
-                <constraint firstAttribute="trailing" secondItem="Zfk-86-2Wv" secondAttribute="trailing" id="td1-p9-rPr"/>
+                <constraint firstAttribute="bottom" secondItem="Zfk-86-2Wv" secondAttribute="bottom" id="3Zd-U4-1CY"/>
+                <constraint firstItem="Zfk-86-2Wv" firstAttribute="leading" secondItem="Cuk-4e-ygP" secondAttribute="leading" id="EFV-C2-kpp"/>
+                <constraint firstItem="Zfk-86-2Wv" firstAttribute="top" secondItem="Cuk-4e-ygP" secondAttribute="top" constant="35" id="Vaf-ha-lSt"/>
+                <constraint firstItem="Zfk-86-2Wv" firstAttribute="width" secondItem="Cuk-4e-ygP" secondAttribute="height" multiplier="36:43" id="ZVo-5H-AcZ"/>
+                <constraint firstAttribute="trailing" secondItem="Zfk-86-2Wv" secondAttribute="trailing" id="oTY-Aj-Weo"/>
             </constraints>
-            <size key="customSize" width="375" height="309"/>
+            <size key="customSize" width="375" height="352"/>
             <connections>
+                <outlet property="numberOfVotes" destination="yIP-rU-8a9" id="owN-oI-W6s"/>
                 <outlet property="submissionImage" destination="Zfk-86-2Wv" id="GpG-Jk-djt"/>
-                <outlet property="submitterName" destination="zDJ-Rf-wxo" id="5J2-wB-ITT"/>
+                <outlet property="submitterName" destination="VBo-in-5a7" id="c7h-T1-s3S"/>
+                <outlet property="voteButton" destination="cCP-Qs-xyV" id="JdV-0O-hOx"/>
             </connections>
-            <point key="canvasLocation" x="-174.5" y="-11.5"/>
+            <point key="canvasLocation" x="-89" y="-11.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="NotLiked" width="42" height="40"/>
+    </resources>
 </document>

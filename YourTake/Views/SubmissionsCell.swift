@@ -12,5 +12,6 @@ class SubmissionsCell: UICollectionViewCell {
     
     @IBOutlet weak var submissionImage: UIImageView!
     @IBOutlet weak var submitterName: UILabel!
-
+    @IBOutlet weak var voteButton: UIButton!
+    @IBOutlet weak var numberOfVotes: UILabel!
 }

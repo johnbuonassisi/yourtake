@@ -10,25 +10,58 @@ import UIKit
 
 class Challenge: NSObject {
     
+    weak var owner : User?
     let image : UIImage
     let friends : [String]
-    weak var owner : User?
-    var submissions : [UIImage]?
+    let expiryDate : NSDate
     
-    init(owner: User, image: UIImage, friends: [String])
+    private var voteTracker : VoteTracker
+    var submissions = [Submission]()
+    
+    init(owner: User, image: UIImage, friends: [String], expiryDate: NSDate)
     {
-        self.owner = owner;
-        self.image = image;
-        self.friends = friends;
+        self.owner = owner
+        self.image = image
+        self.expiryDate = expiryDate
+        self.friends = friends
+        
+        var allUsers = friends;
+        allUsers.append(owner.name)
+        self.voteTracker = VoteTracker(withUsers: allUsers)
     }
     
-    func Submit(image: UIImage)
+    func Submit(response: Submission)
     {
-        if(submissions == nil)
+        submissions.append(response)
+    }
+    
+    func vote(forUser user: String, byVoter voter: String) -> Bool
+    {
+        let isVoted : Bool = voteTracker.vote(forUser: user, ByVoter: voter)
+        // re-order the submissions
+        submissions = submissions.sorted(by: {s1, s2 in return
+           voteTracker.getNumVotes(forUser: s1.name) > voteTracker.getNumVotes(forUser: s2.name)})
+        return isVoted
+    }
+    
+    func getVote(forUser user: String) -> Int
+    {
+        return voteTracker.getNumVotes(forUser: user)
+    }
+    
+    func getTotalVotes() -> Int
+    {
+        var totalVotes : Int = 0
+        for friend : String in friends
         {
-            submissions = [UIImage]()
+            totalVotes += voteTracker.getNumVotes(forUser: friend)
         }
-        self.submissions!.append(image);
+        return totalVotes
+    }
+    
+    func getVoteOfOwner() -> String?
+    {
+        return voteTracker.getVotedForUser(byVoter: (owner?.name)!)
     }
     
     

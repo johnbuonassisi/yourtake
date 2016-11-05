@@ -15,12 +15,16 @@
 		523074B31DC71692002EB030 /* John_Challenge_Ashling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */; };
 		523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */; };
 		523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074B01DC71692002EB030 /* John_Challenge.jpg */; };
+		5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244E87A1DCC20A5002627FC /* LoginViewController.swift */; };
 		525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */; };
 		525F847A1DC86F05006D2E2F /* ChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525F84791DC86F05006D2E2F /* ChallengeViewController.xib */; };
 		525F847C1DC9A6AE006D2E2F /* ChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */; };
 		525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525F847D1DC9A86A006D2E2F /* ChallengeCell.swift */; };
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
+		529DC7C71DCC705F00EFA856 /* Submission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529DC7C61DCC705F00EFA856 /* Submission.swift */; };
+		52A311F01DCE0CE400EAFC24 /* VoteTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A311EF1DCE0CE400EAFC24 /* VoteTracker.swift */; };
+		52D9C1821DCC1D4A00F5C098 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */; };
 		52DC0AC11DCA2B7200DA2BDC /* SubmissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC0AC01DCA2B7200DA2BDC /* SubmissionsViewController.swift */; };
 		52DC0AC31DCA301800DA2BDC /* SubmissionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0AC21DCA301800DA2BDC /* SubmissionsCell.xib */; };
 		52DC0AC51DCA316D00DA2BDC /* SubmissionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC0AC41DCA316D00DA2BDC /* SubmissionsCell.swift */; };
@@ -36,6 +40,7 @@
 		523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge_Ashling.jpg; path = "Supporting Files/John_Challenge_Ashling.jpg"; sourceTree = "<group>"; };
 		523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge_Peter.jpg; path = "Supporting Files/John_Challenge_Peter.jpg"; sourceTree = "<group>"; };
 		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge.jpg; path = "Supporting Files/John_Challenge.jpg"; sourceTree = "<group>"; };
+		5244E87A1DCC20A5002627FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
 		525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeViewController.swift; path = "View Controllers/ChallengeViewController.swift"; sourceTree = "<group>"; };
 		525F84791DC86F05006D2E2F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeViewController.xib; path = "View Controllers/ChallengeViewController.xib"; sourceTree = "<group>"; };
 		525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeCell.xib; path = Views/ChallengeCell.xib; sourceTree = "<group>"; };
@@ -44,6 +49,9 @@
 		5285098B1DC6F9470083CC55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Main/AppDelegate.swift; sourceTree = "<group>"; };
 		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting Files/Assets.xcassets"; sourceTree = "<group>"; };
 		528509971DC6F9470083CC55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		529DC7C61DCC705F00EFA856 /* Submission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Submission.swift; path = Models/Submission.swift; sourceTree = "<group>"; };
+		52A311EF1DCE0CE400EAFC24 /* VoteTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoteTracker.swift; path = Models/VoteTracker.swift; sourceTree = "<group>"; };
+		52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Views/LoginViewController.xib; sourceTree = "<group>"; };
 		52DC0AC01DCA2B7200DA2BDC /* SubmissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubmissionsViewController.swift; path = "View Controllers/SubmissionsViewController.swift"; sourceTree = "<group>"; };
 		52DC0AC21DCA301800DA2BDC /* SubmissionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubmissionsCell.xib; path = Views/SubmissionsCell.xib; sourceTree = "<group>"; };
 		52DC0AC41DCA316D00DA2BDC /* SubmissionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubmissionsCell.swift; path = Views/SubmissionsCell.swift; sourceTree = "<group>"; };
@@ -101,8 +109,10 @@
 			isa = PBXGroup;
 			children = (
 				523074A61DC704DE002EB030 /* Challenge.swift */,
+				52A311EF1DCE0CE400EAFC24 /* VoteTracker.swift */,
 				523074A81DC70C4F002EB030 /* User.swift */,
 				523074AA1DC70EB6002EB030 /* UserDatabase.swift */,
+				529DC7C61DCC705F00EFA856 /* Submission.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -121,6 +131,8 @@
 		528509A01DC6F9A30083CC55 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */,
+				5244E87A1DCC20A5002627FC /* LoginViewController.swift */,
 				525F84791DC86F05006D2E2F /* ChallengeViewController.xib */,
 				525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */,
 				52DC0AC01DCA2B7200DA2BDC /* SubmissionsViewController.swift */,
@@ -204,6 +216,7 @@
 			files = (
 				523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */,
 				52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */,
+				52D9C1821DCC1D4A00F5C098 /* LoginViewController.xib in Resources */,
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
 				525F847A1DC86F05006D2E2F /* ChallengeViewController.xib in Resources */,
 				523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */,
@@ -222,11 +235,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,
 				52DC0AC11DCA2B7200DA2BDC /* SubmissionsViewController.swift in Sources */,
 				523074A91DC70C4F002EB030 /* User.swift in Sources */,
 				525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */,
 				525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */,
+				529DC7C71DCC705F00EFA856 /* Submission.swift in Sources */,
 				523074A71DC704DE002EB030 /* Challenge.swift in Sources */,
+				52A311F01DCE0CE400EAFC24 /* VoteTracker.swift in Sources */,
 				5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */,
 				523074AB1DC70EB6002EB030 /* UserDatabase.swift in Sources */,
 				52DC0AC51DCA316D00DA2BDC /* SubmissionsCell.swift in Sources */,

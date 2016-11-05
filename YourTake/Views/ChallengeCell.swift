@@ -12,10 +12,12 @@ class ChallengeCell: UITableViewCell {
     
     @IBOutlet weak var challengeImage: UIImageView!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var expiryLabel: UILabel!
+    @IBOutlet weak var totalVotesLabel: UILabel!
     
     static func CellRowHeight() -> CGFloat
     {
-        return 375.0;
+        return 425.0;
     }
     
 }
