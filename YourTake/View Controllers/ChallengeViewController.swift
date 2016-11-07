@@ -34,7 +34,7 @@ class ChallengeViewController: UIViewController,
         tableView.delegate = self
         
         // Setup the navigation bar
-        navigationItem.title = "Challenges"
+        navigationItem.title = "YourTake"
         
         let rbbi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.camera,
                                    target: self,
@@ -45,6 +45,11 @@ class ChallengeViewController: UIViewController,
                                    action: nil)
         navigationItem.rightBarButtonItem = rbbi
         navigationItem.leftBarButtonItem = lbbi
+        
+        // Setup the refresh control
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
     
     }
     
@@ -60,14 +65,16 @@ class ChallengeViewController: UIViewController,
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        let john = UserDatabase.global.John()
         switch(segmentedControl.selectedSegmentIndex){
         
         case 0: // User Challenges
-            return UserDatabase.global.John().challenges!.count
+            // Client
+            return john.challenges!.count
             
         case 1: // Friend Challenges
-            return 0
-            
+            // Client
+            return UserDatabase.global.GetNumberOfFriendChallenges(forUserWithName: john.name)
         default: // ??
             return 0
             
@@ -81,6 +88,7 @@ class ChallengeViewController: UIViewController,
         case 0: // User Challenges
             let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCellTest",
                                                                      for: indexPath) as! ChallengeCell
+            // Client
             let john = UserDatabase.global.John()
             let johnsChallenges = john.challenges![indexPath.row]
             
@@ -94,15 +102,19 @@ class ChallengeViewController: UIViewController,
         case 1: // Friend Challenges
             let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCellTest",
                                                                      for: indexPath) as! ChallengeCell
-            cell.challengeImage.image = UserDatabase.global.John().challenges![0].image
-            cell.name.text = UserDatabase.global.John().name
+            // Client
+            let john = UserDatabase.global.John()
+            let challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: john.name, atIndex: indexPath.row)
+            
+            cell.challengeImage.image = challenge!.image
+            cell.name.text = challenge!.owner!.name
+            cell.expiryLabel.text = getExpiryLabel(fromDate: challenge!.expiryDate as Date)
+            cell.totalVotesLabel.text = String(challenge!.getTotalVotes()) + " total votes"
             return cell
             
         default: // ??
             let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCellTest",
                                                                      for: indexPath) as! ChallengeCell
-            cell.challengeImage.image = UserDatabase.global.John().challenges![0].image
-            cell.name.text = UserDatabase.global.John().name
             return cell
         }
     }
@@ -119,7 +131,20 @@ class ChallengeViewController: UIViewController,
         layout.itemSize = CGSize(width: 180, height: 215)
         layout.sectionInset = UIEdgeInsetsMake(5, 5, 0, 5)
         
-        let svc = SubmissionsViewController(collectionViewLayout: layout, challengeIndex: indexPath.row)
+        let challenge : Challenge?
+        switch(segmentedControl.selectedSegmentIndex)
+        {
+            case 0: // User Challenges
+                challenge = UserDatabase.global.John().challenges![indexPath.row]
+            case 1: // Friend Challenges
+                challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
+                                                                   atIndex: indexPath.row)
+            default:
+                challenge = nil
+            
+        }
+        
+        let svc = SubmissionsViewController(collectionViewLayout: layout, withChallenge: challenge!)
         navigationController?.pushViewController(svc, animated: true)
     }
     
@@ -154,6 +179,11 @@ class ChallengeViewController: UIViewController,
     {
         let numSecondsRemaining : Int = Int(date.timeIntervalSince(Date()))
         
+        if( numSecondsRemaining <= 0)
+        {
+            return String("Challenge completed")
+        }
+        
         let numDaysRemaining = numSecondsRemaining / ( 60 * 60 * 24)
         if(numDaysRemaining > 0)
         {
@@ -186,5 +216,11 @@ class ChallengeViewController: UIViewController,
         }
         
         return String(numSecondsRemaining) + " seconds remaining"
+    }
+    
+    func refresh()
+    {
+        tableView.reloadData()
+        tableView.refreshControl?.endRefreshing()
     }
 }

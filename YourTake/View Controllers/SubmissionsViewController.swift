@@ -10,16 +10,16 @@ import UIKit
 
 class SubmissionsViewController: UICollectionViewController{
     
-    var challengeIndex : Int?
+    let challenge : Challenge?
     
-    init(collectionViewLayout layout: UICollectionViewLayout, challengeIndex index:Int) {
-        
-        challengeIndex = index
+    init(collectionViewLayout layout: UICollectionViewLayout, withChallenge challenge: Challenge)
+    {
+        self.challenge = challenge
         super.init(collectionViewLayout: layout)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        challengeIndex = nil
+        self.challenge = nil
         super.init(coder: aDecoder)
     }
     
@@ -29,7 +29,7 @@ class SubmissionsViewController: UICollectionViewController{
         let nib : UINib = UINib(nibName: "SubmissionsCell", bundle: nil)
         collectionView?.register(nib, forCellWithReuseIdentifier: "SubmissionCell")
         
-        collectionView?.backgroundColor = UIColor.blue
+        collectionView?.backgroundColor = UIColor.white
         
         // Setup the navigation bar
         navigationItem.title = "Submissions"
@@ -40,7 +40,7 @@ class SubmissionsViewController: UICollectionViewController{
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return UserDatabase.global.John().challenges![challengeIndex!].submissions.count
+        return challenge!.submissions.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -50,14 +50,12 @@ class SubmissionsViewController: UICollectionViewController{
                                   action: #selector(submissionsCellVoteButtonPressed),
                                   for: UIControlEvents.touchUpInside)
         
-        // Client
-        let challenge = UserDatabase.global.John().challenges![challengeIndex!]
-        let submission = challenge.submissions[indexPath.row] // The data source has the challenges pre-sorted
+        let submission = challenge!.submissions[indexPath.row] // The data source has the challenges pre-sorted
         
         cell.submissionImage.image = submission.image
         cell.submitterName.text = submission.name
-        cell.numberOfVotes.text = String(challenge.getVote(forUser: submission.name))
-        if(challenge.getVoteOfOwner() == submission.name)
+        cell.numberOfVotes.text = String(challenge!.getNumberOfVotes(forUser: submission.name))
+        if(challenge!.getVoteOf(user : "John") == submission.name)
         {
             let likedImage = UIImage(named: "Liked", in: nil, compatibleWith: nil)
             cell.voteButton.setImage(likedImage, for: UIControlState.normal)
@@ -74,15 +72,13 @@ class SubmissionsViewController: UICollectionViewController{
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
         
-        // Client
-        let challenge = UserDatabase.global.John().challenges![challengeIndex!]
-        let submission = challenge.submissions[indexPath.row]
+        let submission = challenge!.submissions[indexPath.row]
         
         // Hardcode
         let vc = UIViewController()
         let fullImage = UIImageView(image:submission.image)
         fullImage.frame = CGRect(x: 0, y: 150, width: 375, height: 375)
-        vc.view.backgroundColor = UIColor.gray
+        vc.view.backgroundColor = UIColor.white
         vc.view.addSubview(fullImage)
         vc.navigationItem.title = submission.name
         navigationController?.pushViewController(vc, animated: true)
@@ -92,15 +88,7 @@ class SubmissionsViewController: UICollectionViewController{
     @IBAction func submissionsCellVoteButtonPressed(button: UIButton)
     {
         let cell : SubmissionsCell = button.superview?.superview?.superview as! SubmissionsCell
-        
-        // Client
-        let challenge = UserDatabase.global.John().challenges![challengeIndex!]
-        let didVote = challenge.vote(forUser: cell.submitterName.text!, byVoter: "John")
-        
-        if !didVote {
-            print("Did not vote")
-        }
-        
+        challenge!.voteFor(user: cell.submitterName.text!, byVoter: "John")
         self.collectionView?.reloadData()
     }
 

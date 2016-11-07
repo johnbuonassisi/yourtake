@@ -19,5 +19,17 @@ class User: NSObject {
         self.name = name;
         self.friends = friends;
     }
+    
+    func add(challenge: Challenge)
+    {
+        if(challenges == nil)
+        {
+            challenges = [Challenge]()
+        }
+        
+        challenges!.append(challenge)
+        challenges = challenges!.sorted(by:
+            {c1, c2 in return c2.expiryDate as Date > c1.expiryDate as Date})
+    }
 
 }

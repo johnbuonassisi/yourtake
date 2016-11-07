@@ -35,16 +35,15 @@ class Challenge: NSObject {
         submissions.append(response)
     }
     
-    func vote(forUser user: String, byVoter voter: String) -> Bool
+    func voteFor(user: String, byVoter voter: String)
     {
-        let isVoted : Bool = voteTracker.vote(forUser: user, ByVoter: voter)
+        let test : Bool = voteTracker.vote(forUser: user, ByVoter: voter)
         // re-order the submissions
         submissions = submissions.sorted(by: {s1, s2 in return
            voteTracker.getNumVotes(forUser: s1.name) > voteTracker.getNumVotes(forUser: s2.name)})
-        return isVoted
     }
     
-    func getVote(forUser user: String) -> Int
+    func getNumberOfVotes(forUser user: String) -> Int
     {
         return voteTracker.getNumVotes(forUser: user)
     }
@@ -59,9 +58,9 @@ class Challenge: NSObject {
         return totalVotes
     }
     
-    func getVoteOfOwner() -> String?
+    func getVoteOf(user : String) -> String?
     {
-        return voteTracker.getVotedForUser(byVoter: (owner?.name)!)
+        return voteTracker.getVotedForUser(byVoter: user)
     }
     
     
