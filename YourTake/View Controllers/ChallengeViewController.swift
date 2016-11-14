@@ -19,8 +19,7 @@ class ChallengeViewController: UIViewController,
     
     var selectedRow : IndexPath?
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad();
         
         // Load and register cell NIB
@@ -48,6 +47,7 @@ class ChallengeViewController: UIViewController,
         
         // Setup the refresh control
         tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.tintColor = UIColor.blue
         tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
         tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
     
@@ -63,8 +63,7 @@ class ChallengeViewController: UIViewController,
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let john = UserDatabase.global.John()
         switch(segmentedControl.selectedSegmentIndex){
         
@@ -81,13 +80,15 @@ class ChallengeViewController: UIViewController,
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCellTest",
+                                                                 for: indexPath) as! ChallengeCell
         switch(segmentedControl.selectedSegmentIndex){
         
         case 0: // User Challenges
-            let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCellTest",
-                                                                     for: indexPath) as! ChallengeCell
+            
+            cell.drawButton.addTarget(self, action: #selector(cellDrawButtonPressed), for: UIControlEvents.touchUpInside)
+            
             // Client
             let john = UserDatabase.global.John()
             let johnsChallenges = john.challenges![indexPath.row]
@@ -96,12 +97,15 @@ class ChallengeViewController: UIViewController,
             cell.name.text = john.name
             cell.expiryLabel.text = getExpiryLabel(fromDate: johnsChallenges.expiryDate as Date)
             cell.totalVotesLabel.text = String(johnsChallenges.getTotalVotes()) + " total votes"
+            cell.drawButton.isEnabled = true
+            cell.drawButton.tag = indexPath.row
             
             return cell
             
         case 1: // Friend Challenges
-            let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCellTest",
-                                                                     for: indexPath) as! ChallengeCell
+            
+            cell.drawButton.addTarget(self, action: #selector(cellDrawButtonPressed), for: UIControlEvents.touchUpInside)
+                    
             // Client
             let john = UserDatabase.global.John()
             let challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: john.name, atIndex: indexPath.row)
@@ -110,11 +114,12 @@ class ChallengeViewController: UIViewController,
             cell.name.text = challenge!.owner!.name
             cell.expiryLabel.text = getExpiryLabel(fromDate: challenge!.expiryDate as Date)
             cell.totalVotesLabel.text = String(challenge!.getTotalVotes()) + " total votes"
+            cell.drawButton.isEnabled = true
+            cell.drawButton.tag = indexPath.row
+            
             return cell
             
         default: // ??
-            let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCellTest",
-                                                                     for: indexPath) as! ChallengeCell
             return cell
         }
     }
@@ -148,25 +153,20 @@ class ChallengeViewController: UIViewController,
         navigationController?.pushViewController(svc, animated: true)
     }
     
-    @IBAction func segmentChanges(_ sender: UISegmentedControl)
-    {
+    @IBAction func segmentChanges(_ sender: UISegmentedControl) {
         tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool
-    {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func newChallenge()
-    {
+    func newChallenge(){
+        
         let ip : UIImagePickerController = UIImagePickerController()
-        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
-        {
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
             ip.sourceType = UIImagePickerControllerSourceType.camera
-        }
-        else
-        {
+        }else {
             ip.sourceType = UIImagePickerControllerSourceType.photoLibrary
         }
         
@@ -175,18 +175,16 @@ class ChallengeViewController: UIViewController,
         
     }
     
-    private func getExpiryLabel(fromDate date: Date) -> String
-    {
+    private func getExpiryLabel(fromDate date: Date) -> String {
+        
         let numSecondsRemaining : Int = Int(date.timeIntervalSince(Date()))
         
-        if( numSecondsRemaining <= 0)
-        {
+        if( numSecondsRemaining <= 0){
             return String("Challenge completed")
         }
         
         let numDaysRemaining = numSecondsRemaining / ( 60 * 60 * 24)
-        if(numDaysRemaining > 0)
-        {
+        if(numDaysRemaining > 0) {
             if numDaysRemaining == 1 {
                 return String(numDaysRemaining) + " day remaining"
             }
@@ -194,8 +192,7 @@ class ChallengeViewController: UIViewController,
         }
         
         let numHoursRemaining = numSecondsRemaining / ( 60 * 60 )
-        if( numHoursRemaining > 0)
-        {
+        if( numHoursRemaining > 0) {
             if numHoursRemaining == 1 {
                 return String(numHoursRemaining) + "hour remaining"
             }
@@ -203,14 +200,12 @@ class ChallengeViewController: UIViewController,
         }
         
         let numMinutesRemaining = numSecondsRemaining / 60
-        if(numMinutesRemaining > 0)
-        {
+        if(numMinutesRemaining > 0){
             if numHoursRemaining == 1 {
                 return String(numMinutesRemaining) + "minute remaining"
             }
             return String(numMinutesRemaining) + " minutes remaining"
         }
-        
         if numSecondsRemaining == 1 {
             return String(numSecondsRemaining) + "second remaining"
         }
@@ -218,9 +213,30 @@ class ChallengeViewController: UIViewController,
         return String(numSecondsRemaining) + " seconds remaining"
     }
     
-    func refresh()
-    {
+    func refresh(){
         tableView.reloadData()
         tableView.refreshControl?.endRefreshing()
+    }
+    
+    @IBAction func cellDrawButtonPressed(button : UIButton){
+        
+        let dvc: DrawViewController = DrawViewController(nibName: "DrawViewController",
+                                                         bundle: Bundle.main)
+        
+        let challenge: Challenge?
+        switch(segmentedControl.selectedSegmentIndex) {
+        
+        case 0: // User Challenges
+            challenge = UserDatabase.global.John().challenges![button.tag]
+        case 1: // Friend Challenges
+            challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
+                                                               atIndex: button.tag)
+        default:
+            challenge = nil
+        }
+        
+        navigationController?.pushViewController(dvc, animated: true)
+        dvc.loadViewIfNeeded()
+        dvc.drawingView.setBackground(withImage: challenge?.image)
     }
 }
