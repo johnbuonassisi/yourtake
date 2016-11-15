@@ -102,26 +102,6 @@ class DrawPathsView: UIView {
         setNeedsDisplay()
     }
     
-    func undo1() {
-        
-        if(completedPaths.count > 0) {
-            
-            completedPaths.removeLast()
-            
-            UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0.0)
-            backgroundImage?.draw(at: CGPoint.zero)
-            backgroundImage?.draw(in: self.bounds)
-            
-            for path in completedPaths {
-                stroke(withPath: path)
-            }
-            
-            incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            setNeedsDisplay()
-        }
-    }
-    
     func undo() {
         
         if(completedPaths.count > 0) {

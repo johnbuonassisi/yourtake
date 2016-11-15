@@ -31,6 +31,7 @@ class ChallengeViewController: UIViewController,
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.allowsSelection = false
         
         // Setup the navigation bar
         navigationItem.title = "YourTake"
@@ -87,7 +88,8 @@ class ChallengeViewController: UIViewController,
         
         case 0: // User Challenges
             
-            cell.drawButton.addTarget(self, action: #selector(cellDrawButtonPressed), for: UIControlEvents.touchUpInside)
+            cell.drawButton.addTarget(self, action: #selector(cellDrawButtonPressed), for: .touchUpInside)
+            cell.voteButton.addTarget(self, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
             
             // Client
             let john = UserDatabase.global.John()
@@ -99,12 +101,14 @@ class ChallengeViewController: UIViewController,
             cell.totalVotesLabel.text = String(johnsChallenges.getTotalVotes()) + " total votes"
             cell.drawButton.isEnabled = true
             cell.drawButton.tag = indexPath.row
+            cell.voteButton.tag = indexPath.row
             
             return cell
             
         case 1: // Friend Challenges
             
             cell.drawButton.addTarget(self, action: #selector(cellDrawButtonPressed), for: UIControlEvents.touchUpInside)
+            cell.voteButton.addTarget(self, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
                     
             // Client
             let john = UserDatabase.global.John()
@@ -116,41 +120,13 @@ class ChallengeViewController: UIViewController,
             cell.totalVotesLabel.text = String(challenge!.getTotalVotes()) + " total votes"
             cell.drawButton.isEnabled = true
             cell.drawButton.tag = indexPath.row
+            cell.voteButton.tag = indexPath.row
             
             return cell
             
         default: // ??
             return cell
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        selectedRow = indexPath // Save the row that was selected before push a new vc
-        
-        // Hardcode
-        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = UICollectionViewScrollDirection.vertical
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: 180, height: 215)
-        layout.sectionInset = UIEdgeInsetsMake(5, 5, 0, 5)
-        
-        let challenge : Challenge?
-        switch(segmentedControl.selectedSegmentIndex)
-        {
-            case 0: // User Challenges
-                challenge = UserDatabase.global.John().challenges![indexPath.row]
-            case 1: // Friend Challenges
-                challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
-                                                                   atIndex: indexPath.row)
-            default:
-                challenge = nil
-            
-        }
-        
-        let svc = SubmissionsViewController(collectionViewLayout: layout, withChallenge: challenge!)
-        navigationController?.pushViewController(svc, animated: true)
     }
     
     @IBAction func segmentChanges(_ sender: UISegmentedControl) {
@@ -239,4 +215,32 @@ class ChallengeViewController: UIViewController,
         dvc.loadViewIfNeeded()
         dvc.drawingView.setBackground(withImage: challenge?.image)
     }
+    
+    func cellVoteButtonPressed(button: UIButton) {
+        
+        // Hardcode
+        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
+        layout.itemSize = CGSize(width: 180, height: 215)
+        layout.sectionInset = UIEdgeInsetsMake(5, 5, 0, 5)
+        
+        let challenge : Challenge?
+        switch(segmentedControl.selectedSegmentIndex)
+        {
+        case 0: // User Challenges
+            challenge = UserDatabase.global.John().challenges![button.tag]
+        case 1: // Friend Challenges
+            challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
+                                                               atIndex: button.tag)
+        default:
+            challenge = nil
+            
+        }
+        
+        let svc = SubmissionsViewController(collectionViewLayout: layout, withChallenge: challenge!)
+        navigationController?.pushViewController(svc, animated: true)
+    }
+    
 }

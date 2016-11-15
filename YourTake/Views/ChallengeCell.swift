@@ -15,6 +15,8 @@ class ChallengeCell: UITableViewCell {
     @IBOutlet weak var expiryLabel: UILabel!
     @IBOutlet weak var totalVotesLabel: UILabel!
     @IBOutlet weak var drawButton: UIButton!
+    @IBOutlet weak var voteButton: UIButton!
+    
     
     static func CellRowHeight() -> CGFloat
     {
