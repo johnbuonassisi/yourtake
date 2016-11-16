@@ -29,7 +29,7 @@ class DrawPathsView: UIView {
     
     var backgroundImage: UIImage?
     var currentStrokeColour: UIColor = UIColor.blue
-    var currentStrokeSize: CGFloat = 8.0
+    var currentStrokeSize: CGFloat = 12.0
     
     // MARK: Initializers
     
@@ -48,6 +48,8 @@ class DrawPathsView: UIView {
             currentPath.colour.setStroke()
             stroke(withPath: currentPath)
         }
+        
+        // draw text on top of everything
         
     }
     

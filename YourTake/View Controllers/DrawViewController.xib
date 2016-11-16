@@ -15,6 +15,7 @@
                 <outlet property="brushSlider" destination="IwL-8Y-jmj" id="Ocx-Ts-tLG"/>
                 <outlet property="colourSlider" destination="gQN-d3-sxt" id="tcG-EO-9R6"/>
                 <outlet property="drawingView" destination="zlD-GX-71G" id="Cag-6W-dL8"/>
+                <outlet property="textField" destination="188-6E-d4W" id="AOm-Xp-P3u"/>
                 <outlet property="undoButton" destination="KMP-j4-AFA" id="2LA-K2-XHo"/>
                 <outlet property="view" destination="fAX-yH-prD" id="oJX-YL-Gd7"/>
             </connections>
@@ -27,6 +28,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKc-PQ-zKl">
                     <rect key="frame" x="0.0" y="439" width="375" height="228"/>
                     <subviews>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="4" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="IwL-8Y-jmj">
+                            <rect key="frame" x="52" y="99" width="270" height="31"/>
+                            <connections>
+                                <action selector="strokeSizeSliderValueChanged:" destination="-1" eventType="valueChanged" id="Cp3-6s-tEy"/>
+                            </connections>
+                        </slider>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="gQN-d3-sxt">
                             <rect key="frame" x="52" y="28" width="270" height="31"/>
                             <color key="minimumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -36,9 +43,9 @@
                             </connections>
                         </slider>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMP-j4-AFA">
-                            <rect key="frame" x="149" y="166" width="76" height="30"/>
+                            <rect key="frame" x="54" y="153" width="76" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="EWg-gm-8rl"/>
+                                <constraint firstAttribute="height" constant="44" id="EWg-gm-8rl"/>
                                 <constraint firstAttribute="width" constant="76" id="yuG-PR-bZS"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -47,22 +54,30 @@
                                 <action selector="undoButtonPressed:" destination="-1" eventType="touchUpInside" id="ft6-kt-o5C"/>
                             </connections>
                         </button>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="13" minValue="6" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="IwL-8Y-jmj">
-                            <rect key="frame" x="52" y="99" width="270" height="31"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56j-gH-3P9">
+                            <rect key="frame" x="244" y="153" width="76" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Sby-Wv-i9u"/>
+                                <constraint firstAttribute="width" constant="76" id="ngq-NV-vep"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <state key="normal" title="Text"/>
                             <connections>
-                                <action selector="strokeSizeSliderValueChanged:" destination="-1" eventType="valueChanged" id="Cp3-6s-tEy"/>
+                                <action selector="addTextButtonPressed:" destination="-1" eventType="touchUpInside" id="3WO-4V-cxb"/>
                             </connections>
-                        </slider>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="gQN-d3-sxt" firstAttribute="trailing" secondItem="IwL-8Y-jmj" secondAttribute="trailing" id="7px-bL-4p8"/>
                         <constraint firstItem="IwL-8Y-jmj" firstAttribute="top" secondItem="gQN-d3-sxt" secondAttribute="bottom" constant="41" id="K9S-gb-TGR"/>
-                        <constraint firstItem="KMP-j4-AFA" firstAttribute="centerX" secondItem="gKc-PQ-zKl" secondAttribute="centerX" id="MQx-wj-OLb"/>
+                        <constraint firstItem="KMP-j4-AFA" firstAttribute="centerX" secondItem="gKc-PQ-zKl" secondAttribute="centerX" constant="-95.5" id="MQx-wj-OLb"/>
                         <constraint firstItem="gQN-d3-sxt" firstAttribute="top" secondItem="gKc-PQ-zKl" secondAttribute="top" constant="28" id="Q9Q-2c-H4z"/>
                         <constraint firstItem="IwL-8Y-jmj" firstAttribute="leading" secondItem="gKc-PQ-zKl" secondAttribute="leading" constant="54" id="Qb8-ws-57g"/>
-                        <constraint firstAttribute="bottom" secondItem="KMP-j4-AFA" secondAttribute="bottom" constant="32" id="XJk-om-R6Z"/>
-                        <constraint firstItem="gQN-d3-sxt" firstAttribute="centerX" secondItem="KMP-j4-AFA" secondAttribute="centerX" id="f1E-G8-nPH"/>
+                        <constraint firstItem="56j-gH-3P9" firstAttribute="leading" secondItem="KMP-j4-AFA" secondAttribute="trailing" constant="114" id="W2M-d4-1ax"/>
+                        <constraint firstAttribute="bottom" secondItem="KMP-j4-AFA" secondAttribute="bottom" constant="31" id="XJk-om-R6Z"/>
+                        <constraint firstItem="gQN-d3-sxt" firstAttribute="centerX" secondItem="gKc-PQ-zKl" secondAttribute="centerX" id="mY1-sJ-jc7"/>
+                        <constraint firstItem="56j-gH-3P9" firstAttribute="centerY" secondItem="KMP-j4-AFA" secondAttribute="centerY" id="qll-Qh-isR"/>
                         <constraint firstItem="gQN-d3-sxt" firstAttribute="leading" secondItem="gKc-PQ-zKl" secondAttribute="leading" constant="54" id="yY8-ZB-LnM"/>
                     </constraints>
                 </view>
@@ -72,6 +87,20 @@
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zlD-GX-71G" customClass="DrawPathsView" customModule="YourTake" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="65" width="375" height="375"/>
+                    <subviews>
+                        <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="188-6E-d4W">
+                            <rect key="frame" x="8" y="251" width="359" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="textFieldDragged:forEvent:" destination="-1" eventType="touchDragInside" id="vPo-aH-Q8b"/>
+                                <action selector="textFieldTapped:" destination="-1" eventType="touchUpInside" id="O21-nf-A5v"/>
+                            </connections>
+                        </textField>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>

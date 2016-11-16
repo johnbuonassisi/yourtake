@@ -18,8 +18,10 @@ class DrawViewController: UIViewController,
     @IBOutlet weak var colourSlider: UISlider!
     @IBOutlet weak var brushSlider: UISlider!
     @IBOutlet weak var undoButton: UIButton!
+    @IBOutlet weak var textField: UITextField!
     
     // MARK: Initializers
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -42,6 +44,13 @@ class DrawViewController: UIViewController,
         navigationItem.rightBarButtonItem = rbbi
         navigationItem.title = "Draw"
         
+    }
+    
+    // MARK: UIViewController methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textField.delegate = self
     }
     
     // MARK: Action Methods
@@ -75,10 +84,58 @@ class DrawViewController: UIViewController,
         drawingView.currentStrokeSize = CGFloat(sender.value)
     }
     
+    @IBAction func addTextButtonPressed(_ sender: UIButton) {
+        textField.isHidden = false
+        textField.becomeFirstResponder()
+    }
+    
+    @IBAction func textFieldDragged(_ sender: Any, forEvent event: UIEvent) {
+        
+        if let point = event.allTouches?.first?.location(in: drawingView) {
+            
+            let textFrame = textField.frame
+            let drawFrame = drawingView.frame
+            
+            let bottomOfDraw = drawFrame.height
+            let topOfDraw = CGFloat(0.0)
+            let bottomOfText = point.y + textFrame.height/2
+            let topOfText = point.y - textFrame.height/2
+            
+            if bottomOfText <= bottomOfDraw &&
+                topOfText >= topOfDraw {
+                textField.center.y = point.y
+            }
+        }
+    }
+    
+    @IBAction func textFieldTapped(_ sender: Any) {
+        textField.becomeFirstResponder()
+    }
+    
     // MARK: Private Custom Methods
     
     private func setColourSliderTrackTint(withColour colour:UIColor) {
         colourSlider.minimumTrackTintColor = colour
         colourSlider.maximumTrackTintColor = colour
+    }
+    
+}
+
+extension DrawViewController: UITextFieldDelegate {
+    
+    // MARK: UITextFieldDelegate methods
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField.text != nil {
+            if textField.text!.isEmpty != true {
+                textField.isHidden = false
+            } else {
+                textField.isHidden = true
+            }
+        }
+        
+        view.endEditing(true)
+        return false
     }
 }
