@@ -20,6 +20,10 @@ class DrawViewController: UIViewController,
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     
+    
+    // MARK: Private Member Variables
+    private var prevTextFieldPosition : CGFloat?
+    
     // MARK: Initializers
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -40,7 +44,7 @@ class DrawViewController: UIViewController,
         let rbbi = UIBarButtonItem(title: "Submit",
                                   style: UIBarButtonItemStyle.plain,
                                   target: self,
-                                  action: nil)
+                                  action: #selector(submitToChallenge))
         navigationItem.rightBarButtonItem = rbbi
         navigationItem.title = "Draw"
         
@@ -51,6 +55,15 @@ class DrawViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: .UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: .UIKeyboardWillHide,
+                                               object: nil)
     }
     
     // MARK: Action Methods
@@ -78,6 +91,8 @@ class DrawViewController: UIViewController,
             drawingView.currentStrokeColour = UIColor.lightGray
             setColourSliderTrackTint(withColour: UIColor.lightGray)
         }
+        
+        print("slider changed")
     }
     
     @IBAction func strokeSizeSliderValueChanged(_ sender: UISlider) {
@@ -112,11 +127,26 @@ class DrawViewController: UIViewController,
         textField.becomeFirstResponder()
     }
     
+    @IBAction func submitToChallenge() {
+        
+    }
+    
     // MARK: Private Custom Methods
     
     private func setColourSliderTrackTint(withColour colour:UIColor) {
         colourSlider.minimumTrackTintColor = colour
         colourSlider.maximumTrackTintColor = colour
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            let keyboardHeight = keyboardFrame.height
+            textField.frame.origin.y = view.frame.height - 65 - textField.frame.height - keyboardHeight
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
     }
     
 }
