@@ -64,6 +64,10 @@ class ChallengeViewController: UIViewController,
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(tableView.frame.width + 2*50) // 50 pts for header, 50 pts for footer
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let john = UserDatabase.global.John()
         switch(segmentedControl.selectedSegmentIndex){
@@ -221,10 +225,6 @@ class ChallengeViewController: UIViewController,
         // Hardcode
         let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: 180, height: 215)
-        layout.sectionInset = UIEdgeInsetsMake(5, 5, 0, 5)
         
         let challenge : Challenge?
         switch(segmentedControl.selectedSegmentIndex)

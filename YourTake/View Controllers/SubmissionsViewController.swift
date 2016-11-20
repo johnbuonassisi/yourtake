@@ -8,22 +8,26 @@
 
 import UIKit
 
-class SubmissionsViewController: UICollectionViewController{
+class SubmissionsViewController: UICollectionViewController
+{
     
     let challenge : Challenge?
     
-    init(collectionViewLayout layout: UICollectionViewLayout, withChallenge challenge: Challenge)
-    {
+    init(collectionViewLayout layout: UICollectionViewLayout,
+         withChallenge challenge: Challenge) {
+        
         self.challenge = challenge
         super.init(collectionViewLayout: layout)
     }
     
     required init?(coder aDecoder: NSCoder) {
+        
         self.challenge = nil
         super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         let nib : UINib = UINib(nibName: "SubmissionsCell", bundle: nil)
@@ -33,6 +37,7 @@ class SubmissionsViewController: UICollectionViewController{
         
         // Setup the navigation bar
         navigationItem.title = "Submissions"
+        
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -77,7 +82,10 @@ class SubmissionsViewController: UICollectionViewController{
         // Hardcode
         let vc = UIViewController()
         let fullImage = UIImageView(image:submission.image)
-        fullImage.frame = CGRect(x: 0, y: 150, width: 375, height: 375)
+        fullImage.frame = CGRect(x: 0,
+                                 y: navigationController!.navigationBar.frame.height,
+                                 width: collectionView.frame.width,
+                                 height: collectionView.frame.width)
         vc.view.backgroundColor = UIColor.white
         vc.view.addSubview(fullImage)
         vc.navigationItem.title = submission.name
@@ -92,4 +100,40 @@ class SubmissionsViewController: UICollectionViewController{
         self.collectionView?.reloadData()
     }
 
+}
+
+extension SubmissionsViewController : UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        // return the width and height of the collection view cell
+        return CGSize(width: (collectionView.frame.width - 3*5) / 2,
+                      height: ((collectionView.frame.width - 3*5) / 2) + 35)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        // return the margins to apply to content in the specified section
+        return UIEdgeInsetsMake(5, 5, 5, 5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        // return the spacing between successive rows or columns of a section
+        return 5.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        // return the spacing between successive items in the rows or columns of a section
+        return 5.0
+    }
+    
 }
