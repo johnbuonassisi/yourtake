@@ -155,6 +155,15 @@ class ChallengeViewController: UIViewController,
         
     }
     
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let friendChallengeList = FriendListViewController(withUser: "John")
+        navigationController?.pushViewController(friendChallengeList, animated: true)
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
     private func getExpiryLabel(fromDate date: Date) -> String {
         
         let numSecondsRemaining : Int = Int(date.timeIntervalSince(Date()))

@@ -31,6 +31,10 @@
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
 		529DC7C71DCC705F00EFA856 /* Submission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529DC7C61DCC705F00EFA856 /* Submission.swift */; };
+		529FB8381DE23AA800861826 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB8371DE23AA800861826 /* FriendListViewController.swift */; };
+		529FB83A1DE23B1400861826 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529FB8391DE23B1400861826 /* FriendCell.xib */; };
+		529FB83C1DE23C0300861826 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB83B1DE23C0300861826 /* FriendCell.swift */; };
+		529FB83E1DE2560500861826 /* FriendListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB83D1DE2560500861826 /* FriendListData.swift */; };
 		52A311F01DCE0CE400EAFC24 /* VoteTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A311EF1DCE0CE400EAFC24 /* VoteTracker.swift */; };
 		52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D291DD90631005A89B8 /* DrawPathsView.swift */; };
 		52A48D2E1DDB6591005A89B8 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */; };
@@ -68,6 +72,10 @@
 		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting Files/Assets.xcassets"; sourceTree = "<group>"; };
 		528509971DC6F9470083CC55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		529DC7C61DCC705F00EFA856 /* Submission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Submission.swift; path = Models/Submission.swift; sourceTree = "<group>"; };
+		529FB8371DE23AA800861826 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendListViewController.swift; path = "View Controllers/FriendListViewController.swift"; sourceTree = "<group>"; };
+		529FB8391DE23B1400861826 /* FriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendCell.xib; path = Views/FriendCell.xib; sourceTree = "<group>"; };
+		529FB83B1DE23C0300861826 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendCell.swift; path = Views/FriendCell.swift; sourceTree = "<group>"; };
+		529FB83D1DE2560500861826 /* FriendListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendListData.swift; path = Models/FriendListData.swift; sourceTree = "<group>"; };
 		52A311EF1DCE0CE400EAFC24 /* VoteTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoteTracker.swift; path = Models/VoteTracker.swift; sourceTree = "<group>"; };
 		52A48D291DD90631005A89B8 /* DrawPathsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawPathsView.swift; path = Views/DrawPathsView.swift; sourceTree = "<group>"; };
 		52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderedButton.swift; path = Views/BorderedButton.swift; sourceTree = "<group>"; };
@@ -133,6 +141,7 @@
 				523074A81DC70C4F002EB030 /* User.swift */,
 				523074AA1DC70EB6002EB030 /* UserDatabase.swift */,
 				529DC7C61DCC705F00EFA856 /* Submission.swift */,
+				529FB83D1DE2560500861826 /* FriendListData.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -147,6 +156,8 @@
 				526AF05B1DD2F9B0003350B4 /* DrawLinesView.swift */,
 				52A48D291DD90631005A89B8 /* DrawPathsView.swift */,
 				52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */,
+				529FB8391DE23B1400861826 /* FriendCell.xib */,
+				529FB83B1DE23C0300861826 /* FriendCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -161,6 +172,7 @@
 				52DC0AC01DCA2B7200DA2BDC /* SubmissionsViewController.swift */,
 				526AF0571DD2F334003350B4 /* DrawViewController.swift */,
 				526AF0591DD2F53C003350B4 /* DrawViewController.xib */,
+				529FB8371DE23AA800861826 /* FriendListViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -258,6 +270,7 @@
 				523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */,
 				52DC0AC31DCA301800DA2BDC /* SubmissionsCell.xib in Resources */,
 				523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */,
+				529FB83A1DE23B1400861826 /* FriendCell.xib in Resources */,
 				526AF0561DCFCE86003350B4 /* Ashling_Challenge.jpg in Resources */,
 				525F847C1DC9A6AE006D2E2F /* ChallengeCell.xib in Resources */,
 				523074B11DC71692002EB030 /* John_Challenge_Andrea.jpg in Resources */,
@@ -284,9 +297,12 @@
 				526AF05C1DD2F9B0003350B4 /* DrawLinesView.swift in Sources */,
 				52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */,
 				52A311F01DCE0CE400EAFC24 /* VoteTracker.swift in Sources */,
+				529FB8381DE23AA800861826 /* FriendListViewController.swift in Sources */,
 				5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */,
 				523074AB1DC70EB6002EB030 /* UserDatabase.swift in Sources */,
 				52DC0AC51DCA316D00DA2BDC /* SubmissionsCell.swift in Sources */,
+				529FB83C1DE23C0300861826 /* FriendCell.swift in Sources */,
+				529FB83E1DE2560500861826 /* FriendListData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

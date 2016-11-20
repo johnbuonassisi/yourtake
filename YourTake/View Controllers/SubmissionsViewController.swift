@@ -10,8 +10,11 @@ import UIKit
 
 class SubmissionsViewController: UICollectionViewController
 {
+    // MARK: Member Variables
     
     let challenge : Challenge?
+    
+    // MARK: Initializers
     
     init(collectionViewLayout layout: UICollectionViewLayout,
          withChallenge challenge: Challenge) {
@@ -26,6 +29,8 @@ class SubmissionsViewController: UICollectionViewController
         super.init(coder: aDecoder)
     }
     
+    // MARK: UIViewController Methods
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -39,6 +44,8 @@ class SubmissionsViewController: UICollectionViewController
         navigationItem.title = "Submissions"
         
     }
+    
+    // MARK: UICollectionViewDelegate Methods
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -93,14 +100,17 @@ class SubmissionsViewController: UICollectionViewController
         
     }
     
-    @IBAction func submissionsCellVoteButtonPressed(button: UIButton)
-    {
+    // MARK: Action Methods
+    
+    @IBAction func submissionsCellVoteButtonPressed(button: UIButton) {
         let cell : SubmissionsCell = button.superview?.superview?.superview as! SubmissionsCell
         challenge!.voteFor(user: cell.submitterName.text!, byVoter: "John")
         self.collectionView?.reloadData()
     }
 
 }
+
+// MARK: Layout Extension
 
 extension SubmissionsViewController : UICollectionViewDelegateFlowLayout {
     
