@@ -103,6 +103,7 @@ class SubmissionsViewController: UICollectionViewController
     // MARK: Action Methods
     
     @IBAction func submissionsCellVoteButtonPressed(button: UIButton) {
+        
         let cell : SubmissionsCell = button.superview?.superview?.superview as! SubmissionsCell
         challenge!.voteFor(user: cell.submitterName.text!, byVoter: "John")
         self.collectionView?.reloadData()

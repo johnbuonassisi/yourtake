@@ -12,14 +12,21 @@ class ChallengeViewController: UIViewController,
                                UITableViewDelegate,
                                UITableViewDataSource,
                                UINavigationControllerDelegate,
-                               UIImagePickerControllerDelegate{
+                               UIImagePickerControllerDelegate {
 
+    // MARK: Outlets
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
-    var selectedRow : IndexPath?
+    // MARK: Private Member Variables
+    
+    private var selectedRow : IndexPath?
+    
+    // MARK: UIViewController Overrides
     
     override func viewDidLoad() {
+        
         super.viewDidLoad();
         
         // Load and register cell NIB
@@ -57,12 +64,13 @@ class ChallengeViewController: UIViewController,
     override func viewWillAppear(_ animated: Bool) {
         
         // Reload a row that was previously selected
-        if selectedRow != nil
-        {
-            tableView.reloadRows(at: [selectedRow!], with: UITableViewRowAnimation.none)
-            selectedRow = nil
+        if let selectedRow = selectedRow {
+            tableView.reloadRows(at: [selectedRow], with: UITableViewRowAnimation.none)
         }
+        selectedRow = nil
     }
+    
+    // MARK: UITableViewDelegate Methods
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(tableView.frame.width + 2*50) // 50 pts for header, 50 pts for footer
@@ -84,6 +92,13 @@ class ChallengeViewController: UIViewController,
             
         }
     }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+    
+    // MARK: UITableViewDataSource Methods
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCellTest",
@@ -133,27 +148,7 @@ class ChallengeViewController: UIViewController,
         }
     }
     
-    @IBAction func segmentChanges(_ sender: UISegmentedControl) {
-        tableView.reloadData()
-    }
-    
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func newChallenge(){
-        
-        let ip : UIImagePickerController = UIImagePickerController()
-        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
-            ip.sourceType = UIImagePickerControllerSourceType.camera
-        }else {
-            ip.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        }
-        
-        ip.delegate = self
-        self.present(ip, animated: true, completion: nil)
-        
-    }
+    // MARK: UIImagePickerControllerDelegate Methods
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -163,6 +158,82 @@ class ChallengeViewController: UIViewController,
         dismiss(animated: true, completion: nil)
         
     }
+    
+    // MARK: Action Methods
+    
+    @IBAction func segmentChanges(_ sender: UISegmentedControl) {
+        
+        tableView.reloadData()
+    }
+    
+    func newChallenge() {
+        
+        let ip = UIImagePickerController()
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            
+            ip.sourceType = UIImagePickerControllerSourceType.camera
+        } else {
+            
+            ip.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        }
+        
+        ip.delegate = self
+        self.present(ip, animated: true, completion: nil)
+        
+    }
+    
+    func refresh() {
+        
+        tableView.reloadData()
+        tableView.refreshControl?.endRefreshing()
+    }
+    
+    func cellDrawButtonPressed(button : UIButton){
+        
+        let dvc: DrawViewController = DrawViewController(nibName: "DrawViewController",
+                                                         bundle: Bundle.main)
+        
+        let challenge: Challenge?
+        switch(segmentedControl.selectedSegmentIndex) {
+        
+        case 0: // User Challenges
+            challenge = UserDatabase.global.John().challenges![button.tag]
+        case 1: // Friend Challenges
+            challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
+                                                               atIndex: button.tag)
+        default:
+            challenge = nil
+        }
+        
+        navigationController?.pushViewController(dvc, animated: true)
+        dvc.loadViewIfNeeded()
+        dvc.drawingView.setBackground(withImage: challenge?.image)
+    }
+    
+    func cellVoteButtonPressed(button: UIButton) {
+        
+        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        
+        let challenge : Challenge?
+        switch(segmentedControl.selectedSegmentIndex)
+        {
+        case 0: // User Challenges
+            challenge = UserDatabase.global.John().challenges![button.tag]
+        case 1: // Friend Challenges
+            challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
+                                                               atIndex: button.tag)
+        default:
+            challenge = nil
+        }
+        
+        selectedRow = IndexPath(row: button.tag, section: 0)
+        let svc = SubmissionsViewController(collectionViewLayout: layout, withChallenge: challenge!)
+        navigationController?.pushViewController(svc, animated: true)
+    }
+    
+    // MARK: Private Methods
     
     private func getExpiryLabel(fromDate date: Date) -> String {
         
@@ -200,56 +271,6 @@ class ChallengeViewController: UIViewController,
         }
         
         return String(numSecondsRemaining) + " seconds remaining"
-    }
-    
-    func refresh(){
-        tableView.reloadData()
-        tableView.refreshControl?.endRefreshing()
-    }
-    
-    @IBAction func cellDrawButtonPressed(button : UIButton){
-        
-        let dvc: DrawViewController = DrawViewController(nibName: "DrawViewController",
-                                                         bundle: Bundle.main)
-        
-        let challenge: Challenge?
-        switch(segmentedControl.selectedSegmentIndex) {
-        
-        case 0: // User Challenges
-            challenge = UserDatabase.global.John().challenges![button.tag]
-        case 1: // Friend Challenges
-            challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
-                                                               atIndex: button.tag)
-        default:
-            challenge = nil
-        }
-        
-        navigationController?.pushViewController(dvc, animated: true)
-        dvc.loadViewIfNeeded()
-        dvc.drawingView.setBackground(withImage: challenge?.image)
-    }
-    
-    func cellVoteButtonPressed(button: UIButton) {
-        
-        // Hardcode
-        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = UICollectionViewScrollDirection.vertical
-        
-        let challenge : Challenge?
-        switch(segmentedControl.selectedSegmentIndex)
-        {
-        case 0: // User Challenges
-            challenge = UserDatabase.global.John().challenges![button.tag]
-        case 1: // Friend Challenges
-            challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
-                                                               atIndex: button.tag)
-        default:
-            challenge = nil
-            
-        }
-        
-        let svc = SubmissionsViewController(collectionViewLayout: layout, withChallenge: challenge!)
-        navigationController?.pushViewController(svc, animated: true)
     }
     
 }
