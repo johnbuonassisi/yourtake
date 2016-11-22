@@ -12,35 +12,37 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="PQm-mD-OUD" customClass="FriendCell" customModule="YourTake" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="PQm-mD-OUD" customClass="FriendPickerCell" customModule="YourTake" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PQm-mD-OUD" id="Dc5-k8-Kml">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hao-gc-m95">
+                        <rect key="frame" x="318" y="6" width="51" height="31"/>
+                    </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Billy Bob Thorton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1Q-0m-VdA">
-                        <rect key="frame" x="8" y="11" width="132" height="21"/>
+                        <rect key="frame" x="15" y="11" width="132" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hao-gc-m95">
-                        <rect key="frame" x="318" y="6" width="51" height="31"/>
-                    </switch>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Hao-gc-m95" firstAttribute="centerY" secondItem="Dc5-k8-Kml" secondAttribute="centerY" id="Kgp-fE-eo6"/>
                     <constraint firstItem="N1Q-0m-VdA" firstAttribute="centerY" secondItem="Dc5-k8-Kml" secondAttribute="centerY" id="NFb-BB-wwj"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Hao-gc-m95" secondAttribute="trailing" id="QLt-hK-WG6"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="N1Q-0m-VdA" secondAttribute="leading" id="SvF-Xd-FhH"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="N1Q-0m-VdA" firstAttribute="leading" secondItem="PQm-mD-OUD" secondAttribute="leading" constant="15" id="O2l-vZ-9Xm"/>
+            </constraints>
             <connections>
-                <outlet property="friendName" destination="N1Q-0m-VdA" id="Wgp-Ec-GqO"/>
-                <outlet property="friendSwitch" destination="Hao-gc-m95" id="nko-4m-OKT"/>
+                <outlet property="friendName" destination="N1Q-0m-VdA" id="5JJ-5M-paG"/>
+                <outlet property="friendSwitch" destination="Hao-gc-m95" id="IVj-4v-RKt"/>
             </connections>
-            <point key="canvasLocation" x="5" y="45"/>
+            <point key="canvasLocation" x="-124" y="157"/>
         </tableViewCell>
     </objects>
 </document>

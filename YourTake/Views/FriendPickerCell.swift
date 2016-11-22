@@ -8,8 +8,9 @@
 
 import UIKit
 
-class FriendCell: UITableViewCell {
+class FriendPickerCell: UITableViewCell {
 
     @IBOutlet weak var friendName: UILabel!
     @IBOutlet weak var friendSwitch: UISwitch!
+    
 }

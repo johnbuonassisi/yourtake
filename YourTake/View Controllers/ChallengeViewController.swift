@@ -153,7 +153,7 @@ class ChallengeViewController: UIViewController,
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        let friendChallengeList = FriendListViewController(withUser: "John")
+        let friendChallengeList = ChallengeOptionsViewController(withUser: "John")
         navigationController?.pushViewController(friendChallengeList, animated: true)
         dismiss(animated: true, completion: nil)
         

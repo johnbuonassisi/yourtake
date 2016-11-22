@@ -91,8 +91,6 @@ class DrawViewController: UIViewController,
             drawingView.currentStrokeColour = UIColor.lightGray
             setColourSliderTrackTint(withColour: UIColor.lightGray)
         }
-        
-        print("slider changed")
     }
     
     @IBAction func strokeSizeSliderValueChanged(_ sender: UISlider) {
