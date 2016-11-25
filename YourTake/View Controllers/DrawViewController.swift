@@ -35,7 +35,7 @@ class DrawViewController: UIViewController,
                                    target: self,
                                    action: nil)
         navigationItem.rightBarButtonItem = rbbi
-        navigationItem.title = "Draw"
+        navigationItem.title = "Your Take"
     }
     
     required init?(coder aDecoder: NSCoder) {

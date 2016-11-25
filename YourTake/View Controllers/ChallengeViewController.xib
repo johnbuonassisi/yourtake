@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeViewController" customModule="YourTake" customModuleProvider="target">
             <connections>
-                <outlet property="segmentedControl" destination="HHy-15-NQu" id="cVL-pN-OeF"/>
+                <outlet property="tabBarControl" destination="2XA-7C-NbP" id="9YD-f8-3NQ"/>
                 <outlet property="tableView" destination="13A-3U-HqL" id="WLU-fl-1L6"/>
                 <outlet property="view" destination="YsZ-DT-RGu" id="5rI-pX-DV5"/>
             </connections>
@@ -22,42 +22,29 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="playback" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="13A-3U-HqL">
-                    <rect key="frame" x="0.0" y="62" width="375" height="605"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joP-9P-5bG">
-                    <rect key="frame" x="0.0" y="62" width="375" height="58"/>
-                    <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HHy-15-NQu">
-                            <rect key="frame" x="16" y="15" width="343" height="29"/>
-                            <segments>
-                                <segment title="Your Challenges"/>
-                                <segment title="Friend Challenges"/>
-                            </segments>
-                            <connections>
-                                <action selector="segmentChanges:" destination="-1" eventType="valueChanged" id="tnz-Nz-Z84"/>
-                            </connections>
-                        </segmentedControl>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="HHy-15-NQu" secondAttribute="trailing" constant="16" id="1Ds-hV-H5u"/>
-                        <constraint firstItem="HHy-15-NQu" firstAttribute="centerX" secondItem="joP-9P-5bG" secondAttribute="centerX" id="76x-cO-JUQ"/>
-                        <constraint firstItem="HHy-15-NQu" firstAttribute="centerY" secondItem="joP-9P-5bG" secondAttribute="centerY" id="PVP-Zk-mWv"/>
-                        <constraint firstItem="HHy-15-NQu" firstAttribute="leading" secondItem="joP-9P-5bG" secondAttribute="leading" constant="16" id="k9K-a9-Jt3"/>
-                    </constraints>
-                </view>
+                <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2XA-7C-NbP">
+                    <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items>
+                        <tabBarItem title="Me" id="vCO-3l-gth">
+                            <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                        </tabBarItem>
+                        <tabBarItem tag="1" title="Friends" id="sIh-1f-d6g"/>
+                    </items>
+                </tabBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="13A-3U-HqL" firstAttribute="top" secondItem="joP-9P-5bG" secondAttribute="bottom" constant="-58" id="5rt-sJ-afs"/>
-                <constraint firstAttribute="trailing" secondItem="13A-3U-HqL" secondAttribute="trailing" id="AUl-RZ-DYl"/>
-                <constraint firstItem="joP-9P-5bG" firstAttribute="leading" secondItem="YsZ-DT-RGu" secondAttribute="leading" id="JBn-NC-xec"/>
-                <constraint firstItem="13A-3U-HqL" firstAttribute="leading" secondItem="YsZ-DT-RGu" secondAttribute="leading" id="UGK-8s-YId"/>
-                <constraint firstItem="13A-3U-HqL" firstAttribute="top" secondItem="YsZ-DT-RGu" secondAttribute="top" constant="62" id="b2u-aN-phe"/>
-                <constraint firstAttribute="trailing" secondItem="joP-9P-5bG" secondAttribute="trailing" id="gJI-bW-gof"/>
-                <constraint firstItem="joP-9P-5bG" firstAttribute="top" secondItem="YsZ-DT-RGu" secondAttribute="top" constant="62" id="iId-tG-j6i"/>
-                <constraint firstAttribute="bottom" secondItem="13A-3U-HqL" secondAttribute="bottom" id="pdk-Ed-8bi"/>
+                <constraint firstAttribute="bottom" secondItem="2XA-7C-NbP" secondAttribute="bottom" id="1R8-YQ-7Dc"/>
+                <constraint firstItem="2XA-7C-NbP" firstAttribute="top" secondItem="13A-3U-HqL" secondAttribute="bottom" id="8rM-qR-uCu"/>
+                <constraint firstAttribute="trailing" secondItem="13A-3U-HqL" secondAttribute="trailing" id="EZm-ST-gS1"/>
+                <constraint firstAttribute="trailing" secondItem="2XA-7C-NbP" secondAttribute="trailing" id="IAD-YA-scQ"/>
+                <constraint firstItem="2XA-7C-NbP" firstAttribute="leading" secondItem="YsZ-DT-RGu" secondAttribute="leading" id="PI0-Tj-onq"/>
+                <constraint firstItem="13A-3U-HqL" firstAttribute="leading" secondItem="YsZ-DT-RGu" secondAttribute="leading" id="XiC-vh-Ptj"/>
+                <constraint firstItem="13A-3U-HqL" firstAttribute="top" secondItem="YsZ-DT-RGu" secondAttribute="top" id="u7G-kY-9H7"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="-251.5" y="-8.5"/>

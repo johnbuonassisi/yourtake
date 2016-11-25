@@ -12,12 +12,13 @@ class ChallengeViewController: UIViewController,
                                UITableViewDelegate,
                                UITableViewDataSource,
                                UINavigationControllerDelegate,
-                               UIImagePickerControllerDelegate {
+                               UIImagePickerControllerDelegate,
+                               UITabBarDelegate {
 
     // MARK: Outlets
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tabBarControl: UITabBar!
     @IBOutlet var overlayView: UIView!
     
     // MARK: Private Member Variables
@@ -43,7 +44,7 @@ class ChallengeViewController: UIViewController,
         tableView.allowsSelection = false
         
         // Setup the navigation bar
-        navigationItem.title = "YourTake"
+        navigationItem.title = "Challenges"
         
         let rbbi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.camera,
                                    target: self,
@@ -60,6 +61,10 @@ class ChallengeViewController: UIViewController,
         tableView.refreshControl?.tintColor = UIColor.blue
         tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
         tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        
+        // Setup the tab bar control
+        tabBarControl.delegate = self
+        tabBarControl.selectedItem = tabBarControl.items?[0]
     
     }
     
@@ -80,7 +85,7 @@ class ChallengeViewController: UIViewController,
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let john = UserDatabase.global.John()
-        switch(segmentedControl.selectedSegmentIndex){
+        switch(tabBarControl.selectedItem!.tag){
         
         case 0: // User Challenges
             // Client
@@ -105,7 +110,7 @@ class ChallengeViewController: UIViewController,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCellTest",
                                                                  for: indexPath) as! ChallengeCell
-        switch(segmentedControl.selectedSegmentIndex){
+        switch(tabBarControl.selectedItem!.tag){
         
         case 0: // User Challenges
             
@@ -235,7 +240,7 @@ class ChallengeViewController: UIViewController,
                                                          bundle: Bundle.main)
         
         let challenge: Challenge?
-        switch(segmentedControl.selectedSegmentIndex) {
+        switch(tabBarControl.selectedItem!.tag) {
         
         case 0: // User Challenges
             challenge = UserDatabase.global.John().challenges![button.tag]
@@ -257,7 +262,7 @@ class ChallengeViewController: UIViewController,
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
         
         let challenge : Challenge?
-        switch(segmentedControl.selectedSegmentIndex)
+        switch(tabBarControl.selectedItem!.tag)
         {
         case 0: // User Challenges
             challenge = UserDatabase.global.John().challenges![button.tag]
@@ -271,6 +276,11 @@ class ChallengeViewController: UIViewController,
         selectedRow = IndexPath(row: button.tag, section: 0)
         let svc = SubmissionsViewController(collectionViewLayout: layout, withChallenge: challenge!)
         navigationController?.pushViewController(svc, animated: true)
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        tableView.reloadData()
     }
     
     // MARK: Private Methods

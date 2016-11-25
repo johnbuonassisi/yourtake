@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E1F1DE807ED00F04C86 /* BAAClient.m */; };
+		52299E2D1DE807ED00F04C86 /* BAAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E211DE807ED00F04C86 /* BAAFile.m */; };
+		52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E231DE807ED00F04C86 /* BAAGlobals.m */; };
+		52299E2F1DE807ED00F04C86 /* BAAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E251DE807ED00F04C86 /* BAAMutableURLRequest.m */; };
+		52299E301DE807ED00F04C86 /* BAAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E271DE807ED00F04C86 /* BAAObject.m */; };
+		52299E311DE807ED00F04C86 /* BaasBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E291DE807ED00F04C86 /* BaasBox.m */; };
+		52299E321DE807ED00F04C86 /* BAAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E2B1DE807ED00F04C86 /* BAAUser.m */; };
+		52299E341DE80B0D00F04C86 /* BaasClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52299E331DE80B0D00F04C86 /* BaasClient.swift */; };
 		523074A71DC704DE002EB030 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074A61DC704DE002EB030 /* Challenge.swift */; };
 		523074A91DC70C4F002EB030 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074A81DC70C4F002EB030 /* User.swift */; };
 		523074AB1DC70EB6002EB030 /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074AA1DC70EB6002EB030 /* UserDatabase.swift */; };
@@ -48,6 +56,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
+		52299E1E1DE807ED00F04C86 /* BAAClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAClient.h; sourceTree = "<group>"; };
+		52299E1F1DE807ED00F04C86 /* BAAClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAClient.m; sourceTree = "<group>"; };
+		52299E201DE807ED00F04C86 /* BAAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAFile.h; sourceTree = "<group>"; };
+		52299E211DE807ED00F04C86 /* BAAFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAFile.m; sourceTree = "<group>"; };
+		52299E221DE807ED00F04C86 /* BAAGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAGlobals.h; sourceTree = "<group>"; };
+		52299E231DE807ED00F04C86 /* BAAGlobals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAGlobals.m; sourceTree = "<group>"; };
+		52299E241DE807ED00F04C86 /* BAAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAMutableURLRequest.h; sourceTree = "<group>"; };
+		52299E251DE807ED00F04C86 /* BAAMutableURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAMutableURLRequest.m; sourceTree = "<group>"; };
+		52299E261DE807ED00F04C86 /* BAAObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAObject.h; sourceTree = "<group>"; };
+		52299E271DE807ED00F04C86 /* BAAObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAObject.m; sourceTree = "<group>"; };
+		52299E281DE807ED00F04C86 /* BaasBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaasBox.h; sourceTree = "<group>"; };
+		52299E291DE807ED00F04C86 /* BaasBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaasBox.m; sourceTree = "<group>"; };
+		52299E2A1DE807ED00F04C86 /* BAAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAUser.h; sourceTree = "<group>"; };
+		52299E2B1DE807ED00F04C86 /* BAAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAUser.m; sourceTree = "<group>"; };
+		52299E331DE80B0D00F04C86 /* BaasClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasClient.swift; sourceTree = "<group>"; };
 		523074A61DC704DE002EB030 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Challenge.swift; path = Models/Challenge.swift; sourceTree = "<group>"; };
 		523074A81DC70C4F002EB030 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		523074AA1DC70EB6002EB030 /* UserDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDatabase.swift; path = Models/UserDatabase.swift; sourceTree = "<group>"; };
@@ -101,6 +125,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				52299E1E1DE807ED00F04C86 /* BAAClient.h */,
+				52299E1F1DE807ED00F04C86 /* BAAClient.m */,
+				52299E201DE807ED00F04C86 /* BAAFile.h */,
+				52299E211DE807ED00F04C86 /* BAAFile.m */,
+				52299E221DE807ED00F04C86 /* BAAGlobals.h */,
+				52299E231DE807ED00F04C86 /* BAAGlobals.m */,
+				52299E241DE807ED00F04C86 /* BAAMutableURLRequest.h */,
+				52299E251DE807ED00F04C86 /* BAAMutableURLRequest.m */,
+				52299E261DE807ED00F04C86 /* BAAObject.h */,
+				52299E271DE807ED00F04C86 /* BAAObject.m */,
+				52299E281DE807ED00F04C86 /* BaasBox.h */,
+				52299E291DE807ED00F04C86 /* BaasBox.m */,
+				52299E2A1DE807ED00F04C86 /* BAAUser.h */,
+				52299E2B1DE807ED00F04C86 /* BAAUser.m */,
+				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
+			);
+			name = "BaasBox-iOS-SDK";
+			sourceTree = "<group>";
+		};
 		5285097F1DC6F9470083CC55 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +166,7 @@
 		5285098A1DC6F9470083CC55 /* YourTake */ = {
 			isa = PBXGroup;
 			children = (
+				52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */,
 				528509A11DC6F9B40083CC55 /* Supporting Files */,
 				5285099D1DC6F98A0083CC55 /* Main */,
 				5285099E1DC6F9940083CC55 /* Models */,
@@ -140,6 +187,7 @@
 		5285099E1DC6F9940083CC55 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				52299E331DE80B0D00F04C86 /* BaasClient.swift */,
 				523074A61DC704DE002EB030 /* Challenge.swift */,
 				52A311EF1DCE0CE400EAFC24 /* VoteTracker.swift */,
 				523074A81DC70C4F002EB030 /* User.swift */,
@@ -236,6 +284,7 @@
 					528509871DC6F9470083CC55 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = A99NKDYD4J;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -293,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				526AF0581DD2F334003350B4 /* DrawViewController.swift in Sources */,
+				52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */,
 				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,
 				52DC0AC11DCA2B7200DA2BDC /* SubmissionsViewController.swift in Sources */,
 				523074A91DC70C4F002EB030 /* User.swift in Sources */,
@@ -300,17 +350,24 @@
 				52A48D2E1DDB6591005A89B8 /* BorderedButton.swift in Sources */,
 				529FB8421DE42B4000861826 /* ExpiryPickerCell.swift in Sources */,
 				525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */,
+				52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */,
 				529DC7C71DCC705F00EFA856 /* Submission.swift in Sources */,
 				523074A71DC704DE002EB030 /* Challenge.swift in Sources */,
 				526AF05C1DD2F9B0003350B4 /* DrawLinesView.swift in Sources */,
 				52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */,
 				52A311F01DCE0CE400EAFC24 /* VoteTracker.swift in Sources */,
+				52299E2F1DE807ED00F04C86 /* BAAMutableURLRequest.m in Sources */,
 				529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */,
+				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
+				52299E301DE807ED00F04C86 /* BAAObject.m in Sources */,
 				5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */,
 				523074AB1DC70EB6002EB030 /* UserDatabase.swift in Sources */,
+				52299E2D1DE807ED00F04C86 /* BAAFile.m in Sources */,
 				52DC0AC51DCA316D00DA2BDC /* SubmissionsCell.swift in Sources */,
 				529FB83C1DE23C0300861826 /* FriendPickerCell.swift in Sources */,
 				529FB83E1DE2560500861826 /* FriendListData.swift in Sources */,
+				52299E311DE807ED00F04C86 /* BaasBox.m in Sources */,
+				52299E341DE80B0D00F04C86 /* BaasClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,12 +469,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A99NKDYD4J;
 				INFOPLIST_FILE = YourTake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JAB.YourTake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/YourTake-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -426,12 +486,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A99NKDYD4J;
 				INFOPLIST_FILE = YourTake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JAB.YourTake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/YourTake-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

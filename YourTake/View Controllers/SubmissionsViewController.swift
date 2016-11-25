@@ -41,7 +41,7 @@ class SubmissionsViewController: UICollectionViewController
         collectionView?.backgroundColor = UIColor.white
         
         // Setup the navigation bar
-        navigationItem.title = "Submissions"
+        navigationItem.title = "Takes"
         
     }
     
