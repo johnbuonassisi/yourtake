@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChallengeOptionsViewController: UITableViewController {
+class ChallengeOptionsViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let userName : String
     private var areAllFriendsSelected : Bool = true

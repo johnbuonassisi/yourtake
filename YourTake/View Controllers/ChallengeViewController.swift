@@ -18,10 +18,12 @@ class ChallengeViewController: UIViewController,
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var overlayView: UIView!
     
     // MARK: Private Member Variables
     
     private var selectedRow : IndexPath?
+    private var ip : UIImagePickerController?
     
     // MARK: UIViewController Overrides
     
@@ -152,35 +154,73 @@ class ChallengeViewController: UIViewController,
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        let friendChallengeList = ChallengeOptionsViewController(withUser: "John")
-        navigationController?.pushViewController(friendChallengeList, animated: true)
-        dismiss(animated: true, completion: nil)
-        
+        // ?
+        picker.dismiss(animated: true, completion: {
+            let friendChallengeList = ChallengeOptionsViewController(withUser: "John")
+            self.navigationController?.pushViewController(friendChallengeList, animated: true)
+        })
     }
     
     // MARK: Action Methods
     
-    @IBAction func segmentChanges(_ sender: UISegmentedControl) {
+    @IBAction func newChallenge() {
         
-        tableView.reloadData()
-    }
-    
-    func newChallenge() {
-        
-        let ip = UIImagePickerController()
+        ip = UIImagePickerController()
         
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             
-            ip.sourceType = UIImagePickerControllerSourceType.camera
+            ip!.sourceType = UIImagePickerControllerSourceType.camera
+            ip!.showsCameraControls = false
+            
+            // Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView
+            // outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view,
+            // and set self's reference to the view to nil.
+            Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)
+            overlayView.frame = ip!.cameraOverlayView!.frame
+            ip!.cameraOverlayView = self.overlayView
+            self.overlayView = nil // break a strong reference cycle
+            
         } else {
             
-            ip.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            ip!.sourceType = UIImagePickerControllerSourceType.photoLibrary
         }
         
-        ip.delegate = self
-        self.present(ip, animated: true, completion: nil)
+        let friendChallengeList = ChallengeOptionsViewController(withUser: "John")
+        ip!.delegate = friendChallengeList
+        self.present(ip!, animated: true, completion: {
+            
+            // Work around for iOS Version 10.1 (fixed in 10.2 beta)
+            // In all other iOS versions, transform can be set before the camera is presented
+            let transform = CGAffineTransform(translationX: 0.0, y: 100.0)
+            self.ip!.cameraViewTransform = transform
+            self.navigationController?.pushViewController(friendChallengeList, animated: true)
+        })
         
+    }
+    
+    @IBAction func takePhoto(_ sender: UIBarButtonItem) {
+        ip!.takePicture()
+    }
+    
+    @IBAction func doneTakingPhoto(_ sender: UIBarButtonItem) {
+        ip?.dismiss(animated: true, completion: {
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
+    
+    @IBAction func changeCamera(_ sender: UIBarButtonItem) {
+        if sender.title! == "Rear" {
+            ip?.cameraDevice = .rear
+            sender.title! = "Front"
+        } else {
+            ip?.cameraDevice = .front
+            sender.title! = "Rear"
+        }
+    }
+    
+    @IBAction func segmentChanges(_ sender: UISegmentedControl) {
+        
+        tableView.reloadData()
     }
     
     func refresh() {
