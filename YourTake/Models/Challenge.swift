@@ -16,7 +16,7 @@ class Challenge: NSObject {
     let expiryDate : NSDate
     
     private var voteTracker : VoteTracker
-    var submissions = [Submission]()
+    var takes = [Take]()
     
     init(owner: User, image: UIImage, friends: [String], expiryDate: NSDate)
     {
@@ -30,16 +30,16 @@ class Challenge: NSObject {
         self.voteTracker = VoteTracker(withUsers: allUsers)
     }
     
-    func Submit(response: Submission)
+    func Submit(response: Take)
     {
-        submissions.append(response)
+        takes.append(response)
     }
     
     func voteFor(user: String, byVoter voter: String)
     {
-        let test : Bool = voteTracker.vote(forUser: user, ByVoter: voter)
-        // re-order the submissions
-        submissions = submissions.sorted(by: {s1, s2 in return
+        let _ : Bool = voteTracker.vote(forUser: user, ByVoter: voter)
+        // re-order the takes
+        takes = takes.sorted(by: {s1, s2 in return
            voteTracker.getNumVotes(forUser: s1.name) > voteTracker.getNumVotes(forUser: s2.name)})
     }
     

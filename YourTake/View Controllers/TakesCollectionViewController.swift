@@ -1,5 +1,5 @@
 //
-//  SubmissionsViewController.swift
+//  TakesCollectionViewController.swift
 //  YourTake
 //
 //  Created by John Buonassisi on 2016-11-02.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SubmissionsViewController: UICollectionViewController
+class TakesCollectionViewController: UICollectionViewController
 {
     // MARK: Member Variables
     
@@ -35,8 +35,8 @@ class SubmissionsViewController: UICollectionViewController
         
         super.viewDidLoad()
         
-        let nib : UINib = UINib(nibName: "SubmissionsCell", bundle: nil)
-        collectionView?.register(nib, forCellWithReuseIdentifier: "SubmissionCell")
+        let nib : UINib = UINib(nibName: "TakeCell", bundle: nil)
+        collectionView?.register(nib, forCellWithReuseIdentifier: "TakeCell")
         
         collectionView?.backgroundColor = UIColor.white
         
@@ -52,22 +52,22 @@ class SubmissionsViewController: UICollectionViewController
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return challenge!.submissions.count
+        return challenge!.takes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell : SubmissionsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubmissionCell",
-                                                                        for: indexPath) as! SubmissionsCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TakeCell",
+                                                                      for: indexPath) as! TakeCell
         cell.voteButton.addTarget(self,
-                                  action: #selector(submissionsCellVoteButtonPressed),
+                                  action: #selector(takeCellVoteButtonPressed),
                                   for: UIControlEvents.touchUpInside)
         
-        let submission = challenge!.submissions[indexPath.row] // The data source has the challenges pre-sorted
+        let take = challenge!.takes[indexPath.row] // The data source has the challenges pre-sorted
         
-        cell.submissionImage.image = submission.image
-        cell.submitterName.text = submission.name
-        cell.numberOfVotes.text = String(challenge!.getNumberOfVotes(forUser: submission.name))
-        if(challenge!.getVoteOf(user : "John") == submission.name)
+        cell.image.image = take.image
+        cell.submitterName.text = take.name
+        cell.numberOfVotes.text = String(challenge!.getNumberOfVotes(forUser: take.name))
+        if(challenge!.getVoteOf(user : "John") == take.name)
         {
             let likedImage = UIImage(named: "Liked", in: nil, compatibleWith: nil)
             cell.voteButton.setImage(likedImage, for: UIControlState.normal)
@@ -84,27 +84,27 @@ class SubmissionsViewController: UICollectionViewController
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
         
-        let submission = challenge!.submissions[indexPath.row]
+        let take = challenge!.takes[indexPath.row]
         
         // Hardcode
         let vc = UIViewController()
-        let fullImage = UIImageView(image:submission.image)
+        let fullImage = UIImageView(image:take.image)
         fullImage.frame = CGRect(x: 0,
                                  y: navigationController!.navigationBar.frame.height,
                                  width: collectionView.frame.width,
                                  height: collectionView.frame.width)
         vc.view.backgroundColor = UIColor.white
         vc.view.addSubview(fullImage)
-        vc.navigationItem.title = submission.name
+        vc.navigationItem.title = take.name
         navigationController?.pushViewController(vc, animated: true)
         
     }
     
     // MARK: Action Methods
     
-    @IBAction func submissionsCellVoteButtonPressed(button: UIButton) {
+    @IBAction func takeCellVoteButtonPressed(button: UIButton) {
         
-        let cell : SubmissionsCell = button.superview?.superview?.superview as! SubmissionsCell
+        let cell = button.superview?.superview?.superview as! TakeCell
         challenge!.voteFor(user: cell.submitterName.text!, byVoter: "John")
         self.collectionView?.reloadData()
     }
@@ -113,7 +113,7 @@ class SubmissionsViewController: UICollectionViewController
 
 // MARK: Layout Extension
 
-extension SubmissionsViewController : UICollectionViewDelegateFlowLayout {
+extension TakesCollectionViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

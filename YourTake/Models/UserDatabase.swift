@@ -61,22 +61,22 @@ class UserDatabase: NSObject {
                                          expiryDate: challengeExpiryDate3))
         
         
-        // Add submissions and votes to Johns Challenges
-        john.challenges![0].submissions = [Submission(image: ashlingsResponse, name: "Ashling"),
-                                           Submission(image: petersResponse, name: "Peter"),
-                                           Submission(image: andreasResponse, name: "Andrea"),
-                                           Submission(image: anthonysResponse, name: "Anthony")];
+        // Add takes and votes to Johns Challenges
+        john.challenges![0].takes = [Take(image: ashlingsResponse, name: "Ashling"),
+                                           Take(image: petersResponse, name: "Peter"),
+                                           Take(image: andreasResponse, name: "Andrea"),
+                                           Take(image: anthonysResponse, name: "Anthony")];
         
         john.challenges![0].voteFor(user: "Anthony", byVoter: "Peter")
         john.challenges![0].voteFor(user: "Anthony", byVoter: "Andrea")
         john.challenges![0].voteFor(user: "Andrea", byVoter: "Ashling")
         john.challenges![0].voteFor(user: "Peter", byVoter: "Anthony")
         
-        // Add submissions and votes to Ashlings Challenges
-        ashling.challenges![0].submissions = [Submission(image: johnsResponse2, name: "John"),
-                                              Submission(image: petersResponse2, name: "Peter"),
-                                              Submission(image: andreasResponse2, name: "Andrea"),
-                                              Submission(image: anthonysResponse2, name: "Anthony")]
+        // Add takes and votes to Ashlings Challenges
+        ashling.challenges![0].takes = [Take(image: johnsResponse2, name: "John"),
+                                              Take(image: petersResponse2, name: "Peter"),
+                                              Take(image: andreasResponse2, name: "Andrea"),
+                                              Take(image: anthonysResponse2, name: "Anthony")]
         
         ashling.challenges![0].voteFor(user: "Peter", byVoter: "Andrea")
         ashling.challenges![0].voteFor(user: "Peter", byVoter: "Anthony")

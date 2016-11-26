@@ -274,8 +274,8 @@ class ChallengeViewController: UIViewController,
         }
         
         selectedRow = IndexPath(row: button.tag, section: 0)
-        let svc = SubmissionsViewController(collectionViewLayout: layout, withChallenge: challenge!)
-        navigationController?.pushViewController(svc, animated: true)
+        let tcvc = TakesCollectionViewController(collectionViewLayout: layout, withChallenge: challenge!)
+        navigationController?.pushViewController(tcvc, animated: true)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

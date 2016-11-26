@@ -1,5 +1,5 @@
 //
-//  Submission.swift
+//  Take.swift
 //  YourTake
 //
 //  Created by John Buonassisi on 2016-11-04.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Submission: NSObject {
+class Take: NSObject {
     
     let image : UIImage
     let name : String

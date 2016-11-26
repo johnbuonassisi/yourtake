@@ -1,5 +1,5 @@
 //
-//  SubmissionsCell.swift
+//  TakeCell.swift
 //  YourTake
 //
 //  Created by John Buonassisi on 2016-11-02.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class SubmissionsCell: UICollectionViewCell {
+class TakeCell: UICollectionViewCell {
     
-    @IBOutlet weak var submissionImage: UIImageView!
+    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var submitterName: UILabel!
     @IBOutlet weak var voteButton: UIButton!
     @IBOutlet weak var numberOfVotes: UILabel!
