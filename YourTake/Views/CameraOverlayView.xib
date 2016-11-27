@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeViewController" customModule="YourTake" customModuleProvider="target">
+            <connections>
+                <outlet property="overlayView" destination="ECA-fP-60W" id="T5q-Fn-AM8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ECA-fP-60W">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="be0-R7-e6c">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Cancel" id="j3Z-s6-fjR">
+                            <connections>
+                                <action selector="cancelTakingPhoto:" destination="-1" id="HaT-e2-88l"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="N7g-Pr-vdY"/>
+                        <barButtonItem title="Take" id="dcT-tZ-vti">
+                            <connections>
+                                <action selector="takePhoto:" destination="-1" id="OXa-yW-Zva"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Yc9-DT-63e"/>
+                        <barButtonItem title="Front" id="EUz-cE-c9f">
+                            <connections>
+                                <action selector="changeCamera:" destination="-1" id="ASk-1w-yfQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <point key="canvasLocation" x="-126" y="147"/>
+        </view>
+    </objects>
+</document>

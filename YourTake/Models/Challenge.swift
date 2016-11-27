@@ -35,12 +35,20 @@ class Challenge: NSObject {
         takes.append(response)
     }
     
-    func voteFor(user: String, byVoter voter: String)
+    func voteFor(user: String, byVoter voter: String, andSort areTakesToBeSorted: Bool)
     {
         let _ : Bool = voteTracker.vote(forUser: user, ByVoter: voter)
         // re-order the takes
+        if areTakesToBeSorted {
+            takes = takes.sorted(by: {s1, s2 in return
+                voteTracker.getNumVotes(forUser: s1.name) > voteTracker.getNumVotes(forUser: s2.name)})
+        }
+        
+    }
+    
+    func sortTakes() {
         takes = takes.sorted(by: {s1, s2 in return
-           voteTracker.getNumVotes(forUser: s1.name) > voteTracker.getNumVotes(forUser: s2.name)})
+            voteTracker.getNumVotes(forUser: s1.name) > voteTracker.getNumVotes(forUser: s2.name)})
     }
     
     func getNumberOfVotes(forUser user: String) -> Int

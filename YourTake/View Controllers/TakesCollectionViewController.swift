@@ -43,6 +43,9 @@ class TakesCollectionViewController: UICollectionViewController
         // Setup the navigation bar
         navigationItem.title = "Takes"
         
+        // Sort the takes
+        challenge?.sortTakes()
+        
     }
     
     // MARK: UICollectionViewDelegate Methods
@@ -58,6 +61,7 @@ class TakesCollectionViewController: UICollectionViewController
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TakeCell",
                                                                       for: indexPath) as! TakeCell
+        cell.voteButton.tag = indexPath.row
         cell.voteButton.addTarget(self,
                                   action: #selector(takeCellVoteButtonPressed),
                                   for: UIControlEvents.touchUpInside)
@@ -105,7 +109,10 @@ class TakesCollectionViewController: UICollectionViewController
     @IBAction func takeCellVoteButtonPressed(button: UIButton) {
         
         let cell = button.superview?.superview?.superview as! TakeCell
-        challenge!.voteFor(user: cell.submitterName.text!, byVoter: "John")
+        challenge!.voteFor(user: cell.submitterName.text!,
+                           byVoter: "John",
+                           andSort: false) // Don't allow the model to sort the takes at this point
+                                           // Sorting is only done when the view is loaded
         self.collectionView?.reloadData()
     }
 

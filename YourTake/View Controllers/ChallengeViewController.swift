@@ -180,7 +180,7 @@ class ChallengeViewController: UIViewController,
             // Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView
             // outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view,
             // and set self's reference to the view to nil.
-            Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)
+            Bundle.main.loadNibNamed("CameraOverlayView", owner: self, options: nil)
             overlayView.frame = ip!.cameraOverlayView!.frame
             ip!.cameraOverlayView = self.overlayView
             self.overlayView = nil // break a strong reference cycle
@@ -207,9 +207,9 @@ class ChallengeViewController: UIViewController,
         ip!.takePicture()
     }
     
-    @IBAction func doneTakingPhoto(_ sender: UIBarButtonItem) {
+    @IBAction func cancelTakingPhoto(_ sender: UIBarButtonItem) {
         ip?.dismiss(animated: true, completion: {
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         })
     }
     

@@ -67,10 +67,10 @@ class UserDatabase: NSObject {
                                            Take(image: andreasResponse, name: "Andrea"),
                                            Take(image: anthonysResponse, name: "Anthony")];
         
-        john.challenges![0].voteFor(user: "Anthony", byVoter: "Peter")
-        john.challenges![0].voteFor(user: "Anthony", byVoter: "Andrea")
-        john.challenges![0].voteFor(user: "Andrea", byVoter: "Ashling")
-        john.challenges![0].voteFor(user: "Peter", byVoter: "Anthony")
+        john.challenges![0].voteFor(user: "Anthony", byVoter: "Peter", andSort: false)
+        john.challenges![0].voteFor(user: "Anthony", byVoter: "Andrea", andSort: false)
+        john.challenges![0].voteFor(user: "Andrea", byVoter: "Ashling", andSort: false)
+        john.challenges![0].voteFor(user: "Peter", byVoter: "Anthony", andSort: true)
         
         // Add takes and votes to Ashlings Challenges
         ashling.challenges![0].takes = [Take(image: johnsResponse2, name: "John"),
@@ -78,10 +78,10 @@ class UserDatabase: NSObject {
                                               Take(image: andreasResponse2, name: "Andrea"),
                                               Take(image: anthonysResponse2, name: "Anthony")]
         
-        ashling.challenges![0].voteFor(user: "Peter", byVoter: "Andrea")
-        ashling.challenges![0].voteFor(user: "Peter", byVoter: "Anthony")
-        ashling.challenges![0].voteFor(user: "John", byVoter: "Peter")
-        ashling.challenges![0].voteFor(user: "Anthony", byVoter: "John")
+        ashling.challenges![0].voteFor(user: "Peter", byVoter: "Andrea", andSort: false)
+        ashling.challenges![0].voteFor(user: "Peter", byVoter: "Anthony", andSort: false)
+        ashling.challenges![0].voteFor(user: "John", byVoter: "Peter", andSort: false)
+        ashling.challenges![0].voteFor(user: "Anthony", byVoter: "John", andSort: false)
         
         
         users = [john,
