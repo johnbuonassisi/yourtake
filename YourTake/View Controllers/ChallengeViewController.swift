@@ -20,6 +20,7 @@ class ChallengeViewController: UIViewController,
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tabBarControl: UITabBar!
     @IBOutlet var overlayView: UIView!
+    @IBOutlet weak var overlayImage: UIImageView!
     
     // MARK: Private Member Variables
     
@@ -55,6 +56,8 @@ class ChallengeViewController: UIViewController,
                                    action: nil)
         navigationItem.rightBarButtonItem = rbbi
         navigationItem.leftBarButtonItem = lbbi
+        
+        navigationController?.navigationBar.isHidden = false
         
         // Setup the refresh control
         tableView.refreshControl = UIRefreshControl()
@@ -159,8 +162,8 @@ class ChallengeViewController: UIViewController,
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
-        // ?
-        picker.dismiss(animated: true, completion: {
+        
+        picker.dismiss(animated: false, completion: {
             let friendChallengeList = ChallengeOptionsViewController(withUser: "John")
             self.navigationController?.pushViewController(friendChallengeList, animated: true)
         })
@@ -170,8 +173,11 @@ class ChallengeViewController: UIViewController,
     
     @IBAction func newChallenge() {
         
-        ip = UIImagePickerController()
+        let ppvc = PhotoPreviewViewController(nibName: "PhotoPreviewView", bundle: nil)
+        navigationController?.pushViewController(ppvc, animated: false)
         
+        /*
+        ip = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             
             ip!.sourceType = UIImagePickerControllerSourceType.camera
@@ -192,7 +198,7 @@ class ChallengeViewController: UIViewController,
         
         let friendChallengeList = ChallengeOptionsViewController(withUser: "John")
         ip!.delegate = friendChallengeList
-        self.present(ip!, animated: true, completion: {
+        self.present(ip!, animated: false, completion: {
             
             // Work around for iOS Version 10.1 (fixed in 10.2 beta)
             // In all other iOS versions, transform can be set before the camera is presented
@@ -200,6 +206,7 @@ class ChallengeViewController: UIViewController,
             self.ip!.cameraViewTransform = transform
             self.navigationController?.pushViewController(friendChallengeList, animated: true)
         })
+         */
         
     }
     

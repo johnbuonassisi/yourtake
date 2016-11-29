@@ -25,6 +25,8 @@
 		523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074B01DC71692002EB030 /* John_Challenge.jpg */; };
 		5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244E87A1DCC20A5002627FC /* LoginViewController.swift */; };
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
+		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
+		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
 		525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */; };
 		525F847A1DC86F05006D2E2F /* ChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525F84791DC86F05006D2E2F /* ChallengeViewController.xib */; };
 		525F847C1DC9A6AE006D2E2F /* ChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */; };
@@ -83,6 +85,8 @@
 		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge.jpg; path = "Supporting Files/John_Challenge.jpg"; sourceTree = "<group>"; };
 		5244E87A1DCC20A5002627FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Views/CameraOverlayView.xib; sourceTree = "<group>"; };
+		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Views/PhotoPreviewView.xib; sourceTree = "<group>"; };
+		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = "View Controllers/PhotoPreviewViewController.swift"; sourceTree = "<group>"; };
 		525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeViewController.swift; path = "View Controllers/ChallengeViewController.swift"; sourceTree = "<group>"; };
 		525F84791DC86F05006D2E2F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeViewController.xib; path = "View Controllers/ChallengeViewController.xib"; sourceTree = "<group>"; };
 		525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeCell.xib; path = Views/ChallengeCell.xib; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 				529FB8391DE23B1400861826 /* FriendPickerCell.xib */,
 				529FB83B1DE23C0300861826 /* FriendPickerCell.swift */,
 				524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */,
+				524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 				526AF0571DD2F334003350B4 /* DrawViewController.swift */,
 				526AF0591DD2F53C003350B4 /* DrawViewController.xib */,
 				529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */,
+				524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 				52D9C1821DCC1D4A00F5C098 /* LoginViewController.xib in Resources */,
 				526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */,
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
+				524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */,
 				526AF05A1DD2F53C003350B4 /* DrawViewController.xib in Resources */,
 				525F847A1DC86F05006D2E2F /* ChallengeViewController.xib in Resources */,
 				526AF0521DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg in Resources */,
@@ -345,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */,
 				526AF0581DD2F334003350B4 /* DrawViewController.swift in Sources */,
 				52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */,
 				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,

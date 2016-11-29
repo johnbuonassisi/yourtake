@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoPreviewViewController" customModule="YourTake" customModuleProvider="target">
+            <connections>
+                <outlet property="previewImage" destination="8hW-Ym-eFS" id="Wyx-MZ-AZK"/>
+                <outlet property="previewView" destination="hf3-2z-Jdf" id="GJn-6W-fvV"/>
+                <outlet property="view" destination="hf3-2z-Jdf" id="mP5-NS-W4u"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="hf3-2z-Jdf">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8hW-Ym-eFS">
+                    <rect key="frame" x="0.0" y="59" width="375" height="375"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="8hW-Ym-eFS" secondAttribute="height" multiplier="1:1" id="AUq-hf-nDL"/>
+                    </constraints>
+                </imageView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDJ-5X-nN3">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Retake" id="U2p-9V-j6h">
+                            <connections>
+                                <action selector="retake:" destination="-1" id="cEd-Sa-7hf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="qHK-W2-qvs"/>
+                        <barButtonItem title="Use Photo" id="uXc-P4-pjG">
+                            <connections>
+                                <action selector="usePhoto:" destination="-1" id="Ug0-ia-4LG"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="8hW-Ym-eFS" firstAttribute="leading" secondItem="hf3-2z-Jdf" secondAttribute="leading" id="PBv-iR-82Q"/>
+                <constraint firstAttribute="trailing" secondItem="8hW-Ym-eFS" secondAttribute="trailing" id="hPo-Om-HeR"/>
+                <constraint firstItem="8hW-Ym-eFS" firstAttribute="top" secondItem="hf3-2z-Jdf" secondAttribute="top" constant="59" id="j2t-6r-tI8"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <point key="canvasLocation" x="26.5" y="-92.5"/>
+        </view>
+    </objects>
+</document>

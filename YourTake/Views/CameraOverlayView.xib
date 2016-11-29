@@ -6,44 +6,68 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeViewController" customModule="YourTake" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoPreviewViewController" customModule="YourTake" customModuleProvider="target">
             <connections>
-                <outlet property="overlayView" destination="ECA-fP-60W" id="T5q-Fn-AM8"/>
+                <outlet property="cropView" destination="Mm7-BG-bUf" id="yq0-5R-tH5"/>
+                <outlet property="overlayView" destination="ECA-fP-60W" id="eAP-tw-6f3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="ECA-fP-60W">
+        <view contentMode="scaleToFill" id="ECA-fP-60W" userLabel="Camera Overlay View">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="be0-R7-e6c">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="be0-R7-e6c">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem title="Cancel" id="j3Z-s6-fjR">
+                        <barButtonItem title="Cancel" id="j3Z-s6-fjR" userLabel="CameraCancel">
                             <connections>
-                                <action selector="cancelTakingPhoto:" destination="-1" id="HaT-e2-88l"/>
+                                <action selector="cameraCancel:" destination="-1" id="ctY-Fb-Cgz"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="N7g-Pr-vdY"/>
                         <barButtonItem title="Take" id="dcT-tZ-vti">
                             <connections>
-                                <action selector="takePhoto:" destination="-1" id="OXa-yW-Zva"/>
+                                <action selector="takePhoto:" destination="-1" id="bRD-rQ-AfC"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Yc9-DT-63e"/>
-                        <barButtonItem title="Front" id="EUz-cE-c9f">
+                        <barButtonItem title="Change Camera" id="EUz-cE-c9f" userLabel="Change Camera">
                             <connections>
-                                <action selector="changeCamera:" destination="-1" id="ASk-1w-yfQ"/>
+                                <action selector="changeCamera:" destination="-1" id="QbL-72-KlU"/>
                             </connections>
                         </barButtonItem>
                     </items>
                 </toolbar>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTI-Z2-CYd">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="KTI-Z2-CYd" secondAttribute="height" multiplier="1:1" id="XmA-0Z-T9s"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mm7-BG-bUf">
+                    <rect key="frame" x="0.0" y="375" width="375" height="248"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
-            <point key="canvasLocation" x="-126" y="147"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="KTI-Z2-CYd" secondAttribute="trailing" id="1Ey-Ft-awH"/>
+                <constraint firstAttribute="bottom" secondItem="be0-R7-e6c" secondAttribute="bottom" id="3nd-Bv-5Hu"/>
+                <constraint firstItem="Mm7-BG-bUf" firstAttribute="top" secondItem="KTI-Z2-CYd" secondAttribute="bottom" id="Abw-32-Fpa"/>
+                <constraint firstAttribute="trailing" secondItem="Mm7-BG-bUf" secondAttribute="trailing" id="HB1-oF-wh5"/>
+                <constraint firstItem="be0-R7-e6c" firstAttribute="leading" secondItem="ECA-fP-60W" secondAttribute="leading" id="J4C-ZL-eFi"/>
+                <constraint firstAttribute="trailing" secondItem="be0-R7-e6c" secondAttribute="trailing" id="SMv-zy-s7q"/>
+                <constraint firstItem="be0-R7-e6c" firstAttribute="top" secondItem="Mm7-BG-bUf" secondAttribute="bottom" id="bqd-8y-aap"/>
+                <constraint firstItem="KTI-Z2-CYd" firstAttribute="leading" secondItem="ECA-fP-60W" secondAttribute="leading" id="fNL-6w-ynR"/>
+                <constraint firstItem="Mm7-BG-bUf" firstAttribute="leading" secondItem="ECA-fP-60W" secondAttribute="leading" id="p3j-at-fEa"/>
+                <constraint firstItem="KTI-Z2-CYd" firstAttribute="top" secondItem="ECA-fP-60W" secondAttribute="top" id="up5-J0-6cj"/>
+            </constraints>
+            <point key="canvasLocation" x="-126.5" y="146.5"/>
         </view>
     </objects>
 </document>
