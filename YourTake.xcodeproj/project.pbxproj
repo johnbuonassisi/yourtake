@@ -59,7 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "YourTake-Bridging-Header.h"; path = "BaasBox-iOS-SDK/YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
+		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
 		52299E1E1DE807ED00F04C86 /* BAAClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAClient.h; sourceTree = "<group>"; };
 		52299E1F1DE807ED00F04C86 /* BAAClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAClient.m; sourceTree = "<group>"; };
 		52299E201DE807ED00F04C86 /* BAAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAFile.h; sourceTree = "<group>"; };
