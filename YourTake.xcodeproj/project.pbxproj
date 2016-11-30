@@ -59,7 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
+		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "YourTake-Bridging-Header.h"; path = "BaasBox-iOS-SDK/YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
 		52299E1E1DE807ED00F04C86 /* BAAClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAClient.h; sourceTree = "<group>"; };
 		52299E1F1DE807ED00F04C86 /* BAAClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAClient.m; sourceTree = "<group>"; };
 		52299E201DE807ED00F04C86 /* BAAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAFile.h; sourceTree = "<group>"; };
@@ -148,7 +148,6 @@
 				52299E291DE807ED00F04C86 /* BaasBox.m */,
 				52299E2A1DE807ED00F04C86 /* BAAUser.h */,
 				52299E2B1DE807ED00F04C86 /* BAAUser.m */,
-				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
 			);
 			path = "BaasBox-iOS-SDK";
 			sourceTree = "<group>";
@@ -172,6 +171,7 @@
 		5285098A1DC6F9470083CC55 /* YourTake */ = {
 			isa = PBXGroup;
 			children = (
+				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
 				52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */,
 				528509A11DC6F9B40083CC55 /* Supporting Files */,
 				5285099D1DC6F98A0083CC55 /* Main */,
