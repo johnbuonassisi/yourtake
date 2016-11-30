@@ -20,25 +20,29 @@ class DrawViewController: UIViewController,
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     
-    
     // MARK: Private Member Variables
     private var prevTextFieldPosition : CGFloat?
+    private var userChallenge : Challenge?
     
     // MARK: Initializers
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(nibName nibNameOrNil: String?,
+                  bundle nibBundleOrNil: Bundle?,
+                  withChallenge userChallenge: Challenge?) {
         
+        self.userChallenge = userChallenge
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         let rbbi = UIBarButtonItem(title: "Submit",
                                    style: UIBarButtonItemStyle.plain,
                                    target: self,
-                                   action: nil)
+                                   action: #selector(submitToChallenge))
         navigationItem.rightBarButtonItem = rbbi
         navigationItem.title = "Your Take"
     }
     
     required init?(coder aDecoder: NSCoder) {
+        userChallenge = nil
         super.init(coder: aDecoder)
         
         let rbbi = UIBarButtonItem(title: "Submit",
@@ -126,7 +130,28 @@ class DrawViewController: UIViewController,
     }
     
     @IBAction func submitToChallenge() {
+
+        // Get snapshot of current view hierarchy
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0.0)
+        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        let drawImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
         
+        // Only save the image portion of the view
+        let imageRect = CGRect(x: 0,
+                               y: Int(65*drawImage!.scale),
+                               width: drawImage!.cgImage!.width,
+                               height: drawImage!.cgImage!.width)
+        let imageRef = drawImage?.cgImage?.cropping(to: imageRect)
+        
+        let newImage = UIImage(cgImage: imageRef!,
+                               scale: drawImage!.scale,
+                               orientation: drawImage!.imageOrientation)
+        
+        let userTake = Take(image: newImage,
+                            name: "John")
+        userChallenge?.Submit(response: userTake)
+        let _ = navigationController?.popToRootViewController(animated: false)
     }
     
     // MARK: Private Custom Methods

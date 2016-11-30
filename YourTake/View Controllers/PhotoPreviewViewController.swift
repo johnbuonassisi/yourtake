@@ -73,7 +73,7 @@ class PhotoPreviewViewController: UIViewController,
     }
     
     @IBAction func usePhoto(_ sender: UIBarButtonItem) {
-        let covc = ChallengeOptionsViewController(withUser: "John")
+        let covc = ChallengeOptionsViewController(withUser: "John", andImage: previewImage.image!)
         navigationController?.pushViewController(covc, animated: true)
     }
     
@@ -82,7 +82,7 @@ class PhotoPreviewViewController: UIViewController,
     @IBAction func cameraCancel(_ sender: UIBarButtonItem) {
         
         dismiss(animated: true, completion: {
-            self.navigationController?.popViewController(animated: false)})
+            _ = self.navigationController?.popToRootViewController(animated: true)})
     }
     
     @IBAction func takePhoto(_ sender: UIBarButtonItem) {

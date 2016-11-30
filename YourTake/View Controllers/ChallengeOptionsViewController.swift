@@ -8,19 +8,25 @@
 
 import UIKit
 
-class ChallengeOptionsViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ChallengeOptionsViewController: UITableViewController,
+                                      UIImagePickerControllerDelegate,
+                                      UINavigationControllerDelegate {
     
     private let userName : String
     private var areAllFriendsSelected : Bool = true
     private var friendSelectionTracker : FriendListData
+    private var countdownDuration : Double
+    private let challengeImage : UIImage
     
     // MARK: Initializers
     
-    init(withUser userName: String) {
+    init(withUser userName: String, andImage image: UIImage) {
         
         self.userName = userName
+        challengeImage = image
         let friends = UserDatabase.global.GetUser(userName)?.friends
         friendSelectionTracker = FriendListData(withFriends: friends!)
+        countdownDuration = 0.0
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -29,6 +35,8 @@ class ChallengeOptionsViewController: UITableViewController, UIImagePickerContro
         
         self.userName = ""
         friendSelectionTracker = FriendListData(withFriends: [""])
+        countdownDuration = 0.0
+        challengeImage = UIImage()
         super.init(coder: aDecoder)
     }
     
@@ -115,7 +123,8 @@ class ChallengeOptionsViewController: UITableViewController, UIImagePickerContro
         switch indexPath.section {
         case 0: // Date Picker Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExpiryPickerCell", for: indexPath) as! ExpiryPickerCell
-            cell.expiryPicker.countDownDuration = 60*60
+            cell.expiryPicker.countDownDuration = countdownDuration
+            cell.expiryPicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
             return cell
             
         case 1: // All Friend Picker Section
@@ -146,7 +155,13 @@ class ChallengeOptionsViewController: UITableViewController, UIImagePickerContro
     // MARK: Action Methods
     
     @IBAction func doneButtonTapped() {
-        _ = self.navigationController?.popViewController(animated: true) // temporary
+        
+        let newChallenge = Challenge(owner: UserDatabase.global.John(),
+                                     image: challengeImage,
+                                     friends: friendSelectionTracker.getAllSelectedFriends(),
+                                     expiryDate: NSDate(timeIntervalSinceNow: countdownDuration))
+        UserDatabase.global.John().add(challenge: newChallenge)
+        _ = navigationController?.popToRootViewController(animated: false)
     }
     
     @IBAction func allFriendsSwitchTapped(allFriendsSwitch: UISwitch) {
@@ -175,6 +190,10 @@ class ChallengeOptionsViewController: UITableViewController, UIImagePickerContro
         }
         
         tableView.reloadData()
+    }
+    
+    @IBAction func dateChanged(datePicker: UIDatePicker) {
+        countdownDuration = datePicker.countDownDuration
     }
     
 

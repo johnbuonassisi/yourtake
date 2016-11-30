@@ -78,11 +78,11 @@
 		523074A61DC704DE002EB030 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Challenge.swift; path = Models/Challenge.swift; sourceTree = "<group>"; };
 		523074A81DC70C4F002EB030 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		523074AA1DC70EB6002EB030 /* UserDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDatabase.swift; path = Models/UserDatabase.swift; sourceTree = "<group>"; };
-		523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge_Andrea.jpg; path = "Supporting Files/John_Challenge_Andrea.jpg"; sourceTree = "<group>"; };
-		523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge_Anthony.jpg; path = "Supporting Files/John_Challenge_Anthony.jpg"; sourceTree = "<group>"; };
-		523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge_Ashling.jpg; path = "Supporting Files/John_Challenge_Ashling.jpg"; sourceTree = "<group>"; };
-		523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge_Peter.jpg; path = "Supporting Files/John_Challenge_Peter.jpg"; sourceTree = "<group>"; };
-		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge.jpg; path = "Supporting Files/John_Challenge.jpg"; sourceTree = "<group>"; };
+		523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Andrea.jpg; sourceTree = "<group>"; };
+		523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Anthony.jpg; sourceTree = "<group>"; };
+		523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Ashling.jpg; sourceTree = "<group>"; };
+		523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Peter.jpg; sourceTree = "<group>"; };
+		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge.jpg; sourceTree = "<group>"; };
 		5244E87A1DCC20A5002627FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Views/CameraOverlayView.xib; sourceTree = "<group>"; };
 		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Views/PhotoPreviewView.xib; sourceTree = "<group>"; };
@@ -94,14 +94,14 @@
 		526AF04D1DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Andrea.jpg; sourceTree = "<group>"; };
 		526AF04E1DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Anthony.jpg; sourceTree = "<group>"; };
 		526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_John.jpg; sourceTree = "<group>"; };
-		526AF0501DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ashling_Challenge_Peter.jpg; path = "Supporting Files/Ashling_Challenge_Peter.jpg"; sourceTree = "<group>"; };
-		526AF0511DCFCE86003350B4 /* Ashling_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ashling_Challenge.jpg; path = "Supporting Files/Ashling_Challenge.jpg"; sourceTree = "<group>"; };
+		526AF0501DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Peter.jpg; sourceTree = "<group>"; };
+		526AF0511DCFCE86003350B4 /* Ashling_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge.jpg; sourceTree = "<group>"; };
 		526AF0571DD2F334003350B4 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawViewController.swift; path = "View Controllers/DrawViewController.swift"; sourceTree = "<group>"; };
 		526AF0591DD2F53C003350B4 /* DrawViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DrawViewController.xib; path = "View Controllers/DrawViewController.xib"; sourceTree = "<group>"; };
 		526AF05B1DD2F9B0003350B4 /* DrawLinesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawLinesView.swift; path = Views/DrawLinesView.swift; sourceTree = "<group>"; };
 		528509881DC6F9470083CC55 /* YourTake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5285098B1DC6F9470083CC55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Main/AppDelegate.swift; sourceTree = "<group>"; };
-		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting Files/Assets.xcassets"; sourceTree = "<group>"; };
+		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		528509971DC6F9470083CC55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		529DC7C61DCC705F00EFA856 /* Take.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Take.swift; path = Models/Take.swift; sourceTree = "<group>"; };
 		529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeOptionsViewController.swift; path = "View Controllers/ChallengeOptionsViewController.swift"; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		52DC0AC01DCA2B7200DA2BDC /* TakesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakesCollectionViewController.swift; path = "View Controllers/TakesCollectionViewController.swift"; sourceTree = "<group>"; };
 		52DC0AC21DCA301800DA2BDC /* TakeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TakeCell.xib; path = Views/TakeCell.xib; sourceTree = "<group>"; };
 		52DC0AC41DCA316D00DA2BDC /* TakeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeCell.swift; path = Views/TakeCell.swift; sourceTree = "<group>"; };
-		52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = John_Challenge_2.jpg; path = "Supporting Files/John_Challenge_2.jpg"; sourceTree = "<group>"; };
+		52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
+				528509971DC6F9470083CC55 /* Info.plist */,
 				52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */,
 				528509A11DC6F9B40083CC55 /* Supporting Files */,
 				5285099D1DC6F98A0083CC55 /* Main */,
@@ -254,7 +255,6 @@
 				523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */,
 				523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */,
 				523074B01DC71692002EB030 /* John_Challenge.jpg */,
-				528509971DC6F9470083CC55 /* Info.plist */,
 				528509921DC6F9470083CC55 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";

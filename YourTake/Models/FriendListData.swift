@@ -73,4 +73,15 @@ class FriendListData: NSObject {
         }
         return false
     }
+    
+    func getAllSelectedFriends() -> [String] {
+        
+        var selectedFriends = [String]()
+        for index in 0...friends.count - 1 {
+            if friends[index].1 == true {
+                selectedFriends.append(friends[index].0)
+            }
+        }
+        return selectedFriends
+    }
 }

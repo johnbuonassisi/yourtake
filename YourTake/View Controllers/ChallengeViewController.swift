@@ -158,16 +158,6 @@ class ChallengeViewController: UIViewController,
         }
     }
     
-    // MARK: UIImagePickerControllerDelegate Methods
-    
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        picker.dismiss(animated: false, completion: {
-            let friendChallengeList = ChallengeOptionsViewController(withUser: "John")
-            self.navigationController?.pushViewController(friendChallengeList, animated: true)
-        })
-    }
     
     // MARK: Action Methods
     
@@ -243,9 +233,6 @@ class ChallengeViewController: UIViewController,
     
     func cellDrawButtonPressed(button : UIButton){
         
-        let dvc: DrawViewController = DrawViewController(nibName: "DrawViewController",
-                                                         bundle: Bundle.main)
-        
         let challenge: Challenge?
         switch(tabBarControl.selectedItem!.tag) {
         
@@ -257,6 +244,10 @@ class ChallengeViewController: UIViewController,
         default:
             challenge = nil
         }
+        
+        let dvc: DrawViewController = DrawViewController(nibName: "DrawViewController",
+                                                         bundle: Bundle.main,
+                                                         withChallenge: challenge!)
         
         navigationController?.pushViewController(dvc, animated: true)
         dvc.loadViewIfNeeded()
