@@ -74,7 +74,7 @@
 		52299E291DE807ED00F04C86 /* BaasBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaasBox.m; sourceTree = "<group>"; };
 		52299E2A1DE807ED00F04C86 /* BAAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAUser.h; sourceTree = "<group>"; };
 		52299E2B1DE807ED00F04C86 /* BAAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAUser.m; sourceTree = "<group>"; };
-		52299E331DE80B0D00F04C86 /* BaasClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasClient.swift; sourceTree = "<group>"; };
+		52299E331DE80B0D00F04C86 /* BaasClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaasClient.swift; path = Models/BaasClient.swift; sourceTree = "<group>"; };
 		523074A61DC704DE002EB030 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Challenge.swift; path = Models/Challenge.swift; sourceTree = "<group>"; };
 		523074A81DC70C4F002EB030 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		523074AA1DC70EB6002EB030 /* UserDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDatabase.swift; path = Models/UserDatabase.swift; sourceTree = "<group>"; };
@@ -91,9 +91,9 @@
 		525F84791DC86F05006D2E2F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeViewController.xib; path = "View Controllers/ChallengeViewController.xib"; sourceTree = "<group>"; };
 		525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeCell.xib; path = Views/ChallengeCell.xib; sourceTree = "<group>"; };
 		525F847D1DC9A86A006D2E2F /* ChallengeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeCell.swift; path = Views/ChallengeCell.swift; sourceTree = "<group>"; };
-		526AF04D1DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ashling_Challenge_Andrea.jpg; path = "Supporting Files/Ashling_Challenge_Andrea.jpg"; sourceTree = "<group>"; };
-		526AF04E1DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ashling_Challenge_Anthony.jpg; path = "Supporting Files/Ashling_Challenge_Anthony.jpg"; sourceTree = "<group>"; };
-		526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ashling_Challenge_John.jpg; path = "Supporting Files/Ashling_Challenge_John.jpg"; sourceTree = "<group>"; };
+		526AF04D1DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Andrea.jpg; sourceTree = "<group>"; };
+		526AF04E1DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Anthony.jpg; sourceTree = "<group>"; };
+		526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_John.jpg; sourceTree = "<group>"; };
 		526AF0501DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ashling_Challenge_Peter.jpg; path = "Supporting Files/Ashling_Challenge_Peter.jpg"; sourceTree = "<group>"; };
 		526AF0511DCFCE86003350B4 /* Ashling_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ashling_Challenge.jpg; path = "Supporting Files/Ashling_Challenge.jpg"; sourceTree = "<group>"; };
 		526AF0571DD2F334003350B4 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawViewController.swift; path = "View Controllers/DrawViewController.swift"; sourceTree = "<group>"; };
@@ -148,9 +148,8 @@
 				52299E291DE807ED00F04C86 /* BaasBox.m */,
 				52299E2A1DE807ED00F04C86 /* BAAUser.h */,
 				52299E2B1DE807ED00F04C86 /* BAAUser.m */,
-				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
 			);
-			name = "BaasBox-iOS-SDK";
+			path = "BaasBox-iOS-SDK";
 			sourceTree = "<group>";
 		};
 		5285097F1DC6F9470083CC55 = {
@@ -172,6 +171,7 @@
 		5285098A1DC6F9470083CC55 /* YourTake */ = {
 			isa = PBXGroup;
 			children = (
+				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
 				52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */,
 				528509A11DC6F9B40083CC55 /* Supporting Files */,
 				5285099D1DC6F98A0083CC55 /* Main */,
@@ -257,7 +257,7 @@
 				528509971DC6F9470083CC55 /* Info.plist */,
 				528509921DC6F9470083CC55 /* Assets.xcassets */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
