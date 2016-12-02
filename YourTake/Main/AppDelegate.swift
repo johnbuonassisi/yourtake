@@ -18,10 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let cvc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
-        let nvc = UINavigationController(rootViewController: cvc);
+        // Navigation Controller -> Root: Challenge View Controller
+        let navigationVc = UINavigationController();
+        let challengeVc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
+        navigationVc.pushViewController(challengeVc, animated: false)
         
-        window?.rootViewController = nvc
+        let hasUserLoggedIn = false
+        if !hasUserLoggedIn {
+            // NavigationController -> Root: ChallengeViewController -> LoginViewController
+            let loginVc = LoginViewController()
+            navigationVc.pushViewController(loginVc, animated: false)
+            // When user successfully logs in, the login view controller will be popped off the stack
+        }
+        
+        window?.rootViewController = navigationVc
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
         
