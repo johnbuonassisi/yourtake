@@ -8,8 +8,7 @@
 
 import UIKit
 
-private let MinimumNumberOfCharactersForUser = 5
-private let MinimumNumberOfCharactersForPassword = 6
+private let MinimumPasswordSize = 8
 
 class LoginViewController: UIViewController {
 
@@ -18,11 +17,15 @@ class LoginViewController: UIViewController {
     // Outlets are "Implicitly Unwrapped Optional Properties"
     // AKA, they are assumed to not be nil and therefore
     // do not need to be unwrapped when used
-    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton! //
+    
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    
+    @IBOutlet weak var emailAddressSwitch: UISwitch!
+    @IBOutlet weak var passwordSwitch: UISwitch!
     
     // MARK: Initializers
     init() {
@@ -36,7 +39,7 @@ class LoginViewController: UIViewController {
     // MARK: UIViewController Methods
     override func viewDidLoad() {
         
-        userTextField.delegate = self
+        emailAddressTextField.delegate = self
         passwordTextField.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -52,12 +55,7 @@ class LoginViewController: UIViewController {
     // MARK: Actions
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
-
-        if !checkLoginParams() {
-            return
-        }
-        
-        let isLoginSuccessful = UserDatabase.global.Login(username: userTextField!.text!,
+        let isLoginSuccessful = UserDatabase.global.Login(username: emailAddressTextField!.text!,
                                                           password: passwordTextField!.text!)
         if isLoginSuccessful {
             
@@ -70,7 +68,7 @@ class LoginViewController: UIViewController {
             let time = DispatchTime.now() + 3
             DispatchQueue.main.asyncAfter(deadline: time, execute: {
                 alert.dismiss(animated: true, completion:{
-                    _ = self.navigationController?.popViewController(animated: true)
+                    _ = self.navigationController?.popToRootViewController(animated: true)
                 })
             })
         } else {
@@ -82,13 +80,31 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
-        // present the sign-up view controller
-        let signUpVc = SignUpViewController()
-        navigationController?.pushViewController(signUpVc, animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
         // present the forgot password view controller
+    }
+    
+    @IBAction func emailAddressChanged(_ sender: UITextField) {
+        
+        if isValidEmail(emailAddress: sender.text!) {
+            emailAddressSwitch.setOn(true, animated: true)
+        }
+        else {
+            emailAddressSwitch.setOn(false, animated: true)
+        }
+    }
+    
+    @IBAction func passwordChanged(_ sender: UITextField) {
+        
+        if sender.text!.characters.count >= MinimumPasswordSize {
+            passwordSwitch.setOn(true, animated: true)
+        }
+        else {
+            passwordSwitch.setOn(false, animated: true)
+        }
     }
     
     @IBAction func dismissKeyboard() {
@@ -101,39 +117,6 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: Private Methods
-    
-    private func checkLoginParams() -> Bool {
-        
-        if userTextField.text == nil ||
-            passwordTextField.text == nil {
-            
-            presentAlert(withTitle: "Sorry our bad!",
-                         withMessage: "An unexpected error occurred during login",
-                         withActionTitle: "Please try again, or flag a bug")
-            return false
-        }
-        
-        if userTextField.text!.characters.count < MinimumNumberOfCharactersForUser {
-            
-            var messageString = "You entered an invalid user name"
-            if userTextField.text!.characters.count == 0 {
-                messageString = "You didn't enter a user name or email address"
-            }
-            presentAlert(withTitle: "Ooops!",
-                         withMessage: messageString,
-                         withActionTitle: "Let me try again")
-            return false
-        }
-        
-        if passwordTextField.text!.characters.count < MinimumNumberOfCharactersForPassword {
-            presentAlert(withTitle: "Ooops!",
-                         withMessage: "The password you entered was too short",
-                         withActionTitle: "Let me try again")
-            return false
-        }
-        
-        return true
-    }
     
     private func presentAlert(withTitle title: String,
                               withMessage message: String,
@@ -150,6 +133,12 @@ class LoginViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    
+    private func isValidEmail(emailAddress: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: emailAddress)
+    }
 }
 
 // MARK: UITextFieldDelegate Extension
@@ -159,8 +148,6 @@ extension LoginViewController : UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         loginButton.isEnabled = false
-        forgotPasswordButton.isEnabled = false
-        signUpButton.isEnabled = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let hasUserLoggedIn = false
         if !hasUserLoggedIn {
             // NavigationController -> Root: ChallengeViewController -> LoginViewController
-            let loginVc = LoginViewController()
-            navigationVc.pushViewController(loginVc, animated: false)
+            let signUpVc = SignUpViewController()
+            navigationVc.pushViewController(signUpVc, animated: false)
             // When user successfully logs in, the login view controller will be popped off the stack
         }
         

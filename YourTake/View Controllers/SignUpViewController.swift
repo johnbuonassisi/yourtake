@@ -14,15 +14,13 @@ class SignUpViewController: UIViewController {
 
     // MARK: Outlets
     @IBOutlet weak var emailAddressTextField: UITextField!
-    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var displayNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var joinUsButton: UIButton!
+    @IBOutlet weak var continueButton: UIButton!
     
     @IBOutlet weak var emailAddressSwitch: UISwitch!
-    @IBOutlet weak var userNameSwitch: UISwitch!
+    @IBOutlet weak var displayNameSwitch: UISwitch!
     @IBOutlet weak var passwordSwitch: UISwitch!
-    @IBOutlet weak var confirmPasswordSwitch: UISwitch!
     
     // MARK: Initializers
     init() {
@@ -37,22 +35,20 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         
         emailAddressTextField.delegate = self
-        userNameTextField.delegate = self
+        displayNameTextField.delegate = self
         passwordTextField.delegate = self
-        confirmPasswordTextField.delegate = self
         
         let tap = UITapGestureRecognizer(target: self,
                                          action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        navigationController?.navigationBar.isHidden = false
-        navigationItem.title = "Sign Up"
+        navigationController?.navigationBar.isHidden = true
     }
     
     
     // MARK: Actions
-    @IBAction func joinUsButtonPressed(_ sender: UIButton) {
-        let isRegistered = UserDatabase.global.Register(username: userNameTextField.text!,
+    @IBAction func continueButtonPressed(_ sender: UIButton) {
+        let isRegistered = UserDatabase.global.Register(username: displayNameTextField.text!,
                                                         password: passwordTextField.text!)
         if isRegistered {
             
@@ -69,13 +65,16 @@ class SignUpViewController: UIViewController {
                 })
             })
             
-            _ = navigationController?.popToRootViewController(animated: true)
-            
         } else {
             presentAlert(withTitle: "Ooops!",
                          withMessage: "Unable to sign up",
                          withActionTitle: "Let me try again")
         }
+    }
+    
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        let loginVc = LoginViewController()
+        navigationController?.pushViewController(loginVc, animated: true)
     }
     
     @IBAction func emailAddressTextFieldChanged(_ sender: UITextField) {
@@ -88,13 +87,13 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    @IBAction func userNameTextFieldChanged(_ sender: UITextField) {
+    @IBAction func displayNameTextFieldChanged(_ sender: UITextField) {
         
         if sender.text!.characters.count > 5 {
-            userNameSwitch.setOn(true, animated: true)
+            displayNameSwitch.setOn(true, animated: true)
         }
         else {
-            userNameSwitch.setOn(false, animated: true)
+            displayNameSwitch.setOn(false, animated: true)
         }
     }
     
@@ -108,21 +107,12 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    @IBAction func confirmPasswordTextFieldChanged(_ sender: UITextField) {
-        
-        if sender.text!.characters.count >= MinimumPasswordSize &&
-           sender.text! == passwordTextField.text! {
-            confirmPasswordSwitch.setOn(true, animated: true)
-        } else {
-            confirmPasswordSwitch.setOn(false, animated: true)
-        }
-    }
-    
     @IBAction func dismissKeyboard() {
         
-        if emailAddressSwitch.isOn && userNameSwitch.isOn &&
-            passwordSwitch.isOn && confirmPasswordSwitch.isOn {
-            joinUsButton.isEnabled = true
+        if emailAddressSwitch.isOn &&
+            displayNameSwitch.isOn &&
+            passwordSwitch.isOn {
+            continueButton.isEnabled = true
         }
         view.endEditing(true)
     }
@@ -162,7 +152,7 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        joinUsButton.isEnabled = false
+        continueButton.isEnabled = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
