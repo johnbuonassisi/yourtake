@@ -44,6 +44,8 @@
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
 		52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */; };
+		52881F2B1DF925B40034A77A /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */; };
+		52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */; };
 		529DC7C71DCC705F00EFA856 /* Take.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529DC7C61DCC705F00EFA856 /* Take.swift */; };
 		529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */; };
 		529FB83A1DE23B1400861826 /* FriendPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529FB8391DE23B1400861826 /* FriendPickerCell.xib */; };
@@ -109,6 +111,8 @@
 		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		528509971DC6F9470083CC55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipelessNavigationController.swift; path = "View Controllers/SwipelessNavigationController.swift"; sourceTree = "<group>"; };
+		52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = "View Controllers/ForgotPasswordViewController.xib"; sourceTree = "<group>"; };
+		52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "View Controllers/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
 		529DC7C61DCC705F00EFA856 /* Take.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Take.swift; path = Models/Take.swift; sourceTree = "<group>"; };
 		529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeOptionsViewController.swift; path = "View Controllers/ChallengeOptionsViewController.swift"; sourceTree = "<group>"; };
 		529FB8391DE23B1400861826 /* FriendPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendPickerCell.xib; path = Views/FriendPickerCell.xib; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 				5244E87A1DCC20A5002627FC /* LoginViewController.swift */,
 				520DA5F61DF0C64B00695756 /* SignUpViewController.xib */,
 				520DA5F81DF0CC3500695756 /* SignUpViewController.swift */,
+				52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */,
+				52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */,
 				525F84791DC86F05006D2E2F /* ChallengeViewController.xib */,
 				525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */,
 				52DC0AC01DCA2B7200DA2BDC /* TakesCollectionViewController.swift */,
@@ -338,6 +344,7 @@
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
 				524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */,
 				526AF05A1DD2F53C003350B4 /* DrawViewController.xib in Resources */,
+				52881F2B1DF925B40034A77A /* ForgotPasswordViewController.xib in Resources */,
 				525F847A1DC86F05006D2E2F /* ChallengeViewController.xib in Resources */,
 				526AF0521DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg in Resources */,
 				526AF0541DCFCE86003350B4 /* Ashling_Challenge_John.jpg in Resources */,
@@ -380,6 +387,7 @@
 				52A311F01DCE0CE400EAFC24 /* VoteTracker.swift in Sources */,
 				520DA5F91DF0CC3500695756 /* SignUpViewController.swift in Sources */,
 				52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */,
+				52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */,
 				52299E2F1DE807ED00F04C86 /* BAAMutableURLRequest.m in Sources */,
 				529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */,
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,

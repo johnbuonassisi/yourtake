@@ -84,7 +84,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
-        // present the forgot password view controller
+        
+        let forgotPasswordVc = ForgotPasswordViewController()
+        navigationController?.pushViewController(forgotPasswordVc, animated: true)
     }
     
     @IBAction func emailAddressChanged(_ sender: UITextField) {
