@@ -34,6 +34,8 @@ class SignUpViewController: UIViewController {
     // MARK: UIViewController Methods
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        
         emailAddressTextField.delegate = self
         displayNameTextField.delegate = self
         passwordTextField.delegate = self
@@ -67,7 +69,7 @@ class SignUpViewController: UIViewController {
             
         } else {
             presentAlert(withTitle: "Ooops!",
-                         withMessage: "Unable to sign up",
+                         withMessage: "Something went wrong, try again",
                          withActionTitle: "Let me try again")
         }
     }

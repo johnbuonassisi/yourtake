@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
         } else {
             
             presentAlert(withTitle: "Ooops!",
-                         withMessage: "Login failed, check your user name or password",
+                         withMessage: "Something went wrong, try again",
                          withActionTitle: "Let me try again")
         }
     }

@@ -19,11 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         // Navigation Controller -> Root: Challenge View Controller
-        let navigationVc = UINavigationController();
+        let navigationVc = SwipelessNavigationController(); // Will not pop a view controller when a left swipe gesture occurs
+                                                            // This is particularly important for the login and draw VCs
         let challengeVc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
         navigationVc.pushViewController(challengeVc, animated: false)
         
-        let hasUserLoggedIn = false
+        let hasUserLoggedIn = false // TODO: Need to figure out how to do this
         if !hasUserLoggedIn {
             // NavigationController -> Root: ChallengeViewController -> LoginViewController
             let signUpVc = SignUpViewController()
