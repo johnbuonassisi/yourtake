@@ -122,13 +122,19 @@ class ChallengeViewController: UIViewController,
             
             // Client
             let john = UserDatabase.global.John()
-            let johnsChallenges = john.challenges![indexPath.row]
+            let challenges = john.challenges![indexPath.row]
             
-            cell.challengeImage.image = johnsChallenges.image
+            cell.challengeImage.image = challenges.image
             cell.name.text = john.name
-            cell.expiryLabel.text = getExpiryLabel(fromDate: johnsChallenges.expiryDate as Date)
-            cell.totalVotesLabel.text = String(johnsChallenges.getTotalVotes()) + " total votes"
-            cell.drawButton.isEnabled = true
+            cell.expiryLabel.text = getExpiryLabel(fromDate: challenges.expiryDate as Date)
+            cell.totalVotesLabel.text = String(challenges.getTotalVotes()) + " total votes"
+            
+            if challenges.wasTakeSubmittedByUser(withName: "John") {
+                cell.drawButton.isEnabled = false
+            } else {
+                cell.drawButton.isEnabled = true
+            }
+            
             cell.drawButton.tag = indexPath.row
             cell.voteButton.tag = indexPath.row
             
@@ -147,7 +153,13 @@ class ChallengeViewController: UIViewController,
             cell.name.text = challenge!.owner!.name
             cell.expiryLabel.text = getExpiryLabel(fromDate: challenge!.expiryDate as Date)
             cell.totalVotesLabel.text = String(challenge!.getTotalVotes()) + " total votes"
-            cell.drawButton.isEnabled = true
+            
+            if challenge!.wasTakeSubmittedByUser(withName: "John") {
+                cell.drawButton.isEnabled = false
+            } else {
+                cell.drawButton.isEnabled = true
+            }
+            
             cell.drawButton.tag = indexPath.row
             cell.voteButton.tag = indexPath.row
             
@@ -165,38 +177,6 @@ class ChallengeViewController: UIViewController,
         
         let ppvc = PhotoPreviewViewController(nibName: "PhotoPreviewView", bundle: nil)
         navigationController?.pushViewController(ppvc, animated: false)
-        
-        /*
-        ip = UIImagePickerController()
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-            
-            ip!.sourceType = UIImagePickerControllerSourceType.camera
-            ip!.showsCameraControls = false
-            
-            // Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView
-            // outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view,
-            // and set self's reference to the view to nil.
-            Bundle.main.loadNibNamed("CameraOverlayView", owner: self, options: nil)
-            overlayView.frame = ip!.cameraOverlayView!.frame
-            ip!.cameraOverlayView = self.overlayView
-            self.overlayView = nil // break a strong reference cycle
-            
-        } else {
-            
-            ip!.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        }
-        
-        let friendChallengeList = ChallengeOptionsViewController(withUser: "John")
-        ip!.delegate = friendChallengeList
-        self.present(ip!, animated: false, completion: {
-            
-            // Work around for iOS Version 10.1 (fixed in 10.2 beta)
-            // In all other iOS versions, transform can be set before the camera is presented
-            let transform = CGAffineTransform(translationX: 0.0, y: 100.0)
-            self.ip!.cameraViewTransform = transform
-            self.navigationController?.pushViewController(friendChallengeList, animated: true)
-        })
-         */
         
     }
     
@@ -249,6 +229,7 @@ class ChallengeViewController: UIViewController,
                                                          bundle: Bundle.main,
                                                          withChallenge: challenge!)
         
+        selectedRow = IndexPath(row: button.tag, section: 0)
         navigationController?.pushViewController(dvc, animated: true)
         dvc.loadViewIfNeeded()
         dvc.drawingView.setBackground(withImage: challenge?.image)

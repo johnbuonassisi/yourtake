@@ -161,3 +161,22 @@ class UserDatabase: NSObject {
     }
     
 }
+
+extension UserDatabase : BaasClient {
+    
+    func Register(username: String, password: String) -> Bool {
+        return true
+    }
+    
+    func Login(username: String, password: String) -> Bool {
+        return true
+    }
+    
+    func ChangePassword(oldPassword: String, newPassword: String) -> Bool {
+        return true
+    }
+    
+    func ResetPassword(username: String) -> Bool {
+        return true
+    }
+}

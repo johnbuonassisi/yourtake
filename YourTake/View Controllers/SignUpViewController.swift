@@ -1,8 +1,8 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  YourTake
 //
-//  Created by John Buonassisi on 2016-11-03.
+//  Created by John Buonassisi on 2016-12-01.
 //  Copyright © 2016 JAB. All rights reserved.
 //
 
@@ -10,26 +10,21 @@ import UIKit
 
 private let MinimumPasswordSize = 8
 
-class LoginViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
     // MARK: Outlets
-    
-    // Outlets are "Implicitly Unwrapped Optional Properties"
-    // AKA, they are assumed to not be nil and therefore
-    // do not need to be unwrapped when used
     @IBOutlet weak var emailAddressTextField: UITextField!
+    @IBOutlet weak var displayNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var forgotPasswordButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var continueButton: UIButton!
     
     @IBOutlet weak var emailAddressSwitch: UISwitch!
+    @IBOutlet weak var displayNameSwitch: UISwitch!
     @IBOutlet weak var passwordSwitch: UISwitch!
     
     // MARK: Initializers
     init() {
-        super.init(nibName: "LoginViewController", bundle: nil)
+        super.init(nibName: "SignUpViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,29 +34,29 @@ class LoginViewController: UIViewController {
     // MARK: UIViewController Methods
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        
         emailAddressTextField.delegate = self
+        displayNameTextField.delegate = self
         passwordTextField.delegate = self
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         navigationController?.navigationBar.isHidden = true
     }
     
     
     // MARK: Actions
-    @IBAction func loginButtonPressed(_ sender: UIButton) {
-        
-        let isLoginSuccessful = UserDatabase.global.Login(username: emailAddressTextField!.text!,
-                                                          password: passwordTextField!.text!)
-        if isLoginSuccessful {
+    @IBAction func continueButtonPressed(_ sender: UIButton) {
+        let isRegistered = UserDatabase.global.Register(username: displayNameTextField.text!,
+                                                        password: passwordTextField.text!)
+        if isRegistered {
             
             // Present user with an alert and dismiss alert after 3 seconds
-            let alert = UIAlertController(title: "Yay!",
-                                          message: "You were successfully logged in",
+            let alert = UIAlertController(title: "Welcome to YourTake!",
+                                          message: "Your signup was successful",
                                           preferredStyle: .alert)
             present(alert, animated: true, completion: nil)
             
@@ -71,25 +66,20 @@ class LoginViewController: UIViewController {
                     _ = self.navigationController?.popToRootViewController(animated: true)
                 })
             })
-        } else {
             
+        } else {
             presentAlert(withTitle: "Ooops!",
                          withMessage: "Something went wrong, try again",
                          withActionTitle: "Let me try again")
         }
     }
     
-    @IBAction func signUpButtonPressed(_ sender: UIButton) {
-        _ = navigationController?.popViewController(animated: true)
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        let loginVc = LoginViewController()
+        navigationController?.pushViewController(loginVc, animated: true)
     }
     
-    @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
-        
-        let forgotPasswordVc = ForgotPasswordViewController()
-        navigationController?.pushViewController(forgotPasswordVc, animated: true)
-    }
-    
-    @IBAction func emailAddressChanged(_ sender: UITextField) {
+    @IBAction func emailAddressTextFieldChanged(_ sender: UITextField) {
         
         if isValidEmail(emailAddress: sender.text!) {
             emailAddressSwitch.setOn(true, animated: true)
@@ -99,7 +89,17 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func passwordChanged(_ sender: UITextField) {
+    @IBAction func displayNameTextFieldChanged(_ sender: UITextField) {
+        
+        if sender.text!.characters.count > 5 {
+            displayNameSwitch.setOn(true, animated: true)
+        }
+        else {
+            displayNameSwitch.setOn(false, animated: true)
+        }
+    }
+    
+    @IBAction func passwordTextFieldChanged(_ sender: UITextField) {
         
         if sender.text!.characters.count >= MinimumPasswordSize {
             passwordSwitch.setOn(true, animated: true)
@@ -111,14 +111,19 @@ class LoginViewController: UIViewController {
     
     @IBAction func dismissKeyboard() {
         
-        loginButton.isEnabled = true
-        forgotPasswordButton.isEnabled = true
-        signUpButton.isEnabled = true
-        
+        if emailAddressSwitch.isOn &&
+            displayNameSwitch.isOn &&
+            passwordSwitch.isOn {
+            continueButton.isEnabled = true
+        }
         view.endEditing(true)
     }
     
     // MARK: Private Methods
+    private func checkSignUpParams() -> Bool {
+        
+        return true
+    }
     
     private func presentAlert(withTitle title: String,
                               withMessage message: String,
@@ -141,20 +146,20 @@ class LoginViewController: UIViewController {
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: emailAddress)
     }
+    
 }
 
 // MARK: UITextFieldDelegate Extension
 
-extension LoginViewController : UITextFieldDelegate {
+extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        loginButton.isEnabled = false
+        continueButton.isEnabled = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         dismissKeyboard()
         return true
     }
+    
 }

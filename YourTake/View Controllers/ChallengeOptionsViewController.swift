@@ -26,7 +26,7 @@ class ChallengeOptionsViewController: UITableViewController,
         challengeImage = image
         let friends = UserDatabase.global.GetUser(userName)?.friends
         friendSelectionTracker = FriendListData(withFriends: friends!)
-        countdownDuration = 0.0
+        countdownDuration = 600.0 // 10 minutes
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -134,13 +134,20 @@ class ChallengeOptionsViewController: UITableViewController,
             cell.friendSwitch.addTarget(self,
                                         action: #selector(friendSwitchTapped),
                                         for: .valueChanged)
+            cell.friendSwitch.addTarget(self,
+                                        action: #selector(friendSwitchTapped),
+                                        for: .touchUpInside)
             return cell
         case 2: // Friend Picker Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
             let friends = UserDatabase.global.GetUser(userName)?.friends
+            
+            print("Section: 2, Row: \(indexPath.row), isOn: \(cell.friendSwitch!.isOn)")
             cell.friendName.text = friends?[indexPath.row]
             cell.friendSwitch.setOn(friendSelectionTracker.isFriendSelected(withName: cell.friendName.text!),
                                     animated: true)
+            print("Section: 2, Row: \(indexPath.row), isOn: \(cell.friendSwitch!.isOn)")
+            
             cell.friendSwitch.addTarget(self,
                                         action: #selector(friendSwitchTapped),
                                         for: .valueChanged)
@@ -169,6 +176,8 @@ class ChallengeOptionsViewController: UITableViewController,
     }
     
     @IBAction func friendSwitchTapped(friendSwitch: UISwitch) {
+        
+        print("New switch")
         
         let cell = friendSwitch.superview?.superview as! FriendPickerCell
         

@@ -71,5 +71,15 @@ class Challenge: NSObject {
         return voteTracker.getVotedForUser(byVoter: user)
     }
     
+    func wasTakeSubmittedByUser(withName name: String) -> Bool {
+        
+        for take : Take in takes {
+            if take.name == name {
+                return true
+            }
+        }
+        return false
+    }
+    
     
 }
