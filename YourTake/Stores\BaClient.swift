@@ -10,8 +10,7 @@
  * @author Olivier Thomas
  */
 
-protocol BaasClient {
-    /*
+protocol BaClient {
     func Register(username: String, password: String) -> Bool
     func Login(username: String, password: String) -> Bool
     func ChangePassword(oldPassword: String, newPassword: String) -> Bool
@@ -20,23 +19,23 @@ protocol BaasClient {
     func AddFriend(username: String)
     func RemoveFriend(username: String)
 
-    func CreateChallenge(challengeCfg: ChallengeCfg) -> String
-    func RemoveChallenge(challengeId: String)
+    func CreateChallenge(challenge: Challenge) -> Bool
+    func RemoveChallenge(id: String)
 
-    func CreateTake(takeCfg: TakeCfg) -> String
-    func RemoveTake(takeId: String)
+    func CreateTake(take: Take) -> Bool
+    func RemoveTake(id: String)
 
-    func GetUserInfo(username: String) -> UserInfo
-    func GetUserTakes(username: String) -> [Take]
+    func GetUser(username: String) -> User
+    func GetUserFriends(username: String) -> [User]
     func GetUserChallenges(username: String) -> [Challenge]
+    func GetUserTakes(username: String) -> [Take]
 
-    func GetChallengeInfo(challengeId: String) -> ChallengeInfo
-    func GetChallengeTake(challengeId: String) -> Take
+    func GetChallenge(id: String) -> Challenge
+    func GetChallengeTakes(id: String) -> [Take]
 
-    func GetTakeInfo(takeId: String) -> TakeInfo
-    func GetTakeChallenges(takeId: String) -> Take
-    
-    func VoteTake(takeCfg: TakeCfg) -> String
-    func UnvoteTake(takeId: String)
-    */
+    func GetTake(id: String) -> Take
+    func GetTakeChallenge(id: String) -> Challenge
+
+    func VoteTake(id: String) -> Bool
+    func UnvoteTake(id: String) -> Bool
 }
