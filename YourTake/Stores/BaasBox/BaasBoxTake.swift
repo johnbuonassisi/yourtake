@@ -13,7 +13,7 @@ import UIKit
 
 class BaasBoxTake: BAAObject {
     var challengeId: String = ""
-    var overlay: UIImage? = nil
+    var overlay: UIImage?
     var votes: UInt = 0
 
     init(data: [String : Any]!) {

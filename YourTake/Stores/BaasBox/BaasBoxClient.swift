@@ -11,7 +11,7 @@
 
 class BaasBoxClient: BaClient {
     let client = BAAClient.shared()!
-    var currentUser: BAAUser
+    var currentUser: BAAUser?
 
     init() {
         BaasBox.setBaseURL("http://192.168.1.100:9000", appCode: "5965980156")
@@ -21,7 +21,11 @@ class BaasBoxClient: BaClient {
         var bSuccess: Bool = false
 
         client.createUser(withUsername: username, password: password, completion: { (success, error) -> Void in
-            bSuccess = success
+            if (error == nil) {
+                bSuccess = true
+            } else {
+                print("error: unable to register [description=\(error?.localizedDescription)]")
+            }
         })
 
         return bSuccess
@@ -34,7 +38,11 @@ class BaasBoxClient: BaClient {
             bSuccess = true
         } else {
             client.authenticateUser(username, password: password, completion: { (success, error) -> Void in
-                bSuccess = success
+                if (error == nil) {
+                    bSuccess = true
+                } else {
+                    print("error: unable to login [description=\(error?.localizedDescription)]")
+                }
             })
         }
 
@@ -48,77 +56,111 @@ class BaasBoxClient: BaClient {
     func ChangePassword(oldPassword: String, newPassword: String) -> Bool {
         var bSuccess: Bool = false
 
-        currentUser.changeOldPassword(oldPassword, toNewPassword: newPassword, completionBlock: { (success, error) -> Void in
-            bSuccess = success
-        })
+        if currentUser != nil {
+            currentUser!.changeOldPassword(oldPassword, toNewPassword: newPassword, completionBlock: { (success, error) -> Void in
+                if (error == nil) {
+                    bSuccess = true
+                } else {
+                    print("error: unable to change password [description=\(error?.localizedDescription)]")
+                }
+            })
+        }
 
         return bSuccess
     }
 
     func ResetPassword(username: String) -> Bool {
         var bSuccess: Bool = false
-        var targetUser: BAAUser
+        var targetUser: BAAUser?
 
         BAAUser.loadDetails(username, completion: { (object, error) -> Void in
-            targetUser = object as! BAAUser
+            if (error == nil) {
+                targetUser = object as? BAAUser
+                bSuccess = true
+            } else {
+                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+            }
         })
 
-        client.resetPassword(for: targetUser, withCompletion: { (success, error) -> () in
-            bSuccess = success
-        })
+        if targetUser != nil {
+            client.resetPassword(for: targetUser!, withCompletion: { (success, error) -> () in
+                if (error == nil) {
+                    bSuccess = true
+                } else {
+                    print("error: unable to reset password [description=\(error?.localizedDescription)]")
+                }
+            })
+        }
 
         return bSuccess
     }
 
     func AddFriend(username: String) -> Bool {
         var bSuccess: Bool = false
-        var targetUser: BAAUser
+        var targetUser: BAAUser?
 
         BAAUser.loadDetails(username, completion: { (object, error) -> Void in
-            targetUser = object as! BAAUser
-        })
-
-        client.follow(targetUser, completion: { (object, error) -> Void in
-            if (object != nil) {
+            if (error == nil) {
+                targetUser = object as? BAAUser
                 bSuccess = true
+            } else {
+                print("error: unable to load user details [description=\(error?.localizedDescription)]")
             }
         })
+
+        if targetUser != nil {
+            client.follow(targetUser!, completion: { (object, error) -> Void in
+                if error == nil {
+                    bSuccess = true
+                } else {
+                    print("error: unable to add friend [description=\(error?.localizedDescription)]")
+                }
+            })
+        }
 
         return bSuccess
     }
 
     func RemoveFriend(username: String) -> Bool {
         var bSuccess: Bool = false
-        var targetUser: BAAUser
+        var targetUser: BAAUser?
 
-        targetUser.loadUserDetails(username, completion: { (user: BAAUser, error: NSError!) -> () in
-            targetUser = user
+        BAAUser.loadDetails(username, completion: { (object, error) -> Void in
+            if (error == nil) {
+                targetUser = object as? BAAUser
+                bSuccess = true
+            } else {
+                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+            }
         })
 
-        client.unfollowUser(targetUser, withCompletion: { (success: Bool, error: NSError!) -> () in
-            bSuccess = success
-        })
+        if targetUser != nil {
+            client.unfollowUser(targetUser!, completion: { (success, error) -> Void in
+                if (error == nil) {
+                    bSuccess = true
+                } else {
+                    print("error: unable to remove friend [description=\(error?.localizedDescription)]")
+                }
+            })
+        }
 
         return bSuccess
     }
 
     func CreateChallenge(challenge: Challenge) -> Bool {
         var bSuccess: Bool = false
-
-        var params: [NSObject: AnyObject]!
-        params["photo"] = challenge.photo
-        params["duration"] = challenge.durationHrs
-        params["users"] = challenge.users
-
-        let baasChallenge: BaasBoxChallenge = BaasBoxChallenge(params)
-
-        var challengeId: id?
-        currentUser.createObject(baasChallenge, completion: { (object: id, error: NSError!) -> () in
+        
+        var data = [String: Any]()
+        data["photo"] = challenge.image
+        data["duration"] = 24
+        data["users"] = challenge.friends
+        let baasChallenge = BaasBoxChallenge(data: data)
+        
+        client.createObject(baasChallenge, completion: { (object, error) -> Void in
             if (error == nil) {
-                challengeId = object
                 bSuccess = true
             } else {
-                // log error
+                print("error: unable to create challenge [description=\(error?.localizedDescription)]")
             }
         })
 
@@ -129,20 +171,21 @@ class BaasBoxClient: BaClient {
         var bSuccess: Bool = false
 
         var baasChallenge: BaasBoxChallenge?
-        baasChallenge.getObjectWithId(id, completion: { (object: id, error: NSError!) -> () in
+        BAAObject.getWithId(id, completion: { (object, error) -> Void in
             if (error == nil) {
+                baasChallenge = object as! BaasBoxChallenge?
                 bSuccess = true
             } else {
-                print("error: unable to get challenge [code=\(error.code) domain=\(error.domain)]")
+                print("error: unable to get challenge [description=\(error?.localizedDescription)]")
             }
         })
 
-        if (bSuccess) {
-            baasChallenge.deleteObjectWithCompletion({ (success: Bool, error: NSError!) -> () in
+        if baasChallenge != nil {
+            baasChallenge!.delete(completion: { (success, error) -> Void in
                 if (error == nil) {
                     bSuccess = true
                 } else {
-                    print("error: unable to remove challenge [code=\(error.code) domain=\(error.domain)]")
+                    print("error: unable to remove challenge [description=\(error?.localizedDescription)]")
                 }
             })
         }
@@ -150,27 +193,51 @@ class BaasBoxClient: BaClient {
         return bSuccess
     }
     
-    func CreateTake(take: Take) -> Bool {}
+    func CreateTake(take: Take) -> Bool {
+        return false
+    }
     
-    func RemoveTake(id: String) -> Bool {}
+    func RemoveTake(id: String) -> Bool {
+        return false
+    }
     
-    func GetUser(username: String) -> User {}
+    func GetUser(username: String) -> User? {
+        return nil
+    }
     
-    func GetUserFriends(username: String) -> [User] {}
+    func GetUserFriends(username: String) -> [User]? {
+        return nil
+    }
     
-    func GetUserChallenges(username: String) -> [Challenge] {}
+    func GetUserChallenges(username: String) -> [Challenge]? {
+        return nil
+    }
     
-    func GetUserTakes(username: String) -> [Take] {}
+    func GetUserTakes(username: String) -> [Take]? {
+        return nil
+    }
     
-    func GetChallenge(id: String) -> Challenge {}
+    func GetChallenge(id: String) -> Challenge? {
+        return nil
+    }
     
-    func GetChallengeTakes(id: String) -> [Take] {}
+    func GetChallengeTakes(id: String) -> [Take]? {
+        return nil
+    }
     
-    func GetTake(id: String) -> Take {}
+    func GetTake(id: String) -> Take? {
+        return nil
+    }
     
-    func GetTakeChallenge(id: String) -> Challenge {}
+    func GetTakeChallenge(id: String) -> Challenge? {
+        return nil
+    }
     
-    func VoteTake(id: String) -> Bool {}
+    func VoteTake(id: String) -> Bool {
+        return false
+    }
     
-    func UnvoteTake(id: String) -> Bool {}
+    func UnvoteTake(id: String) -> Bool {
+        return false
+    }
 }

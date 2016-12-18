@@ -12,9 +12,9 @@
 import UIKit
 
 class BaasBoxChallenge: BAAObject {
-    var photo: UIImage? = nil
+    var photo: UIImage?
     var durationHrs: UInt = 1
-    var users: [String]? = nil
+    var users: [String]?
     
     init(data: [String : Any]!) {
         self.photo = data["photo"] as? UIImage

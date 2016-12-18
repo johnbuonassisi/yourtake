@@ -159,8 +159,8 @@
 		332283EB1E05D5E4008647E4 /* BaasBox */ = {
 			isa = PBXGroup;
 			children = (
-				332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */,
 				332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */,
+				332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */,
 				332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */,
 			);
 			path = BaasBox;
