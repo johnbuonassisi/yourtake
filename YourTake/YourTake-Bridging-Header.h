@@ -3,3 +3,4 @@
 //
 
 #import "BAAClient.h"
+#import "BAAObject.h"

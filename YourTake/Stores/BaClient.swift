@@ -1,10 +1,9 @@
 /**
  * Copyright (c) 2016 Enovi Inc.
  *
- * All rights reserved. The methods and techniques described herein are considered 
- * trade secrets and/or confidential. Reproduction or distribution, in whole or in 
- * part, is forbidden except by express written permission of Enovi Inc.
- **/
+ * All rights reserved. Unauthorized reproduction or distribution of this file, via any medium, in
+ * whole or in part, is strictly prohibited except by express written permission of Enovi Inc.
+ */
 
 /**
  * @author Olivier Thomas
@@ -16,14 +15,14 @@ protocol BaClient {
     func ChangePassword(oldPassword: String, newPassword: String) -> Bool
     func ResetPassword(username: String) -> Bool
 
-    func AddFriend(username: String)
-    func RemoveFriend(username: String)
+    func AddFriend(username: String) -> Bool
+    func RemoveFriend(username: String) -> Bool
 
     func CreateChallenge(challenge: Challenge) -> Bool
-    func RemoveChallenge(id: String)
+    func RemoveChallenge(id: String) -> Bool
 
     func CreateTake(take: Take) -> Bool
-    func RemoveTake(id: String)
+    func RemoveTake(id: String) -> Bool
 
     func GetUser(username: String) -> User
     func GetUserFriends(username: String) -> [User]

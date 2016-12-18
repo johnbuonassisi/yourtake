@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		332283F01E05D5E4008647E4 /* BaasBoxChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */; };
+		332283F11E05D5E4008647E4 /* BaasBoxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */; };
+		332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */; };
+		332283F31E05D5E4008647E4 /* BaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283EF1E05D5E4008647E4 /* BaClient.swift */; };
 		520DA5F71DF0C64B00695756 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520DA5F61DF0C64B00695756 /* SignUpViewController.xib */; };
 		520DA5F91DF0CC3500695756 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520DA5F81DF0CC3500695756 /* SignUpViewController.swift */; };
 		52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E1F1DE807ED00F04C86 /* BAAClient.m */; };
@@ -16,7 +20,6 @@
 		52299E301DE807ED00F04C86 /* BAAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E271DE807ED00F04C86 /* BAAObject.m */; };
 		52299E311DE807ED00F04C86 /* BaasBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E291DE807ED00F04C86 /* BaasBox.m */; };
 		52299E321DE807ED00F04C86 /* BAAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E2B1DE807ED00F04C86 /* BAAUser.m */; };
-		52299E341DE80B0D00F04C86 /* BaasClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52299E331DE80B0D00F04C86 /* BaasClient.swift */; };
 		523074A71DC704DE002EB030 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074A61DC704DE002EB030 /* Challenge.swift */; };
 		523074A91DC70C4F002EB030 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074A81DC70C4F002EB030 /* User.swift */; };
 		523074AB1DC70EB6002EB030 /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074AA1DC70EB6002EB030 /* UserDatabase.swift */; };
@@ -64,6 +67,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxChallenge.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxClient.swift; sourceTree = "<group>"; };
+		332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxTake.swift; sourceTree = "<group>"; };
+		332283EF1E05D5E4008647E4 /* BaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaClient.swift; sourceTree = "<group>"; };
 		520DA5F61DF0C64B00695756 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpViewController.xib; path = "View Controllers/SignUpViewController.xib"; sourceTree = "<group>"; };
 		520DA5F81DF0CC3500695756 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = "View Controllers/SignUpViewController.swift"; sourceTree = "<group>"; };
 		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -81,7 +88,6 @@
 		52299E291DE807ED00F04C86 /* BaasBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaasBox.m; sourceTree = "<group>"; };
 		52299E2A1DE807ED00F04C86 /* BAAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAUser.h; sourceTree = "<group>"; };
 		52299E2B1DE807ED00F04C86 /* BAAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAUser.m; sourceTree = "<group>"; };
-		52299E331DE80B0D00F04C86 /* BaasClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaasClient.swift; path = Models/BaasClient.swift; sourceTree = "<group>"; };
 		523074A61DC704DE002EB030 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Challenge.swift; path = Models/Challenge.swift; sourceTree = "<group>"; };
 		523074A81DC70C4F002EB030 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		523074AA1DC70EB6002EB030 /* UserDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDatabase.swift; path = Models/UserDatabase.swift; sourceTree = "<group>"; };
@@ -141,6 +147,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		332283EA1E05D5E4008647E4 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				332283EB1E05D5E4008647E4 /* BaasBox */,
+				332283EF1E05D5E4008647E4 /* BaClient.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		332283EB1E05D5E4008647E4 /* BaasBox */ = {
+			isa = PBXGroup;
+			children = (
+				332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */,
+				332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */,
+				332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */,
+			);
+			path = BaasBox;
+			sourceTree = "<group>";
+		};
 		52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,12 +208,13 @@
 			children = (
 				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
 				528509971DC6F9470083CC55 /* Info.plist */,
-				52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */,
-				528509A11DC6F9B40083CC55 /* Supporting Files */,
 				5285099D1DC6F98A0083CC55 /* Main */,
+				332283EA1E05D5E4008647E4 /* Stores */,
 				5285099E1DC6F9940083CC55 /* Models */,
 				528509A01DC6F9A30083CC55 /* View Controllers */,
 				5285099F1DC6F99B0083CC55 /* Views */,
+				528509A11DC6F9B40083CC55 /* Supporting Files */,
+				52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */,
 			);
 			path = YourTake;
 			sourceTree = "<group>";
@@ -204,7 +230,6 @@
 		5285099E1DC6F9940083CC55 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				52299E331DE80B0D00F04C86 /* BaasClient.swift */,
 				523074A61DC704DE002EB030 /* Challenge.swift */,
 				52A311EF1DCE0CE400EAFC24 /* VoteTracker.swift */,
 				523074A81DC70C4F002EB030 /* User.swift */,
@@ -380,6 +405,7 @@
 				529FB8421DE42B4000861826 /* ExpiryPickerCell.swift in Sources */,
 				525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */,
 				52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */,
+				332283F11E05D5E4008647E4 /* BaasBoxClient.swift in Sources */,
 				529DC7C71DCC705F00EFA856 /* Take.swift in Sources */,
 				523074A71DC704DE002EB030 /* Challenge.swift in Sources */,
 				526AF05C1DD2F9B0003350B4 /* DrawLinesView.swift in Sources */,
@@ -389,6 +415,8 @@
 				52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */,
 				52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */,
 				52299E2F1DE807ED00F04C86 /* BAAMutableURLRequest.m in Sources */,
+				332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */,
+				332283F01E05D5E4008647E4 /* BaasBoxChallenge.swift in Sources */,
 				529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */,
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
 				52299E301DE807ED00F04C86 /* BAAObject.m in Sources */,
@@ -399,7 +427,7 @@
 				529FB83C1DE23C0300861826 /* FriendPickerCell.swift in Sources */,
 				529FB83E1DE2560500861826 /* FriendListData.swift in Sources */,
 				52299E311DE807ED00F04C86 /* BaasBox.m in Sources */,
-				52299E341DE80B0D00F04C86 /* BaasClient.swift in Sources */,
+				332283F31E05D5E4008647E4 /* BaClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +534,7 @@
 				DEVELOPMENT_TEAM = A99NKDYD4J;
 				INFOPLIST_FILE = YourTake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JAB.YourTake;
+				PRODUCT_BUNDLE_IDENTIFIER = com.enovi.yourtake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/YourTake-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -523,7 +551,7 @@
 				DEVELOPMENT_TEAM = A99NKDYD4J;
 				INFOPLIST_FILE = YourTake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JAB.YourTake;
+				PRODUCT_BUNDLE_IDENTIFIER = com.enovi.yourtake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/YourTake-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

@@ -162,7 +162,7 @@ class UserDatabase: NSObject {
     
 }
 
-extension UserDatabase : BaasClient {
+extension UserDatabase : BaClient {
     
     func Register(username: String, password: String) -> Bool {
         return true

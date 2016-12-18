@@ -1,17 +1,16 @@
 /**
  * Copyright (c) 2016 Enovi Inc.
  *
- * All rights reserved. The methods and techniques described herein are considered 
- * trade secrets and/or confidential. Reproduction or distribution, in whole or in 
- * part, is forbidden except by express written permission of Enovi Inc.
- **/
+ * All rights reserved. Unauthorized reproduction or distribution of this file, via any medium, in
+ * whole or in part, is strictly prohibited except by express written permission of Enovi Inc.
+ */
 
 /**
  * @author Olivier Thomas
  */
 
 class BaasBoxClient: BaClient {
-    let client = BAAClient.sharedClient()
+    let client = BAAClient.shared()!
     var currentUser: BAAUser
 
     init() {
@@ -21,7 +20,7 @@ class BaasBoxClient: BaClient {
     func Register(username: String, password: String) -> Bool {
         var bSuccess: Bool = false
 
-        client.createUserWithUsername(username, password: password, completion: { (success: Bool, error: NSError!) -> () in
+        client.createUser(withUsername: username, password: password, completion: { (success, error) -> Void in
             bSuccess = success
         })
 
@@ -34,7 +33,7 @@ class BaasBoxClient: BaClient {
         if client.isAuthenticated() {
             bSuccess = true
         } else {
-            client.authenticateUser(username, password: password, completion: { (success: Bool, error: NSError!) -> () in
+            client.authenticateUser(username, password: password, completion: { (success, error) -> Void in
                 bSuccess = success
             })
         }
@@ -49,7 +48,7 @@ class BaasBoxClient: BaClient {
     func ChangePassword(oldPassword: String, newPassword: String) -> Bool {
         var bSuccess: Bool = false
 
-        currentUser.changeOldPassword(username, toNewPassword: password, completionBlock: { (success: Bool, error: NSError!) -> () in
+        currentUser.changeOldPassword(oldPassword, toNewPassword: newPassword, completionBlock: { (success, error) -> Void in
             bSuccess = success
         })
 
@@ -60,33 +59,35 @@ class BaasBoxClient: BaClient {
         var bSuccess: Bool = false
         var targetUser: BAAUser
 
-        targetUser.loadUserDetails(username, completion: { (user: BAAUser, error: NSError!) -> () in
-            targetUser = user
+        BAAUser.loadDetails(username, completion: { (object, error) -> Void in
+            targetUser = object as! BAAUser
         })
 
-        client.resetPasswordForUser(targetUser, withCompletion: { (success: Bool, error: NSError!) -> () in
+        client.resetPassword(for: targetUser, withCompletion: { (success, error) -> () in
             bSuccess = success
         })
 
         return bSuccess
     }
 
-    func AddFriend(username: String) {
+    func AddFriend(username: String) -> Bool {
         var bSuccess: Bool = false
         var targetUser: BAAUser
 
-        targetUser.loadUserDetails(username, completion: { (user: BAAUser, error: NSError!) -> () in
-            targetUser = user
+        BAAUser.loadDetails(username, completion: { (object, error) -> Void in
+            targetUser = object as! BAAUser
         })
 
-        client.followUser(targetUser, withCompletion: { (success: Bool, error: NSError!) -> () in
-            bSuccess = success
+        client.follow(targetUser, completion: { (object, error) -> Void in
+            if (object != nil) {
+                bSuccess = true
+            }
         })
 
         return bSuccess
     }
 
-    func RemoveFriend(username: String) {
+    func RemoveFriend(username: String) -> Bool {
         var bSuccess: Bool = false
         var targetUser: BAAUser
 
@@ -148,30 +149,28 @@ class BaasBoxClient: BaClient {
 
         return bSuccess
     }
-
-    func CreateTake(take: Take) -> String {}
-
+    
+    func CreateTake(take: Take) -> Bool {}
+    
     func RemoveTake(id: String) -> Bool {}
-
+    
     func GetUser(username: String) -> User {}
-
+    
     func GetUserFriends(username: String) -> [User] {}
-
-    func GetUserTakes(username: String) -> [Take] {}
-
+    
     func GetUserChallenges(username: String) -> [Challenge] {}
-
-    func GetChallenge(id: String) -> Challenge {
-
-    }
-
+    
+    func GetUserTakes(username: String) -> [Take] {}
+    
+    func GetChallenge(id: String) -> Challenge {}
+    
     func GetChallengeTakes(id: String) -> [Take] {}
-
+    
     func GetTake(id: String) -> Take {}
-
+    
     func GetTakeChallenge(id: String) -> Challenge {}
-
+    
     func VoteTake(id: String) -> Bool {}
-
+    
     func UnvoteTake(id: String) -> Bool {}
 }
