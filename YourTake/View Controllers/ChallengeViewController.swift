@@ -45,13 +45,13 @@ class ChallengeViewController: UIViewController,
         tableView.allowsSelection = false
         
         // Setup the navigation bar
-        navigationItem.title = "Challenges"
+        navigationItem.title = "YourTake"
         
         let rbbi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.camera,
                                    target: self,
                                    action: #selector(ChallengeViewController.newChallenge))
         
-        let lbbi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks,
+        let lbbi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.organize,
                                    target: self,
                                    action: nil)
         navigationItem.rightBarButtonItem = rbbi
