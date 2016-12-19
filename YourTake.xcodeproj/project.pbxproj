@@ -45,6 +45,7 @@
 		526AF0581DD2F334003350B4 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526AF0571DD2F334003350B4 /* DrawViewController.swift */; };
 		526AF05A1DD2F53C003350B4 /* DrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526AF0591DD2F53C003350B4 /* DrawViewController.xib */; };
 		526AF05C1DD2F9B0003350B4 /* DrawLinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526AF05B1DD2F9B0003350B4 /* DrawLinesView.swift */; };
+		527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527FD5E91E0739F90023D420 /* LaunchScreen.xib */; };
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
 		52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */; };
@@ -114,6 +115,7 @@
 		526AF0571DD2F334003350B4 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawViewController.swift; path = "View Controllers/DrawViewController.swift"; sourceTree = "<group>"; };
 		526AF0591DD2F53C003350B4 /* DrawViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DrawViewController.xib; path = "View Controllers/DrawViewController.xib"; sourceTree = "<group>"; };
 		526AF05B1DD2F9B0003350B4 /* DrawLinesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawLinesView.swift; path = Views/DrawLinesView.swift; sourceTree = "<group>"; };
+		527FD5E91E0739F90023D420 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Views/LaunchScreen.xib; sourceTree = "<group>"; };
 		528509881DC6F9470083CC55 /* YourTake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5285098B1DC6F9470083CC55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Main/AppDelegate.swift; sourceTree = "<group>"; };
 		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				529FB83B1DE23C0300861826 /* FriendPickerCell.swift */,
 				524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */,
 				524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */,
+				527FD5E91E0739F90023D420 /* LaunchScreen.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */,
 				52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */,
 				52D9C1821DCC1D4A00F5C098 /* LoginViewController.xib in Resources */,
+				527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */,
 				526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */,
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
 				524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */,
