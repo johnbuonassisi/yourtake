@@ -11,6 +11,7 @@
 		332283F11E05D5E4008647E4 /* BaasBoxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */; };
 		332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */; };
 		332283F31E05D5E4008647E4 /* BaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283EF1E05D5E4008647E4 /* BaClient.swift */; };
+		332283F91E072F12008647E4 /* LocalClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283F81E072F12008647E4 /* LocalClient.swift */; };
 		520DA5F71DF0C64B00695756 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520DA5F61DF0C64B00695756 /* SignUpViewController.xib */; };
 		520DA5F91DF0CC3500695756 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520DA5F81DF0CC3500695756 /* SignUpViewController.swift */; };
 		52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E1F1DE807ED00F04C86 /* BAAClient.m */; };
@@ -71,6 +72,7 @@
 		332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxClient.swift; sourceTree = "<group>"; };
 		332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxTake.swift; sourceTree = "<group>"; };
 		332283EF1E05D5E4008647E4 /* BaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaClient.swift; sourceTree = "<group>"; };
+		332283F81E072F12008647E4 /* LocalClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalClient.swift; sourceTree = "<group>"; };
 		520DA5F61DF0C64B00695756 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpViewController.xib; path = "View Controllers/SignUpViewController.xib"; sourceTree = "<group>"; };
 		520DA5F81DF0CC3500695756 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = "View Controllers/SignUpViewController.swift"; sourceTree = "<group>"; };
 		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		332283EA1E05D5E4008647E4 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				332283F41E072D76008647E4 /* Local */,
 				332283EB1E05D5E4008647E4 /* BaasBox */,
 				332283EF1E05D5E4008647E4 /* BaClient.swift */,
 			);
@@ -164,6 +167,14 @@
 				332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */,
 			);
 			path = BaasBox;
+			sourceTree = "<group>";
+		};
+		332283F41E072D76008647E4 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				332283F81E072F12008647E4 /* LocalClient.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 		52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */ = {
@@ -194,6 +205,7 @@
 				528509891DC6F9470083CC55 /* Products */,
 			);
 			sourceTree = "<group>";
+			wrapsLines = 1;
 		};
 		528509891DC6F9470083CC55 /* Products */ = {
 			isa = PBXGroup;
@@ -328,7 +340,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
-				ORGANIZATIONNAME = JAB;
+				ORGANIZATIONNAME = "Enovi Inc.";
 				TargetAttributes = {
 					528509871DC6F9470083CC55 = {
 						CreatedOnToolsVersion = 8.1;
@@ -397,6 +409,7 @@
 				524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */,
 				526AF0581DD2F334003350B4 /* DrawViewController.swift in Sources */,
 				52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */,
+				332283F91E072F12008647E4 /* LocalClient.swift in Sources */,
 				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,
 				52DC0AC11DCA2B7200DA2BDC /* TakesCollectionViewController.swift in Sources */,
 				523074A91DC70C4F002EB030 /* User.swift in Sources */,

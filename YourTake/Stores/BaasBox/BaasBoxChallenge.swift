@@ -1,13 +1,10 @@
-/**
- * Copyright (c) 2016 Enovi Inc.
- *
- * All rights reserved. Unauthorized reproduction or distribution of this file, via any medium, in
- * whole or in part, is strictly prohibited except by express written permission of Enovi Inc.
- */
-
-/**
- * @author Olivier Thomas
- */
+//
+//  BaasBoxChallenge.swift
+//  YourTake
+//
+//  Created by Olivier Thomas on 2016-12-18.
+//  Copyright © 2016 Enovi Inc. All rights reserved.
+//
 
 import UIKit
 
