@@ -27,6 +27,10 @@ class LocalClient: BaClient {
         return false
     }
     
+    func GetFriends() -> [String]? {
+        return nil
+    }
+    
     func AddFriend(username: String) -> Bool {
         return false
     }
@@ -35,12 +39,28 @@ class LocalClient: BaClient {
         return false
     }
     
+    func GetChallenge(id: String) -> Challenge? {
+        return nil
+    }
+    
+    func GetChallengeTakes(id: String) -> [Take]? {
+        return nil
+    }
+    
     func CreateChallenge(challenge: Challenge) -> Bool {
         return false
     }
     
     func RemoveChallenge(id: String) -> Bool {
         return false
+    }
+    
+    func GetTake(id: String) -> Take? {
+        return nil
+    }
+    
+    func GetTakeChallenge(id: String) -> Challenge? {
+        return nil
     }
     
     func CreateTake(take: Take) -> Bool {
@@ -55,7 +75,7 @@ class LocalClient: BaClient {
         return nil
     }
     
-    func GetUserFriends(username: String) -> [User]? {
+    func GetUserFriends(username: String) -> [String]? {
         return nil
     }
     
@@ -64,22 +84,6 @@ class LocalClient: BaClient {
     }
     
     func GetUserTakes(username: String) -> [Take]? {
-        return nil
-    }
-    
-    func GetChallenge(id: String) -> Challenge? {
-        return nil
-    }
-    
-    func GetChallengeTakes(id: String) -> [Take]? {
-        return nil
-    }
-    
-    func GetTake(id: String) -> Take? {
-        return nil
-    }
-    
-    func GetTakeChallenge(id: String) -> Challenge? {
         return nil
     }
     

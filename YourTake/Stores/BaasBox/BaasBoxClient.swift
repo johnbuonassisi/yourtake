@@ -18,7 +18,7 @@ class BaasBoxClient: BaClient {
         var bSuccess: Bool = false
 
         client.createUser(withUsername: username, password: password, completion: { (success, error) -> Void in
-            if (error == nil) {
+            if error == nil {
                 bSuccess = true
             } else {
                 print("error: unable to register [description=\(error?.localizedDescription)]")
@@ -35,7 +35,7 @@ class BaasBoxClient: BaClient {
             bSuccess = true
         } else {
             client.authenticateUser(username, password: password, completion: { (success, error) -> Void in
-                if (error == nil) {
+                if error == nil {
                     bSuccess = true
                 } else {
                     print("error: unable to login [description=\(error?.localizedDescription)]")
@@ -55,7 +55,7 @@ class BaasBoxClient: BaClient {
 
         if currentUser != nil {
             currentUser!.changeOldPassword(oldPassword, toNewPassword: newPassword, completionBlock: { (success, error) -> Void in
-                if (error == nil) {
+                if error == nil {
                     bSuccess = true
                 } else {
                     print("error: unable to change password [description=\(error?.localizedDescription)]")
@@ -71,7 +71,7 @@ class BaasBoxClient: BaClient {
         var targetUser: BAAUser?
 
         BAAUser.loadDetails(username, completion: { (object, error) -> Void in
-            if (error == nil) {
+            if error == nil {
                 targetUser = object as? BAAUser
                 bSuccess = true
             } else {
@@ -81,7 +81,7 @@ class BaasBoxClient: BaClient {
 
         if targetUser != nil {
             client.resetPassword(for: targetUser!, withCompletion: { (success, error) -> () in
-                if (error == nil) {
+                if error == nil {
                     bSuccess = true
                 } else {
                     print("error: unable to reset password [description=\(error?.localizedDescription)]")
@@ -91,13 +91,32 @@ class BaasBoxClient: BaClient {
 
         return bSuccess
     }
+    
+    func GetFriends() -> [String]? {
+        var friends: [String]?
+        
+        if currentUser != nil {
+            currentUser!.loadFollowing(completion: { (object, error) -> Void in
+                if error == nil {
+                    friends = [String]()
+                    for user in (object as! [BAAUser]?)! {
+                        friends!.append(user.username())
+                    }
+                } else {
+                    print("error: unable to get friends [description=\(error?.localizedDescription)]")
+                }
+            })
+        }
+        
+        return friends
+    }
 
     func AddFriend(username: String) -> Bool {
         var bSuccess: Bool = false
         var targetUser: BAAUser?
 
         BAAUser.loadDetails(username, completion: { (object, error) -> Void in
-            if (error == nil) {
+            if error == nil {
                 targetUser = object as? BAAUser
                 bSuccess = true
             } else {
@@ -123,7 +142,7 @@ class BaasBoxClient: BaClient {
         var targetUser: BAAUser?
 
         BAAUser.loadDetails(username, completion: { (object, error) -> Void in
-            if (error == nil) {
+            if error == nil {
                 targetUser = object as? BAAUser
                 bSuccess = true
             } else {
@@ -133,7 +152,7 @@ class BaasBoxClient: BaClient {
 
         if targetUser != nil {
             client.unfollowUser(targetUser!, completion: { (success, error) -> Void in
-                if (error == nil) {
+                if error == nil {
                     bSuccess = true
                 } else {
                     print("error: unable to remove friend [description=\(error?.localizedDescription)]")
@@ -142,6 +161,14 @@ class BaasBoxClient: BaClient {
         }
 
         return bSuccess
+    }
+    
+    func GetChallenge(id: String) -> Challenge? {
+        return nil
+    }
+    
+    func GetChallengeTakes(id: String) -> [Take]? {
+        return nil
     }
 
     func CreateChallenge(challenge: Challenge) -> Bool {
@@ -154,7 +181,7 @@ class BaasBoxClient: BaClient {
         let baasChallenge = BaasBoxChallenge(data: data)
         
         client.createObject(baasChallenge, completion: { (object, error) -> Void in
-            if (error == nil) {
+            if error == nil {
                 bSuccess = true
             } else {
                 print("error: unable to create challenge [description=\(error?.localizedDescription)]")
@@ -169,7 +196,7 @@ class BaasBoxClient: BaClient {
 
         var baasChallenge: BaasBoxChallenge?
         BAAObject.getWithId(id, completion: { (object, error) -> Void in
-            if (error == nil) {
+            if error == nil {
                 baasChallenge = object as! BaasBoxChallenge?
                 bSuccess = true
             } else {
@@ -179,7 +206,7 @@ class BaasBoxClient: BaClient {
 
         if baasChallenge != nil {
             baasChallenge!.delete(completion: { (success, error) -> Void in
-                if (error == nil) {
+                if error == nil {
                     bSuccess = true
                 } else {
                     print("error: unable to remove challenge [description=\(error?.localizedDescription)]")
@@ -190,20 +217,119 @@ class BaasBoxClient: BaClient {
         return bSuccess
     }
     
+    func GetTake(id: String) -> Take? {
+        return nil
+    }
+    
+    func GetTakeChallenge(id: String) -> Challenge? {
+        return nil
+    }
+    
     func CreateTake(take: Take) -> Bool {
-        return false
+        var bSuccess: Bool = false
+        
+        var data = [String: Any]()
+        data["challengeId"] = 1
+        data["overlay"] = take.image
+        data["votes"] = 0
+        let baasTake = BaasBoxTake(data: data)
+        
+        client.createObject(baasTake, completion: { (object, error) -> Void in
+            if error == nil {
+                bSuccess = true
+            } else {
+                print("error: unable to create take [description=\(error?.localizedDescription)]")
+            }
+        })
+        
+        return bSuccess
     }
     
     func RemoveTake(id: String) -> Bool {
-        return false
+        var bSuccess: Bool = false
+        
+        var baasTake: BaasBoxTake?
+        BAAObject.getWithId(id, completion: { (object, error) -> Void in
+            if error == nil {
+                baasTake = object as! BaasBoxTake?
+                bSuccess = true
+            } else {
+                print("error: unable to get take [description=\(error?.localizedDescription)]")
+            }
+        })
+        
+        if baasTake != nil {
+            baasTake!.delete(completion: { (success, error) -> Void in
+                if error == nil {
+                    bSuccess = true
+                } else {
+                    print("error: unable to remove take [description=\(error?.localizedDescription)]")
+                }
+            })
+        }
+        
+        return bSuccess
     }
     
     func GetUser(username: String) -> User? {
-        return nil
+        var targetUser: BAAUser?
+        
+        BAAUser.loadDetails(username, completion: { (object, error) -> Void in
+            if error == nil {
+                targetUser = object as? BAAUser
+            } else {
+                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+            }
+        })
+        
+        var user: User?
+        if targetUser != nil {
+            client.loadFollowing(for: targetUser!, completion: { (object, error) -> Void in
+                if error == nil {
+                    var friends: [String]?
+                    for user in (object as! [BAAUser]?)! {
+                        friends?.append(user.username())
+                    }
+                    if friends != nil {
+                        user = User(name: targetUser!.username(), friends: friends!)
+                    } else {
+                        user = User(name: targetUser!.username(), friends: [String]())
+                    }
+                } else {
+                    print("error: unable to add friend [description=\(error?.localizedDescription)]")
+                }
+            })
+        }
+        
+        return user
     }
     
-    func GetUserFriends(username: String) -> [User]? {
-        return nil
+    func GetUserFriends(username: String) -> [String]? {
+        var targetUser: BAAUser?
+        
+        BAAUser.loadDetails(username, completion: { (object, error) -> Void in
+            if error == nil {
+                targetUser = object as? BAAUser
+            } else {
+                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+            }
+        })
+        
+        var friends: [String]?
+        if targetUser != nil {
+            client.loadFollowing(for: targetUser!, completion: { (object, error) -> Void in
+                if error == nil {
+                    friends = [String]()
+                    for user in (object as! [BAAUser]?)! {
+                        friends!.append(user.username())
+                    }
+                } else {
+                    print("error: unable to get friends [description=\(error?.localizedDescription)]")
+                }
+            })
+        }
+        
+        return friends
     }
     
     func GetUserChallenges(username: String) -> [Challenge]? {
@@ -211,22 +337,6 @@ class BaasBoxClient: BaClient {
     }
     
     func GetUserTakes(username: String) -> [Take]? {
-        return nil
-    }
-    
-    func GetChallenge(id: String) -> Challenge? {
-        return nil
-    }
-    
-    func GetChallengeTakes(id: String) -> [Take]? {
-        return nil
-    }
-    
-    func GetTake(id: String) -> Take? {
-        return nil
-    }
-    
-    func GetTakeChallenge(id: String) -> Challenge? {
         return nil
     }
     
