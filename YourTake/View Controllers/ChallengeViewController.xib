@@ -11,8 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeViewController" customModule="YourTake" customModuleProvider="target">
             <connections>
+                <outlet property="friendChallengeTabBarItem" destination="sIh-1f-d6g" id="mUL-mt-nRI"/>
                 <outlet property="tabBarControl" destination="2XA-7C-NbP" id="9YD-f8-3NQ"/>
                 <outlet property="tableView" destination="13A-3U-HqL" id="WLU-fl-1L6"/>
+                <outlet property="userChallengeTabBarItem" destination="vCO-3l-gth" id="nb4-5p-uAj"/>
                 <outlet property="view" destination="YsZ-DT-RGu" id="5rI-pX-DV5"/>
             </connections>
         </placeholder>

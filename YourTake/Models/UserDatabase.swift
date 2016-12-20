@@ -62,26 +62,26 @@ class UserDatabase: NSObject {
         
         
         // Add takes and votes to Johns Challenges
-        john.challenges![0].takes = [Take(image: ashlingsResponse, name: "Ashling"),
+        john.getChallenge(0)!.takes = [Take(image: ashlingsResponse, name: "Ashling"),
                                            Take(image: petersResponse, name: "Peter"),
                                            Take(image: andreasResponse, name: "Andrea"),
                                            Take(image: anthonysResponse, name: "Anthony")];
         
-        john.challenges![0].voteFor(user: "Anthony", byVoter: "Peter", andSort: false)
-        john.challenges![0].voteFor(user: "Anthony", byVoter: "Andrea", andSort: false)
-        john.challenges![0].voteFor(user: "Andrea", byVoter: "Ashling", andSort: false)
-        john.challenges![0].voteFor(user: "Peter", byVoter: "Anthony", andSort: true)
+        john.getChallenge(0)!.voteFor(user: "Anthony", byVoter: "Peter", andSort: false)
+        john.getChallenge(0)!.voteFor(user: "Anthony", byVoter: "Andrea", andSort: false)
+        john.getChallenge(0)!.voteFor(user: "Andrea", byVoter: "Ashling", andSort: false)
+        john.getChallenge(0)!.voteFor(user: "Peter", byVoter: "Anthony", andSort: true)
         
         // Add takes and votes to Ashlings Challenges
-        ashling.challenges![0].takes = [Take(image: johnsResponse2, name: "John"),
+        ashling.getChallenge(0)!.takes = [Take(image: johnsResponse2, name: "John"),
                                               Take(image: petersResponse2, name: "Peter"),
                                               Take(image: andreasResponse2, name: "Andrea"),
                                               Take(image: anthonysResponse2, name: "Anthony")]
         
-        ashling.challenges![0].voteFor(user: "Peter", byVoter: "Andrea", andSort: false)
-        ashling.challenges![0].voteFor(user: "Peter", byVoter: "Anthony", andSort: false)
-        ashling.challenges![0].voteFor(user: "John", byVoter: "Peter", andSort: false)
-        ashling.challenges![0].voteFor(user: "Anthony", byVoter: "John", andSort: false)
+        ashling.getChallenge(0)!.voteFor(user: "Peter", byVoter: "Andrea", andSort: false)
+        ashling.getChallenge(0)!.voteFor(user: "Peter", byVoter: "Anthony", andSort: false)
+        ashling.getChallenge(0)!.voteFor(user: "John", byVoter: "Peter", andSort: false)
+        ashling.getChallenge(0)!.voteFor(user: "Anthony", byVoter: "John", andSort: false)
         
         
         users = [john,
@@ -127,6 +127,24 @@ class UserDatabase: NSObject {
         return friendChallengeList!.count
     }
     
+    func GetNumberOfActiveFriendChallenges(forUserWithName userName: String) -> Int {
+        let friendChallengeList : [Challenge]? = GetFriendChallengeList(forUserWithName: userName)
+        if friendChallengeList == nil {
+            return 0
+        }
+        
+        var numActiveChallenges = 0
+        let currentDate = Date()
+        for challenge: Challenge in friendChallengeList! {
+            let result = challenge.expiryDate.compare(currentDate)
+            if result == .orderedDescending {
+                numActiveChallenges += 1
+            }
+        }
+        
+        return numActiveChallenges
+    }
+    
     private func GetFriendChallengeList(forUserWithName userName: String) -> [Challenge]?
     {
         // Define a list of friend challenges
@@ -137,10 +155,10 @@ class UserDatabase: NSObject {
         {
             // If the friend has challenges
             let friendUser = GetUser(friend)
-            if friendUser!.challenges != nil
+            if friendUser!.getChallenges() != nil
             {
                 // For each of the friends challenges
-                for friendChallenge : Challenge in friendUser!.challenges!
+                for friendChallenge : Challenge in friendUser!.getChallenges()!
                 {
                     // If the challenge was shared with the user with userName
                     if(friendChallenge.friends.contains(userName))

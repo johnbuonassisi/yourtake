@@ -12,15 +12,17 @@ class ChallengeViewController: UIViewController,
                                UITableViewDelegate,
                                UITableViewDataSource,
                                UINavigationControllerDelegate,
-                               UIImagePickerControllerDelegate,
-                               UITabBarDelegate {
+                               UIImagePickerControllerDelegate {
 
     // MARK: Outlets
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tabBarControl: UITabBar!
     @IBOutlet var overlayView: UIView!
     @IBOutlet weak var overlayImage: UIImageView!
+    
+    @IBOutlet weak var tabBarControl: UITabBar!
+    @IBOutlet weak var userChallengeTabBarItem: UITabBarItem!
+    @IBOutlet weak var friendChallengeTabBarItem: UITabBarItem!
     
     // MARK: Private Member Variables
     
@@ -59,15 +61,24 @@ class ChallengeViewController: UIViewController,
         
         navigationController?.navigationBar.isHidden = false
         
+        let defaultColor = UIColor(red: 0.0,
+                                   green: 122.0/255.0,
+                                   blue: 255.0/255.0,
+                                   alpha: 1.0)
+        
         // Setup the refresh control
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.tintColor = UIColor.blue
+        tableView.refreshControl?.tintColor = defaultColor
         tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
         tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
         
         // Setup the tab bar control
         tabBarControl.delegate = self
         tabBarControl.selectedItem = tabBarControl.items?[0]
+        
+        userChallengeTabBarItem.badgeColor = defaultColor
+        friendChallengeTabBarItem.badgeColor = defaultColor
+        updateTabBarBadges()
     
     }
     
@@ -78,6 +89,8 @@ class ChallengeViewController: UIViewController,
             tableView.reloadRows(at: [selectedRow], with: UITableViewRowAnimation.none)
         }
         selectedRow = nil
+        
+        updateTabBarBadges()
     }
     
     // MARK: UITableViewDelegate Methods
@@ -92,7 +105,7 @@ class ChallengeViewController: UIViewController,
         
         case 0: // User Challenges
             // Client
-            return john.challenges!.count
+            return john.getNumChallenges()
             
         case 1: // Friend Challenges
             // Client
@@ -122,14 +135,14 @@ class ChallengeViewController: UIViewController,
             
             // Client
             let john = UserDatabase.global.John()
-            let challenges = john.challenges![indexPath.row]
+            let challenges = john.getChallenge(indexPath.row)
             
-            cell.challengeImage.image = challenges.image
+            cell.challengeImage.image = challenges?.image
             cell.name.text = john.name
-            cell.expiryLabel.text = getExpiryLabel(fromDate: challenges.expiryDate as Date)
-            cell.totalVotesLabel.text = String(challenges.getTotalVotes()) + " total votes"
+            cell.expiryLabel.text = getExpiryLabel(fromDate: challenges?.expiryDate as! Date)
+            cell.totalVotesLabel.text = String(challenges!.getTotalVotes()) + " total votes"
             
-            if challenges.wasTakeSubmittedByUser(withName: "John") {
+            if challenges!.wasTakeSubmittedByUser(withName: "John") {
                 cell.drawButton.isEnabled = false
             } else {
                 cell.drawButton.isEnabled = true
@@ -208,6 +221,7 @@ class ChallengeViewController: UIViewController,
     func refresh() {
         
         tableView.reloadData()
+        updateTabBarBadges()
         tableView.refreshControl?.endRefreshing()
     }
     
@@ -217,7 +231,7 @@ class ChallengeViewController: UIViewController,
         switch(tabBarControl.selectedItem!.tag) {
         
         case 0: // User Challenges
-            challenge = UserDatabase.global.John().challenges![button.tag]
+            challenge = UserDatabase.global.John().getChallenge(button.tag)
         case 1: // Friend Challenges
             challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
                                                                atIndex: button.tag)
@@ -244,7 +258,7 @@ class ChallengeViewController: UIViewController,
         switch(tabBarControl.selectedItem!.tag)
         {
         case 0: // User Challenges
-            challenge = UserDatabase.global.John().challenges![button.tag]
+            challenge = UserDatabase.global.John().getChallenge(button.tag)
         case 1: // Friend Challenges
             challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
                                                                atIndex: button.tag)
@@ -255,11 +269,6 @@ class ChallengeViewController: UIViewController,
         selectedRow = IndexPath(row: button.tag, section: 0)
         let tcvc = TakesCollectionViewController(collectionViewLayout: layout, withChallenge: challenge!)
         navigationController?.pushViewController(tcvc, animated: true)
-    }
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        
-        tableView.reloadData()
     }
     
     // MARK: Private Methods
@@ -302,4 +311,21 @@ class ChallengeViewController: UIViewController,
         return String(numSecondsRemaining) + " seconds remaining"
     }
     
+    private func updateTabBarBadges() {
+        let numActiveUserChallenges = UserDatabase.global.John().getNumChallenges() -
+            UserDatabase.global.John().getNumExpiredChallenges()
+        userChallengeTabBarItem.badgeValue = String(numActiveUserChallenges)
+        
+        let numActiveFriendChallenges = UserDatabase.global.GetNumberOfActiveFriendChallenges(forUserWithName: UserDatabase.global.John().name)
+        friendChallengeTabBarItem.badgeValue = String(numActiveFriendChallenges)
+    }
+    
+}
+
+extension ChallengeViewController: UITabBarDelegate {
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        tableView.reloadData()
+    }
 }

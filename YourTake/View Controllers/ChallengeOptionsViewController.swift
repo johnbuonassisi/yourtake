@@ -142,11 +142,9 @@ class ChallengeOptionsViewController: UITableViewController,
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
             let friends = UserDatabase.global.GetUser(userName)?.friends
             
-            print("Section: 2, Row: \(indexPath.row), isOn: \(cell.friendSwitch!.isOn)")
             cell.friendName.text = friends?[indexPath.row]
             cell.friendSwitch.setOn(friendSelectionTracker.isFriendSelected(withName: cell.friendName.text!),
                                     animated: true)
-            print("Section: 2, Row: \(indexPath.row), isOn: \(cell.friendSwitch!.isOn)")
             
             cell.friendSwitch.addTarget(self,
                                         action: #selector(friendSwitchTapped),
