@@ -69,11 +69,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxChallenge.swift; sourceTree = "<group>"; wrapsLines = 1; };
-		332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxClient.swift; sourceTree = "<group>"; };
-		332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxTake.swift; sourceTree = "<group>"; };
-		332283EF1E05D5E4008647E4 /* BaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaClient.swift; sourceTree = "<group>"; };
-		332283F81E072F12008647E4 /* LocalClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalClient.swift; sourceTree = "<group>"; };
+		332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaasBoxChallenge.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaasBoxClient.swift; sourceTree = "<group>"; };
+		332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaasBoxTake.swift; sourceTree = "<group>"; };
+		332283EF1E05D5E4008647E4 /* BaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaClient.swift; sourceTree = "<group>"; };
+		332283F81E072F12008647E4 /* LocalClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocalClient.swift; sourceTree = "<group>"; };
 		520DA5F61DF0C64B00695756 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpViewController.xib; path = "View Controllers/SignUpViewController.xib"; sourceTree = "<group>"; };
 		520DA5F81DF0CC3500695756 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = "View Controllers/SignUpViewController.swift"; sourceTree = "<group>"; };
 		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
