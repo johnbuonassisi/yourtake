@@ -108,6 +108,10 @@ class TakesCollectionViewController: UICollectionViewController
     
     @IBAction func takeCellVoteButtonPressed(button: UIButton) {
         
+        if challenge!.isExpired() {
+            return
+        }
+        
         let cell = button.superview?.superview?.superview as! TakeCell
         challenge!.voteFor(user: cell.submitterName.text!,
                            byVoter: "John",

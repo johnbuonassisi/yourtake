@@ -81,5 +81,16 @@ class Challenge: NSObject {
         return false
     }
     
+    func isExpired() -> Bool {
+        
+        let currentDate = Date()
+        let result = expiryDate.compare(currentDate)
+        if result == .orderedAscending {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     
 }

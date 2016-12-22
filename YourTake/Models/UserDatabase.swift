@@ -45,44 +45,46 @@ class UserDatabase: NSObject {
         
         // Add johns challenges: They array that stores the challenges will be sorted
         // by expiryDate on insertion
-        john.add(challenge: Challenge.init(owner: john,
-                                           image: johnsChallengeImage,
-                                           friends: johnsFriends,
-                                           expiryDate: challengeExpiryDate1))
-        john.add(challenge: Challenge.init(owner: john,
-                                           image: johnsChallengeImage2,
-                                           friends: johnsFriends,
-                                           expiryDate: challengeExpiryDate2))
         
-        // Add ashlings challenges
-        ashling.add(challenge: Challenge(owner: ashling,
-                                         image: ashlingsChallengeImage,
-                                         friends: ashlingsFriends,
-                                         expiryDate: challengeExpiryDate3))
+        let johnChallenge1 = Challenge(owner: john,
+                                       image: johnsChallengeImage,
+                                       friends: johnsFriends,
+                                       expiryDate: challengeExpiryDate1)
+        johnChallenge1.takes = [Take(image: ashlingsResponse, name: "Ashling"),
+                                       Take(image: petersResponse, name: "Peter"),
+                                       Take(image: andreasResponse, name: "Andrea"),
+                                       Take(image: anthonysResponse, name: "Anthony")];
         
+        johnChallenge1.voteFor(user: "Anthony", byVoter: "Peter", andSort: false)
+        johnChallenge1.voteFor(user: "Anthony", byVoter: "Andrea", andSort: false)
+        johnChallenge1.voteFor(user: "Andrea", byVoter: "Ashling", andSort: false)
+        johnChallenge1.voteFor(user: "Peter", byVoter: "Anthony", andSort: true)
         
-        // Add takes and votes to Johns Challenges
-        john.getChallenge(0)!.takes = [Take(image: ashlingsResponse, name: "Ashling"),
-                                           Take(image: petersResponse, name: "Peter"),
-                                           Take(image: andreasResponse, name: "Andrea"),
-                                           Take(image: anthonysResponse, name: "Anthony")];
-        
-        john.getChallenge(0)!.voteFor(user: "Anthony", byVoter: "Peter", andSort: false)
-        john.getChallenge(0)!.voteFor(user: "Anthony", byVoter: "Andrea", andSort: false)
-        john.getChallenge(0)!.voteFor(user: "Andrea", byVoter: "Ashling", andSort: false)
-        john.getChallenge(0)!.voteFor(user: "Peter", byVoter: "Anthony", andSort: true)
+        // Add Johns Challenges
+        john.add(challenge: johnChallenge1)
+        john.add(challenge: Challenge(owner: john,
+                                      image: johnsChallengeImage2,
+                                      friends: johnsFriends,
+                                      expiryDate: challengeExpiryDate2))
         
         // Add takes and votes to Ashlings Challenges
-        ashling.getChallenge(0)!.takes = [Take(image: johnsResponse2, name: "John"),
-                                              Take(image: petersResponse2, name: "Peter"),
-                                              Take(image: andreasResponse2, name: "Andrea"),
-                                              Take(image: anthonysResponse2, name: "Anthony")]
+        let ashlingChallenge1 = Challenge(owner: ashling,
+                                          image: ashlingsChallengeImage,
+                                          friends: ashlingsFriends,
+                                          expiryDate: challengeExpiryDate3)
         
-        ashling.getChallenge(0)!.voteFor(user: "Peter", byVoter: "Andrea", andSort: false)
-        ashling.getChallenge(0)!.voteFor(user: "Peter", byVoter: "Anthony", andSort: false)
-        ashling.getChallenge(0)!.voteFor(user: "John", byVoter: "Peter", andSort: false)
-        ashling.getChallenge(0)!.voteFor(user: "Anthony", byVoter: "John", andSort: false)
+        ashlingChallenge1.takes = [Take(image: johnsResponse2, name: "John"),
+                                          Take(image: petersResponse2, name: "Peter"),
+                                          Take(image: andreasResponse2, name: "Andrea"),
+                                          Take(image: anthonysResponse2, name: "Anthony")]
         
+        ashlingChallenge1.voteFor(user: "Peter", byVoter: "Andrea", andSort: false)
+        ashlingChallenge1.voteFor(user: "Peter", byVoter: "Anthony", andSort: false)
+        ashlingChallenge1.voteFor(user: "John", byVoter: "Peter", andSort: false)
+        ashlingChallenge1.voteFor(user: "Anthony", byVoter: "John", andSort: false)
+        
+        // Add Ashlings challenges
+        ashling.add(challenge: ashlingChallenge1)
         
         users = [john,
                  ashling,
