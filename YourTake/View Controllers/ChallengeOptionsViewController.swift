@@ -9,7 +9,6 @@
 import UIKit
 
 class ChallengeOptionsViewController: UITableViewController,
-                                      UIImagePickerControllerDelegate,
                                       UINavigationControllerDelegate {
     
     private let userName : String
@@ -17,6 +16,13 @@ class ChallengeOptionsViewController: UITableViewController,
     private var friendSelectionTracker : FriendListData
     private var countdownDuration : Double
     private let challengeImage : UIImage
+    
+    // Uploading View
+    let uploadActivityView = UIView()
+    let uploadingLabel = UILabel()
+    let spinner = UIActivityIndicatorView()
+    
+    var alert: UIAlertController!
     
     // MARK: Initializers
     
@@ -161,12 +167,18 @@ class ChallengeOptionsViewController: UITableViewController,
     
     @IBAction func doneButtonTapped() {
         
+        showUploadingAlert()
         let newChallenge = Challenge(owner: UserDatabase.global.John(),
                                      image: challengeImage,
                                      friends: friendSelectionTracker.getAllSelectedFriends(),
                                      expiryDate: NSDate(timeIntervalSinceNow: countdownDuration))
         UserDatabase.global.John().add(challenge: newChallenge)
-        _ = navigationController?.popToRootViewController(animated: false)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+            self.alert.dismiss(animated: true, completion: {
+                _ = self.navigationController?.popToRootViewController(animated: false)
+            })
+        })
     }
     
     @IBAction func allFriendsSwitchTapped(allFriendsSwitch: UISwitch) {
@@ -203,5 +215,48 @@ class ChallengeOptionsViewController: UITableViewController,
         countdownDuration = datePicker.countDownDuration
     }
     
+    // MARK: Private Methods
+    
+    private func setUploadingScreen() {
+        
+        let width: CGFloat = 120
+        let height: CGFloat = 120
+        let x = tableView.frame.width / 2 - width / 2
+        let y = tableView.frame.height / 2 - height / 2 - 50
+        uploadActivityView.frame = CGRect(x: x, y: y, width: width, height: height)
+        uploadActivityView.isHidden = true
+        uploadActivityView.backgroundColor = UIColor.black
+        
+        // set uploading text
+        uploadingLabel.textColor = UIColor.gray
+        uploadingLabel.textAlignment = .center
+        uploadingLabel.text = "Uploading..."
+        uploadingLabel.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
+        
+        // set spinner
+        spinner.activityIndicatorViewStyle = .gray
+        spinner.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        
+        uploadActivityView.addSubview(uploadingLabel)
+        uploadActivityView.addSubview(spinner)
+        
+        // add spinner to view
+        self.tableView.addSubview(uploadActivityView)
+    }
+    
+    private func showUploadingAlert() {
+        alert = UIAlertController(title: "Uploading",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        let indicator = UIActivityIndicatorView(frame: alert.view.bounds)
+        indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        indicator.activityIndicatorViewStyle = .gray
+        
+        alert.view.addSubview(indicator)
+        indicator.isUserInteractionEnabled = false
+        indicator.startAnimating()
+        
+        present(alert, animated: true, completion: nil)
+    }
 
 }
