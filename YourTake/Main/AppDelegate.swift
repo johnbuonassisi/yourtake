@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let challengeVc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
         navigationVc.pushViewController(challengeVc, animated: false)
         
-        let hasUserLoggedIn = true // TODO: Need to figure out how to do this
+        let hasUserLoggedIn = false // TODO: Need to figure out how to do this
         if !hasUserLoggedIn {
             // NavigationController -> Root: ChallengeViewController -> LoginViewController
             let signUpVc = SignUpViewController()

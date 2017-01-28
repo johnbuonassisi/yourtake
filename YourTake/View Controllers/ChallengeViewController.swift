@@ -59,7 +59,7 @@ class ChallengeViewController: UIViewController,
         
         let lbbi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.organize,
                                    target: self,
-                                   action: nil)
+                                   action: #selector(self.settingsButtonTapped))
         navigationItem.rightBarButtonItem = rbbi
         navigationItem.leftBarButtonItem = lbbi
         
@@ -161,6 +161,13 @@ class ChallengeViewController: UIViewController,
         let ppvc = PhotoPreviewViewController(nibName: "PhotoPreviewView", bundle: nil)
         navigationController?.pushViewController(ppvc, animated: false)
         
+    }
+    
+    @IBAction func settingsButtonTapped() {
+        
+        let settingsStoryboard = UIStoryboard(name: "SettingsViewController", bundle: nil)
+        let settingsViewController = settingsStoryboard.instantiateViewController(withIdentifier: "Settings")
+        navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
     @IBAction func takePhoto(_ sender: UIBarButtonItem) {
