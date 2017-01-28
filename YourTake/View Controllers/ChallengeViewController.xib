@@ -11,8 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeViewController" customModule="YourTake" customModuleProvider="target">
             <connections>
+                <outlet property="friendChallengeTabBarItem" destination="sIh-1f-d6g" id="mUL-mt-nRI"/>
                 <outlet property="tabBarControl" destination="2XA-7C-NbP" id="9YD-f8-3NQ"/>
                 <outlet property="tableView" destination="13A-3U-HqL" id="WLU-fl-1L6"/>
+                <outlet property="userChallengeTabBarItem" destination="vCO-3l-gth" id="nb4-5p-uAj"/>
                 <outlet property="view" destination="YsZ-DT-RGu" id="5rI-pX-DV5"/>
             </connections>
         </placeholder>
@@ -21,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="playback" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="13A-3U-HqL">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="playback" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="13A-3U-HqL">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
