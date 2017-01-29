@@ -6,37 +6,43 @@
 //  Copyright © 2016 Enovi Inc. All rights reserved.
 //
 
+typealias BaBoolCompletionBlock = (Bool) -> Void
+typealias BaStringCompletionBlock = (String) -> Void
+typealias BaStringsCompletionBlock = ([String]) -> Void
+typealias BaUserCompletionBlock = (User?) -> Void
+typealias BaChallengeCompletionBlock = (Challenge?) -> Void
+typealias BaChallengesCompletionBlock = ([Challenge]) -> Void
+typealias BaTakeCompletionBlock = (Take?) -> Void
+typealias BaTakesCompletionBlock = ([Take]) -> Void
+
 protocol BaClient {
     // admin
-    func Register(username: String, password: String) -> Bool
-    func Login(username: String, password: String) -> Bool
-    func ChangePassword(oldPassword: String, newPassword: String) -> Bool
-    func ResetPassword(username: String) -> Bool
-
-    // friends
-    func GetFriends() -> [String]?
-    func AddFriend(username: String) -> Bool
-    func RemoveFriend(username: String) -> Bool
-
+    func register(username: String, password: String, email: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    func login(username: String, password: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    func changePassword(oldPassword: String, newPassword: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    func resetPassword(for username: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    
+    // social
+    func getUser(completion: @escaping BaUserCompletionBlock) -> Void
+    func getFriends(completion: @escaping BaStringsCompletionBlock) -> Void
+    func addFriend(_ username: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    func removeFriend(_ username: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    
     // challenges
-    func GetChallenge(id: String) -> Challenge?
-    func GetChallengeTakes(id: String) -> [Take]?
-    func CreateChallenge(challenge: Challenge) -> Bool
-    func RemoveChallenge(id: String) -> Bool
-
+    func getChallenge(with id: String, completion: @escaping BaChallengeCompletionBlock) -> Void
+    func getChallenges(for friends: Bool, completion: @escaping BaChallengesCompletionBlock) -> Void
+    func getChallenges(to date: Date, with maxCount: UInt, for friends: Bool, completion: @escaping BaChallengesCompletionBlock) -> Void
+    func createChallenge(_ challenge: Challenge, completion: @escaping BaBoolCompletionBlock) -> Void
+    func removeChallenge(with id: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    
     // takes
-    func GetTake(id: String) -> Take?
-    func GetTakeChallenge(id: String) -> Challenge?
-    func CreateTake(take: Take) -> Bool
-    func RemoveTake(id: String) -> Bool
-
-    // users
-    func GetUser(username: String) -> User?
-    func GetUserFriends(username: String) -> [String]?
-    func GetUserChallenges(username: String) -> [Challenge]?
-    func GetUserTakes(username: String) -> [Take]?
-
+    func getTake(with id: String, completion: @escaping BaTakeCompletionBlock) -> Void
+    func getTakes(for challengeId: String, completion: @escaping BaTakesCompletionBlock) -> Void
+    func createTake(_ take: Take, completion: @escaping BaBoolCompletionBlock) -> Void
+    func removeTake(with id: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    
     // vote
-    func VoteTake(id: String) -> Bool
-    func UnvoteTake(id: String) -> Bool
+    func vote(with takeId: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    func unvote(with takeId: String, completion: @escaping BaBoolCompletionBlock) -> Void
 }
+

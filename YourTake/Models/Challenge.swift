@@ -9,77 +9,49 @@
 import UIKit
 
 class Challenge: NSObject {
-    
-    weak var owner : User?
+    let id : String
+    let author : String
     let image : UIImage
-    let friends : [String]
-    let expiryDate : NSDate
+    let recipients : [String]
+    let duration : Date
     
-    private var voteTracker : VoteTracker
-    var takes = [Take]()
-    
-    init(owner: User, image: UIImage, friends: [String], expiryDate: NSDate)
-    {
-        self.owner = owner
+    init(id: String, author: String, image: UIImage, recipients: [String], duration: Date) {
+        self.id = id
+        self.author = author
         self.image = image
-        self.expiryDate = expiryDate
-        self.friends = friends
-        
-        var allUsers = friends;
-        allUsers.append(owner.name)
-        self.voteTracker = VoteTracker(withUsers: allUsers)
+        self.recipients = recipients
+        self.duration = duration
     }
     
-    func Submit(response: Take)
-    {
-        takes.append(response)
-    }
-    
-    func voteFor(user: String, byVoter voter: String, andSort areTakesToBeSorted: Bool)
-    {
-        let _ : Bool = voteTracker.vote(forUser: user, ByVoter: voter)
-        // re-order the takes
-        if areTakesToBeSorted {
-            takes = takes.sorted(by: {s1, s2 in return
-                voteTracker.getNumVotes(forUser: s1.name) > voteTracker.getNumVotes(forUser: s2.name)})
+    func isValid() -> Bool {
+        if self.image.size.equalTo(CGSize()) || self.duration.timeIntervalSinceNow <= 0 || self.recipients.isEmpty {
+            return false
         }
+        return true
+    }
+    
+    func submit(_ take: Take) -> Bool {
+        let backendClient = Backend.sharedInstance.getClient()
         
-    }
-    
-    func sortTakes() {
-        takes = takes.sorted(by: {s1, s2 in return
-            voteTracker.getNumVotes(forUser: s1.name) > voteTracker.getNumVotes(forUser: s2.name)})
-    }
-    
-    func getNumberOfVotes(forUser user: String) -> Int
-    {
-        return voteTracker.getNumVotes(forUser: user)
-    }
-    
-    func getTotalVotes() -> Int
-    {
-        var totalVotes : Int = 0
-        for friend : String in friends
-        {
-            totalVotes += voteTracker.getNumVotes(forUser: friend)
-        }
-        return totalVotes
-    }
-    
-    func getVoteOf(user : String) -> String?
-    {
-        return voteTracker.getVotedForUser(byVoter: user)
-    }
-    
-    func wasTakeSubmittedByUser(withName name: String) -> Bool {
+        var baSuccess = false
+        backendClient.createTake(take, completion: { (success) -> Void in baSuccess = success })
         
-        for take : Take in takes {
-            if take.name == name {
-                return true
+        return baSuccess
+    }
+    
+    func getTotalVotes() -> UInt {
+        var totalVotes: UInt = 0
+        
+        let backendClient = Backend.sharedInstance.getClient()
+        
+        var takes = [Take]()
+        backendClient.getTakes(for: self.id, completion: { (objects) -> Void in takes = objects })
+        if !takes.isEmpty {
+            for take in takes {
+                totalVotes += take.votes
             }
         }
-        return false
+        
+        return totalVotes
     }
-    
-    
 }

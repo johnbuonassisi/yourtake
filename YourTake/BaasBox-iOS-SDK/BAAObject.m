@@ -35,6 +35,7 @@
         _objectId = dictionary[@"id"];
         _version = [dictionary[@"@version"] intValue];
         _creationDate = [[BaasBox dateFormatter] dateFromString:dictionary[@"_creation_date"]];
+        _author = dictionary[@"_author"];
 
     }
     

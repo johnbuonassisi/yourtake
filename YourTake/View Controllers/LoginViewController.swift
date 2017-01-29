@@ -17,14 +17,13 @@ class LoginViewController: UIViewController {
     // Outlets are "Implicitly Unwrapped Optional Properties"
     // AKA, they are assumed to not be nil and therefore
     // do not need to be unwrapped when used
-    @IBOutlet weak var emailAddressTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
-    @IBOutlet weak var emailAddressSwitch: UISwitch!
     @IBOutlet weak var passwordSwitch: UISwitch!
     
     // MARK: Initializers
@@ -39,7 +38,7 @@ class LoginViewController: UIViewController {
     // MARK: UIViewController Methods
     override func viewDidLoad() {
         
-        emailAddressTextField.delegate = self
+        usernameTextField.delegate = self
         passwordTextField.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -55,28 +54,27 @@ class LoginViewController: UIViewController {
     // MARK: Actions
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
-        let isLoginSuccessful = UserDatabase.global.Login(username: emailAddressTextField!.text!,
-                                                          password: passwordTextField!.text!)
-        if isLoginSuccessful {
-            
-            // Present user with an alert and dismiss alert after 3 seconds
-            let alert = UIAlertController(title: "Yay!",
-                                          message: "You were successfully logged in",
-                                          preferredStyle: .alert)
-            present(alert, animated: true, completion: nil)
-            
-            let time = DispatchTime.now() + 3
-            DispatchQueue.main.asyncAfter(deadline: time, execute: {
-                alert.dismiss(animated: true, completion:{
-                    _ = self.navigationController?.popToRootViewController(animated: true)
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.login(username: usernameTextField!.text!, password: passwordTextField!.text!, completion: { (success) -> Void in
+            if success {
+                // Present user with an alert and dismiss alert after 3 seconds
+                let alert = UIAlertController(title: "Yay!",
+                                              message: "You were successfully logged in",
+                                              preferredStyle: .alert)
+                self.present(alert, animated: true, completion: nil)
+                
+                let time = DispatchTime.now() + 3
+                DispatchQueue.main.asyncAfter(deadline: time, execute: {
+                    alert.dismiss(animated: true, completion:{
+                        _ = self.navigationController?.popToRootViewController(animated: true)
+                    })
                 })
-            })
-        } else {
-            
-            presentAlert(withTitle: "Ooops!",
-                         withMessage: "Something went wrong, try again",
-                         withActionTitle: "Let me try again")
-        }
+            } else {
+                self.presentAlert(withTitle: "Ooops!",
+                             withMessage: "Something went wrong, try again",
+                             withActionTitle: "Let me try again")
+            }
+        })
     }
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
@@ -87,16 +85,6 @@ class LoginViewController: UIViewController {
         
         let forgotPasswordVc = ForgotPasswordViewController()
         navigationController?.pushViewController(forgotPasswordVc, animated: true)
-    }
-    
-    @IBAction func emailAddressChanged(_ sender: UITextField) {
-        
-        if isValidEmail(emailAddress: sender.text!) {
-            emailAddressSwitch.setOn(true, animated: true)
-        }
-        else {
-            emailAddressSwitch.setOn(false, animated: true)
-        }
     }
     
     @IBAction func passwordChanged(_ sender: UITextField) {
@@ -134,12 +122,6 @@ class LoginViewController: UIViewController {
         })
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-    }
-    
-    private func isValidEmail(emailAddress: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: emailAddress)
     }
 }
 

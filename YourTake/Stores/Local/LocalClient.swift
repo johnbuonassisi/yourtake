@@ -6,92 +6,83 @@
 //  Copyright © 2016 Enovi Inc. All rights reserved.
 //
 
-class LocalClient: BaClient {
+/*class LocalClient: BaClient {
     var currentUser: User?
-    var challenges: [Challenge]?
-    var takes: [Take]?
+    var challenges = [Challenge]()
+    var takes = [Take]()
     
-    func Register(username: String, password: String) -> Bool {
+    func register(username: String, password: String) -> Bool {
         return false
     }
     
-    func Login(username: String, password: String) -> Bool {
+    func login(username: String, password: String, completion: @escaping (Bool) -> Void) -> Void {
+    }
+    
+    func changePassword(oldPassword: String, newPassword: String) -> Bool {
         return false
     }
     
-    func ChangePassword(oldPassword: String, newPassword: String) -> Bool {
+    func resetPassword(for username: String) -> Bool {
         return false
     }
     
-    func ResetPassword(username: String) -> Bool {
-        return false
-    }
-    
-    func GetFriends() -> [String]? {
+    func getUser() -> User? {
         return nil
     }
     
-    func AddFriend(username: String) -> Bool {
+    func getFriends() -> [String] {
+        return [String]()
+    }
+    
+    func addFriend(_ username: String) -> Bool {
         return false
     }
     
-    func RemoveFriend(username: String) -> Bool {
+    func removeFriend(_ username: String) -> Bool {
         return false
     }
     
-    func GetChallenge(id: String) -> Challenge? {
+    func getChallenge(with id: String) -> Challenge? {
         return nil
     }
     
-    func GetChallengeTakes(id: String) -> [Take]? {
-        return nil
+    func getChallenges(for friends: Bool) -> [Challenge] {
+        return [Challenge]()
     }
     
-    func CreateChallenge(challenge: Challenge) -> Bool {
+    func getChallenges(to date: Date, with maxCount: UInt, for friends: Bool) -> [Challenge] {
+        return [Challenge]()
+    }
+    
+    func createChallenge(_ challenge: Challenge) -> Bool {
         return false
     }
     
-    func RemoveChallenge(id: String) -> Bool {
+    func removeChallenge(with id: String) -> Bool {
         return false
     }
     
-    func GetTake(id: String) -> Take? {
+    func getTake(with id: String) -> Take? {
         return nil
     }
     
-    func GetTakeChallenge(id: String) -> Challenge? {
-        return nil
+    func getTakes(for challengeId: String) -> [Take] {
+        return [Take]()
     }
     
-    func CreateTake(take: Take) -> Bool {
+    func createTake(_ take: Take) -> Bool {
         return false
     }
     
-    func RemoveTake(id: String) -> Bool {
+    func removeTake(with id: String) -> Bool {
         return false
     }
     
-    func GetUser(username: String) -> User? {
-        return nil
-    }
-    
-    func GetUserFriends(username: String) -> [String]? {
-        return nil
-    }
-    
-    func GetUserChallenges(username: String) -> [Challenge]? {
-        return nil
-    }
-    
-    func GetUserTakes(username: String) -> [Take]? {
-        return nil
-    }
-    
-    func VoteTake(id: String) -> Bool {
+    func vote(with takeId: String) -> Bool {
         return false
     }
     
-    func UnvoteTake(id: String) -> Bool {
+    func unvote(with takeId: String) -> Bool {
         return false
     }
-}
+}*/

@@ -24,6 +24,10 @@ class ChallengeViewController: UIViewController,
     
     // MARK: Private Member Variables
     
+    private var user: User?
+    private var userChallenges = [Challenge]()
+    private var friendChallenges = [Challenge]()
+    
     private var selectedRow : IndexPath?
     private var ip : UIImagePickerController?
     
@@ -68,11 +72,15 @@ class ChallengeViewController: UIViewController,
         // Setup the tab bar control
         tabBarControl.delegate = self
         tabBarControl.selectedItem = tabBarControl.items?[0]
-    
+        
+        // get initial data from source
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.getUser(completion: { (object) -> Void in self.user = object})
+        backendClient.getChallenges(for: false, completion: { (objects) -> Void in self.userChallenges = objects})
+        backendClient.getChallenges(for: true, completion: { (objects) -> Void in self.friendChallenges = objects})
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         // Reload a row that was previously selected
         if let selectedRow = selectedRow {
             tableView.reloadRows(at: [selectedRow], with: UITableViewRowAnimation.none)
@@ -83,28 +91,21 @@ class ChallengeViewController: UIViewController,
     // MARK: UITableViewDelegate Methods
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(tableView.frame.width + 2*50) // 50 pts for header, 50 pts for footer
+        return CGFloat(tableView.frame.width + 2 * 50) // 50 pts for header, 50 pts for footer
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let john = UserDatabase.global.John()
-        switch(tabBarControl.selectedItem!.tag){
-        
-        case 0: // User Challenges
-            // Client
-            return john.challenges!.count
-            
-        case 1: // Friend Challenges
-            // Client
-            return UserDatabase.global.GetNumberOfFriendChallenges(forUserWithName: john.name)
-        default: // ??
+        switch(tabBarControl.selectedItem!.tag) {
+        case 0:
+            return userChallenges.count
+        case 1:
+            return friendChallenges.count
+        default:
             return 0
-            
         }
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        
         return true
     }
     
@@ -113,61 +114,37 @@ class ChallengeViewController: UIViewController,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCellTest",
                                                                  for: indexPath) as! ChallengeCell
-        switch(tabBarControl.selectedItem!.tag){
-        
-        case 0: // User Challenges
+        var challenge: Challenge?
+        switch(tabBarControl.selectedItem!.tag) {
+        case 0:
+            challenge = userChallenges[indexPath.row]
             
-            cell.drawButton.addTarget(self, action: #selector(cellDrawButtonPressed), for: .touchUpInside)
-            cell.voteButton.addTarget(self, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
+            cell.drawButton.addTarget(indexPath.row, action: #selector(cellDrawButtonPressed), for: .touchUpInside)
+            cell.voteButton.addTarget(indexPath.row, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
+        case 1:
+            challenge = friendChallenges[indexPath.row]
             
-            // Client
-            let john = UserDatabase.global.John()
-            let challenges = john.challenges![indexPath.row]
-            
-            cell.challengeImage.image = challenges.image
-            cell.name.text = john.name
-            cell.expiryLabel.text = getExpiryLabel(fromDate: challenges.expiryDate as Date)
-            cell.totalVotesLabel.text = String(challenges.getTotalVotes()) + " total votes"
-            
-            if challenges.wasTakeSubmittedByUser(withName: "John") {
-                cell.drawButton.isEnabled = false
-            } else {
-                cell.drawButton.isEnabled = true
-            }
-            
-            cell.drawButton.tag = indexPath.row
-            cell.voteButton.tag = indexPath.row
-            
-            return cell
-            
-        case 1: // Friend Challenges
-            
-            cell.drawButton.addTarget(self, action: #selector(cellDrawButtonPressed), for: UIControlEvents.touchUpInside)
-            cell.voteButton.addTarget(self, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
-                    
-            // Client
-            let john = UserDatabase.global.John()
-            let challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: john.name, atIndex: indexPath.row)
-            
-            cell.challengeImage.image = challenge!.image
-            cell.name.text = challenge!.owner!.name
-            cell.expiryLabel.text = getExpiryLabel(fromDate: challenge!.expiryDate as Date)
-            cell.totalVotesLabel.text = String(challenge!.getTotalVotes()) + " total votes"
-            
-            if challenge!.wasTakeSubmittedByUser(withName: "John") {
-                cell.drawButton.isEnabled = false
-            } else {
-                cell.drawButton.isEnabled = true
-            }
-            
-            cell.drawButton.tag = indexPath.row
-            cell.voteButton.tag = indexPath.row
-            
-            return cell
-            
-        default: // ??
+            cell.drawButton.addTarget(indexPath.row, action: #selector(cellDrawButtonPressed), for: UIControlEvents.touchUpInside)
+            cell.voteButton.addTarget(indexPath.row, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
+        default:
             return cell
         }
+        
+        if challenge != nil {
+            cell.id = challenge!.id
+            cell.challengeImage.image = challenge!.image
+            cell.name.text = challenge!.author
+            cell.expiryLabel.text = getExpiryLabel(fromDate: challenge!.duration as Date)
+            cell.totalVotesLabel.text = String(challenge!.getTotalVotes()) + " total votes"
+            
+            if challenge!.author == user?.username {
+                cell.drawButton.isEnabled = false
+            } else {
+                cell.drawButton.isEnabled = true
+            }
+        }
+        
+        return cell
     }
     
     
@@ -206,53 +183,49 @@ class ChallengeViewController: UIViewController,
     }
     
     func refresh() {
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.getUser(completion: { (object) -> Void in self.user = object})
+        backendClient.getChallenges(for: false, completion: { (objects) -> Void in self.userChallenges = objects})
+        backendClient.getChallenges(for: true, completion: { (objects) -> Void in self.friendChallenges = objects})
         
         tableView.reloadData()
         tableView.refreshControl?.endRefreshing()
     }
     
-    func cellDrawButtonPressed(button : UIButton){
-        
-        let challenge: Challenge?
+    func cellDrawButtonPressed(index : Int) {
+        var challenge: Challenge?
         switch(tabBarControl.selectedItem!.tag) {
-        
-        case 0: // User Challenges
-            challenge = UserDatabase.global.John().challenges![button.tag]
-        case 1: // Friend Challenges
-            challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
-                                                               atIndex: button.tag)
-        default:
-            challenge = nil
+        case 0:
+            challenge = userChallenges[index]
+        case 1:
+            challenge = friendChallenges[index]
+        default: break
         }
         
         let dvc: DrawViewController = DrawViewController(nibName: "DrawViewController",
                                                          bundle: Bundle.main,
                                                          withChallenge: challenge!)
         
-        selectedRow = IndexPath(row: button.tag, section: 0)
+        selectedRow = IndexPath(row: index, section: 0)
         navigationController?.pushViewController(dvc, animated: true)
         dvc.loadViewIfNeeded()
         dvc.drawingView.setBackground(withImage: challenge?.image)
     }
     
-    func cellVoteButtonPressed(button: UIButton) {
-        
+    func cellVoteButtonPressed(index: Int) {
         let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
         
-        let challenge : Challenge?
-        switch(tabBarControl.selectedItem!.tag)
-        {
-        case 0: // User Challenges
-            challenge = UserDatabase.global.John().challenges![button.tag]
-        case 1: // Friend Challenges
-            challenge = UserDatabase.global.GetFriendChallenge(forUserWithName: UserDatabase.global.John().name,
-                                                               atIndex: button.tag)
-        default:
-            challenge = nil
+        var challenge: Challenge?
+        switch(tabBarControl.selectedItem!.tag) {
+        case 0:
+            challenge = userChallenges[index]
+        case 1:
+            challenge = friendChallenges[index]
+        default: break
         }
         
-        selectedRow = IndexPath(row: button.tag, section: 0)
+        selectedRow = IndexPath(row: index, section: 0)
         let tcvc = TakesCollectionViewController(collectionViewLayout: layout, withChallenge: challenge!)
         navigationController?.pushViewController(tcvc, animated: true)
     }

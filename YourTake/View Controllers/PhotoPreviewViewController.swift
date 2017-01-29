@@ -73,7 +73,7 @@ class PhotoPreviewViewController: UIViewController,
     }
     
     @IBAction func usePhoto(_ sender: UIBarButtonItem) {
-        let covc = ChallengeOptionsViewController(withUser: "John", andImage: previewImage.image!)
+        let covc = ChallengeOptionsViewController(withImage: previewImage.image!)
         navigationController?.pushViewController(covc, animated: true)
     }
     

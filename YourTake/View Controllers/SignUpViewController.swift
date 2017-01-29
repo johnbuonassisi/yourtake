@@ -50,28 +50,31 @@ class SignUpViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func continueButtonPressed(_ sender: UIButton) {
-        let isRegistered = UserDatabase.global.Register(username: displayNameTextField.text!,
-                                                        password: passwordTextField.text!)
-        if isRegistered {
-            
-            // Present user with an alert and dismiss alert after 3 seconds
-            let alert = UIAlertController(title: "Welcome to YourTake!",
-                                          message: "Your signup was successful",
-                                          preferredStyle: .alert)
-            present(alert, animated: true, completion: nil)
-            
-            let time = DispatchTime.now() + 3
-            DispatchQueue.main.asyncAfter(deadline: time, execute: {
-                alert.dismiss(animated: true, completion:{
-                    _ = self.navigationController?.popToRootViewController(animated: true)
-                })
-            })
-            
-        } else {
-            presentAlert(withTitle: "Ooops!",
-                         withMessage: "Something went wrong, try again",
-                         withActionTitle: "Let me try again")
-        }
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.register(
+            username: displayNameTextField!.text!,
+            password: passwordTextField!.text!,
+            email: emailAddressTextField!.text!,
+            completion: { (success) -> Void in
+                if success {
+                    // Present user with an alert and dismiss alert after 3 seconds
+                    let alert = UIAlertController(title: "Welcome to YourTake!",
+                                                  message: "Your signup was successful",
+                                                  preferredStyle: .alert)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    let time = DispatchTime.now() + 3
+                    DispatchQueue.main.asyncAfter(deadline: time, execute: {
+                        alert.dismiss(animated: true, completion:{
+                            _ = self.navigationController?.popToRootViewController(animated: true)
+                        })
+                    })
+                } else {
+                    self.presentAlert(withTitle: "Ooops!",
+                                 withMessage: "Something went wrong, try again",
+                                 withActionTitle: "Let me try again")
+                }
+        })
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {

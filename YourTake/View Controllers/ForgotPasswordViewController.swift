@@ -34,17 +34,18 @@ class ForgotPasswordViewController: UIViewController {
     @IBAction func resetPasswordButtonPressed(_ sender: UIButton) {
         
         // reset password for specified email address
-        let isPasswordReset = UserDatabase.global.ResetPassword(username: emailAddressTextField.text!)
-        
-        if isPasswordReset {
-            presentAlertAndPop(withTitle: "Your password was reset",
-                               withMessage: "We have sent you an email containing your new password.",
-                               withActionTitle: "Dismiss")
-        } else {
-            presentAlert(withTitle: "Ooops!",
-                         withMessage: "Something went wrong, try again",
-                         withActionTitle: "Let me try again")
-        }
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.resetPassword(for: emailAddressTextField.text!, completion: { (success) -> Void in
+            if success {
+                self.presentAlertAndPop(withTitle: "Your password was reset",
+                                   withMessage: "We have sent you an email containing your new password.",
+                                   withActionTitle: "Dismiss")
+            } else {
+                self.presentAlert(withTitle: "Ooops!",
+                             withMessage: "Something went wrong, try again",
+                             withActionTitle: "Let me try again")
+            }
+        })
     }
     
     @IBAction func dismissKeyboard() {

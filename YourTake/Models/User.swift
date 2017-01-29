@@ -9,27 +9,14 @@
 import UIKit
 
 class User: NSObject {
+    let username : String
+    var friends : [String]
+    var votes : [String: String]
     
-    let name : String
-    let friends : [String]
-    var challenges: [Challenge]?
-    
-    init(name: String, friends: [String])
+    init(username: String, friends: [String], votes: [String: String])
     {
-        self.name = name;
-        self.friends = friends;
+        self.username = username
+        self.friends = friends
+        self.votes = votes
     }
-    
-    func add(challenge: Challenge)
-    {
-        if(challenges == nil)
-        {
-            challenges = [Challenge]()
-        }
-        
-        challenges!.append(challenge)
-        challenges = challenges!.sorted(by:
-            {c1, c2 in return c2.expiryDate as Date > c1.expiryDate as Date})
-    }
-
 }

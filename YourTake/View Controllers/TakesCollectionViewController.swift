@@ -11,8 +11,9 @@ import UIKit
 class TakesCollectionViewController: UICollectionViewController
 {
     // MARK: Member Variables
-    
-    let challenge : Challenge?
+    private var user: User?
+    private let challenge: Challenge?
+    private var takes = [Take]()
     
     // MARK: Initializers
     
@@ -32,7 +33,6 @@ class TakesCollectionViewController: UICollectionViewController
     // MARK: UIViewController Methods
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         let nib : UINib = UINib(nibName: "TakeCell", bundle: nil)
@@ -43,9 +43,10 @@ class TakesCollectionViewController: UICollectionViewController
         // Setup the navigation bar
         navigationItem.title = "Takes"
         
-        // Sort the takes
-        challenge?.sortTakes()
-        
+        // get initial data from source
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.getUser(completion: { (object) -> Void in self.user = object})
+        backendClient.getTakes(for: challenge!.id, completion: { (objects) -> Void in self.takes = objects})
     }
     
     // MARK: UICollectionViewDelegate Methods
@@ -55,7 +56,7 @@ class TakesCollectionViewController: UICollectionViewController
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return challenge!.takes.count
+        return takes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -66,12 +67,15 @@ class TakesCollectionViewController: UICollectionViewController
                                   action: #selector(takeCellVoteButtonPressed),
                                   for: UIControlEvents.touchUpInside)
         
-        let take = challenge!.takes[indexPath.row] // The data source has the challenges pre-sorted
+        var take: Take?
+        if indexPath.row >= 0 && indexPath.row < takes.count {
+            take = takes[indexPath.row]
+        }
         
-        cell.image.image = take.image
-        cell.submitterName.text = take.name
-        cell.numberOfVotes.text = String(challenge!.getNumberOfVotes(forUser: take.name))
-        if(challenge!.getVoteOf(user : "John") == take.name)
+        cell.image.image = take!.overlay
+        cell.submitterName.text = take!.author
+        cell.numberOfVotes.text = String(take!.votes)
+        if(user?.votes[challenge!.id] == take!.id)
         {
             let likedImage = UIImage(named: "Liked", in: nil, compatibleWith: nil)
             cell.voteButton.setImage(likedImage, for: UIControlState.normal)
@@ -87,35 +91,38 @@ class TakesCollectionViewController: UICollectionViewController
     
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
-        
-        let take = challenge!.takes[indexPath.row]
+        var take: Take?
+        if indexPath.row >= 0 && indexPath.row < takes.count {
+            take = takes[indexPath.row]
+        }
         
         // Hardcode
         let vc = UIViewController()
-        let fullImage = UIImageView(image:take.image)
+        let fullImage = UIImageView(image:take!.overlay)
         fullImage.frame = CGRect(x: 0,
                                  y: navigationController!.navigationBar.frame.height,
                                  width: collectionView.frame.width,
                                  height: collectionView.frame.width)
         vc.view.backgroundColor = UIColor.white
         vc.view.addSubview(fullImage)
-        vc.navigationItem.title = take.name
+        vc.navigationItem.title = take!.author
         navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     // MARK: Action Methods
     
-    @IBAction func takeCellVoteButtonPressed(button: UIButton) {
+    @IBAction func takeCellVoteButtonPressed(index: Int) {
+        var take: Take?
+        if index >= 0 && index < takes.count {
+            take = takes[index]
+        }
         
-        let cell = button.superview?.superview?.superview as! TakeCell
-        challenge!.voteFor(user: cell.submitterName.text!,
-                           byVoter: "John",
-                           andSort: false) // Don't allow the model to sort the takes at this point
-                                           // Sorting is only done when the view is loaded
+        if take != nil {
+            take!.vote()
+        }
+        
         self.collectionView?.reloadData()
     }
-
 }
 
 // MARK: Layout Extension

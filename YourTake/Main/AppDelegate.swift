@@ -24,13 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let challengeVc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
         navigationVc.pushViewController(challengeVc, animated: false)
         
-        let hasUserLoggedIn = true // TODO: Need to figure out how to do this
-        if !hasUserLoggedIn {
-            // NavigationController -> Root: ChallengeViewController -> LoginViewController
-            let signUpVc = SignUpViewController()
-            navigationVc.pushViewController(signUpVc, animated: false)
-            // When user successfully logs in, the login view controller will be popped off the stack
-        }
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.login(username: "", password: "", completion: { (success) -> Void in
+            if !success {
+                let signUpVc = LoginViewController()
+                navigationVc.pushViewController(signUpVc, animated: false)
+            }
+        })
         
         window?.rootViewController = navigationVc
         window?.backgroundColor = UIColor.white

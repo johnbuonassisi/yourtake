@@ -13,15 +13,15 @@ class BaasBoxTake: BAAObject {
     var overlay: UIImage?
     var votes: UInt = 0
 
-    init(data: [String : Any]!) {
-        self.challengeId = data["challengeId"] as! String
-        self.overlay = data["overlay"] as? UIImage
-        self.votes = data["votes"] as! UInt
+    override init(dictionary: [AnyHashable : Any]!) {
+        self.challengeId = dictionary["challengeId"] as! String
+        self.overlay = dictionary["overlay"] as? UIImage
+        self.votes = dictionary["votes"] as! UInt
         
-        super.init(dictionary: data)
+        super.init(dictionary: dictionary)
      }
 
     override func collectionName() -> String {
-        return "take"
+        return "document/takes"
     }
 }

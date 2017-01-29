@@ -9,14 +9,37 @@
 import UIKit
 
 class Take: NSObject {
+    let id : String
+    let challengeId : String
+    let author : String
+    let overlay : UIImage
+    var votes : UInt
     
-    let image : UIImage
-    let name : String
-    
-    init(image: UIImage, name: String)
+    init(id: String, challengeId: String, author: String, overlay: UIImage, votes: UInt)
     {
-        self.image = image
-        self.name = name
+        self.id = id
+        self.challengeId = challengeId
+        self.author = author
+        self.overlay = overlay
+        self.votes = votes
     }
-
+    
+    func isValid() -> Bool {
+        if challengeId.isEmpty || overlay.size.equalTo(CGSize()) {
+            return false
+        }
+        return true
+    }
+    
+    func vote()
+    {
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.vote(with: id) { (success) in }
+    }
+    
+    func unvote()
+    {
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.unvote(with: id) { (success) in }
+    }
 }

@@ -148,9 +148,12 @@ class DrawViewController: UIViewController,
                                scale: drawImage!.scale,
                                orientation: drawImage!.imageOrientation)
         
-        let userTake = Take(image: newImage,
-                            name: "John")
-        userChallenge?.Submit(response: userTake)
+        if userChallenge != nil {
+            let userTake = Take(id: "", challengeId: userChallenge!.id, author: "", overlay: newImage, votes: 0)
+            if !userChallenge!.submit(userTake) {
+                // handle error case
+            }
+        }
         let _ = navigationController?.popToRootViewController(animated: false)
     }
     

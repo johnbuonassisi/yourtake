@@ -12,6 +12,8 @@
 		332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */; };
 		332283F31E05D5E4008647E4 /* BaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283EF1E05D5E4008647E4 /* BaClient.swift */; };
 		332283F91E072F12008647E4 /* LocalClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283F81E072F12008647E4 /* LocalClient.swift */; };
+		33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AA4C1E248EA600C5D05A /* Backend.swift */; };
+		33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */; };
 		520DA5F71DF0C64B00695756 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520DA5F61DF0C64B00695756 /* SignUpViewController.xib */; };
 		520DA5F91DF0CC3500695756 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520DA5F81DF0CC3500695756 /* SignUpViewController.swift */; };
 		52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E1F1DE807ED00F04C86 /* BAAClient.m */; };
@@ -23,7 +25,6 @@
 		52299E321DE807ED00F04C86 /* BAAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E2B1DE807ED00F04C86 /* BAAUser.m */; };
 		523074A71DC704DE002EB030 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074A61DC704DE002EB030 /* Challenge.swift */; };
 		523074A91DC70C4F002EB030 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074A81DC70C4F002EB030 /* User.swift */; };
-		523074AB1DC70EB6002EB030 /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074AA1DC70EB6002EB030 /* UserDatabase.swift */; };
 		523074B11DC71692002EB030 /* John_Challenge_Andrea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */; };
 		523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */; };
 		523074B31DC71692002EB030 /* John_Challenge_Ashling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */; };
@@ -55,10 +56,8 @@
 		529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */; };
 		529FB83A1DE23B1400861826 /* FriendPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529FB8391DE23B1400861826 /* FriendPickerCell.xib */; };
 		529FB83C1DE23C0300861826 /* FriendPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB83B1DE23C0300861826 /* FriendPickerCell.swift */; };
-		529FB83E1DE2560500861826 /* FriendListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB83D1DE2560500861826 /* FriendListData.swift */; };
 		529FB8401DE42A9700861826 /* ExpiryPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529FB83F1DE42A9700861826 /* ExpiryPickerCell.xib */; };
 		529FB8421DE42B4000861826 /* ExpiryPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB8411DE42B4000861826 /* ExpiryPickerCell.swift */; };
-		52A311F01DCE0CE400EAFC24 /* VoteTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A311EF1DCE0CE400EAFC24 /* VoteTracker.swift */; };
 		52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D291DD90631005A89B8 /* DrawPathsView.swift */; };
 		52A48D2E1DDB6591005A89B8 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */; };
 		52D9C1821DCC1D4A00F5C098 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */; };
@@ -74,6 +73,8 @@
 		332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaasBoxTake.swift; sourceTree = "<group>"; };
 		332283EF1E05D5E4008647E4 /* BaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaClient.swift; sourceTree = "<group>"; };
 		332283F81E072F12008647E4 /* LocalClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocalClient.swift; sourceTree = "<group>"; };
+		33E3AA4C1E248EA600C5D05A /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Backend.swift; path = Models/Backend.swift; sourceTree = "<group>"; };
+		33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxUser.swift; sourceTree = "<group>"; };
 		520DA5F61DF0C64B00695756 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpViewController.xib; path = "View Controllers/SignUpViewController.xib"; sourceTree = "<group>"; };
 		520DA5F81DF0CC3500695756 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = "View Controllers/SignUpViewController.swift"; sourceTree = "<group>"; };
 		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		52299E2B1DE807ED00F04C86 /* BAAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAUser.m; sourceTree = "<group>"; };
 		523074A61DC704DE002EB030 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Challenge.swift; path = Models/Challenge.swift; sourceTree = "<group>"; };
 		523074A81DC70C4F002EB030 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
-		523074AA1DC70EB6002EB030 /* UserDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDatabase.swift; path = Models/UserDatabase.swift; sourceTree = "<group>"; };
 		523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Andrea.jpg; sourceTree = "<group>"; };
 		523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Anthony.jpg; sourceTree = "<group>"; };
 		523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Ashling.jpg; sourceTree = "<group>"; };
@@ -127,10 +127,8 @@
 		529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeOptionsViewController.swift; path = "View Controllers/ChallengeOptionsViewController.swift"; sourceTree = "<group>"; };
 		529FB8391DE23B1400861826 /* FriendPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendPickerCell.xib; path = Views/FriendPickerCell.xib; sourceTree = "<group>"; };
 		529FB83B1DE23C0300861826 /* FriendPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendPickerCell.swift; path = Views/FriendPickerCell.swift; sourceTree = "<group>"; };
-		529FB83D1DE2560500861826 /* FriendListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendListData.swift; path = Models/FriendListData.swift; sourceTree = "<group>"; };
 		529FB83F1DE42A9700861826 /* ExpiryPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpiryPickerCell.xib; path = Views/ExpiryPickerCell.xib; sourceTree = "<group>"; };
 		529FB8411DE42B4000861826 /* ExpiryPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpiryPickerCell.swift; path = Views/ExpiryPickerCell.swift; sourceTree = "<group>"; };
-		52A311EF1DCE0CE400EAFC24 /* VoteTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoteTracker.swift; path = Models/VoteTracker.swift; sourceTree = "<group>"; };
 		52A48D291DD90631005A89B8 /* DrawPathsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawPathsView.swift; path = Views/DrawPathsView.swift; sourceTree = "<group>"; };
 		52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderedButton.swift; path = Views/BorderedButton.swift; sourceTree = "<group>"; };
 		52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Views/LoginViewController.xib; sourceTree = "<group>"; };
@@ -167,6 +165,7 @@
 				332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */,
 				332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */,
 				332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */,
+				33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */,
 			);
 			path = BaasBox;
 			sourceTree = "<group>";
@@ -245,11 +244,9 @@
 			isa = PBXGroup;
 			children = (
 				523074A61DC704DE002EB030 /* Challenge.swift */,
-				52A311EF1DCE0CE400EAFC24 /* VoteTracker.swift */,
 				523074A81DC70C4F002EB030 /* User.swift */,
-				523074AA1DC70EB6002EB030 /* UserDatabase.swift */,
 				529DC7C61DCC705F00EFA856 /* Take.swift */,
-				529FB83D1DE2560500861826 /* FriendListData.swift */,
+				33E3AA4C1E248EA600C5D05A /* Backend.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -347,7 +344,7 @@
 				TargetAttributes = {
 					528509871DC6F9470083CC55 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = A99NKDYD4J;
+						DevelopmentTeam = 4U72CXANPR;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -422,14 +419,15 @@
 				529FB8421DE42B4000861826 /* ExpiryPickerCell.swift in Sources */,
 				525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */,
 				52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */,
+				33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */,
 				332283F11E05D5E4008647E4 /* BaasBoxClient.swift in Sources */,
 				529DC7C71DCC705F00EFA856 /* Take.swift in Sources */,
 				523074A71DC704DE002EB030 /* Challenge.swift in Sources */,
 				526AF05C1DD2F9B0003350B4 /* DrawLinesView.swift in Sources */,
 				52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */,
-				52A311F01DCE0CE400EAFC24 /* VoteTracker.swift in Sources */,
 				520DA5F91DF0CC3500695756 /* SignUpViewController.swift in Sources */,
 				52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */,
+				33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */,
 				52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */,
 				52299E2F1DE807ED00F04C86 /* BAAMutableURLRequest.m in Sources */,
 				332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */,
@@ -438,11 +436,9 @@
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
 				52299E301DE807ED00F04C86 /* BAAObject.m in Sources */,
 				5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */,
-				523074AB1DC70EB6002EB030 /* UserDatabase.swift in Sources */,
 				52299E2D1DE807ED00F04C86 /* BAAFile.m in Sources */,
 				52DC0AC51DCA316D00DA2BDC /* TakeCell.swift in Sources */,
 				529FB83C1DE23C0300861826 /* FriendPickerCell.swift in Sources */,
-				529FB83E1DE2560500861826 /* FriendListData.swift in Sources */,
 				52299E311DE807ED00F04C86 /* BaasBox.m in Sources */,
 				332283F31E05D5E4008647E4 /* BaClient.swift in Sources */,
 			);
@@ -548,7 +544,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = A99NKDYD4J;
+				DEVELOPMENT_TEAM = 4U72CXANPR;
 				INFOPLIST_FILE = YourTake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.enovi.yourtake;
@@ -565,7 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = A99NKDYD4J;
+				DEVELOPMENT_TEAM = 4U72CXANPR;
 				INFOPLIST_FILE = YourTake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.enovi.yourtake;

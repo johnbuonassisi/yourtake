@@ -21,6 +21,7 @@
 @property (nonatomic, copy, readonly) NSString *objectId;
 @property (nonatomic, assign, readonly) NSInteger version;
 @property (nonatomic, strong, readonly) NSDate *creationDate;
+@property (nonatomic, copy, readonly) NSString *author;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary __attribute((objc_designated_initializer)); // Will be NS_DESIGNATED_INITIALIZER in Xcode6
 
