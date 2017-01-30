@@ -30,6 +30,10 @@ class Challenge: NSObject {
         return true
     }
     
+    func isExpired() -> Bool {
+        return true
+    }
+    
     func submit(_ take: Take) -> Bool {
         let backendClient = Backend.sharedInstance.getClient()
         

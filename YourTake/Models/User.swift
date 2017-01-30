@@ -13,8 +13,7 @@ class User: NSObject {
     var friends : [String]
     var votes : [String: String]
     
-    init(username: String, friends: [String], votes: [String: String])
-    {
+    init(username: String, friends: [String], votes: [String: String]) {
         self.username = username
         self.friends = friends
         self.votes = votes

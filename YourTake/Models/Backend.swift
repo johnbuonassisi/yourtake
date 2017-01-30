@@ -16,8 +16,7 @@ final class Backend {
     //private let localClient : BaClient = LocalClient()
     private let baasBoxClient : BaClient = BaasBoxClient()
     
-    func getClient() -> BaClient
-    {
+    func getClient() -> BaClient {
         /*if isNetworkAvailable() {
             return Backend.sharedInstance.baasBoxClient
         } else {
@@ -26,8 +25,7 @@ final class Backend {
         return Backend.sharedInstance.baasBoxClient
     }
 
-    private func isNetworkAvailable() -> Bool
-    {
+    private func isNetworkAvailable() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)

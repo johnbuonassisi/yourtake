@@ -15,8 +15,7 @@ class Take: NSObject {
     let overlay : UIImage
     var votes : UInt
     
-    init(id: String, challengeId: String, author: String, overlay: UIImage, votes: UInt)
-    {
+    init(id: String, challengeId: String, author: String, overlay: UIImage, votes: UInt) {
         self.id = id
         self.challengeId = challengeId
         self.author = author
@@ -31,14 +30,12 @@ class Take: NSObject {
         return true
     }
     
-    func vote()
-    {
+    func vote() {
         let backendClient = Backend.sharedInstance.getClient()
         backendClient.vote(with: id) { (success) in }
     }
     
-    func unvote()
-    {
+    func unvote() {
         let backendClient = Backend.sharedInstance.getClient()
         backendClient.unvote(with: id) { (success) in }
     }

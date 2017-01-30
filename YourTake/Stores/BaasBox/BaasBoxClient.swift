@@ -21,15 +21,9 @@ class BaasBoxClient: BaClient {
         }
         
         client.createUser(withUsername: username, password: password, completion: { (success, error) -> Void in
-            if error != nil {
-                print("error: unable to register [description=\(error?.localizedDescription)]")
-            }
             if success {
                 self.client.authenticateUser(username, password: password, completion: { (success, error) -> Void in
-                    if error != nil {
-                        print("error: unable to login [description=\(error?.localizedDescription)]")
-                        completion(false)
-                    } else {
+                    if success {
                         self.client.saveUser(toDisk: self.client.currentUser)
                         
                         var params = [String: Any]()
@@ -44,8 +38,14 @@ class BaasBoxClient: BaClient {
                                 completion(false)
                             }
                         })
+                    } else {
+                        print("error: unable to login [description=\(error?.localizedDescription)]")
+                        completion(false)
                     }
                 })
+            } else {
+                print("error: unable to register [description=\(error?.localizedDescription)]")
+                completion(false)
             }
         })
     }
