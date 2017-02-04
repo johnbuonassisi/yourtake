@@ -10,7 +10,7 @@ class BaasBoxClient: BaClient {
     let client = BAAClient.shared()!
 
     init() {
-        BaasBox.setBaseURL("http://localhost:9000", appCode: "5965980156")
+        BaasBox.setBaseURL(BaasBoxConfig.url, appCode: BaasBoxConfig.appCode)
     }
 
     func register(username: String, password: String, email: String, completion: @escaping BaBoolCompletionBlock) -> Void {
