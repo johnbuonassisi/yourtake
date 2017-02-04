@@ -36,6 +36,7 @@ class ChallengeViewController: UIViewController,
                                           green: 122.0/255.0,
                                           blue: 255.0/255.0,
                                           alpha: 1.0)
+    private var isChallengeTableEmpty = false;
     
     // MARK: UIViewController Overrides
     
@@ -43,9 +44,12 @@ class ChallengeViewController: UIViewController,
         
         super.viewDidLoad();
         
-        // Load and register cell NIB
-        let nib : UINib = UINib(nibName: "ChallengeCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "ChallengeCell")
+        // Load and register cell NIBs
+        let nib1: UINib = UINib(nibName: "ChallengeCell", bundle: nil)
+        tableView.register(nib1, forCellReuseIdentifier: "ChallengeCell")
+        
+        let nib2: UINib = UINib(nibName: "EmptyChallengeCell", bundle: nil)
+        tableView.register(nib2, forCellReuseIdentifier: "EmptyChallengeCell")
         
         // Set the cell height
         tableView.rowHeight = ChallengeCell.CellRowHeight()
@@ -105,6 +109,11 @@ class ChallengeViewController: UIViewController,
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
+            if userChallenges.count == 0 {
+                isChallengeTableEmpty = true;
+                return 1;
+            }
+            isChallengeTableEmpty = false;
             return userChallenges.count
         case 1:
             return friendChallenges.count
@@ -120,23 +129,29 @@ class ChallengeViewController: UIViewController,
     // MARK: UITableViewDataSource Methods
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCell",
-                                                                 for: indexPath) as! ChallengeCell
+        
         var challenge: Challenge?
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
+            if isChallengeTableEmpty {
+                let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyChallengeCell", for: indexPath) as! EmptyChallengeCell
+                emptyCell.createNewChallengeButton.addTarget(self, action: #selector(newChallenge), for: .touchUpInside)
+                return emptyCell
+            }
             challenge = userChallenges[indexPath.row]
             
-            cell.drawButton.addTarget(indexPath.row, action: #selector(cellDrawButtonPressed), for: .touchUpInside)
-            cell.voteButton.addTarget(indexPath.row, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
         case 1:
             challenge = friendChallenges[indexPath.row]
             
-            cell.drawButton.addTarget(indexPath.row, action: #selector(cellDrawButtonPressed), for: UIControlEvents.touchUpInside)
-            cell.voteButton.addTarget(indexPath.row, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
         default:
-            return cell
+            break
         }
+        
+        let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCell",
+                                                                 for: indexPath) as! ChallengeCell
+        
+        cell.drawButton.addTarget(indexPath.row, action: #selector(cellDrawButtonPressed), for: .touchUpInside)
+        cell.voteButton.addTarget(indexPath.row, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
         
         if challenge != nil {
             cell.id = challenge!.id

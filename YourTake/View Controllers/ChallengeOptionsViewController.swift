@@ -43,6 +43,16 @@ class ChallengeOptionsViewController: UITableViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // get initial data from source
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.getUser(completion: { (object) -> Void in
+            self.user = object
+            /*self.tableView.reloadData()*/})
+        
+        if user != nil {
+            recipients = user!.friends
+        }
+        
         // Register the friend picker cell
         let fpNib = UINib(nibName: "FriendPickerCell", bundle: nil)
         tableView?.register(fpNib, forCellReuseIdentifier: "FriendPickerCell")
@@ -58,12 +68,6 @@ class ChallengeOptionsViewController: UITableViewController,
         navigationItem.rightBarButtonItem = doneButton
         navigationItem.title = "Create Challenge"
 
-        // get initial data from source
-        let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getUser(completion: { (object) -> Void in self.user = object})
-        if user != nil {
-            recipients = user!.friends
-        }
     }
     
     // MARK: UITableViewDelegate Methods

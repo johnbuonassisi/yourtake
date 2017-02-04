@@ -51,7 +51,11 @@
 		527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527FD5E91E0739F90023D420 /* LaunchScreen.xib */; };
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
-		528527C81E466B2D00DD6434 /* BaasBoxConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528527C71E466B2D00DD6434 /* BaasBoxConfig.swift */; };
+		528527CA1E46705A00DD6434 /* FindFriendByEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528527C91E46705A00DD6434 /* FindFriendByEmailViewController.swift */; };
+		528527D71E46711900DD6434 /* EmptyChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528527D31E46711900DD6434 /* EmptyChallengeCell.swift */; };
+		528527D81E46711900DD6434 /* EmptyChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528527D41E46711900DD6434 /* EmptyChallengeCell.xib */; };
+		528527D91E46711900DD6434 /* FriendSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528527D51E46711900DD6434 /* FriendSelectionCell.swift */; };
+		528527DA1E46711900DD6434 /* FriendSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528527D61E46711900DD6434 /* FriendSelectionCell.xib */; };
 		52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */; };
 		52881F2B1DF925B40034A77A /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */; };
 		52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */; };
@@ -63,7 +67,6 @@
 		529FB8421DE42B4000861826 /* ExpiryPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB8411DE42B4000861826 /* ExpiryPickerCell.swift */; };
 		52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D291DD90631005A89B8 /* DrawPathsView.swift */; };
 		52A48D2E1DDB6591005A89B8 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */; };
-		52AC90401E45875000BF8769 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC903F1E45875000BF8769 /* AddFriendViewController.swift */; };
 		52D9C1821DCC1D4A00F5C098 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */; };
 		52DC0AC11DCA2B7200DA2BDC /* TakesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC0AC01DCA2B7200DA2BDC /* TakesCollectionViewController.swift */; };
 		52DC0AC31DCA301800DA2BDC /* TakeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0AC21DCA301800DA2BDC /* TakeCell.xib */; };
@@ -126,7 +129,11 @@
 		5285098B1DC6F9470083CC55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Main/AppDelegate.swift; sourceTree = "<group>"; };
 		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		528509971DC6F9470083CC55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		528527C71E466B2D00DD6434 /* BaasBoxConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxConfig.swift; sourceTree = "<group>"; };
+		528527C91E46705A00DD6434 /* FindFriendByEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindFriendByEmailViewController.swift; path = "View Controllers/FindFriendByEmailViewController.swift"; sourceTree = "<group>"; };
+		528527D31E46711900DD6434 /* EmptyChallengeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyChallengeCell.swift; path = Views/EmptyChallengeCell.swift; sourceTree = "<group>"; };
+		528527D41E46711900DD6434 /* EmptyChallengeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyChallengeCell.xib; path = Views/EmptyChallengeCell.xib; sourceTree = "<group>"; };
+		528527D51E46711900DD6434 /* FriendSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendSelectionCell.swift; path = Views/FriendSelectionCell.swift; sourceTree = "<group>"; };
+		528527D61E46711900DD6434 /* FriendSelectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendSelectionCell.xib; path = Views/FriendSelectionCell.xib; sourceTree = "<group>"; };
 		52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipelessNavigationController.swift; path = "View Controllers/SwipelessNavigationController.swift"; sourceTree = "<group>"; };
 		52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = "View Controllers/ForgotPasswordViewController.xib"; sourceTree = "<group>"; };
 		52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "View Controllers/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
@@ -138,7 +145,6 @@
 		529FB8411DE42B4000861826 /* ExpiryPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpiryPickerCell.swift; path = Views/ExpiryPickerCell.swift; sourceTree = "<group>"; };
 		52A48D291DD90631005A89B8 /* DrawPathsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawPathsView.swift; path = Views/DrawPathsView.swift; sourceTree = "<group>"; };
 		52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderedButton.swift; path = Views/BorderedButton.swift; sourceTree = "<group>"; };
-		52AC903F1E45875000BF8769 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFriendViewController.swift; path = "View Controllers/AddFriendViewController.swift"; sourceTree = "<group>"; };
 		52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Views/LoginViewController.xib; sourceTree = "<group>"; };
 		52DC0AC01DCA2B7200DA2BDC /* TakesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakesCollectionViewController.swift; path = "View Controllers/TakesCollectionViewController.swift"; sourceTree = "<group>"; };
 		52DC0AC21DCA301800DA2BDC /* TakeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TakeCell.xib; path = Views/TakeCell.xib; sourceTree = "<group>"; };
@@ -174,7 +180,6 @@
 				332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */,
 				332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */,
 				33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */,
-				528527C71E466B2D00DD6434 /* BaasBoxConfig.swift */,
 			);
 			path = BaasBox;
 			sourceTree = "<group>";
@@ -263,6 +268,10 @@
 		5285099F1DC6F99B0083CC55 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				528527D31E46711900DD6434 /* EmptyChallengeCell.swift */,
+				528527D41E46711900DD6434 /* EmptyChallengeCell.xib */,
+				528527D51E46711900DD6434 /* FriendSelectionCell.swift */,
+				528527D61E46711900DD6434 /* FriendSelectionCell.xib */,
 				529FB8411DE42B4000861826 /* ExpiryPickerCell.swift */,
 				529FB83F1DE42A9700861826 /* ExpiryPickerCell.xib */,
 				525F847D1DC9A86A006D2E2F /* ChallengeCell.swift */,
@@ -284,6 +293,7 @@
 		528509A01DC6F9A30083CC55 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				528527C91E46705A00DD6434 /* FindFriendByEmailViewController.swift */,
 				52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */,
 				5244E87A1DCC20A5002627FC /* LoginViewController.swift */,
 				520DA5F61DF0C64B00695756 /* SignUpViewController.xib */,
@@ -300,7 +310,6 @@
 				52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */,
 				521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */,
 				521D7FCB1E17369D00DA7DBB /* SettingsViewController.swift */,
-				52AC903F1E45875000BF8769 /* AddFriendViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -392,6 +401,7 @@
 				527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */,
 				526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */,
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
+				528527D81E46711900DD6434 /* EmptyChallengeCell.xib in Resources */,
 				524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */,
 				526AF05A1DD2F53C003350B4 /* DrawViewController.xib in Resources */,
 				52881F2B1DF925B40034A77A /* ForgotPasswordViewController.xib in Resources */,
@@ -407,6 +417,7 @@
 				520DA5F71DF0C64B00695756 /* SignUpViewController.xib in Resources */,
 				529FB83A1DE23B1400861826 /* FriendPickerCell.xib in Resources */,
 				526AF0561DCFCE86003350B4 /* Ashling_Challenge.jpg in Resources */,
+				528527DA1E46711900DD6434 /* FriendSelectionCell.xib in Resources */,
 				525F847C1DC9A6AE006D2E2F /* ChallengeCell.xib in Resources */,
 				523074B11DC71692002EB030 /* John_Challenge_Andrea.jpg in Resources */,
 				523074B31DC71692002EB030 /* John_Challenge_Ashling.jpg in Resources */,
@@ -427,16 +438,16 @@
 				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,
 				52DC0AC11DCA2B7200DA2BDC /* TakesCollectionViewController.swift in Sources */,
 				523074A91DC70C4F002EB030 /* User.swift in Sources */,
-				528527C81E466B2D00DD6434 /* BaasBoxConfig.swift in Sources */,
 				525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */,
 				521D7FCC1E17369D00DA7DBB /* SettingsViewController.swift in Sources */,
 				52A48D2E1DDB6591005A89B8 /* BorderedButton.swift in Sources */,
 				529FB8421DE42B4000861826 /* ExpiryPickerCell.swift in Sources */,
+				528527CA1E46705A00DD6434 /* FindFriendByEmailViewController.swift in Sources */,
 				525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */,
-				52AC90401E45875000BF8769 /* AddFriendViewController.swift in Sources */,
 				52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */,
 				33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */,
 				332283F11E05D5E4008647E4 /* BaasBoxClient.swift in Sources */,
+				528527D71E46711900DD6434 /* EmptyChallengeCell.swift in Sources */,
 				529DC7C71DCC705F00EFA856 /* Take.swift in Sources */,
 				523074A71DC704DE002EB030 /* Challenge.swift in Sources */,
 				526AF05C1DD2F9B0003350B4 /* DrawLinesView.swift in Sources */,
@@ -456,6 +467,7 @@
 				52DC0AC51DCA316D00DA2BDC /* TakeCell.swift in Sources */,
 				529FB83C1DE23C0300861826 /* FriendPickerCell.swift in Sources */,
 				52299E311DE807ED00F04C86 /* BaasBox.m in Sources */,
+				528527D91E46711900DD6434 /* FriendSelectionCell.swift in Sources */,
 				332283F31E05D5E4008647E4 /* BaClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
