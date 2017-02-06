@@ -45,14 +45,13 @@ class ChallengeOptionsViewController: UITableViewController,
         
         // get initial data from source
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getUser(completion: { (object) -> Void in
-            self.user = object
-            /* TODO: John - fix loading of friend names
-            self.tableView.reloadData() */ })
-        
-        if user != nil {
-            recipients = user!.friends
-        }
+        backendClient.getUser(completion: { (user) -> Void in
+            if user != nil {
+                self.user = user
+                self.recipients = user!.friends
+            }
+            
+        })
         
         // Register the friend picker cell
         let fpNib = UINib(nibName: "FriendPickerCell", bundle: nil)
@@ -176,18 +175,11 @@ class ChallengeOptionsViewController: UITableViewController,
                                      author: "",
                                      image: challengeImage,
                                      recipients: recipients,
-                                     duration: Date(timeIntervalSinceNow: countdownDuration))
+                                     duration: countdownDuration,
+                                     created: Date())
         
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
-            if success {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    self.alert.dismiss(animated: true, completion: {
-                        _ = self.navigationController?.popToRootViewController(animated: false)
-                    })
-                })
-            }
-        })
+        backendClient.createChallenge(newChallenge, completion: { (success) -> Void in })
     }
     
     @IBAction func allFriendsSwitchTapped(allFriendsSwitch: UISwitch) {
