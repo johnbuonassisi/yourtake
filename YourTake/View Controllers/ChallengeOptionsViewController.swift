@@ -47,7 +47,8 @@ class ChallengeOptionsViewController: UITableViewController,
         let backendClient = Backend.sharedInstance.getClient()
         backendClient.getUser(completion: { (object) -> Void in
             self.user = object
-            /*self.tableView.reloadData()*/})
+            /* TODO: John - fix loading of friend names
+            self.tableView.reloadData() */ })
         
         if user != nil {
             recipients = user!.friends
