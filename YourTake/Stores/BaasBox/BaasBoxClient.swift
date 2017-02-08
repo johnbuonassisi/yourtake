@@ -328,7 +328,7 @@ class BaasBoxClient: BaClient {
         client.uploadFile(baasFileImage, withPermissions: nil, completion: { (object, error) -> Void in
             if let baasFile = object as? BAAFile {
                 var params = [String: Any]()
-                params["image"] = baasFile.fileId
+                params["imageId"] = baasFile.fileId
                 params["duration"] = challenge.duration.timeIntervalSinceNow
                 params["recipients"] = challenge.recipients
                 let baasChallenge = BaasBoxChallenge(dictionary: params)
