@@ -73,7 +73,7 @@ class FindFriendByEmailViewController: UIViewController,
     func addFriend() {
         // send friend request
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.addFriend(friendName!, completion: { (success) -> Void in
+        backendClient.addFriend(friendEmailAddressTextField.text!, completion: { (success) -> Void in
             if success {
                 print("Added friend successfully")
             } else {

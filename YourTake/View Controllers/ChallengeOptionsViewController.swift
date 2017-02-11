@@ -179,7 +179,9 @@ class ChallengeOptionsViewController: UITableViewController,
                                      created: Date())
         
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.createChallenge(newChallenge, completion: { (success) -> Void in })
+        backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
+            print("challenge creation completed!");
+        })
     }
     
     @IBAction func allFriendsSwitchTapped(allFriendsSwitch: UISwitch) {
