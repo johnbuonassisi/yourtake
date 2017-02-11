@@ -21,6 +21,7 @@ protocol BaClient {
     func login(username: String, password: String, completion: @escaping BaBoolCompletionBlock) -> Void
     func changePassword(oldPassword: String, newPassword: String, completion: @escaping BaBoolCompletionBlock) -> Void
     func resetPassword(for username: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    func getServerTime(completion: @escaping BaStringCompletionBlock) -> Void
     
     // social
     func getUser(completion: @escaping BaUserCompletionBlock) -> Void

@@ -43,6 +43,16 @@ class ChallengeOptionsViewController: UITableViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // get initial data from source
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.getUser(completion: { (user) -> Void in
+            if user != nil {
+                self.user = user
+                self.recipients = user!.friends
+            }
+            
+        })
+        
         // Register the friend picker cell
         let fpNib = UINib(nibName: "FriendPickerCell", bundle: nil)
         tableView?.register(fpNib, forCellReuseIdentifier: "FriendPickerCell")
@@ -58,12 +68,6 @@ class ChallengeOptionsViewController: UITableViewController,
         navigationItem.rightBarButtonItem = doneButton
         navigationItem.title = "Create Challenge"
 
-        // get initial data from source
-        let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getUser(completion: { (object) -> Void in self.user = object})
-        if user != nil {
-            recipients = user!.friends
-        }
     }
     
     // MARK: UITableViewDelegate Methods
@@ -171,17 +175,12 @@ class ChallengeOptionsViewController: UITableViewController,
                                      author: "",
                                      image: challengeImage,
                                      recipients: recipients,
-                                     duration: Date(timeIntervalSinceNow: countdownDuration))
+                                     duration: countdownDuration,
+                                     created: Date())
         
         let backendClient = Backend.sharedInstance.getClient()
         backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
-            if success {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    self.alert.dismiss(animated: true, completion: {
-                        _ = self.navigationController?.popToRootViewController(animated: false)
-                    })
-                })
-            }
+            print("challenge creation completed!");
         })
     }
     

@@ -9,22 +9,22 @@
 import UIKit
 
 class BaasBoxChallenge: BAAObject {
-    var image: UIImage?
-    var durationHrs: Double = 1
+    var imageId = String()
+    var duration: Double = 1
     var recipients = [String]()
     
     init() {
         let dictionary: [AnyHashable : Any]! =
-            ["image": UIImage(),
-             "duration": durationHrs,
+            ["imageId": imageId,
+             "duration": duration,
              "recipients": recipients]
         
         super.init(dictionary: dictionary)
     }
     
     override init(dictionary: [AnyHashable : Any]!) {
-        self.image = dictionary["image"] as? UIImage
-        self.durationHrs = dictionary["duration"] as! Double
+        self.imageId = dictionary["imageId"] as! String
+        self.duration = dictionary["duration"] as! Double
         self.recipients = dictionary["recipients"] as! [String]
         
         super.init(dictionary: dictionary)

@@ -120,6 +120,10 @@ class BaasBoxClient: BaClient {
         })
     }
     
+    func getServerTime(completion: @escaping BaStringCompletionBlock) -> Void {
+        completion("")
+    }
+    
     func getUser(completion: @escaping BaUserCompletionBlock) -> Void {
         if client.currentUser == nil || !client.isAuthenticated() {
             print("error: user not authenticated")
@@ -150,7 +154,7 @@ class BaasBoxClient: BaClient {
             return
         }
         
-        client.loadFollowers(of: client.currentUser, completion: { (objects, error) -> Void in
+        client.loadFollowing(for: client.currentUser, completion: { (objects, error) -> Void in
             var friends = [String]()
             if let users = objects as? [BAAUser] {
                 for user in users {
@@ -236,14 +240,22 @@ class BaasBoxClient: BaClient {
         
         BaasBoxChallenge.getWithId(id, completion: { (object, error) -> Void in
             if let baasChallenge = object as? BaasBoxChallenge {
-                completion(Challenge(
-                    id: baasChallenge.objectId,
-                    author: baasChallenge.author,
-                    image: baasChallenge.image!,
-                    recipients: baasChallenge.recipients,
-                    duration: Date(timeIntervalSinceNow: baasChallenge.durationHrs)))
+                BAAFile.load(withId: baasChallenge.imageId, completion: { (object, error) in
+                    if object != nil {
+                        completion(Challenge(
+                            id: baasChallenge.objectId,
+                            author: baasChallenge.author,
+                            image: UIImage(data: Data(base64Encoded: object!)!)!,
+                            recipients: baasChallenge.recipients,
+                            duration: baasChallenge.duration,
+                            created: Date()))
+                    } else {
+                        print("error: unable to load challenge [description=\(error?.localizedDescription)]")
+                        completion(nil)
+                    }
+                })
             } else {
-                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+                print("error: unable to load challenge [description=\(error?.localizedDescription)]")
                 completion(nil)
             }
         })
@@ -267,32 +279,48 @@ class BaasBoxClient: BaClient {
         }
         
         let baasObject = BaasBoxChallenge()
-        var params = ["orderBy": "_creation_date",
-                      "recordsPerPage": "\(maxCount)",
+        var params = ["recordsPerPage": "\(maxCount)",
                       "where": "_creation_date<=\(BaasBox.dateFormatter()!.string(from: date))"]
         
         if friends {
-            params["where"] = "\(params["where"]!)&author!=\(client.currentUser.username()!)"
+            params["where"] = "\(params["where"]!)&author<>\(client.currentUser.username()!)"
         } else {
-            params["where"] = "\(params["where"]!)&author==\(client.currentUser.username()!)"
+            params["where"] = "\(params["where"]!)&author=\(client.currentUser.username()!)"
         }
         
         client.loadCollection(baasObject, withParams: params, completion: { (objects, error) -> Void in
             var challenges = [Challenge]()
             if let baasChallenges = objects as? [BaasBoxChallenge] {
                 for baasChallenge in baasChallenges {
-                    let challenge = Challenge(
-                        id: baasChallenge.objectId,
-                        author: baasChallenge.author,
-                        image: baasChallenge.image!,
-                        recipients: baasChallenge.recipients,
-                        duration: Date(timeIntervalSinceNow: baasChallenge.durationHrs))
-                    challenges.append(challenge)
+                    BAAFile.load(withId: baasChallenge.imageId, completion: { (object, error) in
+                        if object != nil {
+                            let challenge = Challenge(
+                                id: baasChallenge.objectId,
+                                author: baasChallenge.author,
+                                image: UIImage(data: Data(base64Encoded: object!)!)!,
+                                recipients: baasChallenge.recipients,
+                                duration: baasChallenge.duration,
+                                created: baasChallenge.creationDate)
+                            challenges.append(challenge)
+                        } else {
+                            print("error: unable to load challenge [description=\(error?.localizedDescription)]")
+                            completion(challenges)
+                        }
+                        challenges.sort(by: { (left, right) -> Bool in
+                            if left.getTimeRemaining() > right.getTimeRemaining() {
+                                return true
+                            } else if left.created > right.created {
+                                return true
+                            }
+                            return false
+                        })
+                        completion(challenges)
+                    })
                 }
             } else {
-                print("error: unable to add friend [description=\(error?.localizedDescription)]")
+                print("error: unable to load challenge [description=\(error?.localizedDescription)]")
+                completion(challenges)
             }
-            completion(challenges)
         })
     }
 
@@ -309,15 +337,26 @@ class BaasBoxClient: BaClient {
             return
         }
         
-        var params = [String: Any]()
-        params["image"] = challenge.image
-        params["duration"] = challenge.duration.timeIntervalSinceNow
-        params["recipients"] = challenge.recipients
-        let baasChallenge = BaasBoxChallenge(dictionary: params)
+        let jpegData = UIImageJPEGRepresentation(challenge.image, 0.7)?.base64EncodedData()
+        let baasFileImage = BAAFile(data: jpegData)
         
-        client.createObject(baasChallenge, completion: { (object, error) -> Void in
-            if object != nil {
-                completion(true)
+        client.uploadFile(baasFileImage, withPermissions: nil, completion: { (object, error) -> Void in
+            if let baasFile = object as? BAAFile {
+                var params = [String: Any]()
+                params["imageId"] = baasFile.fileId
+                params["duration"] = challenge.duration
+                params["recipients"] = challenge.recipients
+                let baasChallenge = BaasBoxChallenge(dictionary: params)
+                
+                self.client.createObject(baasChallenge, completion: { (object, error) -> Void in
+                    if object != nil {
+                        completion(true)
+                    } else {
+                        baasFile.delete(completion: nil)
+                        print("error: unable to create challenge [description=\(error?.localizedDescription)]")
+                        completion(false)
+                    }
+                })
             } else {
                 print("error: unable to create challenge [description=\(error?.localizedDescription)]")
                 completion(false)
@@ -368,12 +407,19 @@ class BaasBoxClient: BaClient {
         
         BaasBoxTake.getWithId(id, completion: { (object, error) -> Void in
             if let baasTake = object as? BaasBoxTake {
-                completion(Take(
-                    id: baasTake.objectId,
-                    challengeId: baasTake.challengeId,
-                    author: baasTake.author,
-                    overlay: baasTake.overlay!,
-                    votes: baasTake.votes))
+                BAAFile.load(withId: baasTake.overlayId, completion: { (object, error) in
+                    if object != nil {
+                        completion(Take(
+                            id: baasTake.objectId,
+                            challengeId: baasTake.challengeId,
+                            author: baasTake.author,
+                            overlay: UIImage(data: Data(base64Encoded: object!)!)!,
+                            votes: baasTake.votes))
+                    } else {
+                        print("error: unable to load challenge [description=\(error?.localizedDescription)]")
+                        completion(nil)
+                    }
+                })
             } else {
                 print("error: unable to load take [description=\(error?.localizedDescription)]")
                 completion(nil)
@@ -394,7 +440,7 @@ class BaasBoxClient: BaClient {
             return
         }
         
-        let baasObject = BaasBoxTake(dictionary: [String: Any]())
+        let baasObject = BaasBoxTake()
         let params = ["page": "0",
                       "recordsPerPage": "50",
                       "orderBy": "votes"]
@@ -402,13 +448,27 @@ class BaasBoxClient: BaClient {
             var takes = [Take]()
             if let baasTakes = objects as? [BaasBoxTake] {
                 for baasTake in baasTakes {
-                    let take = Take(
-                        id: baasTake.objectId,
-                        challengeId: baasTake.challengeId,
-                        author: baasTake.author,
-                        overlay: baasTake.overlay!,
-                        votes: baasTake.votes)
-                    takes.append(take)
+                    BAAFile.load(withId: baasTake.overlayId, completion: { (object, error) in
+                        if object != nil {
+                            let take = Take(
+                                id: baasTake.objectId,
+                                challengeId: baasTake.challengeId,
+                                author: baasTake.author,
+                                overlay: UIImage(data: Data(base64Encoded: object!)!)!,
+                                votes: baasTake.votes)
+                            takes.append(take)
+                        } else {
+                            print("error: unable to load takes [description=\(error?.localizedDescription)]")
+                            completion(takes)
+                        }
+                        takes.sort(by: { (left, right) -> Bool in
+                            if left.votes > right.votes {
+                                return true
+                            }
+                            return false
+                        })
+                        completion(takes)
+                    })
                 }
             } else {
                 print("error: unable to load takes [description=\(error?.localizedDescription)]")
@@ -418,7 +478,7 @@ class BaasBoxClient: BaClient {
     }
     
     func createTake(_ take: Take, completion: @escaping BaBoolCompletionBlock) -> Void {
-        if take.isValid() {
+        if !take.isValid() {
             print("error: invalid parameters")
             completion(false)
             return
@@ -430,17 +490,28 @@ class BaasBoxClient: BaClient {
             return
         }
         
-        var params = [String: Any]()
-        params["challengeId"] = take.challengeId
-        params["overlay"] = take.overlay
-        params["votes"] = take.votes
-        let baasTake = BaasBoxTake(dictionary: params)
+        let jpegData = UIImageJPEGRepresentation(take.overlay, 0.7)?.base64EncodedData()
+        let baasFileImage = BAAFile(data: jpegData)
         
-        client.createObject(baasTake, completion: { (object, error) -> Void in
-            if object != nil {
-                completion(true)
+        client.uploadFile(baasFileImage, withPermissions: nil, completion: { (object, error) -> Void in
+            if let baasFile = object as? BAAFile {
+                var params = [String: Any]()
+                params["challengeId"] = take.challengeId
+                params["overlayId"] = baasFile.fileId
+                params["votes"] = take.votes
+                let baasTake = BaasBoxTake(dictionary: params)
+                
+                self.client.createObject(baasTake, completion: { (object, error) -> Void in
+                    if object != nil {
+                        completion(true)
+                    } else {
+                        baasFile.delete(completion: nil)
+                        print("error: unable to create challenge [description=\(error?.localizedDescription)]")
+                        completion(false)
+                    }
+                })
             } else {
-                print("error: unable to create take [description=\(error?.localizedDescription)]")
+                print("error: unable to create challenge [description=\(error?.localizedDescription)]")
                 completion(false)
             }
         })

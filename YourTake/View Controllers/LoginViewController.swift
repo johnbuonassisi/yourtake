@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
                                               preferredStyle: .alert)
                 self.present(alert, animated: true, completion: nil)
                 
-                let time = DispatchTime.now() + 3
+                let time = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: time, execute: {
                     alert.dismiss(animated: true, completion:{
                         _ = self.navigationController?.popToRootViewController(animated: true)

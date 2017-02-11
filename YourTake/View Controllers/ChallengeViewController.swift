@@ -36,6 +36,7 @@ class ChallengeViewController: UIViewController,
                                           green: 122.0/255.0,
                                           blue: 255.0/255.0,
                                           alpha: 1.0)
+    private var isChallengeTableEmpty = false;
     
     // MARK: UIViewController Overrides
     
@@ -43,9 +44,12 @@ class ChallengeViewController: UIViewController,
         
         super.viewDidLoad();
         
-        // Load and register cell NIB
-        let nib : UINib = UINib(nibName: "ChallengeCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "ChallengeCell")
+        // Load and register cell NIBs
+        let nib1: UINib = UINib(nibName: "ChallengeCell", bundle: nil)
+        tableView.register(nib1, forCellReuseIdentifier: "ChallengeCell")
+        
+        let nib2: UINib = UINib(nibName: "EmptyChallengeCell", bundle: nil)
+        tableView.register(nib2, forCellReuseIdentifier: "EmptyChallengeCell")
         
         // Set the cell height
         tableView.rowHeight = ChallengeCell.CellRowHeight()
@@ -105,6 +109,11 @@ class ChallengeViewController: UIViewController,
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
+            if userChallenges.count == 0 {
+                isChallengeTableEmpty = true;
+                return 1;
+            }
+            isChallengeTableEmpty = false;
             return userChallenges.count
         case 1:
             return friendChallenges.count
@@ -120,33 +129,41 @@ class ChallengeViewController: UIViewController,
     // MARK: UITableViewDataSource Methods
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCell",
-                                                                 for: indexPath) as! ChallengeCell
+        
         var challenge: Challenge?
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
+            if isChallengeTableEmpty {
+                let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyChallengeCell", for: indexPath) as! EmptyChallengeCell
+                emptyCell.createNewChallengeButton.addTarget(self, action: #selector(newChallenge), for: .touchUpInside)
+                return emptyCell
+            }
             challenge = userChallenges[indexPath.row]
             
-            cell.drawButton.addTarget(indexPath.row, action: #selector(cellDrawButtonPressed), for: .touchUpInside)
-            cell.voteButton.addTarget(indexPath.row, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
         case 1:
             challenge = friendChallenges[indexPath.row]
             
-            cell.drawButton.addTarget(indexPath.row, action: #selector(cellDrawButtonPressed), for: UIControlEvents.touchUpInside)
-            cell.voteButton.addTarget(indexPath.row, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
         default:
-            return cell
+            break
         }
+        
+        let cell : ChallengeCell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCell",
+                                                                 for: indexPath) as! ChallengeCell
+        cell.drawButton.tag = indexPath.row
+        cell.drawButton.addTarget(self, action: #selector(cellDrawButtonPressed), for: .touchUpInside)
+        
+        cell.drawButton.tag = indexPath.row
+        cell.voteButton.addTarget(self, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
         
         if challenge != nil {
             cell.id = challenge!.id
             cell.challengeImage.image = challenge!.image
             cell.name.text = challenge!.author
-            cell.expiryLabel.text = getExpiryLabel(fromDate: challenge!.duration as Date)
+            cell.expiryLabel.text = getExpiryLabel(fromDate: challenge!.getTimeRemaining() as Date)
             cell.totalVotesLabel.text = String(challenge!.getTotalVotes()) + " total votes"
             
             if challenge!.author == user?.username {
-                cell.drawButton.isEnabled = false
+                cell.drawButton.isEnabled = true
             } else {
                 cell.drawButton.isEnabled = true
             }
@@ -199,22 +216,22 @@ class ChallengeViewController: UIViewController,
     
     func refresh() {
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getUser(completion: { (object) -> Void in self.user = object})
-        backendClient.getChallenges(for: false, completion: { (objects) -> Void in self.userChallenges = objects})
-        backendClient.getChallenges(for: true, completion: { (objects) -> Void in self.friendChallenges = objects})
+        backendClient.getUser(completion: { (object) -> Void in self.user = object; self.tableView.reloadData() })
+        backendClient.getChallenges(for: false, completion: { (objects) -> Void in self.userChallenges = objects; self.tableView.reloadData() })
+        backendClient.getChallenges(for: true, completion: { (objects) -> Void in self.friendChallenges = objects; self.tableView.reloadData() })
         
         tableView.reloadData()
         updateTabBarBadges()
         tableView.refreshControl?.endRefreshing()
     }
     
-    func cellDrawButtonPressed(index : Int) {
+    func cellDrawButtonPressed(button: UIButton) {
         var challenge: Challenge?
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
-            challenge = userChallenges[index]
+            challenge = userChallenges[button.tag]
         case 1:
-            challenge = friendChallenges[index]
+            challenge = friendChallenges[button.tag]
         default: break
         }
         
@@ -222,26 +239,24 @@ class ChallengeViewController: UIViewController,
                                                          bundle: Bundle.main,
                                                          withChallenge: challenge!)
         
-        selectedRow = IndexPath(row: index, section: 0)
         navigationController?.pushViewController(dvc, animated: true)
         dvc.loadViewIfNeeded()
         dvc.drawingView.setBackground(withImage: challenge?.image)
     }
     
-    func cellVoteButtonPressed(index: Int) {
+    func cellVoteButtonPressed(button: UIButton) {
         let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
         
         var challenge: Challenge?
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
-            challenge = userChallenges[index]
+            challenge = userChallenges[button.tag]
         case 1:
-            challenge = friendChallenges[index]
+            challenge = friendChallenges[button.tag]
         default: break
         }
         
-        selectedRow = IndexPath(row: index, section: 0)
         let tcvc = TakesCollectionViewController(collectionViewLayout: layout, withChallenge: challenge!)
         navigationController?.pushViewController(tcvc, animated: true)
     }
@@ -315,12 +330,12 @@ class ChallengeViewController: UIViewController,
     }
     
     private func customizeCell(_ cell: inout ChallengeCell, withChallenge challenge: Challenge, atRowNumber row: Int) {
-        cell.drawButton.addTarget(self, action: #selector(cellDrawButtonPressed), for: .touchUpInside)
-        cell.voteButton.addTarget(self, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
+        cell.drawButton.addTarget(row, action: #selector(cellDrawButtonPressed), for: .touchUpInside)
+        cell.voteButton.addTarget(row, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
         
         cell.challengeImage.image = challenge.image
         cell.name.text = challenge.author
-        cell.expiryLabel.text = getExpiryLabel(fromDate: challenge.duration)
+        cell.expiryLabel.text = getExpiryLabel(fromDate: challenge.getTimeRemaining())
         cell.totalVotesLabel.text = String(challenge.getTotalVotes()) + " total votes"
         
         if challenge.isExpired() {
