@@ -55,8 +55,21 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.login(username: usernameTextField!.text!, password: passwordTextField!.text!, completion: { (success) -> Void in
+        backendClient.login(username: usernameTextField!.text!,
+                            password: passwordTextField!.text!,
+                            completion: { (success) -> Void in
             if success {
+                
+                // Save username and password to the keychain
+                let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
+                                                        account: self.usernameTextField!.text!,
+                                                        accessGroup: KeychainConfiguration.accessGroup)
+                do {
+                    try passwordItem.savePassword(self.passwordTextField!.text!)
+                } catch {
+                    fatalError("Error saving password - \(error)")
+                }
+                
                 // Present user with an alert and dismiss alert after 3 seconds
                 let alert = UIAlertController(title: "Yay!",
                                               message: "You were successfully logged in",
@@ -66,6 +79,7 @@ class LoginViewController: UIViewController {
                 let time = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: time, execute: {
                     alert.dismiss(animated: true, completion:{
+                        self.navigationController?.navigationBar.isHidden = false
                         _ = self.navigationController?.popToRootViewController(animated: true)
                     })
                 })

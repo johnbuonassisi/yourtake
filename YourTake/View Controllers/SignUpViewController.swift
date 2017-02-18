@@ -47,6 +47,36 @@ class SignUpViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        var passwordItems: [KeychainPasswordItem]
+        // Try to get an existing username and password from the keychain
+        do {
+            passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName,
+                                                                   accessGroup: KeychainConfiguration.accessGroup)
+        } catch {
+            fatalError("Error fetching password items - \(error)")
+        }
+        
+        // If a username and password have been previously saved, attempt login
+        if passwordItems.count > 0 {
+            let backendClient = Backend.sharedInstance.getClient()
+            do {
+                backendClient.login(username: passwordItems[0].account,
+                                    password: try passwordItems[0].readPassword(),
+                                    completion: { (success) -> Void in
+                                        if success {
+                                            // When login success show main vc
+                                            _ = self.navigationController?.popToRootViewController(animated: true)
+                                        }
+                })
+            } catch {
+                fatalError("Error reading password from keychain - \(error)")
+            }
+        }
+    }
+    
     
     // MARK: Actions
     @IBAction func continueButtonPressed(_ sender: UIButton) {
@@ -57,6 +87,17 @@ class SignUpViewController: UIViewController {
             email: emailAddressTextField!.text!,
             completion: { (success) -> Void in
                 if success {
+                    
+                    // Save the username and password to the keychain
+                    let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
+                                                            account: self.displayNameTextField!.text!,
+                                                            accessGroup: KeychainConfiguration.accessGroup)
+                    do {
+                        try passwordItem.savePassword(self.displayNameTextField!.text!)
+                    } catch {
+                        fatalError("Error updating keychain - \(error)")
+                    }
+                    
                     // Present user with an alert and dismiss alert after 3 seconds
                     let alert = UIAlertController(title: "Welcome to YourTake!",
                                                   message: "Your signup was successful",
