@@ -35,6 +35,7 @@
 		5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244E87A1DCC20A5002627FC /* LoginViewController.swift */; };
 		5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */; };
 		5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */; };
+		5248BE121E58F78200538A50 /* FindFriendByUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE111E58F78200538A50 /* FindFriendByUserNameViewController.swift */; };
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
 		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
 		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
@@ -113,6 +114,7 @@
 		5244E87A1DCC20A5002627FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
 		5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainConfiguration.swift; path = Security/KeychainConfiguration.swift; sourceTree = "<group>"; };
 		5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Security/KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		5248BE111E58F78200538A50 /* FindFriendByUserNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindFriendByUserNameViewController.swift; path = "View Controllers/FindFriendByUserNameViewController.swift"; sourceTree = "<group>"; };
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Views/CameraOverlayView.xib; sourceTree = "<group>"; };
 		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Views/PhotoPreviewView.xib; sourceTree = "<group>"; };
 		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = "View Controllers/PhotoPreviewViewController.swift"; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */,
 				521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */,
 				521D7FCB1E17369D00DA7DBB /* SettingsViewController.swift */,
+				5248BE111E58F78200538A50 /* FindFriendByUserNameViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,
 				52DC0AC11DCA2B7200DA2BDC /* TakesCollectionViewController.swift in Sources */,
 				523074A91DC70C4F002EB030 /* User.swift in Sources */,
+				5248BE121E58F78200538A50 /* FindFriendByUserNameViewController.swift in Sources */,
 				525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */,
 				521D7FCC1E17369D00DA7DBB /* SettingsViewController.swift in Sources */,
 				52A48D2E1DDB6591005A89B8 /* BorderedButton.swift in Sources */,

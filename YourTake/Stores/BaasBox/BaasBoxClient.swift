@@ -283,7 +283,7 @@ class BaasBoxClient: BaClient {
                       "where": "_creation_date<=\(BaasBox.dateFormatter()!.string(from: date))"]
         
         if friends {
-            params["where"] = "\(params["where"]!)&author<>\(client.currentUser.username()!)"
+            params["where"] = "\(params["where"]!)&recipient<>\(client.currentUser.username()!)"
         } else {
             params["where"] = "\(params["where"]!)&author=\(client.currentUser.username()!)"
         }
