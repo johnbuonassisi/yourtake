@@ -33,6 +33,9 @@
 		523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */; };
 		523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074B01DC71692002EB030 /* John_Challenge.jpg */; };
 		5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244E87A1DCC20A5002627FC /* LoginViewController.swift */; };
+		5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */; };
+		5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */; };
+		5248BE121E58F78200538A50 /* FindFriendByUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE111E58F78200538A50 /* FindFriendByUserNameViewController.swift */; };
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
 		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
 		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
@@ -109,6 +112,9 @@
 		523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Peter.jpg; sourceTree = "<group>"; };
 		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge.jpg; sourceTree = "<group>"; };
 		5244E87A1DCC20A5002627FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
+		5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainConfiguration.swift; path = Security/KeychainConfiguration.swift; sourceTree = "<group>"; };
+		5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Security/KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		5248BE111E58F78200538A50 /* FindFriendByUserNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindFriendByUserNameViewController.swift; path = "View Controllers/FindFriendByUserNameViewController.swift"; sourceTree = "<group>"; };
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Views/CameraOverlayView.xib; sourceTree = "<group>"; };
 		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Views/PhotoPreviewView.xib; sourceTree = "<group>"; };
 		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = "View Controllers/PhotoPreviewViewController.swift"; sourceTree = "<group>"; };
@@ -213,6 +219,15 @@
 			path = "BaasBox-iOS-SDK";
 			sourceTree = "<group>";
 		};
+		5248BE031E56CD9800538A50 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */,
+				5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
 		5285097F1DC6F9470083CC55 = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +248,7 @@
 		5285098A1DC6F9470083CC55 /* YourTake */ = {
 			isa = PBXGroup;
 			children = (
+				5248BE031E56CD9800538A50 /* Security */,
 				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
 				528509971DC6F9470083CC55 /* Info.plist */,
 				5285099D1DC6F98A0083CC55 /* Main */,
@@ -310,6 +326,7 @@
 				52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */,
 				521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */,
 				521D7FCB1E17369D00DA7DBB /* SettingsViewController.swift */,
+				5248BE111E58F78200538A50 /* FindFriendByUserNameViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -438,6 +455,7 @@
 				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,
 				52DC0AC11DCA2B7200DA2BDC /* TakesCollectionViewController.swift in Sources */,
 				523074A91DC70C4F002EB030 /* User.swift in Sources */,
+				5248BE121E58F78200538A50 /* FindFriendByUserNameViewController.swift in Sources */,
 				525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */,
 				521D7FCC1E17369D00DA7DBB /* SettingsViewController.swift in Sources */,
 				52A48D2E1DDB6591005A89B8 /* BorderedButton.swift in Sources */,
@@ -461,10 +479,12 @@
 				332283F01E05D5E4008647E4 /* BaasBoxChallenge.swift in Sources */,
 				529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */,
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
+				5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */,
 				52299E301DE807ED00F04C86 /* BAAObject.m in Sources */,
 				5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */,
 				52299E2D1DE807ED00F04C86 /* BAAFile.m in Sources */,
 				52DC0AC51DCA316D00DA2BDC /* TakeCell.swift in Sources */,
+				5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */,
 				529FB83C1DE23C0300861826 /* FriendPickerCell.swift in Sources */,
 				52299E311DE807ED00F04C86 /* BaasBox.m in Sources */,
 				528527D91E46711900DD6434 /* FriendSelectionCell.swift in Sources */,

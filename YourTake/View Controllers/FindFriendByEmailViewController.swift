@@ -30,6 +30,10 @@ class FindFriendByEmailViewController: UIViewController,
         
         let nib = UINib(nibName: "FriendSelectionCell", bundle: nil);
         friendListTableView.register(nib, forCellReuseIdentifier: "FriendSelectionCell")
+        
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
@@ -81,6 +85,12 @@ class FindFriendByEmailViewController: UIViewController,
             }
         })
     }
+    
+    @IBAction func dismissKeyboard() {
+        
+        view.endEditing(true)
+    }
+
 
 }
 
