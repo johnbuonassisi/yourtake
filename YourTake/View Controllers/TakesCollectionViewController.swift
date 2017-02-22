@@ -46,7 +46,10 @@ class TakesCollectionViewController: UICollectionViewController
         // get initial data from source
         let backendClient = Backend.sharedInstance.getClient()
         backendClient.getUser(completion: { (object) -> Void in self.user = object})
-        backendClient.getTakes(for: challenge!.id, completion: { (objects) -> Void in self.takes = objects})
+        backendClient.getTakes(for: challenge!.id, completion: { (objects) -> Void in
+            self.takes = objects
+            self.collectionView?.reloadData()
+        })
     }
     
     // MARK: UICollectionViewDelegate Methods
