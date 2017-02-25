@@ -182,6 +182,8 @@ class ChallengeOptionsViewController: UITableViewController,
         backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
             print("challenge creation completed!");
         })
+        
+        _ = self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func allFriendsSwitchTapped(allFriendsSwitch: UISwitch) {
