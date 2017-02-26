@@ -25,12 +25,8 @@ class FriendViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureViewController()
         configureTableView()
-        
-        let tap = UITapGestureRecognizer(target: self,
-                                         action: #selector(dismissKeyboard))
-        self.view.addGestureRecognizer(tap)
-        
         loadDataFromBackend()
         
     }
@@ -59,7 +55,7 @@ class FriendViewController: UIViewController,
     // MARK: UITableViewDelegateMethods
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Friends"
+        return "Your Friends"
     }
     
     // MARK: Action Methods
@@ -101,6 +97,14 @@ class FriendViewController: UIViewController,
     
     
     // MARK: Helpers
+    
+    private func configureViewController() {
+        
+        // Add tap gesture recognizer to view controllers view
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+    }
     
     private func configureTableView(){
     
