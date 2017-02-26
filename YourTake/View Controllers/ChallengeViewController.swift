@@ -87,10 +87,12 @@ class ChallengeViewController: UIViewController,
         // get initial data from source
         let backendClient = Backend.sharedInstance.getClient()
         backendClient.getUser(completion: { (object) -> Void in self.user = object})
+
         backendClient.getChallenges(for: false, completion: { (objects) -> Void in
             self.tableView.refreshControl!.endRefreshing()
             self.tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
             self.userChallenges = objects
+            self.isChallengeTableEmpty = self.userChallenges!.isEmpty
             self.tableView.reloadData();
             self.updateTabBarBadges();
         })
@@ -160,7 +162,7 @@ class ChallengeViewController: UIViewController,
                 emptyCell.createNewChallengeButton.addTarget(self, action: #selector(newChallenge), for: .touchUpInside)
                 return emptyCell
             }
-            challenge = userChallenges?[indexPath.row]
+            challenge = userChallenges?[indexPath.row]         
             
         case 1:
             challenge = friendChallenges?[indexPath.row]
@@ -237,14 +239,28 @@ class ChallengeViewController: UIViewController,
     }
     
     func refresh() {
-        let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getUser(completion: { (object) -> Void in self.user = object; self.tableView.reloadData() })
-        backendClient.getChallenges(for: false, completion: { (objects) -> Void in self.userChallenges = objects; self.tableView.reloadData() })
-        backendClient.getChallenges(for: true, completion: { (objects) -> Void in self.friendChallenges = objects; self.tableView.reloadData() })
         
-        tableView.reloadData()
-        updateTabBarBadges()
-        tableView.refreshControl?.endRefreshing()
+        switch(tabBarControl.selectedItem!.tag) {
+        case 0:
+            let backendClient = Backend.sharedInstance.getClient()
+            backendClient.getChallenges(for: false, completion: { (objects) -> Void in
+                self.userChallenges = objects
+                self.isChallengeTableEmpty = self.userChallenges!.isEmpty
+                self.tableView.reloadData()
+                self.updateTabBarBadges()
+                self.tableView.refreshControl?.endRefreshing()
+            })
+        case 1:
+            let backendClient = Backend.sharedInstance.getClient()
+            backendClient.getChallenges(for: true, completion: { (objects) -> Void in
+                self.friendChallenges = objects
+                self.tableView.reloadData()
+                self.updateTabBarBadges()
+                self.tableView.refreshControl?.endRefreshing()
+            })
+        default:
+            return
+        }
     }
     
     func cellDrawButtonPressed(button: UIButton) {
