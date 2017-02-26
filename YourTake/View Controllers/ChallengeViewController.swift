@@ -92,7 +92,7 @@ class ChallengeViewController: UIViewController,
             self.tableView.refreshControl!.endRefreshing()
             self.tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
             self.userChallenges = objects
-            self.isChallengeTableEmpty = self.userChallenges.isEmpty
+            self.isChallengeTableEmpty = self.userChallenges!.isEmpty
             self.tableView.reloadData();
             self.updateTabBarBadges();
         })
@@ -124,11 +124,16 @@ class ChallengeViewController: UIViewController,
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
-            if userChallenges.isEmpty {
-                isChallengeTableEmpty = true
-                return 1;
+            if let userChallenges = userChallenges {
+                if userChallenges.count == 0 {
+                    isChallengeTableEmpty = true
+                    return 1;
+                } else {
+                    return userChallenges.count
+                }
             } else {
-                return userChallenges.count
+                isChallengeTableEmpty = false
+                return 0
             }
         case 1:
             if let friendChallenges = friendChallenges {
@@ -157,7 +162,7 @@ class ChallengeViewController: UIViewController,
                 emptyCell.createNewChallengeButton.addTarget(self, action: #selector(newChallenge), for: .touchUpInside)
                 return emptyCell
             }
-            challenge = userChallenges?[indexPath.row]
+            challenge = userChallenges?[indexPath.row]         
             
         case 1:
             challenge = friendChallenges?[indexPath.row]
@@ -234,22 +239,28 @@ class ChallengeViewController: UIViewController,
     }
     
     func refresh() {
-        let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getUser(completion: { (object) -> Void in self.user = object; self.tableView.reloadData() })
         
-        backendClient.getChallenges(for: false, completion: { (objects) -> Void in
-            self.userChallenges = objects
-            self.isChallengeTableEmpty = self.userChallenges.isEmpty
-            self.tableView.reloadData()
-            self.updateTabBarBadges()
-        })
-        backendClient.getChallenges(for: true, completion: { (objects) -> Void in
-            self.friendChallenges = objects
-            self.tableView.reloadData()
-            self.updateTabBarBadges()
-        })
-        
-        tableView.refreshControl?.endRefreshing()
+        switch(tabBarControl.selectedItem!.tag) {
+        case 0:
+            let backendClient = Backend.sharedInstance.getClient()
+            backendClient.getChallenges(for: false, completion: { (objects) -> Void in
+                self.userChallenges = objects
+                self.isChallengeTableEmpty = self.userChallenges!.isEmpty
+                self.tableView.reloadData()
+                self.updateTabBarBadges()
+                self.tableView.refreshControl?.endRefreshing()
+            })
+        case 1:
+            let backendClient = Backend.sharedInstance.getClient()
+            backendClient.getChallenges(for: true, completion: { (objects) -> Void in
+                self.friendChallenges = objects
+                self.tableView.reloadData()
+                self.updateTabBarBadges()
+                self.tableView.refreshControl?.endRefreshing()
+            })
+        default:
+            return
+        }
     }
     
     func cellDrawButtonPressed(button: UIButton) {

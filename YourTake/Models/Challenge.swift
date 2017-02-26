@@ -41,7 +41,7 @@ class Challenge: NSObject {
     }
     
     func isExpired() -> Bool {
-        if self.getTimeRemaining().timeIntervalSinceNow <= 0 {
+        if duration + self.created.timeIntervalSinceNow <= 0 {
             return true
         }
         return false
