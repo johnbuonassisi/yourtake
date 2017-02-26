@@ -27,8 +27,8 @@ class ChallengeViewController: UIViewController,
     // MARK: Private Member Variables
     
     private var user: User?
-    private var userChallenges = [Challenge]()
-    private var friendChallenges = [Challenge]()
+    private var userChallenges: [Challenge]?
+    private var friendChallenges: [Challenge]?
     
     private var selectedRow : IndexPath?
     private var ip : UIImagePickerController?
@@ -76,8 +76,9 @@ class ChallengeViewController: UIViewController,
         // Setup the refresh control
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.tintColor = systemBlueColor
-        tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
         tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        tableView.refreshControl!.beginRefreshing()
         
         // Setup the tab bar control
         tabBarControl.delegate = self
@@ -130,7 +131,11 @@ class ChallengeViewController: UIViewController,
                 return userChallenges.count
             }
         case 1:
-            return friendChallenges.count
+            if let friendChallenges = friendChallenges {
+                return friendChallenges.count
+            } else {
+                return 0
+            }
         default:
             return 0
         }
@@ -152,10 +157,10 @@ class ChallengeViewController: UIViewController,
                 emptyCell.createNewChallengeButton.addTarget(self, action: #selector(newChallenge), for: .touchUpInside)
                 return emptyCell
             }
-            challenge = userChallenges[indexPath.row]
+            challenge = userChallenges?[indexPath.row]
             
         case 1:
-            challenge = friendChallenges[indexPath.row]
+            challenge = friendChallenges?[indexPath.row]
             
         default:
             break
@@ -251,9 +256,9 @@ class ChallengeViewController: UIViewController,
         var challenge: Challenge?
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
-            challenge = userChallenges[button.tag]
+            challenge = userChallenges?[button.tag]
         case 1:
-            challenge = friendChallenges[button.tag]
+            challenge = friendChallenges?[button.tag]
         default: break
         }
         
@@ -273,9 +278,9 @@ class ChallengeViewController: UIViewController,
         var challenge: Challenge?
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
-            challenge = userChallenges[button.tag]
+            challenge = userChallenges?[button.tag]
         case 1:
-            challenge = friendChallenges[button.tag]
+            challenge = friendChallenges?[button.tag]
         default: break
         }
         
@@ -325,29 +330,34 @@ class ChallengeViewController: UIViewController,
     
     private func updateTabBarBadges() {
         var activeUserChallenges = 0
-        for challenge in userChallenges {
-            if challenge.isExpired() {
-                activeUserChallenges += 1
+        
+        if let userChallenges = userChallenges {
+            for challenge in userChallenges {
+                if !challenge.isExpired() {
+                    activeUserChallenges += 1
+                }
+            }
+            
+            if activeUserChallenges == 0 {
+                userChallengeTabBarItem.badgeValue = nil
+            } else {
+                userChallengeTabBarItem.badgeValue = String(activeUserChallenges)
             }
         }
         
-        if activeUserChallenges == 0 {
-            userChallengeTabBarItem.badgeValue = nil
-        } else {
-            userChallengeTabBarItem.badgeValue = String(activeUserChallenges)
-        }
-        
-        var activeFriendChallenges = 0
-        for challenge in friendChallenges {
-            if challenge.isExpired() {
-                activeFriendChallenges += 1
+        if let friendChallenges = friendChallenges {
+            var activeFriendChallenges = 0
+            for challenge in friendChallenges {
+                if !challenge.isExpired() {
+                    activeFriendChallenges += 1
+                }
             }
-        }
-        
-        if activeFriendChallenges == 0 {
-            friendChallengeTabBarItem.badgeValue = nil
-        } else {
-            friendChallengeTabBarItem.badgeValue = String(activeFriendChallenges)
+            
+            if activeFriendChallenges == 0 {
+                friendChallengeTabBarItem.badgeValue = nil
+            } else {
+                friendChallengeTabBarItem.badgeValue = String(activeFriendChallenges)
+            }
         }
     }
     
