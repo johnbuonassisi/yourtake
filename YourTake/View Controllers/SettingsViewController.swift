@@ -24,6 +24,8 @@ class SettingsViewController: UITableViewController {
                 changeEmail()
             case 2:
                 changePassword()
+            case 4:
+                signout()
             default:
                 return
             }
@@ -40,31 +42,6 @@ class SettingsViewController: UITableViewController {
                 showPrivacyPolicy()
             case 3:
                 showTermsOfService()
-            default:
-                return
-            }
-            
-        case 2: // Signout
-            
-            switch indexPath.row {
-                
-            case 0:
-                
-                // Delete the username and password from the keychain
-                do {
-                    let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
-                    for item in passwordItems {
-                        try item.deleteItem()
-                    }
-                } catch {
-                    fatalError("Error deleting password items - \(error)")
-                }
-                
-                // Go to signup view controller
-                let suvc = SignUpViewController();
-                let ncRef = navigationController
-                _ = navigationController?.popViewController(animated: false)
-                ncRef?.pushViewController(suvc, animated: true)
             default:
                 return
             }
@@ -92,6 +69,25 @@ class SettingsViewController: UITableViewController {
     
     private func changePassword() {
         print("Change Password")
+    }
+    
+    private func signout() {
+        
+        // Delete the username and password from the keychain
+        do {
+            let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
+            for item in passwordItems {
+                try item.deleteItem()
+            }
+        } catch {
+            fatalError("Error deleting password items - \(error)")
+        }
+        
+        // Go to signup view controller
+        let suvc = SignUpViewController();
+        let ncRef = navigationController
+        _ = navigationController?.popViewController(animated: false)
+        ncRef?.pushViewController(suvc, animated: true)
     }
     
     private func showAboutUs() {
