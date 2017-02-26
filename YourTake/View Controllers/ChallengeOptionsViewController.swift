@@ -15,6 +15,7 @@ class ChallengeOptionsViewController: UITableViewController,
     private var recipients = [String]()
     private var countdownDuration : Double
     private let challengeImage : UIImage
+    private var friendSelectionTracker: FriendSelectionTracker?
     
     // Uploading View
     let uploadActivityView = UIView()
@@ -48,7 +49,9 @@ class ChallengeOptionsViewController: UITableViewController,
         backendClient.getUser(completion: { (user) -> Void in
             if user != nil {
                 self.user = user
+                self.friendSelectionTracker = FriendSelectionTracker(withFriends: user!.friends)
                 self.recipients = user!.friends
+                self.tableView.reloadData()
             }
             
         })
@@ -85,8 +88,31 @@ class ChallengeOptionsViewController: UITableViewController,
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
-        cell.isSelected = false
+        switch indexPath.section {
+        case 0:
+            return
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
+            if let friendSelectionTracker = friendSelectionTracker {
+                let areAllFriendsSelected = friendSelectionTracker.changeSelectionOfAllFriends()
+                cell.friendSwitch.setOn(areAllFriendsSelected, animated: false)
+                if areAllFriendsSelected {
+                    tableView.reloadData()
+                }
+            }
+
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
+            if let friendSelectionTracker = friendSelectionTracker {
+                let isFriendSelected = friendSelectionTracker.changeSelection(forFriend: user!.friends[indexPath.row])
+                cell.friendSwitch.setOn(isFriendSelected!, animated: false)
+                tableView.reloadData()
+            }
+            return
+        default:
+            return
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -136,31 +162,25 @@ class ChallengeOptionsViewController: UITableViewController,
         case 1: // All Friend Picker Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
             cell.friendName.text = "All Friends"
-            
-            var isAll = true
-            if user != nil && user!.friends.count != recipients.count {
-                isAll = false
+            if let friendSelectionTracker = friendSelectionTracker {
+                cell.friendSwitch.setOn(friendSelectionTracker.areAllFriendsSelected, animated: false)
             }
-            cell.friendSwitch.setOn(isAll, animated: true)
-            cell.friendSwitch.addTarget(self,
-                                        action: #selector(friendSwitchTapped),
-                                        for: .valueChanged)
-            cell.friendSwitch.addTarget(self,
-                                        action: #selector(friendSwitchTapped),
-                                        for: .touchUpInside)
             return cell
         case 2: // Friend Picker Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
-            let friends = user!.friends
             
-            print("Section: 2, Row: \(indexPath.row), isOn: \(cell.friendSwitch!.isOn)")
-            cell.friendName.text = friends[indexPath.row]
-            cell.friendSwitch.setOn(recipients.contains(cell.friendName.text!), animated: true)
-            print("Section: 2, Row: \(indexPath.row), isOn: \(cell.friendSwitch!.isOn)")
-            
-            cell.friendSwitch.addTarget(self,
-                                        action: #selector(friendSwitchTapped),
-                                        for: .valueChanged)
+            if let friends = user?.friends {
+                
+                let friendName = friends[indexPath.row]
+                cell.friendName.text = friendName
+                
+                if let friendSelectionTracker = friendSelectionTracker {
+                    if let isSelected = friendSelectionTracker.isFriendSelected(forFriend: friendName) {
+                        
+                        cell.friendSwitch.setOn(isSelected, animated: false)
+                    }
+                }
+            }
             return cell
         default: // Should never get here
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath)
@@ -168,55 +188,29 @@ class ChallengeOptionsViewController: UITableViewController,
         }
     }
     
+    
     // MARK: Action Methods
     
     @IBAction func doneButtonTapped() {
-        let newChallenge = Challenge(id: "",
-                                     author: "",
-                                     image: challengeImage,
-                                     recipients: recipients,
-                                     duration: countdownDuration,
-                                     created: Date())
         
-        let backendClient = Backend.sharedInstance.getClient()
-        backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
-            print("challenge creation completed!");
-        })
-        
-        _ = self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @IBAction func allFriendsSwitchTapped(allFriendsSwitch: UISwitch) {
-        tableView.reloadData()
-    }
-    
-    @IBAction func friendSwitchTapped(friendSwitch: UISwitch) {
-        let cell = friendSwitch.superview?.superview as! FriendPickerCell
-        
-        if cell.friendName.text == "All Friends" {
+        if let friendSelectionTracker = friendSelectionTracker {
+            let newChallenge = Challenge(id: "",
+                                         author: "",
+                                         image: challengeImage,
+                                         recipients: friendSelectionTracker.getAllSelectedFriends(),
+                                         duration: countdownDuration,
+                                         created: Date())
             
-            if friendSwitch.isOn == false {
-                if user != nil {
-                    recipients = user!.friends
-                }
-            } else {
-                recipients.removeAll()
-            }
-        
-        } else {
+            let backendClient = Backend.sharedInstance.getClient()
+            backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
+                print("challenge creation completed!");
+            })
             
-            if friendSwitch.isOn == false {
-                recipients.append(cell.friendName.text!)
-            } else {
-                if let index = recipients.index(of: cell.friendName.text!) {
-                    recipients.remove(at: index)
-                }
-            }
+            _ = self.navigationController?.popToRootViewController(animated: true)
         }
-        
-        tableView.reloadData()
     }
     
+       
     @IBAction func dateChanged(datePicker: UIDatePicker) {
         countdownDuration = datePicker.countDownDuration
     }

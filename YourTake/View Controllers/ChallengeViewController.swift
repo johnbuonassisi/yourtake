@@ -75,7 +75,6 @@ class ChallengeViewController: UIViewController,
         
         // Setup the refresh control
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.tintColor = systemBlueColor
         tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
         tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
         tableView.refreshControl!.beginRefreshing()
@@ -89,16 +88,13 @@ class ChallengeViewController: UIViewController,
         backendClient.getUser(completion: { (object) -> Void in self.user = object})
 
         backendClient.getChallenges(for: false, completion: { (objects) -> Void in
-            self.tableView.refreshControl!.endRefreshing()
-            self.tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
             self.userChallenges = objects
             self.isChallengeTableEmpty = self.userChallenges!.isEmpty
             self.tableView.reloadData();
             self.updateTabBarBadges();
+            self.tableView.refreshControl!.endRefreshing()
         })
         backendClient.getChallenges(for: true, completion: { (objects) -> Void in
-            self.tableView.refreshControl!.endRefreshing()
-            self.tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
             self.friendChallenges = objects
             self.tableView.reloadData();
             self.updateTabBarBadges();
@@ -239,6 +235,8 @@ class ChallengeViewController: UIViewController,
     }
     
     func refresh() {
+        
+        tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
         
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
