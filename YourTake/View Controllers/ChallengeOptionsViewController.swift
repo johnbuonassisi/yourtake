@@ -8,13 +8,17 @@
 
 import UIKit
 
-class ChallengeOptionsViewController: UITableViewController,
+class ChallengeOptionsViewController: UIViewController,
+                                      UITableViewDelegate,
+                                      UITableViewDataSource,
                                       UINavigationControllerDelegate {
     
+    @IBOutlet weak var expiryPicker: UIDatePicker!
+    @IBOutlet weak var friendSelectionTableView: UITableView!
+    
     private var user: User?
-    private var recipients = [String]()
-    private var countdownDuration : Double
-    private let challengeImage : UIImage
+    private var challengeImage : UIImage?
+    private var friendSelectionTracker: FriendSelectionTracker?
     
     // Uploading View
     let uploadActivityView = UIView()
@@ -27,14 +31,10 @@ class ChallengeOptionsViewController: UITableViewController,
     
     init(withImage image: UIImage) {
         challengeImage = image
-        countdownDuration = 600.0 // 10 minutes
-        
-        super.init(nibName: nil, bundle: nil)
+        super.init(nibName: "ChallengeOptionsViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        countdownDuration = 0.0
-        challengeImage = UIImage()
         super.init(coder: aDecoder)
     }
     
@@ -43,57 +43,69 @@ class ChallengeOptionsViewController: UITableViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // get initial data from source
-        let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getUser(completion: { (user) -> Void in
-            if user != nil {
-                self.user = user
-                self.recipients = user!.friends
-            }
-            
-        })
+        expiryPicker.countDownDuration = 600
+        friendSelectionTableView.delegate = self
+        friendSelectionTableView.dataSource = self
         
         // Register the friend picker cell
         let fpNib = UINib(nibName: "FriendPickerCell", bundle: nil)
-        tableView?.register(fpNib, forCellReuseIdentifier: "FriendPickerCell")
-        
-        // Register the expiry picker cell
-        let epNib = UINib(nibName: "ExpiryPickerCell", bundle: nil)
-        tableView?.register(epNib, forCellReuseIdentifier: "ExpiryPickerCell")
-        
-        tableView?.backgroundColor = UIColor.white
+        friendSelectionTableView!.register(fpNib, forCellReuseIdentifier: "FriendPickerCell")
         
         // Setup the navigation bar
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
         navigationItem.rightBarButtonItem = doneButton
         navigationItem.title = "Create Challenge"
+        
+        // get initial data from source
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.getUser(completion: { (user) -> Void in
+            if user != nil {
+                self.user = user
+                self.friendSelectionTracker = FriendSelectionTracker(withFriends: user!.friends)
+                self.friendSelectionTableView.reloadData()
+            }
+            
+        })
 
     }
     
     // MARK: UITableViewDelegate Methods
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-        case 0: // Date Picker Section
-            return 200.0
-        case 1: fallthrough // All Friends Picker Section
-        case 2: // Friends Picker Section
+        case 0: fallthrough // All Friends Picker Section
+        case 1: // Friends Picker Section
             return 50.0
         default: // Should never get here
             return 0.0
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
-        cell.isSelected = false
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            print("Selection: All Friends")
+            if let friendSelectionTracker = friendSelectionTracker {
+                _ = friendSelectionTracker.changeSelectionOfAllFriends()
+                tableView.reloadData()
+            }
+
+        case 1:
+            print("Selection: " + "\(user!.friends[indexPath.row])")
+            if let friendSelectionTracker = friendSelectionTracker {
+                _ = friendSelectionTracker.changeSelection(forFriend: user!.friends[indexPath.row])
+                tableView.reloadData()
+            }
+            return
+        default:
+            return
+        }
+        
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0: // Date Picker Section
-            return "Choose Duration"
-        case 1: // All Friends Picker Section
             return "Choose Friends"
         default:
             return nil
@@ -102,17 +114,15 @@ class ChallengeOptionsViewController: UITableViewController,
     
     // MARK: UITableViewDataSource Methods
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: // Date Picker Section
             return 1
-        case 1: // All Friend Picker Section
-            return 1
-        case 2: // Friend Picker Section
+        case 1: // Friend Picker Section
             if user != nil {
                 return user!.friends.count
             } else {
@@ -124,43 +134,34 @@ class ChallengeOptionsViewController: UITableViewController,
         
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
-        case 0: // Date Picker Section
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ExpiryPickerCell", for: indexPath) as! ExpiryPickerCell
-            cell.expiryPicker.countDownDuration = countdownDuration
-            cell.expiryPicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
-            return cell
-            
-        case 1: // All Friend Picker Section
+        case 0: // All Friend Picker Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
             cell.friendName.text = "All Friends"
-            
-            var isAll = true
-            if user != nil && user!.friends.count != recipients.count {
-                isAll = false
+            if let friendSelectionTracker = friendSelectionTracker {
+                //print("All Friends Cell: " + "\(cell.friendSwitch.isOn)")
+                cell.friendSwitch.setOn(friendSelectionTracker.areAllFriendsSelected, animated: true)
+                //print("All Friends: \(friendSelectionTracker.areAllFriendsSelected)")
             }
-            cell.friendSwitch.setOn(isAll, animated: true)
-            cell.friendSwitch.addTarget(self,
-                                        action: #selector(friendSwitchTapped),
-                                        for: .valueChanged)
-            cell.friendSwitch.addTarget(self,
-                                        action: #selector(friendSwitchTapped),
-                                        for: .touchUpInside)
             return cell
-        case 2: // Friend Picker Section
+        case 1: // Friend Picker Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
-            let friends = user!.friends
             
-            print("Section: 2, Row: \(indexPath.row), isOn: \(cell.friendSwitch!.isOn)")
-            cell.friendName.text = friends[indexPath.row]
-            cell.friendSwitch.setOn(recipients.contains(cell.friendName.text!), animated: true)
-            print("Section: 2, Row: \(indexPath.row), isOn: \(cell.friendSwitch!.isOn)")
-            
-            cell.friendSwitch.addTarget(self,
-                                        action: #selector(friendSwitchTapped),
-                                        for: .valueChanged)
+            if let friends = user?.friends {
+                
+                let friendName = friends[indexPath.row]
+                cell.friendName.text = friendName
+                
+                if let friendSelectionTracker = friendSelectionTracker {
+                    if let isSelected = friendSelectionTracker.isFriendSelected(forFriend: friendName) {
+                        //print(friendName + " Cell: \(cell.friendSwitch.isOn)")
+                        cell.friendSwitch.setOn(isSelected, animated: true)
+                        //print(friendName + ": \(isSelected)")
+                    }
+                }
+            }
             return cell
         default: // Should never get here
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath)
@@ -168,61 +169,31 @@ class ChallengeOptionsViewController: UITableViewController,
         }
     }
     
+    
     // MARK: Action Methods
     
     @IBAction func doneButtonTapped() {
-        let newChallenge = Challenge(id: "",
-                                     author: "",
-                                     image: challengeImage,
-                                     recipients: recipients,
-                                     duration: countdownDuration,
-                                     created: Date())
         
-        let backendClient = Backend.sharedInstance.getClient()
-        backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
-            print("challenge creation completed!");
-        })
-        
-        _ = self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @IBAction func allFriendsSwitchTapped(allFriendsSwitch: UISwitch) {
-        tableView.reloadData()
-    }
-    
-    @IBAction func friendSwitchTapped(friendSwitch: UISwitch) {
-        let cell = friendSwitch.superview?.superview as! FriendPickerCell
-        
-        if cell.friendName.text == "All Friends" {
+        if let friendSelectionTracker = friendSelectionTracker {
+            let newChallenge = Challenge(id: "",
+                                         author: "",
+                                         image: challengeImage!,
+                                         recipients: friendSelectionTracker.getAllSelectedFriends(),
+                                         duration: expiryPicker.countDownDuration,
+                                         created: Date())
             
-            if friendSwitch.isOn == false {
-                if user != nil {
-                    recipients = user!.friends
-                }
-            } else {
-                recipients.removeAll()
-            }
-        
-        } else {
+            let backendClient = Backend.sharedInstance.getClient()
+            backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
+                print("challenge creation completed!");
+            })
             
-            if friendSwitch.isOn == false {
-                recipients.append(cell.friendName.text!)
-            } else {
-                if let index = recipients.index(of: cell.friendName.text!) {
-                    recipients.remove(at: index)
-                }
-            }
+            _ = self.navigationController?.popToRootViewController(animated: true)
         }
-        
-        tableView.reloadData()
-    }
-    
-    @IBAction func dateChanged(datePicker: UIDatePicker) {
-        countdownDuration = datePicker.countDownDuration
     }
     
     // MARK: Private Methods
     
+    /*
     private func setUploadingScreen() {
         
         let width: CGFloat = 120
@@ -264,5 +235,6 @@ class ChallengeOptionsViewController: UITableViewController,
         
         present(alert, animated: true, completion: nil)
     }
+     */
 
 }

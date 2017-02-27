@@ -25,6 +25,7 @@ class SignUpViewController: UIViewController {
     // MARK: Initializers
     init() {
         super.init(nibName: "SignUpViewController", bundle: nil)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,6 +37,8 @@ class SignUpViewController: UIViewController {
         
         super.viewDidLoad()
         
+        
+        
         emailAddressTextField.delegate = self
         displayNameTextField.delegate = self
         passwordTextField.delegate = self
@@ -45,36 +48,11 @@ class SignUpViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         navigationController?.navigationBar.isHidden = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        var passwordItems: [KeychainPasswordItem]
-        // Try to get an existing username and password from the keychain
-        do {
-            passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName,
-                                                                   accessGroup: KeychainConfiguration.accessGroup)
-        } catch {
-            fatalError("Error fetching password items - \(error)")
-        }
-        
-        // If a username and password have been previously saved, attempt login
-        if passwordItems.count > 0 {
-            let backendClient = Backend.sharedInstance.getClient()
-            do {
-                backendClient.login(username: passwordItems[0].account,
-                                    password: try passwordItems[0].readPassword(),
-                                    completion: { (success) -> Void in
-                                        if success {
-                                            // When login success show main vc
-                                            _ = self.navigationController?.popToRootViewController(animated: true)
-                                        }
-                })
-            } catch {
-                fatalError("Error reading password from keychain - \(error)")
-            }
-        }
     }
     
     
