@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeOptionsViewController" customModule="YourTake" customModuleProvider="target">
+            <connections>
+                <outlet property="expiryPicker" destination="zXW-T3-dJL" id="vlY-bS-l1L"/>
+                <outlet property="friendSelectionTableView" destination="K0E-1r-Iio" id="Acu-ch-3KT"/>
+                <outlet property="view" destination="65p-mY-1Hv" id="ZzZ-Im-Qs2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="65p-mY-1Hv">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="zXW-T3-dJL">
+                    <rect key="frame" x="0.0" y="72" width="375" height="216"/>
+                    <date key="date" timeIntervalSinceReferenceDate="509862437.24537098">
+                        <!--2017-02-27 04:27:17 +0000-->
+                    </date>
+                </datePicker>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K0E-1r-Iio">
+                    <rect key="frame" x="0.0" y="296" width="375" height="371"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="zXW-T3-dJL" secondAttribute="trailing" id="Aal-cR-YlO"/>
+                <constraint firstItem="zXW-T3-dJL" firstAttribute="leading" secondItem="65p-mY-1Hv" secondAttribute="leading" id="F5b-47-xYt"/>
+                <constraint firstAttribute="bottom" secondItem="K0E-1r-Iio" secondAttribute="bottom" id="LhJ-Ub-nSN"/>
+                <constraint firstItem="K0E-1r-Iio" firstAttribute="leading" secondItem="65p-mY-1Hv" secondAttribute="leading" id="ipp-6S-ZIr"/>
+                <constraint firstItem="zXW-T3-dJL" firstAttribute="top" secondItem="65p-mY-1Hv" secondAttribute="top" constant="72" id="j9z-Wv-Z8T"/>
+                <constraint firstAttribute="trailing" secondItem="K0E-1r-Iio" secondAttribute="trailing" id="tYV-mt-JUu"/>
+                <constraint firstItem="K0E-1r-Iio" firstAttribute="top" secondItem="zXW-T3-dJL" secondAttribute="bottom" constant="8" id="yGS-9m-HZr"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <point key="canvasLocation" x="-241" y="110"/>
+        </view>
+    </objects>
+</document>

@@ -11,12 +11,12 @@ import UIKit
 class FriendSelectionTracker: NSObject {
     
     private var friendSelectionMap = [String: Bool]()
-    var areAllFriendsSelected = true
+    var areAllFriendsSelected = false
     
     init(withFriends friends:[String]) {
         
         for friendName in friends {
-            friendSelectionMap[friendName] = true
+            friendSelectionMap[friendName] = false
         }
     }
     
