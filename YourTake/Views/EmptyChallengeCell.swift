@@ -12,8 +12,7 @@ class EmptyChallengeCell: UITableViewCell {
 
     @IBOutlet weak var createNewChallengeButton: UIButton!
     
-    static func CellRowHeight() -> CGFloat
-    {
+    static func CellRowHeight() -> CGFloat {
         return 481.0;
     }
 }
