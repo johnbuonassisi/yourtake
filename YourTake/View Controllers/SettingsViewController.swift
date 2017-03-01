@@ -83,11 +83,12 @@ class SettingsViewController: UITableViewController {
             fatalError("Error deleting password items - \(error)")
         }
         
-        // Go to signup view controller
-        let suvc = SignUpViewController();
-        let ncRef = navigationController
-        _ = navigationController?.popViewController(animated: false)
-        ncRef?.pushViewController(suvc, animated: true)
+        // Replace the current View Controllers in the Navigation Controller with new ones
+        // This wipes out data stored in the Challenge View Controller
+        let suvc = SignUpViewController()
+        let cvc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
+        navigationController?.setViewControllers([cvc, suvc], animated: true)
+        
     }
     
     private func showAboutUs() {

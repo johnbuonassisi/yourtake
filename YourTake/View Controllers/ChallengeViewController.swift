@@ -27,6 +27,7 @@ class ChallengeViewController: UIViewController,
     // MARK: Private Member Variables
     
     private var user: User?
+    private var friends: [String]?
     private var userChallenges: [Challenge]?
     private var friendChallenges: [Challenge]?
     
@@ -37,6 +38,7 @@ class ChallengeViewController: UIViewController,
                                           blue: 255.0/255.0,
                                           alpha: 1.0)
     private var isChallengeTableEmpty = false;
+    private var userHasNoFriends = false;
     
     // MARK: UIViewController Overrides
     
@@ -45,11 +47,14 @@ class ChallengeViewController: UIViewController,
         super.viewDidLoad();
         
         // Load and register cell NIBs
-        let nib1: UINib = UINib(nibName: "ChallengeCell", bundle: nil)
+        let nib1 = UINib(nibName: "ChallengeCell", bundle: nil)
         tableView.register(nib1, forCellReuseIdentifier: "ChallengeCell")
         
-        let nib2: UINib = UINib(nibName: "EmptyChallengeCell", bundle: nil)
+        let nib2 = UINib(nibName: "EmptyChallengeCell", bundle: nil)
         tableView.register(nib2, forCellReuseIdentifier: "EmptyChallengeCell")
+        
+        let nib3 = UINib(nibName: "NoFriendsCell", bundle: nil)
+        tableView.register(nib3, forCellReuseIdentifier: "NoFriendsCell")
         
         // Set the cell height
         tableView.rowHeight = ChallengeCell.CellRowHeight()
@@ -61,14 +66,18 @@ class ChallengeViewController: UIViewController,
         // Setup the navigation bar
         navigationItem.title = "YourTake"
         
-        let rbbi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.camera,
+        let rbbi1 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.camera,
                                    target: self,
-                                   action: #selector(ChallengeViewController.newChallenge))
+                                   action: #selector(self.newChallenge))
+        
+        let rbbi2 = UIBarButtonItem(barButtonSystemItem: .add,
+                                    target: self,
+                                    action: #selector(self.addFriendsButtonTapped))
         
         let lbbi = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.organize,
                                    target: self,
                                    action: #selector(self.settingsButtonTapped))
-        navigationItem.rightBarButtonItem = rbbi
+        navigationItem.setRightBarButtonItems([rbbi1, rbbi2], animated: true)
         navigationItem.leftBarButtonItem = lbbi
         
         navigationController?.navigationBar.isHidden = false
@@ -83,22 +92,7 @@ class ChallengeViewController: UIViewController,
         tabBarControl.delegate = self
         tabBarControl.selectedItem = tabBarControl.items?[0]
         
-        // get initial data from source
-        let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getUser(completion: { (object) -> Void in self.user = object})
-
-        backendClient.getChallenges(for: false, completion: { (objects) -> Void in
-            self.userChallenges = objects
-            self.isChallengeTableEmpty = self.userChallenges!.isEmpty
-            self.tableView.reloadData();
-            self.updateTabBarBadges();
-            self.tableView.refreshControl!.endRefreshing()
-        })
-        backendClient.getChallenges(for: true, completion: { (objects) -> Void in
-            self.friendChallenges = objects
-            self.tableView.reloadData();
-            self.updateTabBarBadges();
-        })
+        loadDataFromBackend()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,10 +114,21 @@ class ChallengeViewController: UIViewController,
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
+            if let friends = friends {
+                if friends.count == 0 {
+                    userHasNoFriends = true
+                    return 1
+                } else {
+                    userHasNoFriends = false
+                }
+            } else {
+                return 0
+            }
+            
             if let userChallenges = userChallenges {
                 if userChallenges.count == 0 {
                     isChallengeTableEmpty = true
-                    return 1;
+                    return 1
                 } else {
                     return userChallenges.count
                 }
@@ -153,6 +158,11 @@ class ChallengeViewController: UIViewController,
         var challenge: Challenge?
         switch(tabBarControl.selectedItem!.tag) {
         case 0:
+            if userHasNoFriends {
+                let noFriendsCell = tableView.dequeueReusableCell(withIdentifier: "NoFriendsCell", for: indexPath) as! NoFriendsCell
+                noFriendsCell.addFriendsButton.addTarget(self, action: #selector(addFriendsButtonTapped), for: .touchUpInside)
+                return noFriendsCell
+            }
             if isChallengeTableEmpty {
                 let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyChallengeCell", for: indexPath) as! EmptyChallengeCell
                 emptyCell.createNewChallengeButton.addTarget(self, action: #selector(newChallenge), for: .touchUpInside)
@@ -209,6 +219,12 @@ class ChallengeViewController: UIViewController,
         navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
+    @IBAction func addFriendsButtonTapped() {
+        let settingsStoryboard = UIStoryboard(name: "SettingsViewController", bundle: nil)
+        let friendViewController = settingsStoryboard.instantiateViewController(withIdentifier: "Friends")
+        navigationController?.pushViewController(friendViewController, animated: true)
+    }
+    
     @IBAction func takePhoto(_ sender: UIBarButtonItem) {
         ip!.takePicture()
     }
@@ -235,30 +251,8 @@ class ChallengeViewController: UIViewController,
     }
     
     func refresh() {
-        
         tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        
-        switch(tabBarControl.selectedItem!.tag) {
-        case 0:
-            let backendClient = Backend.sharedInstance.getClient()
-            backendClient.getChallenges(for: false, completion: { (objects) -> Void in
-                self.userChallenges = objects
-                self.isChallengeTableEmpty = self.userChallenges!.isEmpty
-                self.tableView.reloadData()
-                self.updateTabBarBadges()
-                self.tableView.refreshControl?.endRefreshing()
-            })
-        case 1:
-            let backendClient = Backend.sharedInstance.getClient()
-            backendClient.getChallenges(for: true, completion: { (objects) -> Void in
-                self.friendChallenges = objects
-                self.tableView.reloadData()
-                self.updateTabBarBadges()
-                self.tableView.refreshControl?.endRefreshing()
-            })
-        default:
-            return
-        }
+        loadDataFromBackend()
     }
     
     func cellDrawButtonPressed(button: UIButton) {
@@ -394,6 +388,37 @@ class ChallengeViewController: UIViewController,
         
         cell.drawButton.tag = row
         cell.voteButton.tag = row
+    }
+    
+    private func loadDataFromBackend() {
+        
+        // get initial data from source
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.getUser(completion: { (object) -> Void in self.user = object})
+        
+        backendClient.getFriends(completion: { (friends) -> Void in
+            
+            print("Got Friends")
+            self.friends = friends;
+            
+            backendClient.getChallenges(for: false, completion: { (objects) -> Void in
+                
+                print("Got User Challenges")
+                self.userChallenges = objects
+                self.isChallengeTableEmpty = self.userChallenges!.isEmpty
+                self.tableView.reloadData();
+                self.updateTabBarBadges();
+                self.tableView.refreshControl!.endRefreshing()
+            })
+            
+            backendClient.getChallenges(for: true, completion: { (objects) -> Void in
+                
+                print("Got Friend Challenges")
+                self.friendChallenges = objects
+                self.tableView.reloadData();
+                self.updateTabBarBadges();
+            })
+        });
     }
     
 }
