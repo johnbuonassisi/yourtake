@@ -25,6 +25,7 @@ class SignUpViewController: UIViewController {
     // MARK: Initializers
     init() {
         super.init(nibName: "SignUpViewController", bundle: nil)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,6 +37,8 @@ class SignUpViewController: UIViewController {
         
         super.viewDidLoad()
         
+        
+        
         emailAddressTextField.delegate = self
         displayNameTextField.delegate = self
         passwordTextField.delegate = self
@@ -45,6 +48,11 @@ class SignUpViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         navigationController?.navigationBar.isHidden = true
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     
@@ -57,6 +65,17 @@ class SignUpViewController: UIViewController {
             email: emailAddressTextField!.text!,
             completion: { (success) -> Void in
                 if success {
+                    
+                    // Save the username and password to the keychain
+                    let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
+                                                            account: self.displayNameTextField!.text!,
+                                                            accessGroup: KeychainConfiguration.accessGroup)
+                    do {
+                        try passwordItem.savePassword(self.displayNameTextField!.text!)
+                    } catch {
+                        fatalError("Error updating keychain - \(error)")
+                    }
+                    
                     // Present user with an alert and dismiss alert after 3 seconds
                     let alert = UIAlertController(title: "Welcome to YourTake!",
                                                   message: "Your signup was successful",

@@ -24,6 +24,8 @@ class SettingsViewController: UITableViewController {
                 changeEmail()
             case 2:
                 changePassword()
+            case 4:
+                signout()
             default:
                 return
             }
@@ -67,6 +69,26 @@ class SettingsViewController: UITableViewController {
     
     private func changePassword() {
         print("Change Password")
+    }
+    
+    private func signout() {
+        
+        // Delete the username and password from the keychain
+        do {
+            let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
+            for item in passwordItems {
+                try item.deleteItem()
+            }
+        } catch {
+            fatalError("Error deleting password items - \(error)")
+        }
+        
+        // Replace the current View Controllers in the Navigation Controller with new ones
+        // This wipes out data stored in the Challenge View Controller
+        let suvc = SignUpViewController()
+        let cvc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
+        navigationController?.setViewControllers([cvc, suvc], animated: true)
+        
     }
     
     private func showAboutUs() {

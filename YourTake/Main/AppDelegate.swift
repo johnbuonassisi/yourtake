@@ -18,19 +18,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        // Navigation Controller -> Root: Challenge View Controller
+        // Create main navigation controller
         let navigationVc = SwipelessNavigationController(); // Will not pop a view controller when a left swipe gesture occurs
-                                                            // This is particularly important for the login and draw VCs
+                                                            // This is particularly important for the login and draw vcs
+        // Create challenge view controller
         let challengeVc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
-        navigationVc.pushViewController(challengeVc, animated: false)
         
+        // Create signup view controller
         let signUpVc = SignUpViewController()
-        navigationVc.pushViewController(signUpVc, animated: false)
         
+        // Try to get an existing username and password from the keychain
+        var passwordItems: [KeychainPasswordItem]
+        do {
+            passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName,
+                                                                   accessGroup: KeychainConfiguration.accessGroup)
+        } catch {
+            fatalError("Error fetching password items - \(error)")
+        }
+        
+        // If a username and password have been previously saved, attempt login
+        if passwordItems.count > 0 {
+            let backendClient = Backend.sharedInstance.getClient()
+            do {
+                backendClient.login(username: passwordItems[0].account,
+                                    password: try passwordItems[0].readPassword(),
+                                    completion: { (success) -> Void in
+                                        if success {
+                                            // When login success, push challenge vc
+                                            navigationVc.pushViewController(challengeVc, animated: false)
+                                        } else {
+                                            // When login fails, push challenge then login vcs
+                                            navigationVc.pushViewController(challengeVc, animated: false)
+                                            navigationVc.pushViewController(signUpVc, animated: false)
+                                        }
+                })
+            } catch {
+                fatalError("Error reading password from keychain - \(error)")
+            }
+        } else {
+            // If existing username/password do not exist, show signup vc
+            navigationVc.pushViewController(challengeVc, animated: false)
+            navigationVc.pushViewController(signUpVc, animated: false)
+        }
+        
+        // Always show the navigation controller, challenge controller will be pushed after login
         window?.rootViewController = navigationVc
-        window?.backgroundColor = UIColor.white
-        window?.makeKeyAndVisible()
-        
+        self.window?.backgroundColor = UIColor.white
+        self.window?.makeKeyAndVisible()
         return true
     }
 
