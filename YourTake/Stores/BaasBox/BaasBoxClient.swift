@@ -456,9 +456,10 @@ class BaasBoxClient: BaClient {
         }
         
         let baasObject = BaasBoxTake()
-        let params = ["page": "0",
-                      "recordsPerPage": "50",
-                      "orderBy": "votes"]
+        let params = ["recordsPerPage": "50",
+                      "orderBy": "votes",
+                      "where": "challengeId=?",
+                      "params": challengeId]
         client.loadCollection(baasObject, withParams: params, completion: { (objects, error) -> Void in
             var takes = [Take]()
             if let baasTakes = objects as? [BaasBoxTake] {
@@ -466,6 +467,9 @@ class BaasBoxClient: BaClient {
                     for baasTake in baasTakes {
                         BAAFile.load(withId: baasTake.overlayId, completion: { (object, error) in
                             if object != nil {
+                                if baasTake.author == self.client.currentUser!.username() {
+                                    return
+                                }
                                 let take = Take(
                                     id: baasTake.objectId,
                                     challengeId: baasTake.challengeId,
@@ -489,7 +493,7 @@ class BaasBoxClient: BaClient {
                         })
                     }
                 } else {
-                    print("warn: no takes available")
+                    print("info: no takes available for challengeId=\(challengeId)")
                     completion(takes)
                 }
             } else {
@@ -528,6 +532,7 @@ class BaasBoxClient: BaClient {
                 
                 self.client.createObject(baasTake, completion: { (object, error) -> Void in
                     if let baasTake = object as? BaasBoxTake {
+                        baasTake.grantAccess(toRole: "registered", ofType: "read", completion: nil)
                         baasTake.grantAccess(toRole: "registered", ofType: "update", completion: nil)
                         completion(true)
                     } else {
@@ -589,7 +594,29 @@ class BaasBoxClient: BaClient {
                 baasTake.votes += 1
                 baasTake.save(completion: { (object, error) -> Void in
                     if object != nil {
-                        completion(true)
+                        let params = ["_author": "\(self.client.currentUser.username()!)"]
+                        BaasBoxUser.getObjectsWithParams(params, completion: { (objects, error) -> Void in
+                            if let baasUser = (objects as? [BaasBoxUser])?.first {
+                                if let oldTakeId = baasUser.votes[baasTake.challengeId] {
+                                    self.unvote(with: oldTakeId, completion: { _ in ()
+                                        baasUser.votes[baasTake.challengeId] = takeId
+                                        baasUser.save(completion: { _ in ()
+                                            completion(true)
+                                        })
+                                    })
+                                } else {
+                                    baasUser.votes[baasTake.challengeId] = takeId
+                                    baasUser.save(completion: { _ in ()
+                                        completion(true)
+                                    })
+                                }
+                            } else {
+                                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+                                self.unvote(with: takeId, completion: { _ in ()
+                                    completion(false)
+                                })
+                            }
+                        })
                     } else {
                         print("error: unable to vote [description=\(error?.localizedDescription)]")
                         completion(false)
@@ -620,7 +647,20 @@ class BaasBoxClient: BaClient {
                 baasTake.votes -= 1
                 baasTake.save(completion: { (object, error) -> Void in
                     if object != nil {
-                        completion(true)
+                        let params = ["_author": "\(self.client.currentUser.username()!)"]
+                        BaasBoxUser.getObjectsWithParams(params, completion: { (objects, error) -> Void in
+                            if let baasUser = (objects as? [BaasBoxUser])?.first {
+                                baasUser.votes.removeValue(forKey: baasTake.challengeId)
+                                baasUser.save(completion: { _ in ()
+                                    completion(true)
+                                })
+                            } else {
+                                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+                                self.vote(with: takeId, completion: { _ in ()
+                                    completion(false)
+                                })
+                            }
+                        })
                     } else {
                         print("error: unable to unvote [description=\(error?.localizedDescription)]")
                         completion(false)

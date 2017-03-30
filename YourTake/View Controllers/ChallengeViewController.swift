@@ -182,7 +182,7 @@ class ChallengeViewController: UIViewController,
         cell.drawButton.tag = indexPath.row
         cell.drawButton.addTarget(self, action: #selector(cellDrawButtonPressed), for: .touchUpInside)
         
-        cell.drawButton.tag = indexPath.row
+        cell.voteButton.tag = indexPath.row
         cell.voteButton.addTarget(self, action: #selector(cellVoteButtonPressed), for: .touchUpInside)
         
         if challenge != nil {
@@ -193,7 +193,7 @@ class ChallengeViewController: UIViewController,
             cell.totalVotesLabel.text = String(challenge!.getTotalVotes()) + " total votes"
             
             if challenge!.author == user?.username {
-                cell.drawButton.isEnabled = true
+                cell.drawButton.isEnabled = false
             } else {
                 cell.drawButton.isEnabled = true
             }
