@@ -54,6 +54,7 @@
 		526AF0581DD2F334003350B4 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526AF0571DD2F334003350B4 /* DrawViewController.swift */; };
 		526AF05A1DD2F53C003350B4 /* DrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526AF0591DD2F53C003350B4 /* DrawViewController.xib */; };
 		526AF05C1DD2F9B0003350B4 /* DrawLinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526AF05B1DD2F9B0003350B4 /* DrawLinesView.swift */; };
+		52760BF51E9045280093B921 /* ChallengeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BF41E9045270093B921 /* ChallengeDto.swift */; };
 		527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527FD5E91E0739F90023D420 /* LaunchScreen.xib */; };
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
@@ -137,6 +138,7 @@
 		526AF0571DD2F334003350B4 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawViewController.swift; path = "View Controllers/DrawViewController.swift"; sourceTree = "<group>"; };
 		526AF0591DD2F53C003350B4 /* DrawViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DrawViewController.xib; path = "View Controllers/DrawViewController.xib"; sourceTree = "<group>"; };
 		526AF05B1DD2F9B0003350B4 /* DrawLinesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawLinesView.swift; path = Views/DrawLinesView.swift; sourceTree = "<group>"; };
+		52760BF41E9045270093B921 /* ChallengeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeDto.swift; path = Models/ChallengeDto.swift; sourceTree = "<group>"; };
 		527FD5E91E0739F90023D420 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Views/LaunchScreen.xib; sourceTree = "<group>"; };
 		528509881DC6F9470083CC55 /* YourTake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5285098B1DC6F9470083CC55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Main/AppDelegate.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				529DC7C61DCC705F00EFA856 /* Take.swift */,
 				33E3AA4C1E248EA600C5D05A /* Backend.swift */,
 				52A868801E63687100F26F31 /* FriendSelectionTracker.swift */,
+				52760BF41E9045270093B921 /* ChallengeDto.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */,
 				332283F01E05D5E4008647E4 /* BaasBoxChallenge.swift in Sources */,
 				529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */,
+				52760BF51E9045280093B921 /* ChallengeDto.swift in Sources */,
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
 				5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */,
 				52299E301DE807ED00F04C86 /* BAAObject.m in Sources */,

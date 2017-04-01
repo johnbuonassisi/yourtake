@@ -261,6 +261,73 @@ class BaasBoxClient: BaClient {
         })
     }
     
+    func getChallengeList(for friends: Bool, completion: @escaping BaChallengeListCompletionBlock) -> Void {
+        return getChallengeList(to: Date(), with: 10, for: friends, completion: completion)
+    }
+    
+    func getChallengeList(to date: Date, with maxCount: UInt, for friends: Bool, completion: @escaping BaChallengeListCompletionBlock) -> Void {
+        
+        if date > Date() || maxCount == 0 {
+            print("error: invalid parameters")
+            completion([ChallengeDto]())
+            return
+        }
+            
+        if client.currentUser == nil || !client.isAuthenticated() {
+            print("error: user not authenticated")
+            completion([ChallengeDto]())
+            return
+        }
+            
+        let baasObject = BaasBoxChallenge()
+        var params = ["recordsPerPage": "\(maxCount)"]
+        
+        if friends {
+            params["where"] = "recipients in ?"
+            params["params"] = "\(client.currentUser.username()!)"
+        } else {
+            params["where"] = "_author=?"
+            params["params"] = "\(client.currentUser.username()!)"
+        }
+        
+        client.loadCollection(baasObject, withParams: params, completion: { (objects, error) -> Void in
+            var challenges = [ChallengeDto]()
+            if let baasChallenges = objects as? [BaasBoxChallenge] {
+            
+                if !baasChallenges.isEmpty {
+                    for baasChallenge in baasChallenges {
+                        
+                        let challenge = ChallengeDto(
+                            id: baasChallenge.objectId,
+                            author: baasChallenge.author,
+                            imageId: baasChallenge.imageId,
+                            recipients: baasChallenge.recipients,
+                            duration: baasChallenge.duration,
+                            created: baasChallenge.creationDate)
+                        challenges.append(challenge)
+                    }
+                    challenges.sort(by: { (left, right) -> Bool in
+                        if left.getTimeRemaining() > right.getTimeRemaining() {
+                            return true
+                        } else if left.created > right.created {
+                            return true
+                        }
+                        return false
+                    })
+                    
+                } else { // baasChallenges are empty
+                    print("warn: no challenges available")
+                    completion(challenges)
+                }
+            } else { // baasChallenges is null
+                print("error: unable to load challenges [description=\(error?.localizedDescription)]")
+                completion(challenges)
+            }
+            
+            completion(challenges)
+        })
+    }
+    
     func getChallenges(for friends: Bool, completion: @escaping BaChallengesCompletionBlock) -> Void {
         return getChallenges(to: Date(), with: 10, for: friends, completion: completion)
     }
@@ -670,6 +737,17 @@ class BaasBoxClient: BaClient {
                 print("error: unable to load take [description=\(error?.localizedDescription)]")
                 completion(false)
             }
+        })
+    }
+    
+    func downloadImage(with id: String, completion: @escaping BaImageCompletionBlock) {
+        
+        var image: UIImage?
+        BAAFile.load(withId: id, completion: { (object, error) in
+            if object != nil {
+                image = UIImage(data: Data(base64Encoded: object!)!)
+            }
+            completion(image)
         })
     }
 }
