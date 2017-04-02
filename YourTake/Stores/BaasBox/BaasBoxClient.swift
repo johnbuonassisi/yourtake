@@ -7,11 +7,10 @@
 //
 
 class BaasBoxClient: BaClient {
-    let client = BAAClient.shared()!
-
-    init() {
+    let client: BAAClient = {
         BaasBox.setBaseURL("http://localhost:9000", appCode: "5965980156")
-    }
+        return BAAClient.shared()!
+    }()
 
     func register(username: String, password: String, email: String, completion: @escaping BaBoolCompletionBlock) -> Void {
         if username.isEmpty || password.isEmpty {
