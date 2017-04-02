@@ -16,7 +16,8 @@ class ChallengeDto: NSObject {
     let recipients : [String]
     let duration : TimeInterval
     let created : Date
-    
+    var image: UIImage?
+  
     init(id: String, author: String, imageId: String, recipients: [String], duration: TimeInterval, created: Date) {
         self.id = id
         self.author = author
@@ -24,6 +25,7 @@ class ChallengeDto: NSObject {
         self.recipients = recipients
         self.duration = duration
         self.created = created
+        self.image = nil
     }
     
     func getTimeRemaining() -> Date {

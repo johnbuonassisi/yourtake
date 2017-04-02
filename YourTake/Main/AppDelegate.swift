@@ -43,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationVc = SwipelessNavigationController(); // Will not pop a view controller when a left swipe gesture occurs
                                                             // This is particularly important for the login and draw vcs
         // Create challenge view controller
+        // let cleanStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        // let challengeVc = cleanStoryBoard.instantiateViewController(withIdentifier: "ChallengeList")
         let challengeVc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
         
         // Create signup view controller
