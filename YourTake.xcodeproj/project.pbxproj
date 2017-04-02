@@ -330,16 +330,16 @@
 		52760BFC1E9058E40093B921 /* ListChallenges */ = {
 			isa = PBXGroup;
 			children = (
-				52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */,
 				52760BFE1E9058F80093B921 /* ListChallengesViewController.swift */,
 				52760BFF1E9058F80093B921 /* ListChallengesInteractor.swift */,
-				52760C001E9058F80093B921 /* ListChallengesModels.swift */,
-				52760C011E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift */,
+				52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */,
 				52760C021E9058F80093B921 /* ListChallengesConfigurator.swift */,
-				52760C031E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift */,
-				52760C041E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift */,
 				52760C051E9058F80093B921 /* ListChallengesRouter.swift */,
 				52760C061E9058F80093B921 /* ListChallengesWorker.swift */,
+				52760C001E9058F80093B921 /* ListChallengesModels.swift */,
+				52760C011E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift */,
+				52760C031E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift */,
+				52760C041E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift */,
 			);
 			name = ListChallenges;
 			sourceTree = "<group>";

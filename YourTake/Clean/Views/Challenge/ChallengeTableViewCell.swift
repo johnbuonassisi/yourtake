@@ -21,12 +21,5 @@ class ChallengeTableViewCell: UITableViewCell {
   {
     return 481.0;
   }
-  
-  func getImageForCell(with id: String, completion: @escaping (UIImage?) -> Void) {
-    let backendClient = Backend.sharedInstance.getClient()
-    backendClient.downloadImage(with: id, completion: { (image) -> Void in
-      completion(image)
-    })
-  }
     
 }
