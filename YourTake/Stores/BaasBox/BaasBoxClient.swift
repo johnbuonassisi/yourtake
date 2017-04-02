@@ -532,11 +532,12 @@ class BaasBoxClient: BaClient {
             if let baasTakes = objects as? [BaasBoxTake] {
                 if !baasTakes.isEmpty {
                     for baasTake in baasTakes {
+                        // skip takes from logged in user
+                        if baasTake.author == self.client.currentUser!.username() {
+                            return
+                        }
                         BAAFile.load(withId: baasTake.overlayId, completion: { (object, error) in
                             if object != nil {
-                                if baasTake.author == self.client.currentUser!.username() {
-                                    return
-                                }
                                 let take = Take(
                                     id: baasTake.objectId,
                                     challengeId: baasTake.challengeId,
