@@ -114,17 +114,37 @@ class TakesCollectionViewController: UICollectionViewController
     
     // MARK: Action Methods
     
-    @IBAction func takeCellVoteButtonPressed(index: Int) {
+    @IBAction func takeCellVoteButtonPressed(button: UIButton) {
         var take: Take?
-        if index >= 0 && index < takes.count {
-            take = takes[index]
+        if button.tag >= 0 && button.tag < takes.count {
+            take = takes[button.tag]
         }
         
         if take != nil {
-            take!.vote()
+            let backendClient = Backend.sharedInstance.getClient()
+            if user?.votes[challenge!.id] != take!.id {
+                backendClient.vote(with: take!.id, completion: { (success) in
+                    if success {
+                        self.loadDataFromBackend()
+                    }
+                })
+            } else {
+                backendClient.unvote(with: take!.id, completion: { (success) in
+                    if success {
+                        self.loadDataFromBackend()
+                    }
+                })
+            }
         }
-        
-        self.collectionView?.reloadData()
+    }
+    
+    private func loadDataFromBackend() {
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.getUser(completion: { (object) -> Void in self.user = object})
+        backendClient.getTakes(for: self.challenge!.id, completion: { (objects) -> Void in
+            self.takes = objects
+            self.collectionView?.reloadData()
+        })
     }
 }
 

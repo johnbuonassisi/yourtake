@@ -15,6 +15,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+      
+        // Check if this is the first time the app was run
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: "hasRunBefore") == false {
+            // Delete existing username and password from the keychain
+            do {
+                let passwordItems = try KeychainPasswordItem.passwordItems(
+                    forService: KeychainConfiguration.serviceName,
+                    accessGroup: KeychainConfiguration.accessGroup)
+                for item in passwordItems {
+                    try item.deleteItem()
+                }
+            } catch {
+                fatalError("Error deleting password items - \(error)")
+            }
+            
+            // Update the flag in the user default database
+            userDefaults.set(true, forKey: "hasRunBefore")
+            userDefaults.synchronize()
+        }
+      
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -22,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationVc = SwipelessNavigationController(); // Will not pop a view controller when a left swipe gesture occurs
                                                             // This is particularly important for the login and draw vcs
         // Create challenge view controller
+        // let cleanStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        // let challengeVc = cleanStoryBoard.instantiateViewController(withIdentifier: "ChallengeList")
         let challengeVc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
         
         // Create signup view controller
@@ -38,8 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // If a username and password have been previously saved, attempt login
         if passwordItems.count > 0 {
-            let backendClient = Backend.sharedInstance.getClient()
             do {
+                let backendClient = Backend.sharedInstance.getClient()
                 backendClient.login(username: passwordItems[0].account,
                                     password: try passwordItems[0].readPassword(),
                                     completion: { (success) -> Void in

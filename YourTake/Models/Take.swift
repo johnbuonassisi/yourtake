@@ -29,14 +29,4 @@ class Take: NSObject {
         }
         return true
     }
-    
-    func vote() {
-        let backendClient = Backend.sharedInstance.getClient()
-        backendClient.vote(with: id) { (success) in }
-    }
-    
-    func unvote() {
-        let backendClient = Backend.sharedInstance.getClient()
-        backendClient.unvote(with: id) { (success) in }
-    }
 }
