@@ -73,22 +73,65 @@ class SettingsViewController: UITableViewController {
     
     private func signout() {
         
-        // Delete the username and password from the keychain
-        do {
-            let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
-            for item in passwordItems {
-                try item.deleteItem()
+        // do not allow cancelling a logout attempt
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.text = "Logging out..."
+        label.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 75)
+        label.textAlignment = .center
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = UIColor.white
+        activityIndicator.center = view.center
+        
+        let overlay = UIView()
+        overlay.frame = view.frame
+        overlay.center = view.center
+        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.85)
+        overlay.addSubview(label)
+        overlay.addSubview(activityIndicator)
+        self.view.addSubview(overlay)
+        
+        // Wait until all backend upload operations are complete, not doing so will cause permission problems
+        DispatchQueue.global(qos: .background).async {
+            // disable all UI interactions
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            
+            // start overlay animation
+            DispatchQueue.main.async {
+                // add activity overlay indicator to view
+                activityIndicator.startAnimating()
             }
-        } catch {
-            fatalError("Error deleting password items - \(error)")
+            
+            let backend = Backend.sharedInstance
+            while !backend.challengesInProgress.isEmpty || !backend.takesInProgress.isEmpty {}
+            activityIndicator.stopAnimating()
+            
+            // Delete the username and password from the keychain
+            do {
+                let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
+                for item in passwordItems {
+                    try item.deleteItem()
+                }
+            } catch {
+                fatalError("Error deleting password items - \(error)")
+            }
+            
+            // change to signup view
+            DispatchQueue.main.async {
+                // Replace the current View Controllers in the Navigation Controller with new ones
+                // This wipes out data stored in the Challenge View Controller
+                let suvc = SignUpViewController()
+                let cvc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
+
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+                self.navigationController?.setViewControllers([cvc, suvc], animated: true)
+            }
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
-        
-        // Replace the current View Controllers in the Navigation Controller with new ones
-        // This wipes out data stored in the Challenge View Controller
-        let suvc = SignUpViewController()
-        let cvc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
-        navigationController?.setViewControllers([cvc, suvc], animated: true)
-        
     }
     
     private func showAboutUs() {

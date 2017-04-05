@@ -89,6 +89,10 @@ class TakesCollectionViewController: UICollectionViewController
             cell.voteButton.setImage(notLikedImage, for: UIControlState.normal)
         }
         
+        if take!.author == user?.username {
+            cell.voteButton.isHidden = true
+        }
+        
         return cell
     }
     

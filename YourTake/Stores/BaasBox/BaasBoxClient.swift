@@ -7,11 +7,10 @@
 //
 
 class BaasBoxClient: BaClient {
-    let client = BAAClient.shared()!
-
-    init() {
-        BaasBox.setBaseURL("http://192.168.0.12:9000", appCode: "1234567890")
-    }
+    let client: BAAClient = {
+        BaasBox.setBaseURL("http://localhost:9000", appCode: "5965980156")
+        return BAAClient.shared()!
+    }()
 
     func register(username: String, password: String, email: String, completion: @escaping BaBoolCompletionBlock) -> Void {
         if username.isEmpty || password.isEmpty {
@@ -245,7 +244,7 @@ class BaasBoxClient: BaClient {
                         completion(Challenge(
                             id: baasChallenge.objectId,
                             author: baasChallenge.author,
-                            image: UIImage(data: Data(base64Encoded: object!)!)!,
+                            image: UIImage(data: object!)!,
                             recipients: baasChallenge.recipients,
                             duration: baasChallenge.duration,
                             created: Date()))
@@ -360,21 +359,23 @@ class BaasBoxClient: BaClient {
             var challenges = [Challenge]()
             if let baasChallenges = objects as? [BaasBoxChallenge] {
                 if !baasChallenges.isEmpty {
+                    var failCount = 0
                     for baasChallenge in baasChallenges {
                         BAAFile.load(withId: baasChallenge.imageId, completion: { (object, error) in
                             if object != nil {
                                 let challenge = Challenge(
                                     id: baasChallenge.objectId,
                                     author: baasChallenge.author,
-                                    image: UIImage(data: Data(base64Encoded: object!)!)!,
+                                    image: UIImage(data:  object!)!,
                                     recipients: baasChallenge.recipients,
                                     duration: baasChallenge.duration,
                                     created: baasChallenge.creationDate)
                                 challenges.append(challenge)
                             } else {
                                 print("error: unable to load challenge [description=\(error?.localizedDescription)]")
+                                failCount += 1
                             }
-                            if challenges.count == baasChallenges.count {
+                            if challenges.count == baasChallenges.count - failCount {
                                 challenges.sort(by: { (left, right) -> Bool in
                                     if left.getTimeRemaining() > right.getTimeRemaining() {
                                         return true
@@ -411,36 +412,47 @@ class BaasBoxClient: BaClient {
             return
         }
         
-        let jpegData = UIImageJPEGRepresentation(challenge.image, 0.7)?.base64EncodedData()
+        let jpegData = UIImageJPEGRepresentation(challenge.image, 0.25)
         let baasFileImage = BAAFile(data: jpegData)
+        baasFileImage?.contentType = "image/jpeg"
         
-        client.uploadFile(baasFileImage, withPermissions: nil, completion: { (object, error) -> Void in
+        // set file permission
+        var permissions = ["read": ["users": [String]()]]
+        for recipient in challenge.recipients {
+            permissions[kAclReadPermission]?["users"]?.append(recipient)
+        }
+        
+        // generate unique challenge id and add to in-progress list
+        let challengeId = UUID().uuidString.lowercased()
+        Backend.sharedInstance.challengesInProgress.append(challengeId)
+        let challengeIndex = Backend.sharedInstance.challengesInProgress.index(of: challengeId)!
+        
+        client.uploadFile(baasFileImage, withPermissions: permissions, completion: { (object, error) -> Void in
             if let baasFile = object as? BAAFile {
-                var params = [String: Any]()
-                params["imageId"] = baasFile.fileId
-                params["duration"] = challenge.duration
-                params["recipients"] = challenge.recipients
+                var params = ["id": challengeId,
+                              "imageId": baasFile.fileId,
+                              "duration": challenge.duration,
+                              "recipients": challenge.recipients] as [String : Any]
+                
                 let baasChallenge = BaasBoxChallenge(dictionary: params)
-                
-                // set file permission
-                for recipient in params["recipients"] as! [String] {
-                    baasFile.grantAccess(toUser: recipient, ofType: "read", completion: nil)
-                }
-                
                 self.client.createObject(baasChallenge, completion: { (object, error) -> Void in
                     if let baasChallenge = object as? BaasBoxChallenge {
+                        // set challenge permission
                         for recipient in params["recipients"] as! [String] {
-                            baasChallenge.grantAccess(toUser: recipient, ofType: "read", completion: nil)
+                            baasChallenge.grantAccess(toUser: recipient, ofType: kAclReadPermission, completion: nil)
                         }
+                        Backend.sharedInstance.challengesInProgress.remove(at: challengeIndex)
                         completion(true)
                     } else {
-                        baasFile.delete(completion: nil)
                         print("error: unable to create challenge [description=\(error?.localizedDescription)]")
+                        baasFile.delete(completion: nil)
+                        Backend.sharedInstance.challengesInProgress.remove(at: challengeIndex)
                         completion(false)
                     }
                 })
             } else {
                 print("error: unable to create challenge [description=\(error?.localizedDescription)]")
+                Backend.sharedInstance.challengesInProgress.remove(at: challengeIndex)
                 completion(false)
             }
         })
@@ -495,7 +507,7 @@ class BaasBoxClient: BaClient {
                             id: baasTake.objectId,
                             challengeId: baasTake.challengeId,
                             author: baasTake.author,
-                            overlay: UIImage(data: Data(base64Encoded: object!)!)!,
+                            overlay: UIImage(data: object!)!,
                             votes: baasTake.votes))
                     } else {
                         print("error: unable to load challenge [description=\(error?.localizedDescription)]")
@@ -531,25 +543,22 @@ class BaasBoxClient: BaClient {
             var takes = [Take]()
             if let baasTakes = objects as? [BaasBoxTake] {
                 if !baasTakes.isEmpty {
+                    var failCount = 0
                     for baasTake in baasTakes {
-                        // skip takes from logged in user
-                        if baasTake.author == self.client.currentUser!.username() {
-                            return
-                        }
                         BAAFile.load(withId: baasTake.overlayId, completion: { (object, error) in
                             if object != nil {
                                 let take = Take(
                                     id: baasTake.objectId,
                                     challengeId: baasTake.challengeId,
                                     author: baasTake.author,
-                                    overlay: UIImage(data: Data(base64Encoded: object!)!)!,
+                                    overlay: UIImage(data: object!)!,
                                     votes: baasTake.votes)
                                 takes.append(take)
                             } else {
                                 print("error: unable to load take [description=\(error?.localizedDescription)]")
-                                completion(takes)
+                                failCount += 1
                             }
-                            if takes.count == baasTakes.count {
+                            if takes.count == baasTakes.count - failCount{
                                 takes.sort(by: { (left, right) -> Bool in
                                     if left.votes > right.votes {
                                         return true
@@ -561,7 +570,6 @@ class BaasBoxClient: BaClient {
                         })
                     }
                 } else {
-                    print("info: no takes available for challengeId=\(challengeId)")
                     completion(takes)
                 }
             } else {
@@ -584,33 +592,40 @@ class BaasBoxClient: BaClient {
             return
         }
         
-        let jpegData = UIImageJPEGRepresentation(take.overlay, 0.7)?.base64EncodedData()
+        let jpegData = UIImageJPEGRepresentation(take.overlay, 0.25)
         let baasFileImage = BAAFile(data: jpegData)
+        baasFileImage?.contentType = "image/jpeg"
+        let permissions = [kAclReadPermission: ["roles": [kAclRegisteredRole]]]
         
-        client.uploadFile(baasFileImage, withPermissions: nil, completion: { (object, error) -> Void in
+        // generate unique take id and add to in-progress list
+        let takeId = UUID().uuidString.lowercased()
+        Backend.sharedInstance.takesInProgress.append(takeId)
+        let takeIndex = Backend.sharedInstance.takesInProgress.index(of: takeId)!
+        
+        client.uploadFile(baasFileImage, withPermissions: permissions, completion: { (object, error) -> Void in
             if let baasFile = object as? BAAFile {
-                var params = [String: Any]()
-                params["challengeId"] = take.challengeId
-                params["overlayId"] = baasFile.fileId
-                params["votes"] = take.votes
+                let params = ["id": takeId,
+                              "challengeId": take.challengeId,
+                              "overlayId": baasFile.fileId,
+                              "votes": take.votes] as [String : Any]
+                
                 let baasTake = BaasBoxTake(dictionary: params)
-                
-                // set file permission
-                baasFile.grantAccess(toRole: "registered", ofType: "read", completion: nil)
-                
                 self.client.createObject(baasTake, completion: { (object, error) -> Void in
                     if let baasTake = object as? BaasBoxTake {
-                        baasTake.grantAccess(toRole: "registered", ofType: "read", completion: nil)
-                        baasTake.grantAccess(toRole: "registered", ofType: "update", completion: nil)
+                        baasTake.grantAccess(toRole: kAclRegisteredRole, ofType: kAclReadPermission, completion: nil)
+                        baasTake.grantAccess(toRole: kAclRegisteredRole, ofType: kAclUpdatePermission, completion: nil)
+                        Backend.sharedInstance.takesInProgress.remove(at: takeIndex)
                         completion(true)
                     } else {
-                        baasFile.delete(completion: nil)
                         print("error: unable to create challenge [description=\(error?.localizedDescription)]")
+                        baasFile.delete(completion: nil)
+                        Backend.sharedInstance.takesInProgress.remove(at: takeIndex)
                         completion(false)
                     }
                 })
             } else {
                 print("error: unable to create challenge [description=\(error?.localizedDescription)]")
+                Backend.sharedInstance.takesInProgress.remove(at: takeIndex)
                 completion(false)
             }
         })
