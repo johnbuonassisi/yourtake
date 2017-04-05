@@ -47,13 +47,15 @@ class Challenge: NSObject {
         return false
     }
     
-    func submit(_ take: Take) -> Bool {
+    func submit(_ take: Take) {
         let backendClient = Backend.sharedInstance.getClient()
-        
-        var baSuccess = false
-        backendClient.createTake(take, completion: { (success) -> Void in baSuccess = success })
-        
-        return baSuccess
+        backendClient.createTake(take, completion: { (success) -> Void in
+            if success {
+                print("Take created successfully!");
+            } else {
+                print("Failed to create Take!");
+            }
+        })
     }
     
     func getTotalVotes() -> UInt {
