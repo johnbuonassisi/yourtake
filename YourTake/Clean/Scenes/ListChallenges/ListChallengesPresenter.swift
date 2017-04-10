@@ -33,7 +33,8 @@ class ListChallengesPresenter: ListChallengesPresenterInput
     for challenge in response.challenges
     {
       let displayedChallenge =
-        ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge(name: challenge.author,
+        ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge(id: challenge.id,
+                                                                    name: challenge.author,
                                                                     imageId: challenge.imageId,
                                                                     challengeImage: challenge.image,
                                                                     expiryLabel: challenge.getTimeRemaining().description,

@@ -32,6 +32,7 @@ struct ListChallenges
       
       struct DisplayedChallenge
       {
+        var id: String
         var name: String
         var imageId: String
         var challengeImage: UIImage?

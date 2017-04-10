@@ -53,6 +53,9 @@ class ListChallengesViewController: UIViewController,
   {
     super.viewDidLoad()
     
+    userChallengesDataSource.viewController = self
+    friendChallengesDataSource.viewController = self
+    
     tableView.dataSource = userChallengesDataSource
     tableView.delegate = self
     tableView.rowHeight = ChallengeTableViewCell.CellRowHeight()
@@ -101,8 +104,24 @@ class ListChallengesViewController: UIViewController,
   
   // MARK - Tab Bar Control delegate methods
   
-  func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+  func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem)
+  {
     fetchChallengesOnLoad()
   }
+  
+  // MARK - Action methods
+  
+  func cellDrawButtonPressed(sender: UIButton!)
+  {
+    print("Cell draw button pressed for cell at index \(sender.tag)")
+  }
+  
+  func cellVoteButtonPressed(sender: UIButton!)
+  {
+    print("Cell vote button pressed for cell at index \(sender.tag)")
+    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+    router.navigateToTakesScene(with: challengeId)
+  }
+
   
 }

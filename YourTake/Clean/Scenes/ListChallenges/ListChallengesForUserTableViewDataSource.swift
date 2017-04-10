@@ -11,6 +11,7 @@ import UIKit
 class ListChallengesForUserTableViewDataSource: NSObject, UITableViewDataSource {
   
   var displayedChallenges: [ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge] = []
+  weak var viewController: ListChallengesViewController!
   
   func numberOfSections(in tableView: UITableView) -> Int
   {
@@ -36,13 +37,15 @@ class ListChallengesForUserTableViewDataSource: NSObject, UITableViewDataSource 
     cell.drawButton.isEnabled = displayedChallenge.isDrawButtonEnabled
     cell.voteButton.isEnabled = displayedChallenge.isVoteButton
     
-    /*
-    cell.getImageForCell(with: displayedChallenge.imageId, completion: { (image) -> Void in
-      // let newCell = tableView.cellForRow(at: indexPath) as! ChallengeTableViewCell
-      cell.challengeImage.image = image
-    })
-     */
+    cell.drawButton.tag = indexPath.row
+    cell.drawButton.addTarget(viewController,
+                              action: #selector(viewController.cellDrawButtonPressed),
+                              for: .touchUpInside)
     
+    cell.voteButton.tag = indexPath.row
+    cell.voteButton.addTarget(viewController,
+                              action: #selector(viewController.cellVoteButtonPressed),
+                              for: .touchUpInside)
     
     return cell
   }

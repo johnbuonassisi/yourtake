@@ -13,7 +13,7 @@ import UIKit
 
 protocol ListChallengesRouterInput
 {
-  func navigateToSomewhere()
+  func navigateToTakesScene(with challengeId: String)
 }
 
 class ListChallengesRouter: ListChallengesRouterInput
@@ -22,7 +22,7 @@ class ListChallengesRouter: ListChallengesRouterInput
   
   // MARK: - Navigation
   
-  func navigateToSomewhere()
+  func navigateToTakesScene(with challengeId: String)
   {
     // NOTE: Teach the router how to navigate to another scene. Some examples follow:
     
@@ -31,6 +31,8 @@ class ListChallengesRouter: ListChallengesRouterInput
     
     // 2. Present another view controller programmatically
     // viewController.presentViewController(someWhereViewController, animated: true, completion: nil)
+    let ltvc = ListTakesViewController(challengeId: "1")
+    viewController.navigationController?.pushViewController(ltvc, animated: true)
     
     // 3. Ask the navigation controller to push another view controller onto the stack
     // viewController.navigationController?.pushViewController(someWhereViewController, animated: true)
