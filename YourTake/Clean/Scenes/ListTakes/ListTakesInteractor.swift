@@ -26,7 +26,7 @@ protocol ListTakesInteractorOutput
 class ListTakesInteractor: ListTakesInteractorInput
 {
   var output: ListTakesInteractorOutput!
-  var takesWorker = TakesWorker(takeStore: TakeMemStore())
+  var takesWorker = TakesWorker(takeStore: TakeBaasBoxStore())
   
   private var user: User!
   private var takes: [TakeDto] = []
@@ -43,9 +43,9 @@ class ListTakesInteractor: ListTakesInteractorInput
       self.user = user
       
       // Get the takes
-      self.takesWorker.fetchTakes(completionHandler: {(takes) -> Void in
+      self.takesWorker.fetchTakes(challengeId: self.challengeId, completionHandler: {(takes) -> Void in
         self.takes = takes
-        let votedForTakeId = self.user.votes[self.challengeId]!
+        let votedForTakeId = self.user.votes[self.challengeId]
         let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
         
         // NOTE: Pass the result to the Presenter

@@ -14,6 +14,7 @@
 		332283F91E072F12008647E4 /* LocalClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283F81E072F12008647E4 /* LocalClient.swift */; };
 		33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AA4C1E248EA600C5D05A /* Backend.swift */; };
 		33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */; };
+		520655161E9B47D90048A575 /* TakeBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */; };
 		520DA5F71DF0C64B00695756 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520DA5F61DF0C64B00695756 /* SignUpViewController.xib */; };
 		520DA5F91DF0CC3500695756 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520DA5F81DF0CC3500695756 /* SignUpViewController.swift */; };
 		521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */; };
@@ -121,6 +122,7 @@
 		332283F81E072F12008647E4 /* LocalClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocalClient.swift; sourceTree = "<group>"; };
 		33E3AA4C1E248EA600C5D05A /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Backend.swift; path = Models/Backend.swift; sourceTree = "<group>"; };
 		33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxUser.swift; sourceTree = "<group>"; };
+		520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeBaasBoxStore.swift; path = Clean/Services/TakeBaasBoxStore.swift; sourceTree = "<group>"; };
 		520DA5F61DF0C64B00695756 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpViewController.xib; path = "View Controllers/SignUpViewController.xib"; sourceTree = "<group>"; };
 		520DA5F81DF0CC3500695756 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = "View Controllers/SignUpViewController.swift"; sourceTree = "<group>"; };
 		521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoFriendsCell.xib; path = Views/NoFriendsCell.xib; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				52760C131E90591E0093B921 /* ChallengesMemStore.swift */,
 				52760C221E905EDB0093B921 /* ChallengesBaasBoxStore.swift */,
 				5267D8EF1E9A93DE00B94470 /* TakeMemStore.swift */,
+				520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				5267D8F01E9A93DE00B94470 /* TakeMemStore.swift in Sources */,
 				332283F11E05D5E4008647E4 /* BaasBoxClient.swift in Sources */,
 				528527D71E46711900DD6434 /* EmptyChallengeCell.swift in Sources */,
+				520655161E9B47D90048A575 /* TakeBaasBoxStore.swift in Sources */,
 				529DC7C71DCC705F00EFA856 /* Take.swift in Sources */,
 				523074A71DC704DE002EB030 /* Challenge.swift in Sources */,
 				526AF05C1DD2F9B0003350B4 /* DrawLinesView.swift in Sources */,

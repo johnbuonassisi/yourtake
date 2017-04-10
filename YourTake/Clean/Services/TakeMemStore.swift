@@ -48,7 +48,7 @@ class TakeMemStore: TakesStoreProtocol {
     completion(user)
   }
   
-  func fetchTakes(completionHandler: @escaping(_ takes: () throws -> [TakeDto]) -> Void) {
+  func fetchTakes(challengeId: String, completionHandler: @escaping(_ takes: () throws -> [TakeDto]) -> Void) {
     takes = takes.sorted { $0.votes > $1.votes }
     completionHandler{ return takes }
   }

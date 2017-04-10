@@ -20,15 +20,15 @@ class TakesWorker {
     takeStore.fetchUser(completion: completion)
   }
   
-  func fetchTakes(completionHandler: @escaping(_ takes: [TakeDto]) -> Void) {
-    takeStore.fetchTakes { (takes) in
+  func fetchTakes(challengeId: String, completionHandler: @escaping(_ takes: [TakeDto]) -> Void) {
+    takeStore.fetchTakes(challengeId: challengeId, completionHandler: { (takes) in
       do {
         let takes = try takes()
         completionHandler(takes)
       } catch {
         completionHandler([])
       }
-    }
+    })
   }
   
   func voteForTake(takeId: String, completionHandler: @escaping (Bool) -> Void) {
@@ -47,7 +47,7 @@ protocol TakesStoreProtocol {
   
   func fetchUser(completion: @escaping (User?) -> Void)
   
-  func fetchTakes(completionHandler: @escaping(_ takes: () throws -> [TakeDto]) -> Void)
+  func fetchTakes(challengeId: String, completionHandler: @escaping(_ takes: () throws -> [TakeDto]) -> Void)
   
   func voteForTake(takeId: String, completionHandler: @escaping (Bool) -> Void)
   
