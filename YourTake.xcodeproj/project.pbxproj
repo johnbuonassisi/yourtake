@@ -46,6 +46,19 @@
 		525F847A1DC86F05006D2E2F /* ChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525F84791DC86F05006D2E2F /* ChallengeViewController.xib */; };
 		525F847C1DC9A6AE006D2E2F /* ChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */; };
 		525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525F847D1DC9A86A006D2E2F /* ChallengeCell.swift */; };
+		5267D8DD1E998E0100B94470 /* ListTakesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8D61E998E0100B94470 /* ListTakesConfigurator.swift */; };
+		5267D8DE1E998E0100B94470 /* ListTakesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8D71E998E0100B94470 /* ListTakesInteractor.swift */; };
+		5267D8DF1E998E0100B94470 /* ListTakesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8D81E998E0100B94470 /* ListTakesModels.swift */; };
+		5267D8E01E998E0100B94470 /* ListTakesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8D91E998E0100B94470 /* ListTakesPresenter.swift */; };
+		5267D8E11E998E0100B94470 /* ListTakesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8DA1E998E0100B94470 /* ListTakesRouter.swift */; };
+		5267D8E21E998E0100B94470 /* ListTakesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8DB1E998E0100B94470 /* ListTakesViewController.swift */; };
+		5267D8E31E998E0100B94470 /* ListTakesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8DC1E998E0100B94470 /* ListTakesWorker.swift */; };
+		5267D8E51E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8E41E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift */; };
+		5267D8E81E99965400B94470 /* TakeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8E71E99965400B94470 /* TakeCollectionViewCell.swift */; };
+		5267D8EA1E99968100B94470 /* TakeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */; };
+		5267D8EC1E99A04D00B94470 /* TakeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8EB1E99A04D00B94470 /* TakeDto.swift */; };
+		5267D8EE1E9A8E1700B94470 /* TakesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8ED1E9A8E1700B94470 /* TakesWorker.swift */; };
+		5267D8F01E9A93DE00B94470 /* TakeMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8EF1E9A93DE00B94470 /* TakeMemStore.swift */; };
 		526AF0521DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF04D1DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg */; };
 		526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF04E1DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg */; };
 		526AF0541DCFCE86003350B4 /* Ashling_Challenge_John.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */; };
@@ -148,6 +161,19 @@
 		525F84791DC86F05006D2E2F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeViewController.xib; path = "View Controllers/ChallengeViewController.xib"; sourceTree = "<group>"; };
 		525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeCell.xib; path = Views/ChallengeCell.xib; sourceTree = "<group>"; };
 		525F847D1DC9A86A006D2E2F /* ChallengeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeCell.swift; path = Views/ChallengeCell.swift; sourceTree = "<group>"; };
+		5267D8D61E998E0100B94470 /* ListTakesConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTakesConfigurator.swift; path = Clean/Scenes/ListTakes/ListTakesConfigurator.swift; sourceTree = "<group>"; };
+		5267D8D71E998E0100B94470 /* ListTakesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTakesInteractor.swift; path = Clean/Scenes/ListTakes/ListTakesInteractor.swift; sourceTree = "<group>"; };
+		5267D8D81E998E0100B94470 /* ListTakesModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTakesModels.swift; path = Clean/Scenes/ListTakes/ListTakesModels.swift; sourceTree = "<group>"; };
+		5267D8D91E998E0100B94470 /* ListTakesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTakesPresenter.swift; path = Clean/Scenes/ListTakes/ListTakesPresenter.swift; sourceTree = "<group>"; };
+		5267D8DA1E998E0100B94470 /* ListTakesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTakesRouter.swift; path = Clean/Scenes/ListTakes/ListTakesRouter.swift; sourceTree = "<group>"; };
+		5267D8DB1E998E0100B94470 /* ListTakesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTakesViewController.swift; path = Clean/Scenes/ListTakes/ListTakesViewController.swift; sourceTree = "<group>"; };
+		5267D8DC1E998E0100B94470 /* ListTakesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTakesWorker.swift; path = Clean/Scenes/ListTakes/ListTakesWorker.swift; sourceTree = "<group>"; };
+		5267D8E41E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTakesCollectionViewDataSource.swift; path = Clean/Scenes/ListTakes/ListTakesCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		5267D8E71E99965400B94470 /* TakeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeCollectionViewCell.swift; path = Clean/Views/Take/TakeCollectionViewCell.swift; sourceTree = "<group>"; };
+		5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TakeCollectionViewCell.xib; path = Clean/Views/Take/TakeCollectionViewCell.xib; sourceTree = "<group>"; };
+		5267D8EB1E99A04D00B94470 /* TakeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeDto.swift; path = Models/TakeDto.swift; sourceTree = "<group>"; };
+		5267D8ED1E9A8E1700B94470 /* TakesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakesWorker.swift; path = Clean/Workers/TakesWorker.swift; sourceTree = "<group>"; };
+		5267D8EF1E9A93DE00B94470 /* TakeMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeMemStore.swift; path = Clean/Services/TakeMemStore.swift; sourceTree = "<group>"; };
 		526AF04D1DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Andrea.jpg; sourceTree = "<group>"; };
 		526AF04E1DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Anthony.jpg; sourceTree = "<group>"; };
 		526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_John.jpg; sourceTree = "<group>"; };
@@ -274,6 +300,30 @@
 			name = Security;
 			sourceTree = "<group>";
 		};
+		5267D8D31E91283300B94470 /* ListTakes */ = {
+			isa = PBXGroup;
+			children = (
+				5267D8DB1E998E0100B94470 /* ListTakesViewController.swift */,
+				5267D8D71E998E0100B94470 /* ListTakesInteractor.swift */,
+				5267D8D91E998E0100B94470 /* ListTakesPresenter.swift */,
+				5267D8D61E998E0100B94470 /* ListTakesConfigurator.swift */,
+				5267D8DA1E998E0100B94470 /* ListTakesRouter.swift */,
+				5267D8DC1E998E0100B94470 /* ListTakesWorker.swift */,
+				5267D8D81E998E0100B94470 /* ListTakesModels.swift */,
+				5267D8E41E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift */,
+			);
+			name = ListTakes;
+			sourceTree = "<group>";
+		};
+		5267D8E61E99961400B94470 /* Take */ = {
+			isa = PBXGroup;
+			children = (
+				5267D8E71E99965400B94470 /* TakeCollectionViewCell.swift */,
+				5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */,
+			);
+			name = Take;
+			sourceTree = "<group>";
+		};
 		52760BF61E90586D0093B921 /* Clean */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +347,7 @@
 		52760BF81E9058910093B921 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				5267D8D31E91283300B94470 /* ListTakes */,
 				52760BFC1E9058E40093B921 /* ListChallenges */,
 			);
 			name = Scenes;
@@ -307,6 +358,7 @@
 			children = (
 				52760C131E90591E0093B921 /* ChallengesMemStore.swift */,
 				52760C221E905EDB0093B921 /* ChallengesBaasBoxStore.swift */,
+				5267D8EF1E9A93DE00B94470 /* TakeMemStore.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -314,6 +366,7 @@
 		52760BFA1E90589E0093B921 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5267D8E61E99961400B94470 /* Take */,
 				52760C151E90592F0093B921 /* Challenge */,
 			);
 			name = Views;
@@ -323,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				52760C1E1E9059610093B921 /* ChallengesWorker.swift */,
+				5267D8ED1E9A8E1700B94470 /* TakesWorker.swift */,
 			);
 			name = Workers;
 			sourceTree = "<group>";
@@ -407,6 +461,7 @@
 				33E3AA4C1E248EA600C5D05A /* Backend.swift */,
 				52A868801E63687100F26F31 /* FriendSelectionTracker.swift */,
 				52760BF41E9045270093B921 /* ChallengeDto.swift */,
+				5267D8EB1E99A04D00B94470 /* TakeDto.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -564,6 +619,7 @@
 				526AF0541DCFCE86003350B4 /* Ashling_Challenge_John.jpg in Resources */,
 				529FB8401DE42A9700861826 /* ExpiryPickerCell.xib in Resources */,
 				526AF0551DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg in Resources */,
+				5267D8EA1E99968100B94470 /* TakeCollectionViewCell.xib in Resources */,
 				523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */,
 				52DC0AC31DCA301800DA2BDC /* TakeCell.xib in Resources */,
 				521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */,
@@ -591,6 +647,7 @@
 				524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */,
 				526AF0581DD2F334003350B4 /* DrawViewController.swift in Sources */,
 				52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */,
+				5267D8E11E998E0100B94470 /* ListTakesRouter.swift in Sources */,
 				52760C0C1E9058F80093B921 /* ListChallengesConfigurator.swift in Sources */,
 				332283F91E072F12008647E4 /* LocalClient.swift in Sources */,
 				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,
@@ -599,17 +656,25 @@
 				52760C101E9058F80093B921 /* ListChallengesWorker.swift in Sources */,
 				525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */,
 				521D7FCC1E17369D00DA7DBB /* SettingsViewController.swift in Sources */,
+				5267D8EC1E99A04D00B94470 /* TakeDto.swift in Sources */,
 				52760C1B1E9059520093B921 /* EmptyChallengeTableViewCell.swift in Sources */,
+				5267D8E01E998E0100B94470 /* ListTakesPresenter.swift in Sources */,
 				52760C0E1E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift in Sources */,
 				52A48D2E1DDB6591005A89B8 /* BorderedButton.swift in Sources */,
 				52760C0A1E9058F80093B921 /* ListChallengesModels.swift in Sources */,
 				52760C1D1E9059520093B921 /* ChallengeTableViewCell.swift in Sources */,
+				5267D8E51E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift in Sources */,
 				529FB8421DE42B4000861826 /* ExpiryPickerCell.swift in Sources */,
 				525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */,
+				5267D8E31E998E0100B94470 /* ListTakesWorker.swift in Sources */,
 				52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */,
+				5267D8EE1E9A8E1700B94470 /* TakesWorker.swift in Sources */,
 				33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */,
+				5267D8DE1E998E0100B94470 /* ListTakesInteractor.swift in Sources */,
 				52760C231E905EDB0093B921 /* ChallengesBaasBoxStore.swift in Sources */,
 				52A868811E63687100F26F31 /* FriendSelectionTracker.swift in Sources */,
+				5267D8E21E998E0100B94470 /* ListTakesViewController.swift in Sources */,
+				5267D8F01E9A93DE00B94470 /* TakeMemStore.swift in Sources */,
 				332283F11E05D5E4008647E4 /* BaasBoxClient.swift in Sources */,
 				528527D71E46711900DD6434 /* EmptyChallengeCell.swift in Sources */,
 				529DC7C71DCC705F00EFA856 /* Take.swift in Sources */,
@@ -617,12 +682,15 @@
 				526AF05C1DD2F9B0003350B4 /* DrawLinesView.swift in Sources */,
 				52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */,
 				520DA5F91DF0CC3500695756 /* SignUpViewController.swift in Sources */,
+				5267D8DF1E998E0100B94470 /* ListTakesModels.swift in Sources */,
 				52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */,
+				5267D8E81E99965400B94470 /* TakeCollectionViewCell.swift in Sources */,
 				52760C0D1E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift in Sources */,
 				52760C0F1E9058F80093B921 /* ListChallengesRouter.swift in Sources */,
 				5248BE141E6239EA00538A50 /* FriendViewController.swift in Sources */,
 				33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */,
 				52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */,
+				5267D8DD1E998E0100B94470 /* ListTakesConfigurator.swift in Sources */,
 				52299E2F1DE807ED00F04C86 /* BAAMutableURLRequest.m in Sources */,
 				332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */,
 				52760C071E9058F80093B921 /* ListChallengesPresenter.swift in Sources */,

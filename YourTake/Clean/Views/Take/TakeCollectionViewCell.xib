@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3fX-nx-ENG" customClass="TakeCollectionViewCell" customModule="YourTake" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="215"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="180" height="215"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ydD-e3-9Dc">
+                        <rect key="frame" x="0.0" y="35" width="180" height="180"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ydD-e3-9Dc" secondAttribute="height" multiplier="1:1" id="Ika-61-5DK"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDa-KY-K4s">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="35"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JohnnyB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pV-kK-IIB">
+                                <rect key="frame" x="4" y="7" width="66.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNh-rk-6dk">
+                                <rect key="frame" x="161" y="7" width="11" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57K-5y-8at">
+                                <rect key="frame" x="121" y="3" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="57K-5y-8at" secondAttribute="height" multiplier="1:1" id="6fy-5H-wSV"/>
+                                </constraints>
+                                <state key="normal" image="NotLiked"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iNh-rk-6dk" firstAttribute="centerY" secondItem="TDa-KY-K4s" secondAttribute="centerY" id="4J8-JF-4B1"/>
+                            <constraint firstItem="57K-5y-8at" firstAttribute="top" secondItem="TDa-KY-K4s" secondAttribute="top" constant="3" id="CLr-FC-s1x"/>
+                            <constraint firstItem="7pV-kK-IIB" firstAttribute="leading" secondItem="TDa-KY-K4s" secondAttribute="leading" constant="4" id="HKh-Wu-mJx"/>
+                            <constraint firstItem="7pV-kK-IIB" firstAttribute="centerY" secondItem="TDa-KY-K4s" secondAttribute="centerY" id="Qus-FA-Bnc"/>
+                            <constraint firstAttribute="bottom" secondItem="57K-5y-8at" secondAttribute="bottom" constant="4" id="b2t-FM-fzF"/>
+                            <constraint firstAttribute="trailing" secondItem="57K-5y-8at" secondAttribute="trailing" constant="31" id="xiv-l5-I9F"/>
+                            <constraint firstAttribute="trailing" secondItem="iNh-rk-6dk" secondAttribute="trailing" constant="8" id="y5o-PE-mqY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="TDa-KY-K4s" firstAttribute="leading" secondItem="3fX-nx-ENG" secondAttribute="leading" id="3RS-ut-6bs"/>
+                <constraint firstAttribute="bottom" secondItem="ydD-e3-9Dc" secondAttribute="bottom" id="4Tu-5K-ssF"/>
+                <constraint firstAttribute="trailing" secondItem="TDa-KY-K4s" secondAttribute="trailing" id="C4U-Bk-cq2"/>
+                <constraint firstItem="ydD-e3-9Dc" firstAttribute="top" secondItem="TDa-KY-K4s" secondAttribute="bottom" id="QwE-lm-VSB"/>
+                <constraint firstAttribute="trailing" secondItem="ydD-e3-9Dc" secondAttribute="trailing" id="X1D-Wc-oku"/>
+                <constraint firstItem="TDa-KY-K4s" firstAttribute="top" secondItem="3fX-nx-ENG" secondAttribute="top" id="cWe-vx-1Ux"/>
+                <constraint firstItem="ydD-e3-9Dc" firstAttribute="leading" secondItem="3fX-nx-ENG" secondAttribute="leading" id="h53-P2-w7a"/>
+            </constraints>
+            <size key="customSize" width="375" height="352"/>
+            <connections>
+                <outlet property="authorLabel" destination="7pV-kK-IIB" id="iAC-zO-pUg"/>
+                <outlet property="likeButton" destination="57K-5y-8at" id="HDu-iY-Aih"/>
+                <outlet property="numberOfVotesLabel" destination="iNh-rk-6dk" id="EqT-yw-IKr"/>
+                <outlet property="takeImage" destination="ydD-e3-9Dc" id="q3T-4N-6J0"/>
+            </connections>
+            <point key="canvasLocation" x="-89" y="-11.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="NotLiked" width="42" height="40"/>
+    </resources>
+</document>
