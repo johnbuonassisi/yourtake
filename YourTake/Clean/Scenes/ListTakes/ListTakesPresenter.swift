@@ -14,7 +14,6 @@ import UIKit
 protocol ListTakesPresenterInput
 {
   func presentFetchedTakes(response: ListTakes.FetchTakes.Response)
-  func presentVote(response: ListTakes.VoteForTake.Response)
 }
 
 protocol ListTakesPresenterOutput: class
@@ -57,7 +56,4 @@ class ListTakesPresenter: ListTakesPresenterInput
     output.displayTakes(viewModel: viewModel)
   }
   
-  func presentVote(response: ListTakes.VoteForTake.Response) {
-    
-  }
 }

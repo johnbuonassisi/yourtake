@@ -20,13 +20,12 @@ protocol ListTakesInteractorInput
 protocol ListTakesInteractorOutput
 {
   func presentFetchedTakes(response: ListTakes.FetchTakes.Response)
-  func presentVote(response: ListTakes.VoteForTake.Response)
 }
 
 class ListTakesInteractor: ListTakesInteractorInput
 {
   var output: ListTakesInteractorOutput!
-  var takesWorker = TakesWorker(takeStore: TakeBaasBoxStore())
+  var takesWorker = TakesWorker(takeStore: TakeMemStore())
   
   private var user: User!
   private var takes: [TakeDto] = []

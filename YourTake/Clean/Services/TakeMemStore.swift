@@ -12,7 +12,7 @@ class TakeMemStore: TakesStoreProtocol {
   
   var user: User = User(username: "john",
                         friends: ["ashling", "daniella", "anthony", "andrea", "peter"],
-                        votes: [ "1" : "1"])
+                        votes: ["1" : "1"])
   var takes: [TakeDto] = [TakeDto(id: "1",
                                   challengeId: "1",
                                   author: "ashling",
