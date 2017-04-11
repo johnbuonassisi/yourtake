@@ -66,6 +66,12 @@ class ListChallengesViewController: UIViewController,
     let ectNib = UINib(nibName: "EmptyChallengeTableViewCell", bundle: nil)
     tableView.register(ectNib, forCellReuseIdentifier: "EmptyChallengeTableViewCell")
     
+    tableView.refreshControl = UIRefreshControl()
+    tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
+    tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+    tableView.refreshControl!.beginRefreshing()
+
+    
     tabBar.delegate = self
     tabBar.selectedItem = tabBar.items?[0]
     
@@ -78,8 +84,9 @@ class ListChallengesViewController: UIViewController,
   {
     // NOTE: Ask the Interactor to do some work
     let tag = tabBar.selectedItem!.tag
-    let challengeType = ListChallenges.FetchChallenges.Request.ChallengeRequestType(rawValue: tag)
-    let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!)
+    let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
+    let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
+                                                         isChallengeAndImageLoadSeparated: false)
     output.fetchChallenges(request: request)
   }
   
@@ -100,6 +107,7 @@ class ListChallengesViewController: UIViewController,
     }
     
     tableView.reloadData()
+    tableView.refreshControl!.endRefreshing()
   }
   
   // MARK - Tab Bar Control delegate methods
@@ -121,6 +129,16 @@ class ListChallengesViewController: UIViewController,
     print("Cell vote button pressed for cell at index \(sender.tag)")
     let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
     router.navigateToTakesScene(with: challengeId)
+  }
+  
+  func refresh(sender: UIButton!)
+  {
+    let tag = tabBar.selectedItem!.tag
+    let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
+    let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
+                                                         isChallengeAndImageLoadSeparated: true)
+    output.fetchChallenges(request: request)
+
   }
 
   

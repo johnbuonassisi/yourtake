@@ -14,8 +14,6 @@ import UIKit
 protocol ListChallengesInteractorInput
 {
   func fetchChallenges(request: ListChallenges.FetchChallenges.Request)
-  var userChallenges: [ChallengeDto]? { get }
-  var friendChallenges: [ChallengeDto]? { get }
 }
 
 protocol ListChallengesInteractorOutput
@@ -33,6 +31,8 @@ class ListChallengesInteractor: ListChallengesInteractorInput
   
   // MARK: - Business logic
   
+  // fetchChallenges
+  //
   // Determine which type of challenges should be fetched from the store (user or friend)
   // Fetch the challenges from the store asynchronously
     // Once the challenges are retrieved, create a response and send to the Presenter
@@ -52,24 +52,45 @@ class ListChallengesInteractor: ListChallengesInteractorInput
       challengesWorker.fetchChallenges(completionHandler: { (challenges) -> Void in
         
         self.userChallenges = challenges
-        self.fetchChallengesAndSendResponseToPresenter(challenges: self.userChallenges, challengeType: challengeType!)
+        self.fetchChallengeImagesAndSendResponseToPresenter(challenges: self.userChallenges,
+                                                       challengeType: challengeType!,
+                                                       isChallengeAndImageLoadSeparated: true)
         
       })
     case .friendChallenges:
       challengesWorker.fetchFriendChallenges(completionHandler: { (challenges) -> Void in
         self.friendChallenges = challenges
-        self.fetchChallengesAndSendResponseToPresenter(challenges: self.friendChallenges, challengeType: challengeType!)
+        self.fetchChallengeImagesAndSendResponseToPresenter(challenges: self.friendChallenges,
+                                                       challengeType: challengeType!,
+                                                       isChallengeAndImageLoadSeparated: true)
       })
     }
   }
 
-  func fetchChallengesAndSendResponseToPresenter(challenges: [ChallengeDto]?,
-                                             challengeType: ListChallenges.FetchChallenges.Response.ChallengeResponseType) {
+  // fetchChallengeImagesAndSendResponseToPresenter
+  //
+  // Will get the challenge images for each challenge in the passed in list. The 
+  // isChallengeAndImageSeparted flag can be used to delay presentation of the challenges
+  // until all images have been fetched.
+  private func fetchChallengeImagesAndSendResponseToPresenter(challenges: [ChallengeDto]?,
+                                             challengeType: ListChallenges.FetchChallenges.Response.ChallengeResponseType,
+                                             isChallengeAndImageLoadSeparated: Bool) {
     
     if let challenges = challenges {
       let response = ListChallenges.FetchChallenges.Response(challengeType: challengeType,
                                                              challenges: challenges)
-      self.output.presentFetchedChallenges(response: response)
+      
+      if(challenges.count == 0) {
+        // When there are no challenges, present something immediately
+        output.presentFetchedChallenges(response: response)
+        return
+      }
+      
+      if !isChallengeAndImageLoadSeparated {
+        // There are some situations where we want to wait for all challenge images
+        // to be downloaded before presenting the challenges to the user
+        self.output.presentFetchedChallenges(response: response)
+      }
       
       for challenge in challenges {
         challengesWorker.downloadImage(with: challenge.imageId, completion: { (image) -> Void in

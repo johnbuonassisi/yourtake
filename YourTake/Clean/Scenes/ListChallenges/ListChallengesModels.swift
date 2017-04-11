@@ -13,18 +13,20 @@ import UIKit
 
 struct ListChallenges
 {
+  struct RefreshChallenges
+  {
+    struct Request
+    {
+      var challengeType: ChallengeRequestType
+    }
+  }
   
-  // ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge
   struct FetchChallenges
   {
     struct Request
     {
       var challengeType: ChallengeRequestType
-      
-      enum ChallengeRequestType: Int {
-        case userChallenges = 0
-        case friendChallenges = 1
-      }
+      var isChallengeAndImageLoadSeparated: Bool
     }
     
     struct ViewModel
@@ -66,16 +68,8 @@ struct ListChallenges
     }
   }
   
-  struct Something
-  {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
+  enum ChallengeRequestType: Int {
+    case userChallenges = 0
+    case friendChallenges = 1
   }
 }
