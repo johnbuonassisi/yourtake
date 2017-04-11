@@ -39,7 +39,7 @@ struct ListChallenges
         var imageId: String
         var challengeImage: UIImage?
         var expiryLabel: String
-        var totalVotesLabel: String
+        var totalVotesLabel: String?
         var isDrawButtonEnabled: Bool
         var isVoteButton: Bool
       }
@@ -58,12 +58,24 @@ struct ListChallenges
     struct Response
     {
       var challengeType: ChallengeResponseType
-      var challenges: [ChallengeDto]
+      var challenges: [ChallengeResponseModel]
       
       enum ChallengeResponseType: Int {
         case userChallenges = 0
         case friendChallenges = 1
         case noChallenges = 2
+      }
+      
+      struct ChallengeResponseModel
+      {
+        var id : String
+        var author : String
+        var imageId : String
+        var recipients : [String]
+        var duration : TimeInterval
+        var created : Date
+        var image: UIImage?
+        var totalNumberOfVotes: UInt?
       }
     }
   }

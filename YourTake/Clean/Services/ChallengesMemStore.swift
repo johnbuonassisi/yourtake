@@ -57,5 +57,9 @@ class ChallengesMemStore: ChallengesStoreProtocol {
   func downloadImage(with id: String, completion: @escaping (UIImage?) -> Void) {
     completion(UIImage())
   }
+  
+  func getNumberOfVotes(for challengeId: String, completion: @escaping (UInt) -> Void) {
+    completion(10)
+  }
 
 }

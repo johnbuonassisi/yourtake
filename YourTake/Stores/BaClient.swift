@@ -43,6 +43,7 @@ protocol BaClient {
     // takes
     func getTake(with id: String, completion: @escaping BaTakeCompletionBlock) -> Void
     func getTakes(for challengeId: String, completion: @escaping BaTakesCompletionBlock) -> Void
+    func getTakeList(for challengeId: String, completion: @escaping ([TakeDto]) -> Void) -> Void
     func getTakeDtos(for challengeId: String, completion: @escaping ([TakeDto]) -> Void) -> Void
     func createTake(_ take: Take, completion: @escaping BaBoolCompletionBlock) -> Void
     func removeTake(with id: String, completion: @escaping BaBoolCompletionBlock) -> Void

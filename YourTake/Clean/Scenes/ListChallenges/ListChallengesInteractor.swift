@@ -26,8 +26,8 @@ class ListChallengesInteractor: ListChallengesInteractorInput
   var output: ListChallengesInteractorOutput!
   var challengesWorker = ChallengesWorker(challengesStore: ChallengesBaasBoxStore())
   
-  var userChallenges: [ChallengeDto]?
-  var friendChallenges: [ChallengeDto]?
+  var userChallenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel] = []
+  var friendChallenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel] = []
   
   // MARK: - Business logic
   
@@ -35,11 +35,13 @@ class ListChallengesInteractor: ListChallengesInteractorInput
   //
   // Determine which type of challenges should be fetched from the store (user or friend)
   // Fetch the challenges from the store asynchronously
-    // Once the challenges are retrieved, create a response and send to the Presenter
+    // Once the challenges are retrieved, create a response and send to the Presenter if desired
     // For each retrieved challenge
       // Download the associated image asynchronously
         // Update the challenge in the response with the downloaded image
-        // Send the response to the Presenter
+          // Get the number of votes for the challenge asynchronously
+            // Update the number of votes in the response
+            // Send the response to the Presenter
   
   func fetchChallenges(request: ListChallenges.FetchChallenges.Request)
   {
@@ -48,19 +50,40 @@ class ListChallengesInteractor: ListChallengesInteractorInput
     
     switch(request.challengeType) {
     case .userChallenges:
-      
+      self.userChallenges.removeAll()
       challengesWorker.fetchChallenges(completionHandler: { (challenges) -> Void in
+        for challenge in challenges {
+          self.userChallenges.append(
+            ListChallenges.FetchChallenges.Response.ChallengeResponseModel(id: challenge.id,
+                                                                          author: challenge.author,
+                                                                          imageId: challenge.imageId,
+                                                                          recipients: challenge.recipients,
+                                                                          duration: challenge.duration,
+                                                                          created: challenge.created,
+                                                                          image: challenge.image,
+                                                                          totalNumberOfVotes: nil))
+        }
         
-        self.userChallenges = challenges
-        self.fetchChallengeImagesAndSendResponseToPresenter(challenges: self.userChallenges,
+        self.fetchChallengeDataAndSendResponseToPresenter(challenges: self.userChallenges,
                                                        challengeType: challengeType!,
                                                        isChallengeAndImageLoadSeparated: true)
         
       })
     case .friendChallenges:
+      self.friendChallenges.removeAll()
       challengesWorker.fetchFriendChallenges(completionHandler: { (challenges) -> Void in
-        self.friendChallenges = challenges
-        self.fetchChallengeImagesAndSendResponseToPresenter(challenges: self.friendChallenges,
+        for challenge in challenges {
+          self.friendChallenges.append(
+            ListChallenges.FetchChallenges.Response.ChallengeResponseModel(id: challenge.id,
+                                                                           author: challenge.author,
+                                                                           imageId: challenge.imageId,
+                                                                           recipients: challenge.recipients,
+                                                                           duration: challenge.duration,
+                                                                           created: challenge.created,
+                                                                           image: challenge.image,
+                                                                           totalNumberOfVotes: nil))
+        }
+        self.fetchChallengeDataAndSendResponseToPresenter(challenges: self.friendChallenges,
                                                        challengeType: challengeType!,
                                                        isChallengeAndImageLoadSeparated: true)
       })
@@ -69,14 +92,14 @@ class ListChallengesInteractor: ListChallengesInteractorInput
 
   // fetchChallengeImagesAndSendResponseToPresenter
   //
-  // Will get the challenge images for each challenge in the passed in list. The 
+  // Will get the challenge images and votes for each challenge in the passed in list. The
   // isChallengeAndImageSeparted flag can be used to delay presentation of the challenges
   // until all images have been fetched.
-  private func fetchChallengeImagesAndSendResponseToPresenter(challenges: [ChallengeDto]?,
+  private func fetchChallengeDataAndSendResponseToPresenter(challenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel]?,
                                              challengeType: ListChallenges.FetchChallenges.Response.ChallengeResponseType,
                                              isChallengeAndImageLoadSeparated: Bool) {
     
-    if let challenges = challenges {
+    if var challenges = challenges {
       let response = ListChallenges.FetchChallenges.Response(challengeType: challengeType,
                                                              challenges: challenges)
       
@@ -92,12 +115,21 @@ class ListChallengesInteractor: ListChallengesInteractorInput
         self.output.presentFetchedChallenges(response: response)
       }
       
-      for challenge in challenges {
-        challengesWorker.downloadImage(with: challenge.imageId, completion: { (image) -> Void in
-          challenge.image = image
-          let response = ListChallenges.FetchChallenges.Response(challengeType: challengeType,
-                                                                 challenges: challenges)
-          self.output.presentFetchedChallenges(response: response)
+      for i in 0..<challenges.count { // can't use forin loop here because the array contains structs
+        
+        // Download each challenge image
+        challengesWorker.downloadImage(with: challenges[i].imageId, completion: { (image) -> Void in
+          
+          challenges[i].image = image
+          
+          // Get the total number of votes for the challenge
+          self.challengesWorker.getNumberOfVotes(for: challenges[i].id, completion: { (totalNumberOfVotes) -> Void in
+            
+            challenges[i].totalNumberOfVotes = totalNumberOfVotes
+            let response = ListChallenges.FetchChallenges.Response(challengeType: challengeType,
+                                                                   challenges: challenges)
+            self.output.presentFetchedChallenges(response: response)
+          })
         })
       }
     } else {
