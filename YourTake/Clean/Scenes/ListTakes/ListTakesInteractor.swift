@@ -25,7 +25,7 @@ protocol ListTakesInteractorOutput
 class ListTakesInteractor: ListTakesInteractorInput
 {
   var output: ListTakesInteractorOutput!
-  var takesWorker = TakesWorker(takeStore: TakeMemStore())
+  var takesWorker = TakesWorker(takeStore: TakeBaasBoxStore())
   
   private var user: User!
   private var takes: [TakeDto] = []

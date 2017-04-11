@@ -87,7 +87,7 @@ class ListChallengesInteractor: ListChallengesInteractorInput
       }
       
       if !isChallengeAndImageLoadSeparated {
-        // There are some situations where we want to wait for all challenge images
+        // There are some situations (ie. refreshing) where we want to wait for all challenge images
         // to be downloaded before presenting the challenges to the user
         self.output.presentFetchedChallenges(response: response)
       }

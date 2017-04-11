@@ -31,7 +31,7 @@ class ListChallengesRouter: ListChallengesRouterInput
     
     // 2. Present another view controller programmatically
     // viewController.presentViewController(someWhereViewController, animated: true, completion: nil)
-    let ltvc = ListTakesViewController(challengeId: "1")
+    let ltvc = ListTakesViewController(challengeId: challengeId)
     viewController.navigationController?.pushViewController(ltvc, animated: true)
     
     // 3. Ask the navigation controller to push another view controller onto the stack

@@ -607,12 +607,12 @@ class BaasBoxClient: BaClient {
                             return
                         }
                         BAAFile.load(withId: baasTake.overlayId, completion: { (object, error) in
-                            if object != nil {
+                            if object != nil, let image = UIImage(data: object!) {
                                 let take = TakeDto(
                                     id: baasTake.objectId,
                                     challengeId: baasTake.challengeId,
                                     author: baasTake.author,
-                                    overlay: UIImage(data: Data(base64Encoded: object!)!)!,
+                                    overlay: image,
                                     votes: baasTake.votes)
                                 takes.append(take)
                             } else {
