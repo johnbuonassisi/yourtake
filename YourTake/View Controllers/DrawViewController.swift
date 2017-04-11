@@ -150,9 +150,7 @@ class DrawViewController: UIViewController,
         
         if userChallenge != nil {
             let userTake = Take(id: "", challengeId: userChallenge!.id, author: "", overlay: newImage, votes: 0)
-            if !userChallenge!.submit(userTake) {
-                // handle error case
-            }
+            userChallenge!.submit(userTake)
         }
         let _ = navigationController?.popToRootViewController(animated: false)
     }
