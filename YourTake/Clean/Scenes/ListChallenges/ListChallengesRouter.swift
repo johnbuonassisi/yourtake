@@ -43,6 +43,12 @@ class ListChallengesRouter: ListChallengesRouterInput
     // viewController.navigationController?.pushViewController(someWhereViewController, animated: true)
   }
   
+  func navigateToCreateTakeScene(challengeId: String, challengeImage: UIImage)
+  {
+    let ctvc = CreateTakeViewController(challengeId: challengeId, challengeImage: challengeImage)
+    viewController.navigationController?.pushViewController(ctvc, animated: true)
+  }
+  
   // MARK: - Communication
   
   func passDataToNextScene(segue: UIStoryboardSegue)

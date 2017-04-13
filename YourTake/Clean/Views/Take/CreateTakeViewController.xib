@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateTakeViewController" customModule="YourTake" customModuleProvider="target">
+            <connections>
+                <outlet property="brushSlider" destination="QNB-rh-E22" id="JJN-dw-id8"/>
+                <outlet property="colourSlider" destination="Ae9-Cz-nSk" id="bxt-yM-kV4"/>
+                <outlet property="drawingView" destination="NYl-oc-OcO" id="p0N-o7-yd3"/>
+                <outlet property="textField" destination="cXD-na-Wms" id="KlK-T8-SH9"/>
+                <outlet property="undoButton" destination="WzB-Uh-BXf" id="cnO-Jr-hcX"/>
+                <outlet property="view" destination="wHG-1S-7lC" id="OSo-wx-snc"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="wHG-1S-7lC">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="4" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="QNB-rh-E22">
+                    <rect key="frame" x="52" y="565" width="270" height="31"/>
+                    <connections>
+                        <action selector="strokeSizeSliderValueChanged:" destination="-1" eventType="valueChanged" id="qP3-ht-mzx"/>
+                    </connections>
+                </slider>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYl-oc-OcO" customClass="DrawPathsView" customModule="YourTake" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="65" width="375" height="375"/>
+                    <subviews>
+                        <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXD-na-Wms">
+                            <rect key="frame" x="8" y="8" width="359" height="30"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="textFieldDragged:forEvent:" destination="-1" eventType="touchDragInside" id="VLK-ot-Coq"/>
+                                <action selector="textFieldTapped:" destination="-1" eventType="touchUpInside" id="HLW-To-E3v"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="NYl-oc-OcO" secondAttribute="height" multiplier="1:1" id="W93-GE-jyW"/>
+                        <constraint firstItem="cXD-na-Wms" firstAttribute="top" secondItem="NYl-oc-OcO" secondAttribute="top" constant="8" id="rM3-7a-fLU"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzB-Uh-BXf">
+                    <rect key="frame" x="54" y="603" width="76" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="ohW-hp-LYb"/>
+                        <constraint firstAttribute="width" constant="76" id="zJu-P2-fsm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Undo"/>
+                    <connections>
+                        <action selector="undoButtonPressed:" destination="-1" eventType="touchUpInside" id="XXM-Ow-Cqd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eod-FK-a9L">
+                    <rect key="frame" x="244" y="603" width="76" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="76" id="D0i-Ja-2gC"/>
+                        <constraint firstAttribute="height" constant="44" id="RMq-6V-bnV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Text"/>
+                    <connections>
+                        <action selector="addTextButtonPressed:" destination="-1" eventType="touchUpInside" id="oCU-pL-tvR"/>
+                    </connections>
+                </button>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ae9-Cz-nSk">
+                    <rect key="frame" x="52" y="518" width="270" height="31"/>
+                    <color key="minimumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="maximumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="colourSliderValueChanged:" destination="-1" eventType="valueChanged" id="IF4-Mk-Qi9"/>
+                    </connections>
+                </slider>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="QNB-rh-E22" secondAttribute="trailing" constant="55" id="3tQ-iB-nyq"/>
+                <constraint firstItem="cXD-na-Wms" firstAttribute="leading" secondItem="wHG-1S-7lC" secondAttribute="leading" constant="8" id="9BY-26-ZWa"/>
+                <constraint firstAttribute="trailing" secondItem="cXD-na-Wms" secondAttribute="trailing" constant="8" id="ArR-cJ-gwM"/>
+                <constraint firstItem="QNB-rh-E22" firstAttribute="leading" secondItem="wHG-1S-7lC" secondAttribute="leading" constant="54" id="BhX-ln-pld"/>
+                <constraint firstItem="NYl-oc-OcO" firstAttribute="top" secondItem="wHG-1S-7lC" secondAttribute="top" constant="65" id="DYh-Ce-xNS"/>
+                <constraint firstItem="eod-FK-a9L" firstAttribute="top" secondItem="QNB-rh-E22" secondAttribute="bottom" constant="8" id="F0P-C3-8i3"/>
+                <constraint firstAttribute="trailing" secondItem="Ae9-Cz-nSk" secondAttribute="trailing" constant="55" id="IFs-to-TU5"/>
+                <constraint firstItem="Ae9-Cz-nSk" firstAttribute="leading" secondItem="wHG-1S-7lC" secondAttribute="leading" constant="54" id="Ob1-BV-x9s"/>
+                <constraint firstAttribute="bottom" secondItem="WzB-Uh-BXf" secondAttribute="bottom" constant="20" id="TUW-eX-KGQ"/>
+                <constraint firstAttribute="trailing" secondItem="NYl-oc-OcO" secondAttribute="trailing" id="WP9-9v-Fax"/>
+                <constraint firstItem="eod-FK-a9L" firstAttribute="trailing" secondItem="QNB-rh-E22" secondAttribute="trailing" id="c1S-TF-gjZ"/>
+                <constraint firstItem="NYl-oc-OcO" firstAttribute="leading" secondItem="wHG-1S-7lC" secondAttribute="leading" id="dhO-Cb-J7T"/>
+                <constraint firstItem="WzB-Uh-BXf" firstAttribute="leading" secondItem="QNB-rh-E22" secondAttribute="leading" id="ewj-pK-Pms"/>
+                <constraint firstAttribute="bottom" secondItem="eod-FK-a9L" secondAttribute="bottom" constant="20" id="iDQ-v6-aLc"/>
+                <constraint firstItem="WzB-Uh-BXf" firstAttribute="top" secondItem="QNB-rh-E22" secondAttribute="bottom" constant="8" id="ih6-el-Fdc"/>
+                <constraint firstItem="QNB-rh-E22" firstAttribute="top" secondItem="Ae9-Cz-nSk" secondAttribute="bottom" constant="17" id="uXI-kf-qyg"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <point key="canvasLocation" x="33.5" y="40.5"/>
+        </view>
+    </objects>
+</document>

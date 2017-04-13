@@ -59,6 +59,7 @@ class ListChallengesViewController: UIViewController,
     tableView.dataSource = userChallengesDataSource
     tableView.delegate = self
     tableView.rowHeight = ChallengeTableViewCell.CellRowHeight()
+    tableView.allowsSelection = false
     
     let ctNib = UINib(nibName: "ChallengeTableViewCell", bundle: nil)
     tableView.register(ctNib, forCellReuseIdentifier: "ChallengeTableViewCell")
@@ -122,6 +123,10 @@ class ListChallengesViewController: UIViewController,
   func cellDrawButtonPressed(sender: UIButton!)
   {
     print("Cell draw button pressed for cell at index \(sender.tag)")
+    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+    let challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
+    router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
+    
   }
   
   func cellVoteButtonPressed(sender: UIButton!)

@@ -98,6 +98,8 @@
 		52881F2B1DF925B40034A77A /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */; };
 		52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */; };
 		529DC7C71DCC705F00EFA856 /* Take.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529DC7C61DCC705F00EFA856 /* Take.swift */; };
+		529EFBB11E9F3A3D0054559B /* CreateTakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */; };
+		529EFBB31E9F4E8D0054559B /* CreateTakeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */; };
 		529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */; };
 		529FB83A1DE23B1400861826 /* FriendPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529FB8391DE23B1400861826 /* FriendPickerCell.xib */; };
 		529FB83C1DE23C0300861826 /* FriendPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB83B1DE23C0300861826 /* FriendPickerCell.swift */; };
@@ -216,6 +218,8 @@
 		52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = "View Controllers/ForgotPasswordViewController.xib"; sourceTree = "<group>"; };
 		52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "View Controllers/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
 		529DC7C61DCC705F00EFA856 /* Take.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Take.swift; path = Models/Take.swift; sourceTree = "<group>"; };
+		529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateTakeViewController.swift; path = Clean/Scenes/CreateTake/CreateTakeViewController.swift; sourceTree = "<group>"; };
+		529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTakeViewController.xib; path = Clean/Views/Take/CreateTakeViewController.xib; sourceTree = "<group>"; };
 		529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeOptionsViewController.swift; path = "View Controllers/ChallengeOptionsViewController.swift"; sourceTree = "<group>"; };
 		529FB8391DE23B1400861826 /* FriendPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendPickerCell.xib; path = Views/FriendPickerCell.xib; sourceTree = "<group>"; };
 		529FB83B1DE23C0300861826 /* FriendPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendPickerCell.swift; path = Views/FriendPickerCell.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 			children = (
 				5267D8E71E99965400B94470 /* TakeCollectionViewCell.swift */,
 				5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */,
+				529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */,
 			);
 			name = Take;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 		52760BF81E9058910093B921 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				529EFBAD1E9F395C0054559B /* CreateTake */,
 				5267D8D31E91283300B94470 /* ListTakes */,
 				52760BFC1E9058E40093B921 /* ListChallenges */,
 			);
@@ -541,6 +547,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		529EFBAD1E9F395C0054559B /* CreateTake */ = {
+			isa = PBXGroup;
+			children = (
+				529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */,
+			);
+			name = CreateTake;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -623,6 +637,7 @@
 				529FB8401DE42A9700861826 /* ExpiryPickerCell.xib in Resources */,
 				526AF0551DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg in Resources */,
 				5267D8EA1E99968100B94470 /* TakeCollectionViewCell.xib in Resources */,
+				529EFBB31E9F4E8D0054559B /* CreateTakeViewController.xib in Resources */,
 				523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */,
 				52DC0AC31DCA301800DA2BDC /* TakeCell.xib in Resources */,
 				521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */,
@@ -699,6 +714,7 @@
 				332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */,
 				52760C071E9058F80093B921 /* ListChallengesPresenter.swift in Sources */,
 				332283F01E05D5E4008647E4 /* BaasBoxChallenge.swift in Sources */,
+				529EFBB11E9F3A3D0054559B /* CreateTakeViewController.swift in Sources */,
 				529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */,
 				52760BF51E9045280093B921 /* ChallengeDto.swift in Sources */,
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
