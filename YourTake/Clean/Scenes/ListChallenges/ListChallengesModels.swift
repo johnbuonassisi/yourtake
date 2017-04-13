@@ -41,7 +41,7 @@ struct ListChallenges
         var expiryLabel: String
         var totalVotesLabel: String?
         var isDrawButtonEnabled: Bool
-        var isVoteButton: Bool
+        var listTakesButtonTitleText: String
       }
       
       enum ChallengeViewType: Int {

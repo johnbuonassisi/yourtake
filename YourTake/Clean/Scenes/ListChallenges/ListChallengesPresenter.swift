@@ -35,6 +35,17 @@ class ListChallengesPresenter: ListChallengesPresenterInput
       let totalVotesLabel = createTotalVotesLabel(challenge: challenge)
       let expiryLabel = createChallengeExpiryLabel(challenge: challenge)
       
+      let numSecondsRemaining = getNumberOfSecondsRemainingForChallenge(challenge: challenge)
+      var listTakesButtonTitleText = "Draw"
+      if numSecondsRemaining <= 0 {
+        listTakesButtonTitleText = "View"
+      }
+      
+      var isDrawButtonEnabled = true
+      if response.challengeType == ListChallenges.FetchChallenges.Response.ChallengeResponseType.userChallenges {
+        isDrawButtonEnabled = false
+      }
+      
       let displayedChallenge =
         ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge(id: challenge.id,
                                                                     name: challenge.author,
@@ -42,8 +53,8 @@ class ListChallengesPresenter: ListChallengesPresenterInput
                                                                     challengeImage: challenge.image,
                                                                     expiryLabel: expiryLabel,
                                                                     totalVotesLabel: totalVotesLabel,
-                                                                    isDrawButtonEnabled: true,
-                                                                    isVoteButton: true)
+                                                                    isDrawButtonEnabled: isDrawButtonEnabled,
+                                                                    listTakesButtonTitleText: listTakesButtonTitleText)
       displayedChallenges.append(displayedChallenge)
     }
     
@@ -67,17 +78,8 @@ class ListChallengesPresenter: ListChallengesPresenterInput
   private func createChallengeExpiryLabel(
     challenge: ListChallenges.FetchChallenges.Response.ChallengeResponseModel) -> String {
     
-    // Calculate the expiry date of the challenge
-    let expiryDate: Date
-    let diff = challenge.duration + challenge.created.timeIntervalSinceNow
-    if diff > 0 {
-      expiryDate = Date(timeIntervalSinceNow: diff)
-    } else {
-      expiryDate = Date(timeIntervalSinceNow: 0)
-    }
-    
     // Determine how the expiry date should be displayed
-    let numSecondsRemaining : Int = Int(expiryDate.timeIntervalSince(Date()))
+    let numSecondsRemaining = getNumberOfSecondsRemainingForChallenge(challenge: challenge)
     
     if( numSecondsRemaining <= 0){
       return String("Challenge completed")
@@ -111,6 +113,21 @@ class ListChallengesPresenter: ListChallengesPresenterInput
     }
     
     return String(numSecondsRemaining) + " seconds remaining"
+  }
+  
+  private func getNumberOfSecondsRemainingForChallenge(challenge:
+    ListChallenges.FetchChallenges.Response.ChallengeResponseModel) -> Int {
+    
+    // Calculate the expiry date of the challenge
+    let expiryDate: Date
+    let diff = challenge.duration + challenge.created.timeIntervalSinceNow
+    if diff > 0 {
+      expiryDate = Date(timeIntervalSinceNow: diff)
+    } else {
+      expiryDate = Date(timeIntervalSinceNow: 0)
+    }
+    
+    return Int(expiryDate.timeIntervalSince(Date()))
   }
   
 }

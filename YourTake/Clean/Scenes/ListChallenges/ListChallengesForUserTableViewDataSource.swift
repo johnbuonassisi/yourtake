@@ -35,7 +35,7 @@ class ListChallengesForUserTableViewDataSource: NSObject, UITableViewDataSource 
     cell.expiryLabel.text = displayedChallenge.expiryLabel
     cell.totalVotesLabel.text = displayedChallenge.totalVotesLabel
     cell.drawButton.isEnabled = displayedChallenge.isDrawButtonEnabled
-    cell.voteButton.isEnabled = displayedChallenge.isVoteButton
+    cell.voteButton.setTitle(displayedChallenge.listTakesButtonTitleText, for: .normal)
     
     cell.drawButton.tag = indexPath.row
     cell.drawButton.addTarget(viewController,
