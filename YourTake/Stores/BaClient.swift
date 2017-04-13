@@ -13,6 +13,7 @@ typealias BaUserCompletionBlock = (User?) -> Void
 typealias BaChallengeCompletionBlock = (Challenge?) -> Void
 typealias BaChallengesCompletionBlock = ([Challenge]) -> Void
 typealias BaChallengeListCompletionBlock = ([ChallengeDto]) -> Void
+typealias BaChallengeDtoCompletionBlock = (ChallengeDto?) -> Void
 typealias BaTakeCompletionBlock = (Take?) -> Void
 typealias BaTakesCompletionBlock = ([Take]) -> Void
 typealias BaImageCompletionBlock = (UIImage?) -> Void
@@ -37,6 +38,7 @@ protocol BaClient {
     func getChallenges(to date: Date, with maxCount: UInt, for friends: Bool, completion: @escaping BaChallengesCompletionBlock) -> Void
     func createChallenge(_ challenge: Challenge, completion: @escaping BaBoolCompletionBlock) -> Void
     func removeChallenge(with id: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    func getChallengeDto(with id: String, completion: @escaping BaChallengeDtoCompletionBlock) -> Void
     func getChallengeList(for friends: Bool, completion: @escaping BaChallengeListCompletionBlock) -> Void
     func getChallengeList(to date: Date, with maxCount: UInt, for friends: Bool, completion: @escaping BaChallengeListCompletionBlock) -> Void
     

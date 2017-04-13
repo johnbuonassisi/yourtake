@@ -39,6 +39,9 @@ class TakesWorker {
     takeStore.unvoteForTake(takeId: takeId, completionHandler: completionHandler)
   }
   
+  func isChallengeExpired(challengeId: String, completionHandler: @escaping (Bool) -> Void) {
+    takeStore.isChallengeExpired(challengeId: challengeId, completionHandler: completionHandler)
+  }
   
 
 }
@@ -52,4 +55,6 @@ protocol TakesStoreProtocol {
   func voteForTake(takeId: String, completionHandler: @escaping (Bool) -> Void)
   
   func unvoteForTake(takeId: String, completionHandler: @escaping (Bool) -> Void)
+  
+  func isChallengeExpired(challengeId: String, completionHandler: @escaping (Bool) -> Void)
 }

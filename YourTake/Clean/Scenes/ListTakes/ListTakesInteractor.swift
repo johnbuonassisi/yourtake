@@ -30,30 +30,35 @@ class ListTakesInteractor: ListTakesInteractorInput
   private var user: User!
   private var takes: [TakeDto] = []
   private var challengeId: String!
+  private var isChallengeExpired: Bool!
   
   // MARK: - Business logic
   
   func fetchTakes(request: ListTakes.FetchTakes.Request)
   {
-    // NOTE: Create some Worker to do the work
     self.challengeId = request.challengeId
     // Get the user
     takesWorker.fetchUser(completion: { (user) -> Void in
       self.user = user
-      
       // Get the takes
       self.takesWorker.fetchTakes(challengeId: self.challengeId, completionHandler: {(takes) -> Void in
         self.takes = takes
-        let votedForTakeId = self.user.votes[self.challengeId]
-        let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
-        
-        // NOTE: Pass the result to the Presenter
-        self.output.presentFetchedTakes(response: response)
+        // Get if challenge is expired
+        self.takesWorker.isChallengeExpired(challengeId: self.challengeId, completionHandler: {(isChallengeExpired) -> Void in
+          self.isChallengeExpired = isChallengeExpired
+          let votedForTakeId = self.user.votes[self.challengeId]
+          let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
+          self.output.presentFetchedTakes(response: response)
+        })
       })
     })
   }
   
   func voteForTake(request: ListTakes.VoteForTake.Request) {
+    
+    if isChallengeExpired == true {
+      return // this effectively disables voting on takes for an expired challenge
+    }
     
     let previouslyVotedTakeId = user.votes[challengeId]
     var newVoteTakeId: String? = takes[request.takeTag].id
@@ -115,10 +120,4 @@ class ListTakesInteractor: ListTakesInteractorInput
     let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: newVoteTakeId)
     self.output.presentFetchedTakes(response: response)
   }
-  
-  
-  
-  
-  
-  
 }

@@ -332,6 +332,37 @@ class BaasBoxClient: BaClient {
         })
     }
     
+    func getChallengeDto(with id: String, completion: @escaping BaChallengeDtoCompletionBlock) -> Void {
+        
+        if id.isEmpty {
+            print("error: invalid parameters")
+            completion(nil)
+            return
+        }
+        
+        if client.currentUser == nil || !client.isAuthenticated() {
+            print("error: user not authenticated")
+            completion(nil)
+            return
+        }
+        
+        BaasBoxChallenge.getWithId(id, completion: { (object, error) -> Void in
+            if let baasChallenge = object as? BaasBoxChallenge
+            {
+                        completion(ChallengeDto(
+                            id: baasChallenge.objectId,
+                            author: baasChallenge.author,
+                            imageId: baasChallenge.imageId,
+                            recipients: baasChallenge.recipients,
+                            duration: baasChallenge.duration,
+                            created: baasChallenge.creationDate))
+            } else {
+                print("error: unable to load challenge [description=\(error?.localizedDescription)]")
+                        completion(nil)
+            }
+        })
+    }
+
     func getChallengeList(for friends: Bool, completion: @escaping BaChallengeListCompletionBlock) -> Void {
         return getChallengeList(to: Date(), with: 10, for: friends, completion: completion)
     }

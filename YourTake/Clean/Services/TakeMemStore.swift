@@ -70,6 +70,10 @@ class TakeMemStore: TakesStoreProtocol {
 //    }
     completionHandler(true)
   }
+  
+  func isChallengeExpired(challengeId: String, completionHandler: @escaping (Bool) -> Void) {
+    completionHandler(false)
+  }
 
 
 }
