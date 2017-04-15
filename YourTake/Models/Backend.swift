@@ -16,6 +16,9 @@ final class Backend {
     //private let localClient : BaClient = LocalClient()
     private let baasBoxClient : BaClient = BaasBoxClient()
     
+    var challengesInProgress = [String]()
+    var takesInProgress = [String]()
+    
     func getClient() -> BaClient {
         /*if isNetworkAvailable() {
             return Backend.sharedInstance.baasBoxClient

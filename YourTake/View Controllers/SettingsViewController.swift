@@ -73,22 +73,36 @@ class SettingsViewController: UITableViewController {
     
     private func signout() {
         
-        // Delete the username and password from the keychain
-        do {
-            let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
-            for item in passwordItems {
-                try item.deleteItem()
-            }
-        } catch {
-            fatalError("Error deleting password items - \(error)")
+        let alert = UIAlertController(title: "", message: "Logging out...", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        
+        // Wait until all backend upload operations are complete, not doing so will cause permission problems
+        DispatchQueue.global(qos: .background).async {
+            let backend = Backend.sharedInstance
+            while !backend.challengesInProgress.isEmpty || !backend.takesInProgress.isEmpty { sleep(1) }
+            
+            sleep(1)
+            alert.dismiss(animated: true, completion:{
+                // Delete the username and password from the keychain
+                do {
+                    let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
+                    for item in passwordItems {
+                        try item.deleteItem()
+                    }
+                } catch {
+                    fatalError("Error deleting password items - \(error)")
+                }
+                
+                // change to signup view
+                DispatchQueue.main.async {
+                    // Replace the current View Controllers in the Navigation Controller with new ones
+                    // This wipes out data stored in the Challenge View Controller
+                    let suvc = SignUpViewController()
+                    let cvc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
+                    self.navigationController?.setViewControllers([cvc, suvc], animated: true)
+                }
+            })
         }
-        
-        // Replace the current View Controllers in the Navigation Controller with new ones
-        // This wipes out data stored in the Challenge View Controller
-        let suvc = SignUpViewController()
-        let cvc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
-        navigationController?.setViewControllers([cvc, suvc], animated: true)
-        
     }
     
     private func showAboutUs() {

@@ -184,7 +184,11 @@ class ChallengeOptionsViewController: UIViewController,
             
             let backendClient = Backend.sharedInstance.getClient()
             backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
-                print("challenge creation completed!");
+                if success {
+                    print("Challenge created successfully!")
+                } else {
+                    print("Failed to create challenge!")
+                }
             })
             
             _ = self.navigationController?.popToRootViewController(animated: true)
