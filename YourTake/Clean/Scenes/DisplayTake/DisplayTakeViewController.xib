@@ -30,14 +30,14 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ENU-hS-dGj">
-                    <rect key="frame" x="146" y="476" width="82" height="82"/>
+                    <rect key="frame" x="146.5" y="476" width="82" height="82"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="82" id="2gE-cs-mRo"/>
                         <constraint firstAttribute="width" secondItem="ENU-hS-dGj" secondAttribute="height" multiplier="1:1" id="eb8-NY-TPy"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xw3-5h-EdY">
-                    <rect key="frame" x="146" y="476" width="82" height="82"/>
+                    <rect key="frame" x="146.5" y="476" width="82" height="82"/>
                     <fontDescription key="fontDescription" type="system" pointSize="38"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
