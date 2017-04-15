@@ -98,6 +98,8 @@ class SignUpViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         let loginVc = LoginViewController()
+        // let cleanStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        // let loginVc = cleanStoryBoard.instantiateViewController(withIdentifier: "Login")
         navigationController?.pushViewController(loginVc, animated: true)
     }
     
