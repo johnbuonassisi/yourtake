@@ -14,18 +14,16 @@ import UIKit
 protocol UserLoginViewControllerInput
 {
   func displayLogin(viewModel: UserLogin.Login.ViewModel)
-  func displayVerifyPassword(viewModel: UserLogin.EnableLogin.ViewModel)
 }
 
 protocol UserLoginViewControllerOutput
 {
-  func login(request: UserLogin.Login.Request)
-  func enableLogin(request: UserLogin.EnableLogin.Request)
+  func login(request: UserLogin.Login.Request, completion: ((Bool) -> Void)? )
 }
 
 class UserLoginViewController: UIViewController,
-  UITextFieldDelegate,
-  UserLoginViewControllerInput
+                               UITextFieldDelegate,
+                               UserLoginViewControllerInput
 {
   var output: UserLoginViewControllerOutput!
   var router: UserLoginRouter!
@@ -74,26 +72,21 @@ class UserLoginViewController: UIViewController,
     signUpButton.isEnabled = viewModel.isSignupButtonEnabled
     passwordSwitch.setOn(viewModel.isPasswordSwitchOn, animated: true)
     loginButton.backgroundColor = viewModel.loginButtonColour
-    
-    if(viewModel.isUserLoggedIn) {
-      router.navigateToChallengeScene()
-    } else {
-      router.presentAlert()
-    }
-  }
-  
-  func displayVerifyPassword(viewModel: UserLogin.EnableLogin.ViewModel) {
-    passwordSwitch.setOn(viewModel.isPasswordSwitchOn, animated: true)
-    loginButton.isEnabled = viewModel.isLoginButtonEnabled
-    loginButton.backgroundColor = viewModel.loginButtonColour
   }
   
   // MARK: - Event Handling
   
   @IBAction func loginButtonPressed(_ sender: Any) {
     let request = UserLogin.Login.Request(username: usernameTextField.text!,
-                                          password: passwordTextField.text!)
-    output.login(request: request)
+                                          password: passwordTextField.text!,
+                                          requestType: .loginRequest)
+    output.login(request: request, completion: { (isLoginSuccess) -> Void in
+      if isLoginSuccess {
+        self.router.navigateToChallengeScene()
+      } else {
+        self.router.presentAlert()
+      }
+    })
   }
   
   @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
@@ -105,15 +98,17 @@ class UserLoginViewController: UIViewController,
   }
   
   @IBAction func passwordChanged(_ sender: Any, forEvent event: UIEvent) {
-    let request = UserLogin.EnableLogin.Request(username: usernameTextField.text!,
-                                                password: passwordTextField.text!)
-    output.enableLogin(request: request)
+    let request = UserLogin.Login.Request(username: usernameTextField.text!,
+                                          password: passwordTextField.text!,
+                                          requestType: .updateView)
+    output.login(request: request, completion: nil)
   }
   
   @IBAction func usernameChanged(_ sender: UITextField) {
-    let request = UserLogin.EnableLogin.Request(username: usernameTextField.text!,
-                                                password: passwordTextField.text!)
-    output.enableLogin(request: request)
+    let request = UserLogin.Login.Request(username: usernameTextField.text!,
+                                          password: passwordTextField.text!,
+                                          requestType: .updateView)
+    output.login(request: request, completion: nil)
   }
   
   func dismissKeyboard() {

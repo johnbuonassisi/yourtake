@@ -14,13 +14,11 @@ import UIKit
 protocol UserLoginPresenterInput
 {
   func presentLogin(response: UserLogin.Login.Response)
-  func presentVerifyPassword(response: UserLogin.EnableLogin.Response)
 }
 
 protocol UserLoginPresenterOutput: class
 {
   func displayLogin(viewModel: UserLogin.Login.ViewModel)
-  func displayVerifyPassword(viewModel: UserLogin.EnableLogin.ViewModel)
 }
 
 class UserLoginPresenter: UserLoginPresenterInput
@@ -54,19 +52,5 @@ class UserLoginPresenter: UserLoginPresenterInput
                                               isSignupButtonEnabled: true,
                                               loginButtonColour: loginButtonColour)
     output.displayLogin(viewModel: viewModel)
-  }
-  
-  func presentVerifyPassword(response: UserLogin.EnableLogin.Response) {
-    
-    let isLoginButtonEnabled = response.isPasswordValid && response.isUsernameEntered
-    var loginButtonColour = SYSTEM_LIGHT_GRAY_COLOUR
-    if isLoginButtonEnabled {
-      loginButtonColour = SYSTEM_BLUE_COLOUR
-    }
-    
-    let viewModel = UserLogin.EnableLogin.ViewModel(isPasswordSwitchOn: response.isPasswordValid,
-                                                    isLoginButtonEnabled: isLoginButtonEnabled,
-                                                    loginButtonColour: loginButtonColour)
-    output.displayVerifyPassword(viewModel: viewModel)
   }
 }

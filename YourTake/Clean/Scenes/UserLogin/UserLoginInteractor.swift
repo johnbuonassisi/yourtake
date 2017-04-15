@@ -13,14 +13,12 @@ import UIKit
 
 protocol UserLoginInteractorInput
 {
-  func login(request: UserLogin.Login.Request)
-  func enableLogin(request: UserLogin.EnableLogin.Request)
+  func login(request: UserLogin.Login.Request, completion: ((Bool) -> Void)?)
 }
 
 protocol UserLoginInteractorOutput
 {
   func presentLogin(response: UserLogin.Login.Response)
-  func presentVerifyPassword(response: UserLogin.EnableLogin.Response)
 }
 
 class UserLoginInteractor: UserLoginInteractorInput
@@ -32,55 +30,48 @@ class UserLoginInteractor: UserLoginInteractorInput
   
   // MARK: - Business logic
   
-  func login(request: UserLogin.Login.Request)
+  // NOTE: - Completion will be executed when request type is "LoginRequest"
+  func login(request: UserLogin.Login.Request, completion: ((Bool) -> Void)?)
   {
-    // Check the password is of appropriate length
-    let isUserNameEntered = request.username.characters.count > 0
-    let isPasswordValid = request.password.characters.count >= MINIMUM_PASSWORD_SIZE
-    if  !isUserNameEntered || !isPasswordValid {
+    switch request.requestType {
+    case .loginRequest:
+      worker.login(username: request.username,
+                   password: request.password,
+                   completion: { (isSuccess) -> Void in
+                    if isSuccess {
+                      
+                      // Save username and password to the keychain
+                      let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
+                                                              account: request.username,
+                                                              accessGroup: KeychainConfiguration.accessGroup)
+                      do {
+                        try passwordItem.savePassword(request.password)
+                      } catch {
+                        fatalError("Error saving password - \(error)")
+                      }
+                      
+                      let response = UserLogin.Login.Response(isUserNameEntered: true,
+                                                              isPasswordValid: true,
+                                                              isUserLoggedIn: true)
+                      self.output.presentLogin(response: response)
+                      completion!(true)
+                      
+                    } else {
+                      let response = UserLogin.Login.Response(isUserNameEntered: true,
+                                                              isPasswordValid: true,
+                                                              isUserLoggedIn: false)
+                      self.output.presentLogin(response: response)
+                      completion!(false)
+                    }
+      })
+
+    case .updateView:
+      let isUserNameEntered = request.username.characters.count > 0
+      let isPasswordValid = request.password.characters.count >= MINIMUM_PASSWORD_SIZE
       let response = UserLogin.Login.Response(isUserNameEntered: isUserNameEntered,
                                               isPasswordValid: isPasswordValid,
                                               isUserLoggedIn: false)
       output.presentLogin(response: response)
-      return
     }
-    
-    // Login asynchronously
-    worker.login(username: request.username,
-                 password: request.password,
-                 completion: { (isSuccess) -> Void in
-                  if isSuccess {
-                    
-                    // Save username and password to the keychain
-                    let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
-                                                            account: request.username,
-                                                            accessGroup: KeychainConfiguration.accessGroup)
-                    do {
-                      try passwordItem.savePassword(request.password)
-                    } catch {
-                      fatalError("Error saving password - \(error)")
-                    }
-                    
-                    let response = UserLogin.Login.Response(isUserNameEntered: true,
-                                                            isPasswordValid: true,
-                                                            isUserLoggedIn: true)
-                    self.output.presentLogin(response: response)
-                    
-                  } else {
-                    let response = UserLogin.Login.Response(isUserNameEntered: true,
-                                                            isPasswordValid: true,
-                                                            isUserLoggedIn: false)
-                    self.output.presentLogin(response: response)
-                    
-                  }
-    })
-  }
-  
-  func enableLogin(request: UserLogin.EnableLogin.Request) {
-    
-    // Check the password is of appropriate length
-    let response = UserLogin.EnableLogin.Response(isUsernameEntered: request.username.characters.count > 0,
-                                                  isPasswordValid: request.password.characters.count >= MINIMUM_PASSWORD_SIZE)
-    output.presentVerifyPassword(response: response)
   }
 }

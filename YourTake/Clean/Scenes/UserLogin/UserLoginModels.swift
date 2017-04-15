@@ -19,6 +19,13 @@ struct UserLogin
     {
       var username: String
       var password: String
+      var requestType : RequestType
+      
+      enum RequestType
+      {
+        case loginRequest
+        case updateView
+      }
     }
     struct Response
     {
@@ -36,26 +43,5 @@ struct UserLogin
       var isSignupButtonEnabled: Bool
       var loginButtonColour: UIColor
     }
-  }
-  
-  struct EnableLogin
-  {
-    struct Request
-    {
-      var username: String
-      var password: String
-    }
-    struct Response
-    {
-      var isUsernameEntered: Bool
-      var isPasswordValid: Bool
-    }
-    struct ViewModel
-    {
-      var isPasswordSwitchOn: Bool
-      var isLoginButtonEnabled: Bool
-      var loginButtonColour: UIColor
-    }
-    
   }
 }
