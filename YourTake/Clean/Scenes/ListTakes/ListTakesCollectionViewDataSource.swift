@@ -33,6 +33,11 @@ class ListTakesCollectionViewDataSource: NSObject, UICollectionViewDataSource {
                               for: .touchUpInside)
     cell.likeButton.tag = indexPath.row
     
+    cell.takeImageButton.addTarget(viewController,
+                                   action: #selector(viewController.cellTakeImagePressed),
+                                   for: .touchUpInside)
+    cell.takeImageButton.tag = indexPath.row
+    
     return cell
   }
 

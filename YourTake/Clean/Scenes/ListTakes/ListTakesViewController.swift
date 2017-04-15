@@ -88,6 +88,12 @@ class ListTakesViewController: UICollectionViewController, ListTakesViewControll
     let request = ListTakes.VoteForTake.Request(takeTag: sender.tag)
     output.voteForTake(request: request)
   }
+  
+  func cellTakeImagePressed(sender: UIButton!)
+  {
+    let listTakeViewModel = listTakesDataSource.displayedTakes[sender.tag]
+    router.navigateToDisplayTakeScene(listTakesViewModel: listTakeViewModel)
+  }
 
 }
 

@@ -25,6 +25,12 @@
                             <constraint firstAttribute="width" secondItem="ydD-e3-9Dc" secondAttribute="height" multiplier="1:1" id="Ika-61-5DK"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPL-QW-GPt">
+                        <rect key="frame" x="0.0" y="35" width="180" height="180"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="cPL-QW-GPt" secondAttribute="height" multiplier="1:1" id="bbl-X1-BE1"/>
+                        </constraints>
+                    </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDa-KY-K4s">
                         <rect key="frame" x="0.0" y="0.0" width="180" height="35"/>
                         <subviews>
@@ -66,9 +72,12 @@
                 <constraint firstAttribute="bottom" secondItem="ydD-e3-9Dc" secondAttribute="bottom" id="4Tu-5K-ssF"/>
                 <constraint firstAttribute="trailing" secondItem="TDa-KY-K4s" secondAttribute="trailing" id="C4U-Bk-cq2"/>
                 <constraint firstItem="ydD-e3-9Dc" firstAttribute="top" secondItem="TDa-KY-K4s" secondAttribute="bottom" id="QwE-lm-VSB"/>
+                <constraint firstItem="cPL-QW-GPt" firstAttribute="leading" secondItem="3fX-nx-ENG" secondAttribute="leading" id="WV6-nV-tsc"/>
                 <constraint firstAttribute="trailing" secondItem="ydD-e3-9Dc" secondAttribute="trailing" id="X1D-Wc-oku"/>
                 <constraint firstItem="TDa-KY-K4s" firstAttribute="top" secondItem="3fX-nx-ENG" secondAttribute="top" id="cWe-vx-1Ux"/>
                 <constraint firstItem="ydD-e3-9Dc" firstAttribute="leading" secondItem="3fX-nx-ENG" secondAttribute="leading" id="h53-P2-w7a"/>
+                <constraint firstAttribute="trailing" secondItem="cPL-QW-GPt" secondAttribute="trailing" id="q6Z-eP-8Qm"/>
+                <constraint firstAttribute="bottom" secondItem="cPL-QW-GPt" secondAttribute="bottom" id="uEe-mF-kO8"/>
             </constraints>
             <size key="customSize" width="375" height="352"/>
             <connections>
@@ -76,6 +85,7 @@
                 <outlet property="likeButton" destination="57K-5y-8at" id="HDu-iY-Aih"/>
                 <outlet property="numberOfVotesLabel" destination="iNh-rk-6dk" id="EqT-yw-IKr"/>
                 <outlet property="takeImage" destination="ydD-e3-9Dc" id="q3T-4N-6J0"/>
+                <outlet property="takeImageButton" destination="cPL-QW-GPt" id="equ-PF-g79"/>
             </connections>
             <point key="canvasLocation" x="-89" y="-11.5"/>
         </collectionViewCell>

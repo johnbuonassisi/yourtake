@@ -14,4 +14,5 @@ class TakeCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var likeButton: UIButton!
   @IBOutlet weak var numberOfVotesLabel: UILabel!
   @IBOutlet weak var takeImage: UIImageView!
+  @IBOutlet weak var takeImageButton: UIButton!
 }

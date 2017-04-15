@@ -88,6 +88,9 @@
 		52760C211E9059880093B921 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52760C201E9059880093B921 /* Main.storyboard */; };
 		52760C231E905EDB0093B921 /* ChallengesBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C221E905EDB0093B921 /* ChallengesBaasBoxStore.swift */; };
 		527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527FD5E91E0739F90023D420 /* LaunchScreen.xib */; };
+		5283D6DB1EA19BE300651F08 /* DisplayTakeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5283D6DA1EA19BE300651F08 /* DisplayTakeViewController.xib */; };
+		5283D6DD1EA19CBF00651F08 /* DisplayTakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283D6DC1EA19CBF00651F08 /* DisplayTakeViewController.swift */; };
+		5283D6DF1EA1A47B00651F08 /* DisplayTakeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283D6DE1EA1A47B00651F08 /* DisplayTakeModels.swift */; };
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
 		528527D71E46711900DD6434 /* EmptyChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528527D31E46711900DD6434 /* EmptyChallengeCell.swift */; };
@@ -206,6 +209,9 @@
 		52760C201E9059880093B921 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Clean/Main.storyboard; sourceTree = "<group>"; };
 		52760C221E905EDB0093B921 /* ChallengesBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengesBaasBoxStore.swift; path = Clean/Services/ChallengesBaasBoxStore.swift; sourceTree = "<group>"; };
 		527FD5E91E0739F90023D420 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Views/LaunchScreen.xib; sourceTree = "<group>"; };
+		5283D6DA1EA19BE300651F08 /* DisplayTakeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DisplayTakeViewController.xib; path = Clean/Scenes/ViewTake/DisplayTakeViewController.xib; sourceTree = "<group>"; };
+		5283D6DC1EA19CBF00651F08 /* DisplayTakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayTakeViewController.swift; path = Clean/Scenes/ViewTake/DisplayTakeViewController.swift; sourceTree = "<group>"; };
+		5283D6DE1EA1A47B00651F08 /* DisplayTakeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayTakeModels.swift; path = Clean/Scenes/ViewTake/DisplayTakeModels.swift; sourceTree = "<group>"; };
 		528509881DC6F9470083CC55 /* YourTake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5285098B1DC6F9470083CC55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Main/AppDelegate.swift; sourceTree = "<group>"; };
 		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -354,6 +360,7 @@
 		52760BF81E9058910093B921 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				5283D6D91EA19BC100651F08 /* DisplayTake */,
 				529EFBAD1E9F395C0054559B /* CreateTake */,
 				5267D8D31E91283300B94470 /* ListTakes */,
 				52760BFC1E9058E40093B921 /* ListChallenges */,
@@ -416,6 +423,16 @@
 				52760C191E9059520093B921 /* ChallengeTableViewCell.swift */,
 			);
 			name = Challenge;
+			sourceTree = "<group>";
+		};
+		5283D6D91EA19BC100651F08 /* DisplayTake */ = {
+			isa = PBXGroup;
+			children = (
+				5283D6DA1EA19BE300651F08 /* DisplayTakeViewController.xib */,
+				5283D6DC1EA19CBF00651F08 /* DisplayTakeViewController.swift */,
+				5283D6DE1EA1A47B00651F08 /* DisplayTakeModels.swift */,
+			);
+			name = DisplayTake;
 			sourceTree = "<group>";
 		};
 		5285097F1DC6F9470083CC55 = {
@@ -641,6 +658,7 @@
 				523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */,
 				52DC0AC31DCA301800DA2BDC /* TakeCell.xib in Resources */,
 				521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */,
+				5283D6DB1EA19BE300651F08 /* DisplayTakeViewController.xib in Resources */,
 				523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */,
 				520DA5F71DF0C64B00695756 /* SignUpViewController.xib in Resources */,
 				52760C1C1E9059520093B921 /* ChallengeTableViewCell.xib in Resources */,
@@ -666,6 +684,7 @@
 				526AF0581DD2F334003350B4 /* DrawViewController.swift in Sources */,
 				52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */,
 				5267D8E11E998E0100B94470 /* ListTakesRouter.swift in Sources */,
+				5283D6DD1EA19CBF00651F08 /* DisplayTakeViewController.swift in Sources */,
 				52760C0C1E9058F80093B921 /* ListChallengesConfigurator.swift in Sources */,
 				332283F91E072F12008647E4 /* LocalClient.swift in Sources */,
 				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,
@@ -685,6 +704,7 @@
 				529FB8421DE42B4000861826 /* ExpiryPickerCell.swift in Sources */,
 				525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */,
 				5267D8E31E998E0100B94470 /* ListTakesWorker.swift in Sources */,
+				5283D6DF1EA1A47B00651F08 /* DisplayTakeModels.swift in Sources */,
 				52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */,
 				5267D8EE1E9A8E1700B94470 /* TakesWorker.swift in Sources */,
 				33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */,
