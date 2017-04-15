@@ -25,6 +25,7 @@ class ListChallengesNoChallengesTableViewDataSource: NSObject, UITableViewDataSo
     let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyChallengeTableViewCell", for: indexPath) as! EmptyChallengeTableViewCell
     return cell
   }
+  
 
 
 }

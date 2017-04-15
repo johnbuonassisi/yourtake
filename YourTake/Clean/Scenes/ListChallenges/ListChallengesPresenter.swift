@@ -32,14 +32,29 @@ class ListChallengesPresenter: ListChallengesPresenterInput
     var displayedChallenges: [ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge] = []
     for challenge in response.challenges
     {
+      let totalVotesLabel = createTotalVotesLabel(challenge: challenge)
+      let expiryLabel = createChallengeExpiryLabel(challenge: challenge)
+      
+      let numSecondsRemaining = getNumberOfSecondsRemainingForChallenge(challenge: challenge)
+      var listTakesButtonTitleText = "Vote"
+      if numSecondsRemaining <= 0 {
+        listTakesButtonTitleText = "View"
+      }
+      
+      var isDrawButtonEnabled = true
+      if response.challengeType == ListChallenges.FetchChallenges.Response.ChallengeResponseType.userChallenges {
+        isDrawButtonEnabled = false
+      }
+      
       let displayedChallenge =
-        ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge(name: challenge.author,
+        ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge(id: challenge.id,
+                                                                    name: challenge.author,
                                                                     imageId: challenge.imageId,
                                                                     challengeImage: challenge.image,
-                                                                    expiryLabel: challenge.getTimeRemaining().description,
-                                                                    totalVotesLabel: "10",
-                                                                    isDrawButtonEnabled: true,
-                                                                    isVoteButton: true)
+                                                                    expiryLabel: expiryLabel,
+                                                                    totalVotesLabel: totalVotesLabel,
+                                                                    isDrawButtonEnabled: isDrawButtonEnabled,
+                                                                    listTakesButtonTitleText: listTakesButtonTitleText)
       displayedChallenges.append(displayedChallenge)
     }
     
@@ -54,4 +69,65 @@ class ListChallengesPresenter: ListChallengesPresenterInput
                                                              displayedChallenges: displayedChallenges)
     output.displayFetchedChallenges(viewModel: viewModel)
   }
+  
+  private func createTotalVotesLabel(
+    challenge: ListChallenges.FetchChallenges.Response.ChallengeResponseModel) -> String {
+    return challenge.totalNumberOfVotes == nil ? "" : "\(challenge.totalNumberOfVotes!) total votes"
+  }
+  
+  private func createChallengeExpiryLabel(
+    challenge: ListChallenges.FetchChallenges.Response.ChallengeResponseModel) -> String {
+    
+    // Determine how the expiry date should be displayed
+    let numSecondsRemaining = getNumberOfSecondsRemainingForChallenge(challenge: challenge)
+    
+    if( numSecondsRemaining <= 0){
+      return String("Challenge completed")
+    }
+    
+    let numDaysRemaining = numSecondsRemaining / ( 60 * 60 * 24)
+    if(numDaysRemaining > 0) {
+      if numDaysRemaining == 1 {
+        return String(numDaysRemaining) + " day remaining"
+      }
+      return String(numDaysRemaining) + " days remaining"
+    }
+    
+    let numHoursRemaining = numSecondsRemaining / ( 60 * 60 )
+    if( numHoursRemaining > 0) {
+      if numHoursRemaining == 1 {
+        return String(numHoursRemaining) + " hour remaining"
+      }
+      return String(numHoursRemaining) + " hours remaining"
+    }
+    
+    let numMinutesRemaining = numSecondsRemaining / 60
+    if(numMinutesRemaining > 0){
+      if numHoursRemaining == 1 {
+        return String(numMinutesRemaining) + " minute remaining"
+      }
+      return String(numMinutesRemaining) + " minutes remaining"
+    }
+    if numSecondsRemaining == 1 {
+      return String(numSecondsRemaining) + "second remaining"
+    }
+    
+    return String(numSecondsRemaining) + " seconds remaining"
+  }
+  
+  private func getNumberOfSecondsRemainingForChallenge(challenge:
+    ListChallenges.FetchChallenges.Response.ChallengeResponseModel) -> Int {
+    
+    // Calculate the expiry date of the challenge
+    let expiryDate: Date
+    let diff = challenge.duration + challenge.created.timeIntervalSinceNow
+    if diff > 0 {
+      expiryDate = Date(timeIntervalSinceNow: diff)
+    } else {
+      expiryDate = Date(timeIntervalSinceNow: 0)
+    }
+    
+    return Int(expiryDate.timeIntervalSince(Date()))
+  }
+  
 }

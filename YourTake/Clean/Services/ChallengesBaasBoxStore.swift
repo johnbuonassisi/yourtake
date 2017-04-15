@@ -46,5 +46,16 @@ class ChallengesBaasBoxStore: ChallengesStoreProtocol {
       completion(image)
     })
   }
+  
+  func getNumberOfVotes(for challengeId: String, completion: @escaping (UInt) -> Void) {
+    let backendClient = Backend.sharedInstance.getClient()
+    backendClient.getTakeList(for: challengeId, completion: { (takes) -> Void in
+      var totalVotes: UInt = 0
+      for take in takes {
+        totalVotes += take.votes
+      }
+      completion(totalVotes)
+    })
+  }
 
 }

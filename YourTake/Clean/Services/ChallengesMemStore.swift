@@ -10,31 +10,27 @@ import UIKit
 
 class ChallengesMemStore: ChallengesStoreProtocol {
   
-  /*
   var challenges = [ChallengeDto(id: "1",
                               author: "John",
-                              image: UIImage(),
+                              imageId: "1",
                               recipients: ["Ashling"],
                               duration: 1000,
                               created: Date()),
                     ChallengeDto(id: "2",
                               author: "John",
-                              image: UIImage(),
+                              imageId: "2",
                               recipients: ["Ashling"],
                               duration: 2000, created: Date())]
- */
   
-  var challenges: [ChallengeDto] = []
-  
-  var friendChallenges = [ChallengeDto(id: "1",
+  var friendChallenges = [ChallengeDto(id: "3",
                               author: "Ashling",
-                              imageId: "1",
+                              imageId: "3",
                               recipients: ["John"],
                               duration: 1000,
                               created: Date()),
-                    ChallengeDto(id: "2",
+                    ChallengeDto(id: "4",
                               author: "Anthony",
-                              imageId: "2",
+                              imageId: "4",
                               recipients: ["John"],
                               duration: 2000, created: Date())]
   
@@ -55,7 +51,22 @@ class ChallengesMemStore: ChallengesStoreProtocol {
   }
   
   func downloadImage(with id: String, completion: @escaping (UIImage?) -> Void) {
-    completion(UIImage())
+    switch id {
+    case "1":
+      completion(UIImage(named: "Ashling_Challenge_Andrea.jpg", in: nil, compatibleWith: nil))
+    case "2":
+      completion(UIImage(named: "Ashling_Challenge_Anthony.jpg", in: nil, compatibleWith: nil))
+    case "3":
+      completion(UIImage(named: "Ashling_Challenge_John.jpg", in: nil, compatibleWith: nil))
+    case "4":
+      completion(UIImage(named: "Ashling_Challenge_Peter.jpg", in: nil, compatibleWith: nil))
+    default:
+      completion(UIImage(named: "Ashling_Challenge_Peter.jpg", in: nil, compatibleWith: nil))
+    }
+  }
+  
+  func getNumberOfVotes(for challengeId: String, completion: @escaping (UInt) -> Void) {
+    completion(10)
   }
 
 }

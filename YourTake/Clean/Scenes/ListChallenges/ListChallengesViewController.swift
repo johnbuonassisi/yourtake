@@ -53,15 +53,25 @@ class ListChallengesViewController: UIViewController,
   {
     super.viewDidLoad()
     
+    userChallengesDataSource.viewController = self
+    friendChallengesDataSource.viewController = self
+    
     tableView.dataSource = userChallengesDataSource
     tableView.delegate = self
     tableView.rowHeight = ChallengeTableViewCell.CellRowHeight()
+    tableView.allowsSelection = false
     
     let ctNib = UINib(nibName: "ChallengeTableViewCell", bundle: nil)
     tableView.register(ctNib, forCellReuseIdentifier: "ChallengeTableViewCell")
     
     let ectNib = UINib(nibName: "EmptyChallengeTableViewCell", bundle: nil)
     tableView.register(ectNib, forCellReuseIdentifier: "EmptyChallengeTableViewCell")
+    
+    tableView.refreshControl = UIRefreshControl()
+    tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
+    tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+    tableView.refreshControl!.beginRefreshing()
+
     
     tabBar.delegate = self
     tabBar.selectedItem = tabBar.items?[0]
@@ -75,8 +85,9 @@ class ListChallengesViewController: UIViewController,
   {
     // NOTE: Ask the Interactor to do some work
     let tag = tabBar.selectedItem!.tag
-    let challengeType = ListChallenges.FetchChallenges.Request.ChallengeRequestType(rawValue: tag)
-    let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!)
+    let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
+    let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
+                                                         isChallengeAndImageLoadSeparated: false)
     output.fetchChallenges(request: request)
   }
   
@@ -97,12 +108,43 @@ class ListChallengesViewController: UIViewController,
     }
     
     tableView.reloadData()
+    tableView.refreshControl!.endRefreshing()
   }
   
   // MARK - Tab Bar Control delegate methods
   
-  func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+  func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem)
+  {
     fetchChallengesOnLoad()
   }
+  
+  // MARK - Action methods
+  
+  func cellDrawButtonPressed(sender: UIButton!)
+  {
+    print("Cell draw button pressed for cell at index \(sender.tag)")
+    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+    let challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
+    router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
+    
+  }
+  
+  func cellVoteButtonPressed(sender: UIButton!)
+  {
+    print("Cell vote button pressed for cell at index \(sender.tag)")
+    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+    router.navigateToTakesScene(with: challengeId)
+  }
+  
+  func refresh(sender: UIButton!)
+  {
+    let tag = tabBar.selectedItem!.tag
+    let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
+    let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
+                                                         isChallengeAndImageLoadSeparated: true)
+    output.fetchChallenges(request: request)
+
+  }
+
   
 }

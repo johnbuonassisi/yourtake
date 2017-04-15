@@ -11,6 +11,7 @@ import UIKit
 class ListChallengesForFriendsTableViewDataSource: NSObject, UITableViewDataSource {
   
   var displayedChallenges: [ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge] = []
+  weak var viewController: ListChallengesViewController!
   
   func numberOfSections(in tableView: UITableView) -> Int
   {
@@ -30,11 +31,21 @@ class ListChallengesForFriendsTableViewDataSource: NSObject, UITableViewDataSour
     let displayedChallenge = displayedChallenges[indexPath.row]
     
     cell.name.text = displayedChallenge.name
-    cell.challengeImage = UIImageView()
+    cell.challengeImage.image = displayedChallenge.challengeImage
     cell.expiryLabel.text = displayedChallenge.expiryLabel
     cell.totalVotesLabel.text = displayedChallenge.totalVotesLabel
     cell.drawButton.isEnabled = displayedChallenge.isDrawButtonEnabled
-    cell.voteButton.isEnabled = displayedChallenge.isVoteButton
+    cell.voteButton.setTitle(displayedChallenge.listTakesButtonTitleText, for: .normal)
+    
+    cell.drawButton.tag = indexPath.row
+    cell.drawButton.addTarget(viewController,
+                              action: #selector(viewController.cellDrawButtonPressed),
+                              for: .touchUpInside)
+    
+    cell.voteButton.tag = indexPath.row
+    cell.voteButton.addTarget(viewController,
+                              action: #selector(viewController.cellVoteButtonPressed),
+                              for: .touchUpInside)
     
     return cell
   }

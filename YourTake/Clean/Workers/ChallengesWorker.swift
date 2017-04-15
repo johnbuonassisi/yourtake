@@ -47,6 +47,10 @@ class ChallengesWorker
   func downloadImage(with id: String, completion: @escaping (UIImage?) -> Void) {
     challengesStore.downloadImage(with: id, completion: completion)
   }
+  
+  func getNumberOfVotes(for challengeId: String, completion: @escaping (UInt) -> Void) {
+    challengesStore.getNumberOfVotes(for: challengeId, completion: completion)
+  }
 }
 
 protocol ChallengesStoreProtocol
@@ -60,6 +64,8 @@ protocol ChallengesStoreProtocol
   func fetchFriendChallenges(completionHandler: @escaping (_ challenges: () throws -> [ChallengeDto]) -> Void)
   
   func downloadImage(with id: String, completion: @escaping (UIImage?) -> Void)
+  
+  func getNumberOfVotes(for challengeId: String, completion: @escaping (UInt) -> Void)
 }
 
 typealias ChallengesStoreFetchChallengesCompletionHandler = (_ result: ChallengesStoreResult<[ChallengeDto]>) -> Void

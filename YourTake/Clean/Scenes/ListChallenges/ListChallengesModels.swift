@@ -13,18 +13,20 @@ import UIKit
 
 struct ListChallenges
 {
+  struct RefreshChallenges
+  {
+    struct Request
+    {
+      var challengeType: ChallengeRequestType
+    }
+  }
   
-  // ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge
   struct FetchChallenges
   {
     struct Request
     {
       var challengeType: ChallengeRequestType
-      
-      enum ChallengeRequestType: Int {
-        case userChallenges = 0
-        case friendChallenges = 1
-      }
+      var isChallengeAndImageLoadSeparated: Bool
     }
     
     struct ViewModel
@@ -32,13 +34,14 @@ struct ListChallenges
       
       struct DisplayedChallenge
       {
+        var id: String
         var name: String
         var imageId: String
         var challengeImage: UIImage?
         var expiryLabel: String
-        var totalVotesLabel: String
+        var totalVotesLabel: String?
         var isDrawButtonEnabled: Bool
-        var isVoteButton: Bool
+        var listTakesButtonTitleText: String
       }
       
       enum ChallengeViewType: Int {
@@ -55,26 +58,30 @@ struct ListChallenges
     struct Response
     {
       var challengeType: ChallengeResponseType
-      var challenges: [ChallengeDto]
+      var challenges: [ChallengeResponseModel]
       
       enum ChallengeResponseType: Int {
         case userChallenges = 0
         case friendChallenges = 1
         case noChallenges = 2
       }
+      
+      struct ChallengeResponseModel
+      {
+        var id : String
+        var author : String
+        var imageId : String
+        var recipients : [String]
+        var duration : TimeInterval
+        var created : Date
+        var image: UIImage?
+        var totalNumberOfVotes: UInt?
+      }
     }
   }
   
-  struct Something
-  {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
+  enum ChallengeRequestType: Int {
+    case userChallenges = 0
+    case friendChallenges = 1
   }
 }
