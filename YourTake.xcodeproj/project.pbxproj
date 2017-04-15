@@ -225,7 +225,7 @@
 		52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "View Controllers/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
 		529DC7C61DCC705F00EFA856 /* Take.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Take.swift; path = Models/Take.swift; sourceTree = "<group>"; };
 		529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateTakeViewController.swift; path = Clean/Scenes/CreateTake/CreateTakeViewController.swift; sourceTree = "<group>"; };
-		529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTakeViewController.xib; path = Clean/Views/Take/CreateTakeViewController.xib; sourceTree = "<group>"; };
+		529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTakeViewController.xib; path = Clean/Scenes/CreateTake/CreateTakeViewController.xib; sourceTree = "<group>"; };
 		529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeOptionsViewController.swift; path = "View Controllers/ChallengeOptionsViewController.swift"; sourceTree = "<group>"; };
 		529FB8391DE23B1400861826 /* FriendPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendPickerCell.xib; path = Views/FriendPickerCell.xib; sourceTree = "<group>"; };
 		529FB83B1DE23C0300861826 /* FriendPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendPickerCell.swift; path = Views/FriendPickerCell.swift; sourceTree = "<group>"; };
@@ -332,7 +332,6 @@
 			children = (
 				5267D8E71E99965400B94470 /* TakeCollectionViewCell.swift */,
 				5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */,
-				529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */,
 			);
 			name = Take;
 			sourceTree = "<group>";
@@ -568,6 +567,7 @@
 		529EFBAD1E9F395C0054559B /* CreateTake */ = {
 			isa = PBXGroup;
 			children = (
+				529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */,
 				529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */,
 			);
 			name = CreateTake;
