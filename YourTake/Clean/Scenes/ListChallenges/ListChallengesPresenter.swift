@@ -36,7 +36,7 @@ class ListChallengesPresenter: ListChallengesPresenterInput
       let expiryLabel = createChallengeExpiryLabel(challenge: challenge)
       
       let numSecondsRemaining = getNumberOfSecondsRemainingForChallenge(challenge: challenge)
-      var listTakesButtonTitleText = "Draw"
+      var listTakesButtonTitleText = "Vote"
       if numSecondsRemaining <= 0 {
         listTakesButtonTitleText = "View"
       }
