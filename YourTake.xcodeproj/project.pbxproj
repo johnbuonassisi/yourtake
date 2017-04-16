@@ -181,9 +181,9 @@
 		5244E87A1DCC20A5002627FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
 		5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainConfiguration.swift; path = Security/KeychainConfiguration.swift; sourceTree = "<group>"; };
 		5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Security/KeychainPasswordItem.swift; sourceTree = "<group>"; };
-		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Views/CameraOverlayView.xib; sourceTree = "<group>"; };
-		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Views/PhotoPreviewView.xib; sourceTree = "<group>"; };
-		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = "View Controllers/PhotoPreviewViewController.swift"; sourceTree = "<group>"; };
+		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Clean/Scenes/SnapChallengeImage/CameraOverlayView.xib; sourceTree = "<group>"; };
+		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewView.xib; sourceTree = "<group>"; };
+		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeViewController.swift; path = "View Controllers/ChallengeViewController.swift"; sourceTree = "<group>"; };
 		525F84791DC86F05006D2E2F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeViewController.xib; path = "View Controllers/ChallengeViewController.xib"; sourceTree = "<group>"; };
 		525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeCell.xib; path = Views/ChallengeCell.xib; sourceTree = "<group>"; };
@@ -324,6 +324,16 @@
 			path = Local;
 			sourceTree = "<group>";
 		};
+		520E2BEA1EA4398E00A5713C /* SnapChallengeImage */ = {
+			isa = PBXGroup;
+			children = (
+				524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */,
+				524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */,
+				524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */,
+			);
+			name = SnapChallengeImage;
+			sourceTree = "<group>";
+		};
 		52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +426,7 @@
 		52760BF81E9058910093B921 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				520E2BEA1EA4398E00A5713C /* SnapChallengeImage */,
 				52BD8B6A1EA43422005B142C /* AddFriends */,
 				52A0D1FA1EA3475600292B23 /* UserForgotLoginPassword */,
 				52A0D1F41EA3425900292B23 /* UserSettings */,
@@ -568,8 +579,6 @@
 				52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */,
 				529FB8391DE23B1400861826 /* FriendPickerCell.xib */,
 				529FB83B1DE23C0300861826 /* FriendPickerCell.swift */,
-				524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */,
-				524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */,
 				527FD5E91E0739F90023D420 /* LaunchScreen.xib */,
 			);
 			name = Views;
@@ -591,7 +600,6 @@
 				526AF0591DD2F53C003350B4 /* DrawViewController.xib */,
 				529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */,
 				52A868821E63E20B00F26F31 /* ChallengeOptionsViewController.xib */,
-				524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */,
 				521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */,
 				521D7FCB1E17369D00DA7DBB /* SettingsViewController.swift */,
 			);
