@@ -115,6 +115,7 @@
 		52A0D1F11EA2EB7700292B23 /* SignupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1F01EA2EB7700292B23 /* SignupWorker.swift */; };
 		52A0D1F31EA2EC6400292B23 /* SignupBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */; };
 		52A0D1F81EA3430500292B23 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */; };
+		52A0D1FC1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1FB1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift */; };
 		52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D291DD90631005A89B8 /* DrawPathsView.swift */; };
 		52A48D2E1DDB6591005A89B8 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */; };
 		52A868811E63687100F26F31 /* FriendSelectionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A868801E63687100F26F31 /* FriendSelectionTracker.swift */; };
@@ -258,6 +259,7 @@
 		52A0D1F01EA2EB7700292B23 /* SignupWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupWorker.swift; path = Clean/Workers/SignupWorker.swift; sourceTree = "<group>"; };
 		52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupBaasBoxStore.swift; path = Clean/Services/SignupBaasBoxStore.swift; sourceTree = "<group>"; };
 		52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSettingsViewController.swift; path = Clean/Scenes/UserSettings/UserSettingsViewController.swift; sourceTree = "<group>"; };
+		52A0D1FB1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserForgotLoginPasswordViewController.swift; path = Clean/Scenes/UserForgotLoginPassword/UserForgotLoginPasswordViewController.swift; sourceTree = "<group>"; };
 		52A48D291DD90631005A89B8 /* DrawPathsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawPathsView.swift; path = Clean/Views/Drawing/DrawPathsView.swift; sourceTree = "<group>"; };
 		52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderedButton.swift; path = Views/BorderedButton.swift; sourceTree = "<group>"; };
 		52A868801E63687100F26F31 /* FriendSelectionTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendSelectionTracker.swift; path = Models/FriendSelectionTracker.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 		52760BF81E9058910093B921 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				52A0D1FA1EA3475600292B23 /* UserForgotLoginPassword */,
 				52A0D1F41EA3425900292B23 /* UserSettings */,
 				5263CA4A1EA2D36E001BA2E4 /* SignupUser */,
 				52B682C21EA2978900DBB0A4 /* UserLogin */,
@@ -640,6 +643,14 @@
 			name = Drawing;
 			sourceTree = "<group>";
 		};
+		52A0D1FA1EA3475600292B23 /* UserForgotLoginPassword */ = {
+			isa = PBXGroup;
+			children = (
+				52A0D1FB1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift */,
+			);
+			name = UserForgotLoginPassword;
+			sourceTree = "<group>";
+		};
 		52B682BB1EA296B200DBB0A4 /* DisplayTake */ = {
 			isa = PBXGroup;
 			children = (
@@ -822,6 +833,7 @@
 				523074A71DC704DE002EB030 /* Challenge.swift in Sources */,
 				52B682EC1EA29BFE00DBB0A4 /* UserLoginWorker.swift in Sources */,
 				52B682EA1EA29BFE00DBB0A4 /* UserLoginRouter.swift in Sources */,
+				52A0D1FC1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift in Sources */,
 				52B682E81EA29BFE00DBB0A4 /* UserLoginModels.swift in Sources */,
 				526AF05C1DD2F9B0003350B4 /* DrawLinesView.swift in Sources */,
 				52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */,

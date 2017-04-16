@@ -89,10 +89,6 @@ class UserLoginViewController: UIViewController,
     })
   }
   
-  @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
-    router.navigateToForgotPasswordScene()
-  }
-  
   @IBAction func signupButtonPressed(_ sender: UIButton) {
     router.navigateToSignupScene()
   }
