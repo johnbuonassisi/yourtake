@@ -152,8 +152,8 @@
 		520DA5F61DF0C64B00695756 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpViewController.xib; path = "View Controllers/SignUpViewController.xib"; sourceTree = "<group>"; };
 		520DA5F81DF0CC3500695756 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = "View Controllers/SignUpViewController.swift"; sourceTree = "<group>"; };
 		520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendNameTableViewCell.swift; path = Clean/Scenes/AddFriends/FriendNameTableViewCell.swift; sourceTree = "<group>"; };
-		521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoFriendsCell.xib; path = Views/NoFriendsCell.xib; sourceTree = "<group>"; };
-		521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoFriendsCell.swift; path = Views/NoFriendsCell.swift; sourceTree = "<group>"; };
+		521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoFriendsCell.xib; path = Clean/Views/Challenge/NoFriendsCell.xib; sourceTree = "<group>"; };
+		521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoFriendsCell.swift; path = Clean/Views/Challenge/NoFriendsCell.swift; sourceTree = "<group>"; };
 		521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SettingsViewController.storyboard; path = "View Controllers/SettingsViewController.storyboard"; sourceTree = "<group>"; };
 		521D7FCB1E17369D00DA7DBB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "View Controllers/SettingsViewController.swift"; sourceTree = "<group>"; };
 		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -484,6 +484,8 @@
 		52760C151E90592F0093B921 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */,
+				521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */,
 				52760C161E9059520093B921 /* EmptyChallengeTableViewCell.xib */,
 				52760C171E9059520093B921 /* EmptyChallengeTableViewCell.swift */,
 				52760C181E9059520093B921 /* ChallengeTableViewCell.xib */,
@@ -569,8 +571,6 @@
 				524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */,
 				524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */,
 				527FD5E91E0739F90023D420 /* LaunchScreen.xib */,
-				521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */,
-				521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
