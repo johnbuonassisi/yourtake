@@ -38,7 +38,6 @@
 		5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244E87A1DCC20A5002627FC /* LoginViewController.swift */; };
 		5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */; };
 		5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */; };
-		5248BE141E6239EA00538A50 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE131E6239EA00538A50 /* FriendViewController.swift */; };
 		5248BE161E62822400538A50 /* FriendNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE151E62822400538A50 /* FriendNameCell.swift */; };
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
 		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
@@ -133,6 +132,7 @@
 		52B682EE1EA29FFF00DBB0A4 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */; };
 		52B682F01EA2A19E00DBB0A4 /* LoginMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682EF1EA2A19E00DBB0A4 /* LoginMemStore.swift */; };
 		52B682F21EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */; };
+		52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD8B6B1EA43464005B142C /* FriendViewController.swift */; };
 		52D9C1821DCC1D4A00F5C098 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */; };
 		52DC0AC11DCA2B7200DA2BDC /* TakesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC0AC01DCA2B7200DA2BDC /* TakesCollectionViewController.swift */; };
 		52DC0AC31DCA301800DA2BDC /* TakeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0AC21DCA301800DA2BDC /* TakeCell.xib */; };
@@ -180,7 +180,6 @@
 		5244E87A1DCC20A5002627FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
 		5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainConfiguration.swift; path = Security/KeychainConfiguration.swift; sourceTree = "<group>"; };
 		5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Security/KeychainPasswordItem.swift; sourceTree = "<group>"; };
-		5248BE131E6239EA00538A50 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = "View Controllers/FriendViewController.swift"; sourceTree = "<group>"; };
 		5248BE151E62822400538A50 /* FriendNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendNameCell.swift; path = Views/FriendNameCell.swift; sourceTree = "<group>"; };
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Views/CameraOverlayView.xib; sourceTree = "<group>"; };
 		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Views/PhotoPreviewView.xib; sourceTree = "<group>"; };
@@ -277,6 +276,7 @@
 		52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWorker.swift; path = Clean/Workers/LoginWorker.swift; sourceTree = "<group>"; };
 		52B682EF1EA2A19E00DBB0A4 /* LoginMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginMemStore.swift; path = Clean/Services/LoginMemStore.swift; sourceTree = "<group>"; };
 		52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBaasBoxStore.swift; path = Clean/Services/LoginBaasBoxStore.swift; sourceTree = "<group>"; };
+		52BD8B6B1EA43464005B142C /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = Clean/Scenes/AddFriends/FriendViewController.swift; sourceTree = "<group>"; };
 		52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Views/LoginViewController.xib; sourceTree = "<group>"; };
 		52DC0AC01DCA2B7200DA2BDC /* TakesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakesCollectionViewController.swift; path = "View Controllers/TakesCollectionViewController.swift"; sourceTree = "<group>"; };
 		52DC0AC21DCA301800DA2BDC /* TakeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TakeCell.xib; path = Views/TakeCell.xib; sourceTree = "<group>"; };
@@ -416,6 +416,7 @@
 		52760BF81E9058910093B921 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				52BD8B6A1EA43422005B142C /* AddFriends */,
 				52A0D1FA1EA3475600292B23 /* UserForgotLoginPassword */,
 				52A0D1F41EA3425900292B23 /* UserSettings */,
 				5263CA4A1EA2D36E001BA2E4 /* SignupUser */,
@@ -594,7 +595,6 @@
 				524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */,
 				521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */,
 				521D7FCB1E17369D00DA7DBB /* SettingsViewController.swift */,
-				5248BE131E6239EA00538A50 /* FriendViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -681,6 +681,14 @@
 				52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		52BD8B6A1EA43422005B142C /* AddFriends */ = {
+			isa = PBXGroup;
+			children = (
+				52BD8B6B1EA43464005B142C /* FriendViewController.swift */,
+			);
+			name = AddFriends;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -853,7 +861,6 @@
 				52B682E71EA29BFE00DBB0A4 /* UserLoginInteractor.swift in Sources */,
 				52760C0D1E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift in Sources */,
 				52760C0F1E9058F80093B921 /* ListChallengesRouter.swift in Sources */,
-				5248BE141E6239EA00538A50 /* FriendViewController.swift in Sources */,
 				33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */,
 				52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */,
 				52A0D1F81EA3430500292B23 /* UserSettingsViewController.swift in Sources */,
@@ -868,6 +875,7 @@
 				52A0D1F11EA2EB7700292B23 /* SignupWorker.swift in Sources */,
 				5263CA531EA2D399001BA2E4 /* SignupUserInteractor.swift in Sources */,
 				52760BF51E9045280093B921 /* ChallengeDto.swift in Sources */,
+				52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */,
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
 				52760C0B1E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift in Sources */,
 				5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */,
