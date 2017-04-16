@@ -114,6 +114,7 @@
 		529FB8421DE42B4000861826 /* ExpiryPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB8411DE42B4000861826 /* ExpiryPickerCell.swift */; };
 		52A0D1F11EA2EB7700292B23 /* SignupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1F01EA2EB7700292B23 /* SignupWorker.swift */; };
 		52A0D1F31EA2EC6400292B23 /* SignupBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */; };
+		52A0D1F81EA3430500292B23 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */; };
 		52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D291DD90631005A89B8 /* DrawPathsView.swift */; };
 		52A48D2E1DDB6591005A89B8 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */; };
 		52A868811E63687100F26F31 /* FriendSelectionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A868801E63687100F26F31 /* FriendSelectionTracker.swift */; };
@@ -256,6 +257,7 @@
 		529FB8411DE42B4000861826 /* ExpiryPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpiryPickerCell.swift; path = Views/ExpiryPickerCell.swift; sourceTree = "<group>"; };
 		52A0D1F01EA2EB7700292B23 /* SignupWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupWorker.swift; path = Clean/Workers/SignupWorker.swift; sourceTree = "<group>"; };
 		52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupBaasBoxStore.swift; path = Clean/Services/SignupBaasBoxStore.swift; sourceTree = "<group>"; };
+		52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSettingsViewController.swift; path = Clean/Scenes/UserSettings/UserSettingsViewController.swift; sourceTree = "<group>"; };
 		52A48D291DD90631005A89B8 /* DrawPathsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawPathsView.swift; path = Views/DrawPathsView.swift; sourceTree = "<group>"; };
 		52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderedButton.swift; path = Views/BorderedButton.swift; sourceTree = "<group>"; };
 		52A868801E63687100F26F31 /* FriendSelectionTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendSelectionTracker.swift; path = Models/FriendSelectionTracker.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 		52760BF81E9058910093B921 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				52A0D1F41EA3425900292B23 /* UserSettings */,
 				5263CA4A1EA2D36E001BA2E4 /* SignupUser */,
 				52B682C21EA2978900DBB0A4 /* UserLogin */,
 				52B682BB1EA296B200DBB0A4 /* DisplayTake */,
@@ -621,6 +624,14 @@
 			name = CreateTake;
 			sourceTree = "<group>";
 		};
+		52A0D1F41EA3425900292B23 /* UserSettings */ = {
+			isa = PBXGroup;
+			children = (
+				52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */,
+			);
+			name = UserSettings;
+			sourceTree = "<group>";
+		};
 		52B682BB1EA296B200DBB0A4 /* DisplayTake */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,6 +828,7 @@
 				5248BE141E6239EA00538A50 /* FriendViewController.swift in Sources */,
 				33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */,
 				52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */,
+				52A0D1F81EA3430500292B23 /* UserSettingsViewController.swift in Sources */,
 				5267D8DD1E998E0100B94470 /* ListTakesConfigurator.swift in Sources */,
 				5263CA521EA2D399001BA2E4 /* SignupUserConfigurator.swift in Sources */,
 				52299E2F1DE807ED00F04C86 /* BAAMutableURLRequest.m in Sources */,
