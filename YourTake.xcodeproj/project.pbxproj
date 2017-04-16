@@ -245,7 +245,7 @@
 		528527D41E46711900DD6434 /* EmptyChallengeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyChallengeCell.xib; path = Views/EmptyChallengeCell.xib; sourceTree = "<group>"; };
 		528527D51E46711900DD6434 /* FriendSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendSelectionCell.swift; path = Views/FriendSelectionCell.swift; sourceTree = "<group>"; };
 		528527D61E46711900DD6434 /* FriendSelectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendSelectionCell.xib; path = Views/FriendSelectionCell.xib; sourceTree = "<group>"; };
-		52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipelessNavigationController.swift; path = "View Controllers/SwipelessNavigationController.swift"; sourceTree = "<group>"; };
+		52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipelessNavigationController.swift; path = Clean/Common/SwipelessNavigationController.swift; sourceTree = "<group>"; };
 		52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = "View Controllers/ForgotPasswordViewController.xib"; sourceTree = "<group>"; };
 		52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "View Controllers/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
 		529DC7C61DCC705F00EFA856 /* Take.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Take.swift; path = Models/Take.swift; sourceTree = "<group>"; };
@@ -396,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				52760C201E9059880093B921 /* Main.storyboard */,
+				52BD8B671EA42FDF005B142C /* Common */,
 				52760BF81E9058910093B921 /* Scenes */,
 				52760BF71E90588A0093B921 /* Models */,
 				52760BFB1E9058A60093B921 /* Workers */,
@@ -591,7 +592,6 @@
 				529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */,
 				52A868821E63E20B00F26F31 /* ChallengeOptionsViewController.xib */,
 				524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */,
-				52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */,
 				521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */,
 				521D7FCB1E17369D00DA7DBB /* SettingsViewController.swift */,
 				5248BE131E6239EA00538A50 /* FriendViewController.swift */,
@@ -673,6 +673,14 @@
 				52B682E51EA29BFE00DBB0A4 /* UserLoginWorker.swift */,
 			);
 			name = UserLogin;
+			sourceTree = "<group>";
+		};
+		52BD8B671EA42FDF005B142C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
