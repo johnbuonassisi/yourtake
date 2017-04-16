@@ -13,16 +13,35 @@ import UIKit
 
 struct SignupUser
 {
-  struct Something
+  struct Signup
   {
     struct Request
     {
+      var emailAddress: String
+      var username: String
+      var password: String
+      var requestType: RequestType
+      
+      enum RequestType {
+        case signupRequest
+        case emailAddressVerification
+        case userNameVerification
+        case passwordVerification
+      }
     }
     struct Response
     {
+      var isEmailValid: Bool
+      var isUserNameValid: Bool
+      var isPasswordValid: Bool
     }
     struct ViewModel
     {
+      var isEmailSwitchOn: Bool
+      var isUsernameSwitchOn: Bool
+      var isPasswordSwitchOn: Bool
+      var isSignupButtonEnabled: Bool
+      var signupButtonColour: UIColor
     }
   }
 }

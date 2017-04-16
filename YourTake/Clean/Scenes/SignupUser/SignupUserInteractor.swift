@@ -13,31 +13,77 @@ import UIKit
 
 protocol SignupUserInteractorInput
 {
-  func doSomething(request: SignupUser.Something.Request)
+  func signup(request: SignupUser.Signup.Request, completion: ((Bool) -> Void)?)
 }
 
 protocol SignupUserInteractorOutput
 {
-  func presentSomething(response: SignupUser.Something.Response)
+  func presentSignup(response: SignupUser.Signup.Response)
 }
 
 class SignupUserInteractor: SignupUserInteractorInput
 {
   var output: SignupUserInteractorOutput!
-  var worker: SignupUserWorker!
+  var worker = SignupWorker(signupStore: SignupBaasBoxStore())
+  
+  private var isValidEmailAddress = false
+  private var isValidUsername = false
+  private var isValidPassword = false
   
   // MARK: - Business logic
   
-  func doSomething(request: SignupUser.Something.Request)
+  func signup(request: SignupUser.Signup.Request, completion: ((Bool) -> Void)?)
   {
-    // NOTE: Create some Worker to do the work
+
+    switch request.requestType {
+    case .signupRequest:
+      worker.signup(emailAddress: request.emailAddress,
+                   username: request.username,
+                   password: request.password,
+                   completion: { (isSignupSuccess) -> Void in
+                    if(isSignupSuccess) {
+                      
+                      // Save the username and password to the keychain
+                      let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
+                                                              account: request.username,
+                                                              accessGroup: KeychainConfiguration.accessGroup)
+                      do {
+                        try passwordItem.savePassword(request.username)
+                      } catch {
+                        fatalError("Error updating keychain - \(error)")
+                      }
+                      completion!(true)
+                    } else {
+                      completion!(false)
+                    }
+      })
+      return
+    case .emailAddressVerification:
+      isValidEmailAddress = isValidEmailAddress(request.emailAddress)
+    case .userNameVerification:
+      isValidUsername = isValidUserName(request.username)
+    case .passwordVerification:
+      isValidPassword = isValidPassword(request.password)
+    }
     
-    worker = SignupUserWorker()
-    worker.doSomeWork()
-    
-    // NOTE: Pass the result to the Presenter
-    
-    let response = SignupUser.Something.Response()
-    output.presentSomething(response: response)
+    let response = SignupUser.Signup.Response(isEmailValid: isValidEmailAddress,
+                                              isUserNameValid: isValidUsername,
+                                              isPasswordValid: isValidPassword)
+    output.presentSignup(response: response)
   }
+  
+  private func isValidEmailAddress(_ emailAddress: String) -> Bool {
+    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+    let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+    return emailTest.evaluate(with: emailAddress)
+  }
+  
+  private func isValidUserName(_ username: String) -> Bool {
+    return username.characters.count >= 5
+  }
+  
+  private func isValidPassword(_ password: String) -> Bool {
+    return password.characters.count >= 7
+  }
+  
 }

@@ -150,7 +150,7 @@
         <!--Signup User View Controller-->
         <scene sceneID="xef-aK-axr">
             <objects>
-                <viewController id="PB7-Ky-Xul" customClass="SignupUserViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Signup" id="PB7-Ky-Xul" customClass="SignupUserViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KfE-WO-6lO"/>
                         <viewControllerLayoutGuide type="bottom" id="gep-wl-L59"/>
@@ -164,18 +164,27 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                <connections>
+                                    <action selector="emailChanged:" destination="PB7-Ky-Xul" eventType="editingChanged" id="YnS-ta-Ipc"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EpA-bo-aMX">
                                 <rect key="frame" x="16" y="185" width="284" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <action selector="usernameChanged:" destination="PB7-Ky-Xul" eventType="editingChanged" id="70s-fb-zqa"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ELb-6C-Ezg">
                                 <rect key="frame" x="16" y="223" width="284" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="passwordChanged:" destination="PB7-Ky-Xul" eventType="editingChanged" id="oga-nQ-vC9"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaR-k0-5G2">
                                 <rect key="frame" x="60" y="349" width="255" height="21"/>
@@ -188,13 +197,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXx-Gt-tSx">
-                                <rect key="frame" x="264" y="345" width="51" height="30"/>
+                                <rect key="frame" x="264" y="345.5" width="51" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AkW-M0-bcX"/>
                                     <constraint firstAttribute="width" constant="51" id="l9v-yw-vSl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Log in"/>
+                                <connections>
+                                    <segue destination="LKy-tD-BNW" kind="show" id="JTt-L7-B3r"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YourTake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOe-Fh-XMv">
                                 <rect key="frame" x="114" y="40" width="147" height="35"/>
@@ -237,6 +249,9 @@
                                 <state key="normal" title="Continue">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signupButtonPressed:" destination="PB7-Ky-Xul" eventType="touchUpInside" id="sLO-gM-8De"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -270,20 +285,20 @@
                             <constraint firstItem="RsJ-qq-a6I" firstAttribute="leading" secondItem="ELb-6C-Ezg" secondAttribute="trailing" constant="10" id="ta6-FA-YzP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3NM-1I-fHV"/>
                     <connections>
-                        <outlet property="displayNameSwitch" destination="RpT-pP-wnC" id="Rkh-1e-jWQ"/>
                         <outlet property="emailAddressSwitch" destination="hzF-nH-vf3" id="adP-uf-bvu"/>
                         <outlet property="emailAddressTextField" destination="fWE-RO-bd1" id="5F3-v5-PrH"/>
                         <outlet property="passwordSwitch" destination="RsJ-qq-a6I" id="siR-OR-cdE"/>
                         <outlet property="passwordTextField" destination="ELb-6C-Ezg" id="CfL-1W-Yya"/>
                         <outlet property="signupButton" destination="lcb-VJ-5t6" id="7Uh-8d-d7t"/>
                         <outlet property="userNameTextField" destination="EpA-bo-aMX" id="Um8-qk-7gR"/>
-                        <outlet property="usernameTextField" destination="EpA-bo-aMX" id="qQD-5e-zVQ"/>
+                        <outlet property="usernameSwitch" destination="RpT-pP-wnC" id="reN-yK-F4m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OrX-wq-ytu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1938" y="887"/>
+            <point key="canvasLocation" x="-2038" y="887"/>
         </scene>
         <!--User Login View Controller-->
         <scene sceneID="1yF-p3-ywJ">
@@ -354,7 +369,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Sign up"/>
                                 <connections>
-                                    <action selector="signupButtonPressed:" destination="LKy-tD-BNW" eventType="touchUpInside" id="6Wv-Ow-w0w"/>
+                                    <action selector="signupButtonPressed:" destination="LKy-tD-BNW" eventType="touchUpInside" id="z4I-Vm-OPI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e41-Zy-KuG">
@@ -399,6 +414,7 @@
                             <constraint firstItem="XGW-6F-Kak" firstAttribute="top" secondItem="rt4-p2-xtv" secondAttribute="top" constant="40" id="u7Q-WO-sZt"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="P4j-LE-01d"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -492,6 +508,7 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ask-X3-uRd">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="notificationSwitchValueChanged:" destination="ixY-I8-QgS" eventType="valueChanged" id="ay9-Me-oed"/>
                                                     </connections>
@@ -677,6 +694,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eLD-xs-e0o"/>
+        <segue reference="8rO-oZ-xR6"/>
     </inferredMetricsTieBreakers>
 </document>

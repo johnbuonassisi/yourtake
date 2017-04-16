@@ -13,12 +13,12 @@ import UIKit
 
 protocol SignupUserViewControllerInput
 {
-  func displaySomething(viewModel: SignupUser.Something.ViewModel)
+  func displaySignup(viewModel: SignupUser.Signup.ViewModel)
 }
 
 protocol SignupUserViewControllerOutput
 {
-  func doSomething(request: SignupUser.Something.Request)
+  func signup(request: SignupUser.Signup.Request, completion: ((Bool) -> Void)?)
 }
 
 class SignupUserViewController: UIViewController, SignupUserViewControllerInput
@@ -31,7 +31,7 @@ class SignupUserViewController: UIViewController, SignupUserViewControllerInput
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var signupButton: UIButton!
   @IBOutlet weak var emailAddressSwitch: UISwitch!
-  @IBOutlet weak var displayNameSwitch: UISwitch!
+  @IBOutlet weak var usernameSwitch: UISwitch!
   @IBOutlet weak var passwordSwitch: UISwitch!
   
   // MARK: - Object lifecycle
@@ -47,25 +47,65 @@ class SignupUserViewController: UIViewController, SignupUserViewControllerInput
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomethingOnLoad()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(true)
+    navigationController?.navigationBar.isHidden = true
+  }
+  
+  
+  // MARK: - Display logic
+  
+  func displaySignup(viewModel: SignupUser.Signup.ViewModel)
+  {
+    // NOTE: Display the result from the Presenter
+    emailAddressSwitch.setOn(viewModel.isEmailSwitchOn, animated: true)
+    usernameSwitch.setOn(viewModel.isUsernameSwitchOn, animated: true)
+    passwordSwitch.setOn(viewModel.isPasswordSwitchOn, animated: true)
+    signupButton.isEnabled = viewModel.isSignupButtonEnabled
+    signupButton.backgroundColor = viewModel.signupButtonColour
   }
   
   // MARK: - Event handling
   
-  func doSomethingOnLoad()
-  {
-    // NOTE: Ask the Interactor to do some work
-    
-    let request = SignupUser.Something.Request()
-    output.doSomething(request: request)
+  @IBAction func emailChanged(_ sender: UITextField) {
+    updateViewRequest(withType: .emailAddressVerification)
   }
   
-  // MARK: - Display logic
-  
-  func displaySomething(viewModel: SignupUser.Something.ViewModel)
-  {
-    // NOTE: Display the result from the Presenter
-    
-    // nameTextField.text = viewModel.name
+  @IBAction func usernameChanged(_ sender: UITextField) {
+    updateViewRequest(withType: .userNameVerification)
   }
+  
+  @IBAction func passwordChanged(_ sender: UITextField) {
+    updateViewRequest(withType: .passwordVerification)
+  }
+  
+  @IBAction func signupButtonPressed(_ sender: UIButton) {
+    let request = SignupUser.Signup.Request(emailAddress: emailAddressTextField.text!,
+                                            username: userNameTextField.text!,
+                                            password: passwordTextField.text!,
+                                            requestType: .signupRequest)
+    output.signup(request: request, completion: { (isSignupSuccess) -> Void in
+      if isSignupSuccess {
+        self.router.navigateToChallengeScene()
+      } else {
+        self.router.presentAlert()
+      }
+    })
+  }
+  
+  @IBAction func performUnwindSegue(_ segue: UIStoryboardSegue) {
+    
+  }
+  
+  private func updateViewRequest(withType requestType: SignupUser.Signup.Request.RequestType) {
+    let request = SignupUser.Signup.Request(emailAddress: emailAddressTextField.text!,
+                                            username: userNameTextField.text!,
+                                            password: passwordTextField.text!,
+                                            requestType: requestType)
+    output.signup(request: request, completion: nil)
+  }
+  
+  
 }
