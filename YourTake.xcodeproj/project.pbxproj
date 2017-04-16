@@ -258,7 +258,7 @@
 		52A0D1F01EA2EB7700292B23 /* SignupWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupWorker.swift; path = Clean/Workers/SignupWorker.swift; sourceTree = "<group>"; };
 		52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupBaasBoxStore.swift; path = Clean/Services/SignupBaasBoxStore.swift; sourceTree = "<group>"; };
 		52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSettingsViewController.swift; path = Clean/Scenes/UserSettings/UserSettingsViewController.swift; sourceTree = "<group>"; };
-		52A48D291DD90631005A89B8 /* DrawPathsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawPathsView.swift; path = Views/DrawPathsView.swift; sourceTree = "<group>"; };
+		52A48D291DD90631005A89B8 /* DrawPathsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawPathsView.swift; path = Clean/Views/Drawing/DrawPathsView.swift; sourceTree = "<group>"; };
 		52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderedButton.swift; path = Views/BorderedButton.swift; sourceTree = "<group>"; };
 		52A868801E63687100F26F31 /* FriendSelectionTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendSelectionTracker.swift; path = Models/FriendSelectionTracker.swift; sourceTree = "<group>"; };
 		52A868821E63E20B00F26F31 /* ChallengeOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeOptionsViewController.xib; path = "View Controllers/ChallengeOptionsViewController.xib"; sourceTree = "<group>"; };
@@ -441,6 +441,7 @@
 		52760BFA1E90589E0093B921 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52A0D1F91EA344E900292B23 /* Drawing */,
 				5267D8E61E99961400B94470 /* Take */,
 				52760C151E90592F0093B921 /* Challenge */,
 			);
@@ -557,7 +558,6 @@
 				52DC0AC21DCA301800DA2BDC /* TakeCell.xib */,
 				52DC0AC41DCA316D00DA2BDC /* TakeCell.swift */,
 				526AF05B1DD2F9B0003350B4 /* DrawLinesView.swift */,
-				52A48D291DD90631005A89B8 /* DrawPathsView.swift */,
 				52A48D2D1DDB6591005A89B8 /* BorderedButton.swift */,
 				529FB8391DE23B1400861826 /* FriendPickerCell.xib */,
 				529FB83B1DE23C0300861826 /* FriendPickerCell.swift */,
@@ -630,6 +630,14 @@
 				52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */,
 			);
 			name = UserSettings;
+			sourceTree = "<group>";
+		};
+		52A0D1F91EA344E900292B23 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				52A48D291DD90631005A89B8 /* DrawPathsView.swift */,
+			);
+			name = Drawing;
 			sourceTree = "<group>";
 		};
 		52B682BB1EA296B200DBB0A4 /* DisplayTake */ = {
