@@ -17,6 +17,7 @@
 		520655161E9B47D90048A575 /* TakeBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */; };
 		520DA5F71DF0C64B00695756 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520DA5F61DF0C64B00695756 /* SignUpViewController.xib */; };
 		520DA5F91DF0CC3500695756 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520DA5F81DF0CC3500695756 /* SignUpViewController.swift */; };
+		520E2BE91EA4364600A5713C /* FriendNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */; };
 		521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */; };
 		521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */; };
 		521D7FCA1E172C9F00DA7DBB /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */; };
@@ -38,7 +39,6 @@
 		5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244E87A1DCC20A5002627FC /* LoginViewController.swift */; };
 		5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */; };
 		5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */; };
-		5248BE161E62822400538A50 /* FriendNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE151E62822400538A50 /* FriendNameCell.swift */; };
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
 		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
 		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
@@ -151,6 +151,7 @@
 		520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeBaasBoxStore.swift; path = Clean/Services/TakeBaasBoxStore.swift; sourceTree = "<group>"; };
 		520DA5F61DF0C64B00695756 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpViewController.xib; path = "View Controllers/SignUpViewController.xib"; sourceTree = "<group>"; };
 		520DA5F81DF0CC3500695756 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = "View Controllers/SignUpViewController.swift"; sourceTree = "<group>"; };
+		520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendNameTableViewCell.swift; path = Clean/Scenes/AddFriends/FriendNameTableViewCell.swift; sourceTree = "<group>"; };
 		521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoFriendsCell.xib; path = Views/NoFriendsCell.xib; sourceTree = "<group>"; };
 		521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoFriendsCell.swift; path = Views/NoFriendsCell.swift; sourceTree = "<group>"; };
 		521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SettingsViewController.storyboard; path = "View Controllers/SettingsViewController.storyboard"; sourceTree = "<group>"; };
@@ -180,7 +181,6 @@
 		5244E87A1DCC20A5002627FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
 		5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainConfiguration.swift; path = Security/KeychainConfiguration.swift; sourceTree = "<group>"; };
 		5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Security/KeychainPasswordItem.swift; sourceTree = "<group>"; };
-		5248BE151E62822400538A50 /* FriendNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendNameCell.swift; path = Views/FriendNameCell.swift; sourceTree = "<group>"; };
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Views/CameraOverlayView.xib; sourceTree = "<group>"; };
 		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Views/PhotoPreviewView.xib; sourceTree = "<group>"; };
 		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = "View Controllers/PhotoPreviewViewController.swift"; sourceTree = "<group>"; };
@@ -569,7 +569,6 @@
 				524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */,
 				524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */,
 				527FD5E91E0739F90023D420 /* LaunchScreen.xib */,
-				5248BE151E62822400538A50 /* FriendNameCell.swift */,
 				521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */,
 				521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */,
 			);
@@ -687,6 +686,7 @@
 			isa = PBXGroup;
 			children = (
 				52BD8B6B1EA43464005B142C /* FriendViewController.swift */,
+				520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */,
 			);
 			name = AddFriends;
 			sourceTree = "<group>";
@@ -798,7 +798,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				52760C1F1E9059610093B921 /* ChallengesWorker.swift in Sources */,
-				5248BE161E62822400538A50 /* FriendNameCell.swift in Sources */,
 				524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */,
 				526AF0581DD2F334003350B4 /* DrawViewController.swift in Sources */,
 				52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */,
@@ -889,6 +888,7 @@
 				529FB83C1DE23C0300861826 /* FriendPickerCell.swift in Sources */,
 				52299E311DE807ED00F04C86 /* BaasBox.m in Sources */,
 				528527D91E46711900DD6434 /* FriendSelectionCell.swift in Sources */,
+				520E2BE91EA4364600A5713C /* FriendNameTableViewCell.swift in Sources */,
 				52760C141E90591E0093B921 /* ChallengesMemStore.swift in Sources */,
 				52B682E61EA29BFE00DBB0A4 /* UserLoginConfigurator.swift in Sources */,
 				332283F31E05D5E4008647E4 /* BaClient.swift in Sources */,
