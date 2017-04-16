@@ -14,7 +14,6 @@ import UIKit
 protocol UserLoginRouterInput
 {
   func navigateToChallengeScene()
-  func navigateToForgotPasswordScene()
   func navigateToSignupScene()
   func presentAlert()
 }

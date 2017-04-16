@@ -13,7 +13,8 @@ import UIKit
 
 protocol SignupUserRouterInput
 {
-  func navigateToSomewhere()
+  func navigateToChallengeScene()
+  func presentAlert()
 }
 
 class SignupUserRouter: SignupUserRouterInput
@@ -22,23 +23,45 @@ class SignupUserRouter: SignupUserRouterInput
   
   // MARK: - Navigation
   
-  func navigateToSomewhere()
+  func navigateToChallengeScene()
   {
     // NOTE: Teach the router how to navigate to another scene. Some examples follow:
     
-    // 1. Trigger a storyboard segue
-    // viewController.performSegueWithIdentifier("ShowSomewhereScene", sender: nil)
+    // Present user with an alert and dismiss alert after 3 seconds
+    let alert = UIAlertController(title: "Welcome to YourTake!",
+                                  message: "Your signup was successful",
+                                  preferredStyle: .alert)
+    viewController.present(alert, animated: true, completion: nil)
     
-    // 2. Present another view controller programmatically
-    // viewController.presentViewController(someWhereViewController, animated: true, completion: nil)
+    let time = DispatchTime.now() + 3
+    DispatchQueue.main.asyncAfter(deadline: time, execute: {
+      alert.dismiss(animated: true, completion:{
+        _ = self.viewController.navigationController?.popToRootViewController(animated: true)
+      })
+    })
+
+  }
+  
+  func presentAlert() {
+    self.presentAlert(withTitle: "Ooops!",
+                      withMessage: "Something went wrong, try again",
+                      withActionTitle: "Let me try again")
+  }
+  
+  private func presentAlert(withTitle title: String,
+                            withMessage message: String,
+                            withActionTitle actionTitle: String) {
     
-    // 3. Ask the navigation controller to push another view controller onto the stack
-    // viewController.navigationController?.pushViewController(someWhereViewController, animated: true)
-    
-    // 4. Present a view controller from a different storyboard
-    // let storyboard = UIStoryboard(name: "OtherThanMain", bundle: nil)
-    // let someWhereViewController = storyboard.instantiateInitialViewController() as! SomeWhereViewController
-    // viewController.navigationController?.pushViewController(someWhereViewController, animated: true)
+    let alert = UIAlertController(title: title,
+                                  message: message,
+                                  preferredStyle: .alert)
+    let action = UIAlertAction(title: actionTitle,
+                               style: .default,
+                               handler: {
+                                (action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)
+    })
+    alert.addAction(action)
+    viewController.present(alert, animated: true, completion: nil)
   }
   
   // MARK: - Communication

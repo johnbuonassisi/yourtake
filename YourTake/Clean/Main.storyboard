@@ -150,7 +150,7 @@
         <!--Signup User View Controller-->
         <scene sceneID="xef-aK-axr">
             <objects>
-                <viewController id="PB7-Ky-Xul" customClass="SignupUserViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Signup" id="PB7-Ky-Xul" customClass="SignupUserViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KfE-WO-6lO"/>
                         <viewControllerLayoutGuide type="bottom" id="gep-wl-L59"/>
@@ -164,18 +164,27 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                <connections>
+                                    <action selector="emailChanged:" destination="PB7-Ky-Xul" eventType="editingChanged" id="YnS-ta-Ipc"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EpA-bo-aMX">
                                 <rect key="frame" x="16" y="185" width="284" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <action selector="usernameChanged:" destination="PB7-Ky-Xul" eventType="editingChanged" id="70s-fb-zqa"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ELb-6C-Ezg">
                                 <rect key="frame" x="16" y="223" width="284" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="passwordChanged:" destination="PB7-Ky-Xul" eventType="editingChanged" id="oga-nQ-vC9"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaR-k0-5G2">
                                 <rect key="frame" x="60" y="349" width="255" height="21"/>
@@ -195,6 +204,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Log in"/>
+                                <connections>
+                                    <segue destination="LKy-tD-BNW" kind="show" id="JTt-L7-B3r"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YourTake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOe-Fh-XMv">
                                 <rect key="frame" x="114" y="40" width="147" height="35"/>
@@ -237,6 +249,9 @@
                                 <state key="normal" title="Continue">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signupButtonPressed:" destination="PB7-Ky-Xul" eventType="touchUpInside" id="sLO-gM-8De"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -270,20 +285,20 @@
                             <constraint firstItem="RsJ-qq-a6I" firstAttribute="leading" secondItem="ELb-6C-Ezg" secondAttribute="trailing" constant="10" id="ta6-FA-YzP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3NM-1I-fHV"/>
                     <connections>
-                        <outlet property="displayNameSwitch" destination="RpT-pP-wnC" id="Rkh-1e-jWQ"/>
                         <outlet property="emailAddressSwitch" destination="hzF-nH-vf3" id="adP-uf-bvu"/>
                         <outlet property="emailAddressTextField" destination="fWE-RO-bd1" id="5F3-v5-PrH"/>
                         <outlet property="passwordSwitch" destination="RsJ-qq-a6I" id="siR-OR-cdE"/>
                         <outlet property="passwordTextField" destination="ELb-6C-Ezg" id="CfL-1W-Yya"/>
                         <outlet property="signupButton" destination="lcb-VJ-5t6" id="7Uh-8d-d7t"/>
                         <outlet property="userNameTextField" destination="EpA-bo-aMX" id="Um8-qk-7gR"/>
-                        <outlet property="usernameTextField" destination="EpA-bo-aMX" id="qQD-5e-zVQ"/>
+                        <outlet property="usernameSwitch" destination="RpT-pP-wnC" id="reN-yK-F4m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OrX-wq-ytu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1938" y="887"/>
+            <point key="canvasLocation" x="-2482" y="125"/>
         </scene>
         <!--User Login View Controller-->
         <scene sceneID="1yF-p3-ywJ">
@@ -350,11 +365,11 @@
                                 <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCd-Sx-n6L">
-                                <rect key="frame" x="252" y="293.5" width="58" height="33"/>
+                                <rect key="frame" x="252" y="294" width="58" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Sign up"/>
                                 <connections>
-                                    <action selector="signupButtonPressed:" destination="LKy-tD-BNW" eventType="touchUpInside" id="6Wv-Ow-w0w"/>
+                                    <action selector="signupButtonPressed:" destination="LKy-tD-BNW" eventType="touchUpInside" id="z4I-Vm-OPI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e41-Zy-KuG">
@@ -363,7 +378,7 @@
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="forgotPasswordButtonPressed:" destination="LKy-tD-BNW" eventType="touchUpInside" id="Rig-iS-m2Z"/>
+                                    <segue destination="WSP-F0-BuP" kind="show" id="iNI-yl-pWs"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with your existing account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4j0-SJ-cHZ">
@@ -399,6 +414,7 @@
                             <constraint firstItem="XGW-6F-Kak" firstAttribute="top" secondItem="rt4-p2-xtv" secondAttribute="top" constant="40" id="u7Q-WO-sZt"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="P4j-LE-01d"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -413,12 +429,81 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3OY-cR-MRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1162" y="887"/>
+            <point key="canvasLocation" x="-1620" y="125"/>
+        </scene>
+        <!--User Forgot Login Password View Controller-->
+        <scene sceneID="9HS-Yi-Sfa">
+            <objects>
+                <viewController id="WSP-F0-BuP" customClass="UserForgotLoginPasswordViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cPv-dZ-dzu"/>
+                        <viewControllerLayoutGuide type="bottom" id="lQJ-82-c7N"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="myJ-gY-3FL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We can reset your password using the email address linked to your account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OB5-dc-A9l">
+                                <rect key="frame" x="16" y="138" width="343" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d85-PG-qsX">
+                                <rect key="frame" x="16" y="251" width="343" height="33"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPasswordButtonPressed:" destination="WSP-F0-BuP" eventType="touchUpInside" id="pLK-TE-V7y"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YourTake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0f-90-kIj">
+                                <rect key="frame" x="114" y="95" width="147" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="147" id="VHs-9c-PmC"/>
+                                    <constraint firstAttribute="height" constant="35" id="WMs-Xl-c3M"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m5X-pc-pHO">
+                                <rect key="frame" x="16" y="187" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d85-PG-qsX" firstAttribute="centerX" secondItem="myJ-gY-3FL" secondAttribute="centerX" id="28U-fC-W9Y"/>
+                            <constraint firstItem="d85-PG-qsX" firstAttribute="top" secondItem="m5X-pc-pHO" secondAttribute="bottom" constant="34" id="8IJ-nT-uYN"/>
+                            <constraint firstItem="m5X-pc-pHO" firstAttribute="leading" secondItem="myJ-gY-3FL" secondAttribute="leading" constant="16" id="Ask-gY-C6k"/>
+                            <constraint firstItem="OB5-dc-A9l" firstAttribute="top" secondItem="h0f-90-kIj" secondAttribute="bottom" constant="8" id="AxQ-Lz-e8W"/>
+                            <constraint firstItem="h0f-90-kIj" firstAttribute="top" secondItem="myJ-gY-3FL" secondAttribute="top" constant="95" id="ET7-XR-X9N"/>
+                            <constraint firstAttribute="trailing" secondItem="OB5-dc-A9l" secondAttribute="trailing" constant="16" id="FSf-fe-2KA"/>
+                            <constraint firstItem="h0f-90-kIj" firstAttribute="centerX" secondItem="myJ-gY-3FL" secondAttribute="centerX" id="Gaj-ox-60r"/>
+                            <constraint firstAttribute="trailing" secondItem="d85-PG-qsX" secondAttribute="trailing" constant="16" id="Jip-sw-fnI"/>
+                            <constraint firstItem="d85-PG-qsX" firstAttribute="leading" secondItem="myJ-gY-3FL" secondAttribute="leading" constant="16" id="e7B-7w-7PZ"/>
+                            <constraint firstAttribute="trailing" secondItem="m5X-pc-pHO" secondAttribute="trailing" constant="16" id="qMG-BX-fjS"/>
+                            <constraint firstItem="m5X-pc-pHO" firstAttribute="top" secondItem="OB5-dc-A9l" secondAttribute="bottom" constant="8" id="tAv-UK-Vkz"/>
+                            <constraint firstItem="OB5-dc-A9l" firstAttribute="leading" secondItem="myJ-gY-3FL" secondAttribute="leading" constant="16" id="xYr-c7-HDw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailAddressTextField" destination="m5X-pc-pHO" id="cqT-pZ-9CQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XeB-X2-ejA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1620" y="887"/>
         </scene>
         <!--Settings-->
         <scene sceneID="gCe-oX-Zz7">
             <objects>
-                <tableViewController storyboardIdentifier="Settings" title="Settings" id="ixY-I8-QgS" customClass="SettingsViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Settings" title="Settings" id="ixY-I8-QgS" customClass="UserSettingsViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="JJA-K6-8tz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,14 +513,14 @@
                             <tableViewSection headerTitle="Account" id="491-Li-Epr">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Vu7-dM-fnf" style="IBUITableViewCellStyleDefault" id="Mue-nd-ZUA">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mue-nd-ZUA" id="VLv-zI-37f">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vu7-dM-fnf">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -450,14 +535,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Que-UA-nm8" style="IBUITableViewCellStyleDefault" id="07K-Ds-XW7">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="07K-Ds-XW7" id="1dt-k8-QkG">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Que-UA-nm8">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -467,14 +552,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="mVG-Vt-su9" style="IBUITableViewCellStyleDefault" id="ehd-L3-gkr">
-                                        <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="144" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ehd-L3-gkr" id="oIw-f1-9vQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mVG-Vt-su9">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -484,14 +569,15 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hqj-Uo-KjZ">
-                                        <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="188" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hqj-Uo-KjZ" id="hub-so-Bpq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ask-X3-uRd">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="notificationSwitchValueChanged:" destination="ixY-I8-QgS" eventType="valueChanged" id="ay9-Me-oed"/>
                                                     </connections>
@@ -511,14 +597,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="sNJ-nH-vAX" style="IBUITableViewCellStyleDefault" id="UDD-Fm-seN">
-                                        <rect key="frame" x="0.0" y="231.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="232" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UDD-Fm-seN" id="Mqc-qL-Tl0">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sNJ-nH-vAX">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -532,14 +618,14 @@
                             <tableViewSection headerTitle="Information" id="VIj-aH-LlU">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="qzo-gE-KMO" style="IBUITableViewCellStyleDefault" id="JhX-JG-aPc">
-                                        <rect key="frame" x="0.0" y="331.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="333" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JhX-JG-aPc" id="6Lg-q6-mfw">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qzo-gE-KMO">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -549,14 +635,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="MCW-QF-NsA" style="IBUITableViewCellStyleDefault" id="VP0-LD-yqe">
-                                        <rect key="frame" x="0.0" y="375.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="377" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VP0-LD-yqe" id="iI7-HL-Sw0">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MCW-QF-NsA">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -566,14 +652,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="cV6-9s-7Vf" style="IBUITableViewCellStyleDefault" id="JG8-ev-EdP">
-                                        <rect key="frame" x="0.0" y="419.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="421" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JG8-ev-EdP" id="jEL-Gp-c8W">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Terms of Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cV6-9s-7Vf">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -677,6 +763,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eLD-xs-e0o"/>
+        <segue reference="8rO-oZ-xR6"/>
     </inferredMetricsTieBreakers>
 </document>

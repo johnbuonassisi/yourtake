@@ -43,12 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationVc = SwipelessNavigationController(); // Will not pop a view controller when a left swipe gesture occurs
                                                             // This is particularly important for the login and draw vcs
         // Create challenge view controller
-        // let cleanStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        // let challengeVc = cleanStoryBoard.instantiateViewController(withIdentifier: "ChallengeList")
-        let challengeVc = ChallengeViewController(nibName: "ChallengeViewController", bundle: Bundle.main)
-        
-        // Create signup view controller
-        let signUpVc = SignUpViewController()
+        let cleanStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let challengeVc = cleanStoryBoard.instantiateViewController(withIdentifier: "ChallengeList")
         
         // Try to get an existing username and password from the keychain
         var passwordItems: [KeychainPasswordItem]
@@ -72,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         } else {
                                             // When login fails, push challenge then login vcs
                                             navigationVc.pushViewController(challengeVc, animated: false)
+                                            let signUpVc = cleanStoryBoard.instantiateViewController(withIdentifier: "Signup")
                                             navigationVc.pushViewController(signUpVc, animated: false)
                                         }
                 })
@@ -81,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             // If existing username/password do not exist, show signup vc
             navigationVc.pushViewController(challengeVc, animated: false)
+            let signUpVc = cleanStoryBoard.instantiateViewController(withIdentifier: "Signup")
             navigationVc.pushViewController(signUpVc, animated: false)
         }
         
