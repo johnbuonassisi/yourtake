@@ -20,8 +20,6 @@
 		520E2BE91EA4364600A5713C /* FriendNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */; };
 		521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */; };
 		521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */; };
-		521D7FCA1E172C9F00DA7DBB /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */; };
-		521D7FCC1E17369D00DA7DBB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521D7FCB1E17369D00DA7DBB /* SettingsViewController.swift */; };
 		52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E1F1DE807ED00F04C86 /* BAAClient.m */; };
 		52299E2D1DE807ED00F04C86 /* BAAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E211DE807ED00F04C86 /* BAAFile.m */; };
 		52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E231DE807ED00F04C86 /* BAAGlobals.m */; };
@@ -42,8 +40,6 @@
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
 		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
 		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
-		525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */; };
-		525F847A1DC86F05006D2E2F /* ChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525F84791DC86F05006D2E2F /* ChallengeViewController.xib */; };
 		525F847C1DC9A6AE006D2E2F /* ChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */; };
 		525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525F847D1DC9A86A006D2E2F /* ChallengeCell.swift */; };
 		5263CA521EA2D399001BA2E4 /* SignupUserConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263CA4B1EA2D399001BA2E4 /* SignupUserConfigurator.swift */; };
@@ -154,8 +150,6 @@
 		520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendNameTableViewCell.swift; path = Clean/Scenes/AddFriends/FriendNameTableViewCell.swift; sourceTree = "<group>"; };
 		521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoFriendsCell.xib; path = Clean/Views/Challenge/NoFriendsCell.xib; sourceTree = "<group>"; };
 		521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoFriendsCell.swift; path = Clean/Views/Challenge/NoFriendsCell.swift; sourceTree = "<group>"; };
-		521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SettingsViewController.storyboard; path = "View Controllers/SettingsViewController.storyboard"; sourceTree = "<group>"; };
-		521D7FCB1E17369D00DA7DBB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "View Controllers/SettingsViewController.swift"; sourceTree = "<group>"; };
 		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
 		52299E1E1DE807ED00F04C86 /* BAAClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAClient.h; sourceTree = "<group>"; };
 		52299E1F1DE807ED00F04C86 /* BAAClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAClient.m; sourceTree = "<group>"; };
@@ -184,8 +178,6 @@
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Clean/Scenes/SnapChallengeImage/CameraOverlayView.xib; sourceTree = "<group>"; };
 		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewView.xib; sourceTree = "<group>"; };
 		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewViewController.swift; sourceTree = "<group>"; };
-		525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeViewController.swift; path = "View Controllers/ChallengeViewController.swift"; sourceTree = "<group>"; };
-		525F84791DC86F05006D2E2F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeViewController.xib; path = "View Controllers/ChallengeViewController.xib"; sourceTree = "<group>"; };
 		525F847B1DC9A6AE006D2E2F /* ChallengeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeCell.xib; path = Views/ChallengeCell.xib; sourceTree = "<group>"; };
 		525F847D1DC9A86A006D2E2F /* ChallengeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeCell.swift; path = Views/ChallengeCell.swift; sourceTree = "<group>"; };
 		5263CA4B1EA2D399001BA2E4 /* SignupUserConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupUserConfigurator.swift; path = Clean/Scenes/SignupUser/SignupUserConfigurator.swift; sourceTree = "<group>"; };
@@ -593,15 +585,11 @@
 				520DA5F81DF0CC3500695756 /* SignUpViewController.swift */,
 				52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */,
 				52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */,
-				525F84791DC86F05006D2E2F /* ChallengeViewController.xib */,
-				525F84771DC86EA8006D2E2F /* ChallengeViewController.swift */,
 				52DC0AC01DCA2B7200DA2BDC /* TakesCollectionViewController.swift */,
 				526AF0571DD2F334003350B4 /* DrawViewController.swift */,
 				526AF0591DD2F53C003350B4 /* DrawViewController.xib */,
 				529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */,
 				52A868821E63E20B00F26F31 /* ChallengeOptionsViewController.xib */,
-				521D7FC91E172C9F00DA7DBB /* SettingsViewController.storyboard */,
-				521D7FCB1E17369D00DA7DBB /* SettingsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -772,10 +760,8 @@
 				526AF05A1DD2F53C003350B4 /* DrawViewController.xib in Resources */,
 				52881F2B1DF925B40034A77A /* ForgotPasswordViewController.xib in Resources */,
 				52760C211E9059880093B921 /* Main.storyboard in Resources */,
-				525F847A1DC86F05006D2E2F /* ChallengeViewController.xib in Resources */,
 				526AF0521DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg in Resources */,
 				52A868831E63E20B00F26F31 /* ChallengeOptionsViewController.xib in Resources */,
-				521D7FCA1E172C9F00DA7DBB /* SettingsViewController.storyboard in Resources */,
 				52760C1A1E9059520093B921 /* EmptyChallengeTableViewCell.xib in Resources */,
 				526AF0541DCFCE86003350B4 /* Ashling_Challenge_John.jpg in Resources */,
 				52B682C01EA296C400DBB0A4 /* DisplayTakeViewController.xib in Resources */,
@@ -819,7 +805,6 @@
 				523074A91DC70C4F002EB030 /* User.swift in Sources */,
 				52760C101E9058F80093B921 /* ListChallengesWorker.swift in Sources */,
 				525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */,
-				521D7FCC1E17369D00DA7DBB /* SettingsViewController.swift in Sources */,
 				52B682E91EA29BFE00DBB0A4 /* UserLoginPresenter.swift in Sources */,
 				5267D8EC1E99A04D00B94470 /* TakeDto.swift in Sources */,
 				52760C1B1E9059520093B921 /* EmptyChallengeTableViewCell.swift in Sources */,
@@ -831,7 +816,6 @@
 				52760C1D1E9059520093B921 /* ChallengeTableViewCell.swift in Sources */,
 				5267D8E51E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift in Sources */,
 				529FB8421DE42B4000861826 /* ExpiryPickerCell.swift in Sources */,
-				525F84781DC86EA8006D2E2F /* ChallengeViewController.swift in Sources */,
 				5263CA571EA2D399001BA2E4 /* SignupUserViewController.swift in Sources */,
 				5267D8E31E998E0100B94470 /* ListTakesWorker.swift in Sources */,
 				52B682C11EA296C400DBB0A4 /* DisplayTakeModels.swift in Sources */,
