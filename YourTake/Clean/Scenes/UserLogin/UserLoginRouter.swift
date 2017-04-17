@@ -43,7 +43,7 @@ class UserLoginRouter: UserLoginRouterInput
   }
   
   func navigateToForgotPasswordScene() {
-    let forgotPasswordVc = ForgotPasswordViewController()
+    let forgotPasswordVc = UserForgotLoginPasswordViewController()
     viewController.navigationController?.pushViewController(forgotPasswordVc, animated: true)
   }
   

@@ -17,8 +17,6 @@
 		5200BB181EA43F010048BCD9 /* FriendPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200BB161EA43F010048BCD9 /* FriendPickerCell.swift */; };
 		5200BB191EA43F010048BCD9 /* FriendPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5200BB171EA43F010048BCD9 /* FriendPickerCell.xib */; };
 		520655161E9B47D90048A575 /* TakeBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */; };
-		520DA5F71DF0C64B00695756 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520DA5F61DF0C64B00695756 /* SignUpViewController.xib */; };
-		520DA5F91DF0CC3500695756 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520DA5F81DF0CC3500695756 /* SignUpViewController.swift */; };
 		520E2BE91EA4364600A5713C /* FriendNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */; };
 		521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */; };
 		521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */; };
@@ -36,7 +34,6 @@
 		523074B31DC71692002EB030 /* John_Challenge_Ashling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */; };
 		523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */; };
 		523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074B01DC71692002EB030 /* John_Challenge.jpg */; };
-		5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244E87A1DCC20A5002627FC /* LoginViewController.swift */; };
 		5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */; };
 		5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */; };
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
@@ -92,8 +89,6 @@
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
 		52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */; };
-		52881F2B1DF925B40034A77A /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */; };
-		52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */; };
 		529DC7C71DCC705F00EFA856 /* Take.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529DC7C61DCC705F00EFA856 /* Take.swift */; };
 		529EFBB11E9F3A3D0054559B /* CreateTakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */; };
 		529EFBB31E9F4E8D0054559B /* CreateTakeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */; };
@@ -119,7 +114,6 @@
 		52B682F01EA2A19E00DBB0A4 /* LoginMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682EF1EA2A19E00DBB0A4 /* LoginMemStore.swift */; };
 		52B682F21EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */; };
 		52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD8B6B1EA43464005B142C /* FriendViewController.swift */; };
-		52D9C1821DCC1D4A00F5C098 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */; };
 		52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */; };
 /* End PBXBuildFile section */
 
@@ -134,8 +128,6 @@
 		5200BB161EA43F010048BCD9 /* FriendPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendPickerCell.swift; path = Views/FriendPickerCell.swift; sourceTree = "<group>"; };
 		5200BB171EA43F010048BCD9 /* FriendPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendPickerCell.xib; path = Views/FriendPickerCell.xib; sourceTree = "<group>"; };
 		520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeBaasBoxStore.swift; path = Clean/Services/TakeBaasBoxStore.swift; sourceTree = "<group>"; };
-		520DA5F61DF0C64B00695756 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpViewController.xib; path = "View Controllers/SignUpViewController.xib"; sourceTree = "<group>"; };
-		520DA5F81DF0CC3500695756 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = "View Controllers/SignUpViewController.swift"; sourceTree = "<group>"; };
 		520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendNameTableViewCell.swift; path = Clean/Scenes/AddFriends/FriendNameTableViewCell.swift; sourceTree = "<group>"; };
 		521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoFriendsCell.xib; path = Clean/Views/Challenge/NoFriendsCell.xib; sourceTree = "<group>"; };
 		521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoFriendsCell.swift; path = Clean/Views/Challenge/NoFriendsCell.swift; sourceTree = "<group>"; };
@@ -161,7 +153,6 @@
 		523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Ashling.jpg; sourceTree = "<group>"; };
 		523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Peter.jpg; sourceTree = "<group>"; };
 		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge.jpg; sourceTree = "<group>"; };
-		5244E87A1DCC20A5002627FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "View Controllers/LoginViewController.swift"; sourceTree = "<group>"; };
 		5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainConfiguration.swift; path = Security/KeychainConfiguration.swift; sourceTree = "<group>"; };
 		5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Security/KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Clean/Scenes/SnapChallengeImage/CameraOverlayView.xib; sourceTree = "<group>"; };
@@ -219,8 +210,6 @@
 		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		528509971DC6F9470083CC55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipelessNavigationController.swift; path = Clean/Common/SwipelessNavigationController.swift; sourceTree = "<group>"; };
-		52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = "View Controllers/ForgotPasswordViewController.xib"; sourceTree = "<group>"; };
-		52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = "View Controllers/ForgotPasswordViewController.swift"; sourceTree = "<group>"; };
 		529DC7C61DCC705F00EFA856 /* Take.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Take.swift; path = Models/Take.swift; sourceTree = "<group>"; };
 		529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateTakeViewController.swift; path = Clean/Scenes/CreateTake/CreateTakeViewController.swift; sourceTree = "<group>"; };
 		529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTakeViewController.xib; path = Clean/Scenes/CreateTake/CreateTakeViewController.xib; sourceTree = "<group>"; };
@@ -246,7 +235,6 @@
 		52B682EF1EA2A19E00DBB0A4 /* LoginMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginMemStore.swift; path = Clean/Services/LoginMemStore.swift; sourceTree = "<group>"; };
 		52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBaasBoxStore.swift; path = Clean/Services/LoginBaasBoxStore.swift; sourceTree = "<group>"; };
 		52BD8B6B1EA43464005B142C /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = Clean/Scenes/AddFriends/FriendViewController.swift; sourceTree = "<group>"; };
-		52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Views/LoginViewController.xib; sourceTree = "<group>"; };
 		52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -541,12 +529,6 @@
 		528509A01DC6F9A30083CC55 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */,
-				5244E87A1DCC20A5002627FC /* LoginViewController.swift */,
-				520DA5F61DF0C64B00695756 /* SignUpViewController.xib */,
-				520DA5F81DF0CC3500695756 /* SignUpViewController.swift */,
-				52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */,
-				52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */,
 				526AF0571DD2F334003350B4 /* DrawViewController.swift */,
 				526AF0591DD2F53C003350B4 /* DrawViewController.xib */,
 				529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */,
@@ -712,13 +694,11 @@
 				524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */,
 				523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */,
 				52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */,
-				52D9C1821DCC1D4A00F5C098 /* LoginViewController.xib in Resources */,
 				527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */,
 				526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */,
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
 				524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */,
 				526AF05A1DD2F53C003350B4 /* DrawViewController.xib in Resources */,
-				52881F2B1DF925B40034A77A /* ForgotPasswordViewController.xib in Resources */,
 				52760C211E9059880093B921 /* Main.storyboard in Resources */,
 				526AF0521DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg in Resources */,
 				52A868831E63E20B00F26F31 /* ChallengeOptionsViewController.xib in Resources */,
@@ -732,7 +712,6 @@
 				523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */,
 				521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */,
 				523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */,
-				520DA5F71DF0C64B00695756 /* SignUpViewController.xib in Resources */,
 				52760C1C1E9059520093B921 /* ChallengeTableViewCell.xib in Resources */,
 				526AF0561DCFCE86003350B4 /* Ashling_Challenge.jpg in Resources */,
 				523074B11DC71692002EB030 /* John_Challenge_Andrea.jpg in Resources */,
@@ -755,7 +734,6 @@
 				52B682BF1EA296C400DBB0A4 /* DisplayTakeViewController.swift in Sources */,
 				52760C0C1E9058F80093B921 /* ListChallengesConfigurator.swift in Sources */,
 				332283F91E072F12008647E4 /* LocalClient.swift in Sources */,
-				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,
 				52B682EE1EA29FFF00DBB0A4 /* LoginWorker.swift in Sources */,
 				523074A91DC70C4F002EB030 /* User.swift in Sources */,
 				52760C101E9058F80093B921 /* ListChallengesWorker.swift in Sources */,
@@ -795,7 +773,6 @@
 				52B682E81EA29BFE00DBB0A4 /* UserLoginModels.swift in Sources */,
 				52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */,
 				5263CA541EA2D399001BA2E4 /* SignupUserModels.swift in Sources */,
-				520DA5F91DF0CC3500695756 /* SignUpViewController.swift in Sources */,
 				5267D8DF1E998E0100B94470 /* ListTakesModels.swift in Sources */,
 				52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */,
 				5267D8E81E99965400B94470 /* TakeCollectionViewCell.swift in Sources */,
@@ -803,7 +780,6 @@
 				52760C0D1E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift in Sources */,
 				52760C0F1E9058F80093B921 /* ListChallengesRouter.swift in Sources */,
 				33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */,
-				52881F2D1DF929C50034A77A /* ForgotPasswordViewController.swift in Sources */,
 				52A0D1F81EA3430500292B23 /* UserSettingsViewController.swift in Sources */,
 				5267D8DD1E998E0100B94470 /* ListTakesConfigurator.swift in Sources */,
 				5263CA521EA2D399001BA2E4 /* SignupUserConfigurator.swift in Sources */,
