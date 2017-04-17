@@ -64,8 +64,6 @@
 		526AF0541DCFCE86003350B4 /* Ashling_Challenge_John.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */; };
 		526AF0551DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF0501DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg */; };
 		526AF0561DCFCE86003350B4 /* Ashling_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF0511DCFCE86003350B4 /* Ashling_Challenge.jpg */; };
-		526AF0581DD2F334003350B4 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526AF0571DD2F334003350B4 /* DrawViewController.swift */; };
-		526AF05A1DD2F53C003350B4 /* DrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526AF0591DD2F53C003350B4 /* DrawViewController.xib */; };
 		52760BF51E9045280093B921 /* ChallengeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BF41E9045270093B921 /* ChallengeDto.swift */; };
 		52760C071E9058F80093B921 /* ListChallengesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */; };
 		52760C081E9058F80093B921 /* ListChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFE1E9058F80093B921 /* ListChallengesViewController.swift */; };
@@ -183,8 +181,6 @@
 		526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_John.jpg; sourceTree = "<group>"; };
 		526AF0501DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Peter.jpg; sourceTree = "<group>"; };
 		526AF0511DCFCE86003350B4 /* Ashling_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge.jpg; sourceTree = "<group>"; };
-		526AF0571DD2F334003350B4 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawViewController.swift; path = "View Controllers/DrawViewController.swift"; sourceTree = "<group>"; };
-		526AF0591DD2F53C003350B4 /* DrawViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DrawViewController.xib; path = "View Controllers/DrawViewController.xib"; sourceTree = "<group>"; };
 		52760BF41E9045270093B921 /* ChallengeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeDto.swift; path = Models/ChallengeDto.swift; sourceTree = "<group>"; };
 		52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesPresenter.swift; path = Clean/Scenes/ListChallenges/ListChallengesPresenter.swift; sourceTree = "<group>"; };
 		52760BFE1E9058F80093B921 /* ListChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesViewController.swift; path = Clean/Scenes/ListChallenges/ListChallengesViewController.swift; sourceTree = "<group>"; };
@@ -529,8 +525,6 @@
 		528509A01DC6F9A30083CC55 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				526AF0571DD2F334003350B4 /* DrawViewController.swift */,
-				526AF0591DD2F53C003350B4 /* DrawViewController.xib */,
 				529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */,
 				52A868821E63E20B00F26F31 /* ChallengeOptionsViewController.xib */,
 			);
@@ -698,7 +692,6 @@
 				526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */,
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
 				524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */,
-				526AF05A1DD2F53C003350B4 /* DrawViewController.xib in Resources */,
 				52760C211E9059880093B921 /* Main.storyboard in Resources */,
 				526AF0521DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg in Resources */,
 				52A868831E63E20B00F26F31 /* ChallengeOptionsViewController.xib in Resources */,
@@ -728,7 +721,6 @@
 			files = (
 				52760C1F1E9059610093B921 /* ChallengesWorker.swift in Sources */,
 				524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */,
-				526AF0581DD2F334003350B4 /* DrawViewController.swift in Sources */,
 				52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */,
 				5267D8E11E998E0100B94470 /* ListTakesRouter.swift in Sources */,
 				52B682BF1EA296C400DBB0A4 /* DisplayTakeViewController.swift in Sources */,
