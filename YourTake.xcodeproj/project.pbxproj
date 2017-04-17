@@ -130,7 +130,6 @@
 		52B682F21EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */; };
 		52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD8B6B1EA43464005B142C /* FriendViewController.swift */; };
 		52D9C1821DCC1D4A00F5C098 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */; };
-		52DC0AC11DCA2B7200DA2BDC /* TakesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC0AC01DCA2B7200DA2BDC /* TakesCollectionViewController.swift */; };
 		52DC0AC31DCA301800DA2BDC /* TakeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0AC21DCA301800DA2BDC /* TakeCell.xib */; };
 		52DC0AC51DCA316D00DA2BDC /* TakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC0AC41DCA316D00DA2BDC /* TakeCell.swift */; };
 		52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */; };
@@ -270,7 +269,6 @@
 		52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBaasBoxStore.swift; path = Clean/Services/LoginBaasBoxStore.swift; sourceTree = "<group>"; };
 		52BD8B6B1EA43464005B142C /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = Clean/Scenes/AddFriends/FriendViewController.swift; sourceTree = "<group>"; };
 		52D9C1811DCC1D4A00F5C098 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Views/LoginViewController.xib; sourceTree = "<group>"; };
-		52DC0AC01DCA2B7200DA2BDC /* TakesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakesCollectionViewController.swift; path = "View Controllers/TakesCollectionViewController.swift"; sourceTree = "<group>"; };
 		52DC0AC21DCA301800DA2BDC /* TakeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TakeCell.xib; path = Views/TakeCell.xib; sourceTree = "<group>"; };
 		52DC0AC41DCA316D00DA2BDC /* TakeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeCell.swift; path = Views/TakeCell.swift; sourceTree = "<group>"; };
 		52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_2.jpg; sourceTree = "<group>"; };
@@ -585,7 +583,6 @@
 				520DA5F81DF0CC3500695756 /* SignUpViewController.swift */,
 				52881F2A1DF925B40034A77A /* ForgotPasswordViewController.xib */,
 				52881F2C1DF929C50034A77A /* ForgotPasswordViewController.swift */,
-				52DC0AC01DCA2B7200DA2BDC /* TakesCollectionViewController.swift */,
 				526AF0571DD2F334003350B4 /* DrawViewController.swift */,
 				526AF0591DD2F53C003350B4 /* DrawViewController.xib */,
 				529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */,
@@ -801,7 +798,6 @@
 				332283F91E072F12008647E4 /* LocalClient.swift in Sources */,
 				5244E87B1DCC20A5002627FC /* LoginViewController.swift in Sources */,
 				52B682EE1EA29FFF00DBB0A4 /* LoginWorker.swift in Sources */,
-				52DC0AC11DCA2B7200DA2BDC /* TakesCollectionViewController.swift in Sources */,
 				523074A91DC70C4F002EB030 /* User.swift in Sources */,
 				52760C101E9058F80093B921 /* ListChallengesWorker.swift in Sources */,
 				525F847E1DC9A86A006D2E2F /* ChallengeCell.swift in Sources */,
