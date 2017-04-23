@@ -18,7 +18,7 @@ class FriendViewController: UIViewController,
     @IBOutlet weak var messageLabel: UILabel!
     
     private var friendList: [String]?;
-    let cellReuseIdentifier = "FriendNameCell"
+    let cellReuseIdentifier = "FriendNameTableViewCell"
     
     // MARK: UIViewController Overrides
     
@@ -113,7 +113,7 @@ class FriendViewController: UIViewController,
         self.tableView.dataSource = self
         
         // Register FriendNameCell for use in this table
-        self.tableView.register(FriendNameCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        self.tableView.register(FriendNameTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
     
         // Disable user interaction, this table will just display a list of friend user names
         self.tableView.isUserInteractionEnabled = false

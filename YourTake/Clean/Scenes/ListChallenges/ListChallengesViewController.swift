@@ -128,8 +128,14 @@ class ListChallengesViewController: UIViewController,
   func cellDrawButtonPressed(sender: UIButton!)
   {
     print("Cell draw button pressed for cell at index \(sender.tag)")
-    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
-    let challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
+
+    var challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+    var challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
+     if tabBar.selectedItem!.tag == 1 {
+      challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
+      challengeImage = friendChallengesDataSource.displayedChallenges[sender.tag].challengeImage
+    }
+    
     router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
     
   }
@@ -137,7 +143,11 @@ class ListChallengesViewController: UIViewController,
   func cellVoteButtonPressed(sender: UIButton!)
   {
     print("Cell vote button pressed for cell at index \(sender.tag)")
-    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+    
+    var challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+    if tabBar.selectedItem!.tag == 1 {
+      challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
+    }
     router.navigateToTakesScene(with: challengeId)
   }
   

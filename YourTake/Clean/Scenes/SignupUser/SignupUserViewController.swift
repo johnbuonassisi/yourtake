@@ -21,7 +21,7 @@ protocol SignupUserViewControllerOutput
   func signup(request: SignupUser.Signup.Request, completion: ((Bool) -> Void)?)
 }
 
-class SignupUserViewController: UIViewController, SignupUserViewControllerInput
+class SignupUserViewController: UIViewController, SignupUserViewControllerInput, UITextFieldDelegate
 {
   var output: SignupUserViewControllerOutput!
   var router: SignupUserRouter!
@@ -47,6 +47,14 @@ class SignupUserViewController: UIViewController, SignupUserViewControllerInput
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    
+    emailAddressTextField.delegate = self
+    userNameTextField.delegate = self
+    passwordTextField.delegate = self
+    
+    let tap = UITapGestureRecognizer(target: self,
+                                     action: #selector(dismissKeyboard))
+    view.addGestureRecognizer(tap)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -107,5 +115,17 @@ class SignupUserViewController: UIViewController, SignupUserViewControllerInput
     output.signup(request: request, completion: nil)
   }
   
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    signupButton.isEnabled = false
+  }
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    view.endEditing(true)
+    return true
+  }
+  
+  func dismissKeyboard() {
+    view.endEditing(true)
+  }
   
 }
