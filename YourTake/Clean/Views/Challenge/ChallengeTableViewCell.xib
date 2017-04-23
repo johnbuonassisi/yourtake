@@ -64,7 +64,7 @@
                         <rect key="frame" x="0.0" y="420" width="375" height="60"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWc-FV-vQT">
-                                <rect key="frame" x="187" y="0.0" width="187.5" height="60"/>
+                                <rect key="frame" x="187" y="0.0" width="188" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Vote"/>
@@ -73,7 +73,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9GW-cg-u81">
-                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="60"/>
+                                <rect key="frame" x="0.0" y="0.0" width="188" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Draw">
@@ -100,6 +100,7 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="05B-E3-KnZ" firstAttribute="top" secondItem="MTl-oo-hF3" secondAttribute="bottom" constant="-2" id="1Lf-iQ-VjT"/>
                     <constraint firstItem="05B-E3-KnZ" firstAttribute="leading" secondItem="GV1-1M-713" secondAttribute="leadingMargin" constant="-8" id="JGP-7h-Db0"/>
                     <constraint firstItem="MTl-oo-hF3" firstAttribute="top" secondItem="GV1-1M-713" secondAttribute="topMargin" constant="-8" id="Q6I-1E-8c8"/>
                     <constraint firstItem="MTl-oo-hF3" firstAttribute="leading" secondItem="GV1-1M-713" secondAttribute="leadingMargin" constant="-8" id="RYm-GG-R0n"/>
