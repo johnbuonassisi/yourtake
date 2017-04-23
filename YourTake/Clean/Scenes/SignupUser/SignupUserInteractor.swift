@@ -48,7 +48,7 @@ class SignupUserInteractor: SignupUserInteractorInput
                                                               account: request.username,
                                                               accessGroup: KeychainConfiguration.accessGroup)
                       do {
-                        try passwordItem.savePassword(request.username)
+                        try passwordItem.savePassword(request.password)
                       } catch {
                         fatalError("Error updating keychain - \(error)")
                       }
