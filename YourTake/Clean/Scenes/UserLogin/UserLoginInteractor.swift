@@ -35,6 +35,12 @@ class UserLoginInteractor: UserLoginInteractorInput
   {
     switch request.requestType {
     case .loginRequest:
+      if isValidUserName(request.username) == false ||
+        isValidPassword(request.password) == false {
+        print("Login form not properly filled by user")
+        print("username: \(request.username), password: \(request.password)")
+        return
+      }
       worker.login(username: request.username,
                    password: request.password,
                    completion: { (isSuccess) -> Void in
@@ -66,12 +72,20 @@ class UserLoginInteractor: UserLoginInteractorInput
       })
 
     case .updateView:
-      let isUserNameEntered = request.username.characters.count > 0
-      let isPasswordValid = request.password.characters.count >= MINIMUM_PASSWORD_SIZE
+      let isUserNameEntered = isValidUserName(request.username)
+      let isPasswordValid = isValidPassword(request.password)
       let response = UserLogin.Login.Response(isUserNameEntered: isUserNameEntered,
                                               isPasswordValid: isPasswordValid,
                                               isUserLoggedIn: false)
       output.presentLogin(response: response)
     }
+  }
+  
+  private func isValidUserName(_ username: String) -> Bool {
+    return username.characters.count > 0
+  }
+  
+  private func isValidPassword(_ password: String) -> Bool {
+    return password.characters.count >= MINIMUM_PASSWORD_SIZE
   }
 }
