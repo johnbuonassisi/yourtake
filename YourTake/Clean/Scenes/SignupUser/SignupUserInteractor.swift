@@ -37,6 +37,13 @@ class SignupUserInteractor: SignupUserInteractorInput
 
     switch request.requestType {
     case .signupRequest:
+      if isValidEmailAddress(request.emailAddress) == false ||
+        isValidUserName(request.username) == false ||
+        isValidPassword(request.password) == false {
+        print("Signup form not properly filled by user")
+        print("email: \(request.emailAddress), username: \(request.username), password: \(request.password)")
+        return
+      }
       worker.signup(emailAddress: request.emailAddress,
                    username: request.username,
                    password: request.password,
