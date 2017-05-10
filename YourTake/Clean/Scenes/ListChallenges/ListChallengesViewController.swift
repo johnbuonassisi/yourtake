@@ -55,6 +55,7 @@ class ListChallengesViewController: UIViewController,
     
     userChallengesDataSource.viewController = self
     friendChallengesDataSource.viewController = self
+    noChallengesDataSource.viewController = self
     
     tableView.dataSource = userChallengesDataSource
     tableView.delegate = self
@@ -125,30 +126,30 @@ class ListChallengesViewController: UIViewController,
   
   // MARK - Action methods
   
-  func cellDrawButtonPressed(sender: UIButton!)
-  {
-    print("Cell draw button pressed for cell at index \(sender.tag)")
-
-    var challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
-    var challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
-     if tabBar.selectedItem!.tag == 1 {
-      challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
-      challengeImage = friendChallengesDataSource.displayedChallenges[sender.tag].challengeImage
-    }
-    
+  func userChallengeCellDrawButtonPressed(sender: UIButton!) {
+    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+    let challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
     router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
-    
   }
   
-  func cellVoteButtonPressed(sender: UIButton!)
-  {
-    print("Cell vote button pressed for cell at index \(sender.tag)")
-    
-    var challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
-    if tabBar.selectedItem!.tag == 1 {
-      challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
-    }
+  func friendChallengeCellDrawButtonPressed(sender: UIButton!) {
+    let challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
+    let challengeImage = friendChallengesDataSource.displayedChallenges[sender.tag].challengeImage
+    router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
+  }
+
+  func userChallengeCellVoteButtonPressed(sender: UIButton!) {
+    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
     router.navigateToTakesScene(with: challengeId)
+  }
+  
+  func friendChallengeCellVoteButtonPressed(sender: UIButton!) {
+    let challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
+    router.navigateToTakesScene(with: challengeId)
+  }
+  
+  func createChallenge() {
+    router.navigateToSnapChallengeImageScene()
   }
   
   func refresh(sender: UIButton!)

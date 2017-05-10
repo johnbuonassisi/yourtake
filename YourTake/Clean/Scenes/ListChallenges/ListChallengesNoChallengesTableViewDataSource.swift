@@ -10,6 +10,8 @@ import UIKit
 
 class ListChallengesNoChallengesTableViewDataSource: NSObject, UITableViewDataSource {
   
+  weak var viewController: ListChallengesViewController!
+  
   func numberOfSections(in tableView: UITableView) -> Int
   {
     return 1;
@@ -23,6 +25,9 @@ class ListChallengesNoChallengesTableViewDataSource: NSObject, UITableViewDataSo
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
     let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyChallengeTableViewCell", for: indexPath) as! EmptyChallengeTableViewCell
+    cell.createNewChallengeButton.addTarget(viewController,
+                                            action: #selector(viewController.createChallenge),
+                                            for: .touchUpInside)
     return cell
   }
   

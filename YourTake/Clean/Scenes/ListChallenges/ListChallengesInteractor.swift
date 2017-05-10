@@ -24,7 +24,7 @@ protocol ListChallengesInteractorOutput
 class ListChallengesInteractor: ListChallengesInteractorInput
 {
   var output: ListChallengesInteractorOutput!
-  var challengesWorker = ChallengesWorker(challengesStore: ChallengesBaasBoxStore())
+  var challengesWorker = ChallengesWorker(challengesStore: ChallengesMemStore())
   
   var userChallenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel] = []
   var friendChallenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel] = []

@@ -39,12 +39,12 @@ class ListChallengesForUserTableViewDataSource: NSObject, UITableViewDataSource 
     
     cell.drawButton.tag = indexPath.row
     cell.drawButton.addTarget(viewController,
-                              action: #selector(viewController.cellDrawButtonPressed),
+                              action: #selector(viewController.userChallengeCellDrawButtonPressed),
                               for: .touchUpInside)
     
     cell.voteButton.tag = indexPath.row
     cell.voteButton.addTarget(viewController,
-                              action: #selector(viewController.cellVoteButtonPressed),
+                              action: #selector(viewController.userChallengeCellVoteButtonPressed),
                               for: .touchUpInside)
     
     return cell

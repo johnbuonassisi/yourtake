@@ -31,6 +31,7 @@ class ListChallengesRouter: ListChallengesRouterInput
     
     // 2. Present another view controller programmatically
     // viewController.presentViewController(someWhereViewController, animated: true, completion: nil)
+    print("Navigating to Take List Scene")
     let ltvc = ListTakesViewController(challengeId: challengeId)
     viewController.navigationController?.pushViewController(ltvc, animated: true)
     
@@ -45,8 +46,14 @@ class ListChallengesRouter: ListChallengesRouterInput
   
   func navigateToCreateTakeScene(challengeId: String, challengeImage: UIImage)
   {
+    print("Navigating to Create Take Scene")
     let ctvc = CreateTakeViewController(challengeId: challengeId, challengeImage: challengeImage)
     viewController.navigationController?.pushViewController(ctvc, animated: true)
+  }
+  
+  func navigateToSnapChallengeImageScene() {
+    print("Navigating to Snap Challenge Scene")
+    viewController.performSegue(withIdentifier: "PhotoPreviewViewController", sender: nil)
   }
   
   // MARK: - Communication

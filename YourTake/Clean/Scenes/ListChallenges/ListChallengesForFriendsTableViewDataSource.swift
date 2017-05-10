@@ -39,12 +39,12 @@ class ListChallengesForFriendsTableViewDataSource: NSObject, UITableViewDataSour
     
     cell.drawButton.tag = indexPath.row
     cell.drawButton.addTarget(viewController,
-                              action: #selector(viewController.cellDrawButtonPressed),
+                              action: #selector(viewController.friendChallengeCellDrawButtonPressed),
                               for: .touchUpInside)
     
     cell.voteButton.tag = indexPath.row
     cell.voteButton.addTarget(viewController,
-                              action: #selector(viewController.cellVoteButtonPressed),
+                              action: #selector(viewController.friendChallengeCellVoteButtonPressed),
                               for: .touchUpInside)
     
     return cell
