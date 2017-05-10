@@ -34,6 +34,8 @@
 		523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074B01DC71692002EB030 /* John_Challenge.jpg */; };
 		5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */; };
 		5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */; };
+		524B02801EC2E601007DA5EA /* FriendsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B027F1EC2E601007DA5EA /* FriendsWorker.swift */; };
+		524B02821EC2E93A007DA5EA /* FriendsMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B02811EC2E93A007DA5EA /* FriendsMemStore.swift */; };
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
 		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
 		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
@@ -151,6 +153,8 @@
 		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge.jpg; sourceTree = "<group>"; };
 		5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainConfiguration.swift; path = Security/KeychainConfiguration.swift; sourceTree = "<group>"; };
 		5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Security/KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		524B027F1EC2E601007DA5EA /* FriendsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsWorker.swift; path = Clean/Workers/FriendsWorker.swift; sourceTree = "<group>"; };
+		524B02811EC2E93A007DA5EA /* FriendsMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsMemStore.swift; path = Clean/Services/FriendsMemStore.swift; sourceTree = "<group>"; };
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Clean/Scenes/SnapChallengeImage/CameraOverlayView.xib; sourceTree = "<group>"; };
 		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewView.xib; sourceTree = "<group>"; };
 		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewViewController.swift; sourceTree = "<group>"; };
@@ -401,6 +405,7 @@
 				52B682EF1EA2A19E00DBB0A4 /* LoginMemStore.swift */,
 				52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */,
 				52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */,
+				524B02811EC2E93A007DA5EA /* FriendsMemStore.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 				5267D8ED1E9A8E1700B94470 /* TakesWorker.swift */,
 				52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */,
 				52A0D1F01EA2EB7700292B23 /* SignupWorker.swift */,
+				524B027F1EC2E601007DA5EA /* FriendsWorker.swift */,
 			);
 			name = Workers;
 			sourceTree = "<group>";
@@ -742,6 +748,7 @@
 				5267D8E31E998E0100B94470 /* ListTakesWorker.swift in Sources */,
 				52B682C11EA296C400DBB0A4 /* DisplayTakeModels.swift in Sources */,
 				52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */,
+				524B02821EC2E93A007DA5EA /* FriendsMemStore.swift in Sources */,
 				5267D8EE1E9A8E1700B94470 /* TakesWorker.swift in Sources */,
 				33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */,
 				5267D8DE1E998E0100B94470 /* ListTakesInteractor.swift in Sources */,
@@ -788,6 +795,7 @@
 				52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */,
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
 				52760C0B1E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift in Sources */,
+				524B02801EC2E601007DA5EA /* FriendsWorker.swift in Sources */,
 				5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */,
 				52299E301DE807ED00F04C86 /* BAAObject.m in Sources */,
 				5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */,
