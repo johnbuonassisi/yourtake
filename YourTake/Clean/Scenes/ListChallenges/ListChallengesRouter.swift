@@ -56,6 +56,11 @@ class ListChallengesRouter: ListChallengesRouterInput
     viewController.performSegue(withIdentifier: "PhotoPreviewViewController", sender: nil)
   }
   
+  func navigateToAddFriendsScene() {
+    print("Navigating to Add Friends Scene")
+    viewController.performSegue(withIdentifier: "Friends", sender: nil)
+  }
+  
   // MARK: - Communication
   
   func passDataToNextScene(segue: UIStoryboardSegue)

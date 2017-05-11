@@ -24,7 +24,7 @@ class ListChallengesNoChallengesTableViewDataSource: NSObject, UITableViewDataSo
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyChallengeTableViewCell", for: indexPath) as! EmptyChallengeTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: NO_CHALLENGE_CELL_ID, for: indexPath) as! EmptyChallengeTableViewCell
     cell.createNewChallengeButton.addTarget(viewController,
                                             action: #selector(viewController.createChallenge),
                                             for: .touchUpInside)

@@ -32,6 +32,8 @@
 		523074B31DC71692002EB030 /* John_Challenge_Ashling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */; };
 		523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */; };
 		523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074B01DC71692002EB030 /* John_Challenge.jpg */; };
+		524540CF1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524540CE1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift */; };
+		524540D11EC4498F006FF5EB /* FriendsBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524540D01EC4498F006FF5EB /* FriendsBaasBoxStore.swift */; };
 		5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */; };
 		5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */; };
 		524B02801EC2E601007DA5EA /* FriendsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B027F1EC2E601007DA5EA /* FriendsWorker.swift */; };
@@ -151,6 +153,8 @@
 		523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Ashling.jpg; sourceTree = "<group>"; };
 		523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Peter.jpg; sourceTree = "<group>"; };
 		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge.jpg; sourceTree = "<group>"; };
+		524540CE1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesNoFriendsTableViewDataSource.swift; path = Clean/Scenes/ListChallenges/ListChallengesNoFriendsTableViewDataSource.swift; sourceTree = "<group>"; };
+		524540D01EC4498F006FF5EB /* FriendsBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsBaasBoxStore.swift; path = Clean/Services/FriendsBaasBoxStore.swift; sourceTree = "<group>"; };
 		5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainConfiguration.swift; path = Security/KeychainConfiguration.swift; sourceTree = "<group>"; };
 		5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Security/KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		524B027F1EC2E601007DA5EA /* FriendsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsWorker.swift; path = Clean/Workers/FriendsWorker.swift; sourceTree = "<group>"; };
@@ -406,6 +410,7 @@
 				52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */,
 				52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */,
 				524B02811EC2E93A007DA5EA /* FriendsMemStore.swift */,
+				524540D01EC4498F006FF5EB /* FriendsBaasBoxStore.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				52760C011E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift */,
 				52760C031E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift */,
 				52760C041E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift */,
+				524540CE1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift */,
 			);
 			name = ListChallenges;
 			sourceTree = "<group>";
@@ -741,6 +747,7 @@
 				5267D8E01E998E0100B94470 /* ListTakesPresenter.swift in Sources */,
 				52760C0E1E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift in Sources */,
 				52760C0A1E9058F80093B921 /* ListChallengesModels.swift in Sources */,
+				524540D11EC4498F006FF5EB /* FriendsBaasBoxStore.swift in Sources */,
 				5263CA561EA2D399001BA2E4 /* SignupUserRouter.swift in Sources */,
 				52760C1D1E9059520093B921 /* ChallengeTableViewCell.swift in Sources */,
 				5267D8E51E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift in Sources */,
@@ -799,6 +806,7 @@
 				5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */,
 				52299E301DE807ED00F04C86 /* BAAObject.m in Sources */,
 				5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */,
+				524540CF1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift in Sources */,
 				52299E2D1DE807ED00F04C86 /* BAAFile.m in Sources */,
 				52760C081E9058F80093B921 /* ListChallengesViewController.swift in Sources */,
 				521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */,

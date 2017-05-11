@@ -85,7 +85,10 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addFriendsBarButton" destination="Trb-RV-Ahr" id="bYO-J6-oev"/>
+                        <outlet property="createChallengeBarButton" destination="hpm-uB-Gzc" id="bDL-QL-LyY"/>
                         <outlet property="friendsTab" destination="Clz-uS-ezC" id="Gyh-cX-bDt"/>
+                        <outlet property="settingsBarButton" destination="dzk-hM-5hf" id="S16-cd-FX9"/>
                         <outlet property="tabBar" destination="gHg-r0-BpV" id="oAa-Mt-Rvj"/>
                         <outlet property="tableView" destination="Rhq-33-Qym" id="KBv-v6-gMx"/>
                         <outlet property="userTab" destination="qva-Tr-q8X" id="X4P-xo-Htq"/>
@@ -197,7 +200,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXx-Gt-tSx">
-                                <rect key="frame" x="264" y="345" width="51" height="30"/>
+                                <rect key="frame" x="264" y="345.5" width="51" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AkW-M0-bcX"/>
                                     <constraint firstAttribute="width" constant="51" id="l9v-yw-vSl"/>
@@ -365,7 +368,7 @@
                                 <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCd-Sx-n6L">
-                                <rect key="frame" x="252" y="294" width="58" height="33"/>
+                                <rect key="frame" x="252" y="293.5" width="58" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Sign up"/>
                                 <connections>

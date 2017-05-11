@@ -47,11 +47,14 @@ struct ListChallenges
       enum ChallengeViewType: Int {
         case userChallenges = 0
         case friendChallenges = 1
-        case noChallenges = 2
+        case noFriends = 2
+        case noChallenges = 3
+        
       }
       
       var challengeType: ChallengeViewType
       var displayedChallenges: [DisplayedChallenge]
+      var isChallengeCreationEnabled: Bool
       
     }
     
@@ -63,7 +66,7 @@ struct ListChallenges
       enum ChallengeResponseType: Int {
         case userChallenges = 0
         case friendChallenges = 1
-        case noChallenges = 2
+        case noFriends = 2
       }
       
       struct ChallengeResponseModel
