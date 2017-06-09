@@ -82,7 +82,7 @@ class ListChallengesPresenter: ListChallengesPresenterInput
   
   private func createTotalVotesLabel(
     challenge: ListChallenges.FetchChallenges.Response.ChallengeResponseModel) -> String {
-    return challenge.totalNumberOfVotes == nil ? "" : "\(challenge.totalNumberOfVotes!) total votes"
+    return challenge.totalNumberOfVotes == nil ? "0 total votes" : "\(challenge.totalNumberOfVotes!) total votes"
   }
   
   private func createChallengeExpiryLabel(
