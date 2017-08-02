@@ -29,7 +29,18 @@ class ListChallengesPresenter: ListChallengesPresenterInput
   
   func presentFetchedChallenges(response: ListChallenges.FetchChallenges.Response)
   {
+    var challengeType =
+      ListChallenges.FetchChallenges.ViewModel.ChallengeViewType(rawValue: response.challengeType.rawValue)
     var displayedChallenges: [ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge] = []
+    
+    if(challengeType == .noFriends) {
+      let viewModel = ListChallenges.FetchChallenges.ViewModel(challengeType: challengeType!,
+                                                               displayedChallenges: displayedChallenges,
+                                                               isChallengeCreationEnabled: false)
+      output.displayFetchedChallenges(viewModel: viewModel)
+      return
+    }
+    
     for challenge in response.challenges
     {
       let totalVotesLabel = createTotalVotesLabel(challenge: challenge)
@@ -58,21 +69,20 @@ class ListChallengesPresenter: ListChallengesPresenterInput
       displayedChallenges.append(displayedChallenge)
     }
     
-    var challengeType =
-      ListChallenges.FetchChallenges.ViewModel.ChallengeViewType(rawValue: response.challengeType.rawValue)
     if(displayedChallenges.count == 0)
     {
       challengeType = .noChallenges
     }
     
     let viewModel = ListChallenges.FetchChallenges.ViewModel(challengeType: challengeType!,
-                                                             displayedChallenges: displayedChallenges)
+                                                             displayedChallenges: displayedChallenges,
+                                                             isChallengeCreationEnabled: true)
     output.displayFetchedChallenges(viewModel: viewModel)
   }
   
   private func createTotalVotesLabel(
     challenge: ListChallenges.FetchChallenges.Response.ChallengeResponseModel) -> String {
-    return challenge.totalNumberOfVotes == nil ? "" : "\(challenge.totalNumberOfVotes!) total votes"
+    return challenge.totalNumberOfVotes == nil ? "0 total votes" : "\(challenge.totalNumberOfVotes!) total votes"
   }
   
   private func createChallengeExpiryLabel(

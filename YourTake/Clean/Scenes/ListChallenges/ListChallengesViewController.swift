@@ -21,6 +21,11 @@ protocol ListChallengesViewControllerOutput
   func fetchChallenges(request: ListChallenges.FetchChallenges.Request)
 }
 
+let USER_CHALLENGE_CELL_ID = "UserChallengeTableViewCell"
+let FRIEND_CHALLENGE_CELL_ID = "FriendChallengeTableViewCell"
+let NO_CHALLENGE_CELL_ID = "EmptyChallengeTableViewCell"
+let NO_FRIENDS_CELL_ID = "NoFriendsCell"
+
 class ListChallengesViewController: UIViewController,
                                     UITableViewDelegate,
                                     UITabBarDelegate,
@@ -34,12 +39,15 @@ class ListChallengesViewController: UIViewController,
   var userChallengesDataSource = ListChallengesForUserTableViewDataSource()
   var friendChallengesDataSource = ListChallengesForFriendsTableViewDataSource()
   var noChallengesDataSource = ListChallengesNoChallengesTableViewDataSource()
+  var noFriendsDataSource = ListChallengesNoFriendsTableViewDataSource()
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var tabBar: UITabBar!
   @IBOutlet weak var userTab: UITabBarItem!
   @IBOutlet weak var friendsTab: UITabBarItem!
-  
+  @IBOutlet weak var addFriendsBarButton: UIBarButtonItem!
+  @IBOutlet weak var createChallengeBarButton: UIBarButtonItem!
+  @IBOutlet weak var settingsBarButton: UIBarButtonItem!
 
   override func awakeFromNib()
   {
@@ -55,6 +63,8 @@ class ListChallengesViewController: UIViewController,
     
     userChallengesDataSource.viewController = self
     friendChallengesDataSource.viewController = self
+    noChallengesDataSource.viewController = self
+    noFriendsDataSource.viewController = self
     
     tableView.dataSource = userChallengesDataSource
     tableView.delegate = self
@@ -62,10 +72,14 @@ class ListChallengesViewController: UIViewController,
     tableView.allowsSelection = false
     
     let ctNib = UINib(nibName: "ChallengeTableViewCell", bundle: nil)
-    tableView.register(ctNib, forCellReuseIdentifier: "ChallengeTableViewCell")
+    tableView.register(ctNib, forCellReuseIdentifier: USER_CHALLENGE_CELL_ID)
+    tableView.register(ctNib, forCellReuseIdentifier: FRIEND_CHALLENGE_CELL_ID)
     
     let ectNib = UINib(nibName: "EmptyChallengeTableViewCell", bundle: nil)
-    tableView.register(ectNib, forCellReuseIdentifier: "EmptyChallengeTableViewCell")
+    tableView.register(ectNib, forCellReuseIdentifier: NO_CHALLENGE_CELL_ID)
+    
+    let nftNib = UINib(nibName: "NoFriendsCell", bundle: nil)
+    tableView.register(nftNib, forCellReuseIdentifier: NO_FRIENDS_CELL_ID)
     
     tableView.refreshControl = UIRefreshControl()
     tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
@@ -110,8 +124,11 @@ class ListChallengesViewController: UIViewController,
       tableView.dataSource = friendChallengesDataSource
     case .noChallenges:
       tableView.dataSource = noChallengesDataSource
+    case .noFriends:
+      tableView.dataSource = noFriendsDataSource
     }
     
+    createChallengeBarButton.isEnabled = viewModel.isChallengeCreationEnabled
     tableView.reloadData()
     tableView.refreshControl!.endRefreshing()
   }
@@ -125,30 +142,34 @@ class ListChallengesViewController: UIViewController,
   
   // MARK - Action methods
   
-  func cellDrawButtonPressed(sender: UIButton!)
-  {
-    print("Cell draw button pressed for cell at index \(sender.tag)")
-
-    var challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
-    var challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
-     if tabBar.selectedItem!.tag == 1 {
-      challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
-      challengeImage = friendChallengesDataSource.displayedChallenges[sender.tag].challengeImage
-    }
-    
+  func userChallengeCellDrawButtonPressed(sender: UIButton!) {
+    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+    let challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
     router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
-    
   }
   
-  func cellVoteButtonPressed(sender: UIButton!)
-  {
-    print("Cell vote button pressed for cell at index \(sender.tag)")
-    
-    var challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
-    if tabBar.selectedItem!.tag == 1 {
-      challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
-    }
+  func friendChallengeCellDrawButtonPressed(sender: UIButton!) {
+    let challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
+    let challengeImage = friendChallengesDataSource.displayedChallenges[sender.tag].challengeImage
+    router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
+  }
+
+  func userChallengeCellVoteButtonPressed(sender: UIButton!) {
+    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
     router.navigateToTakesScene(with: challengeId)
+  }
+  
+  func friendChallengeCellVoteButtonPressed(sender: UIButton!) {
+    let challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
+    router.navigateToTakesScene(with: challengeId)
+  }
+  
+  func createChallenge() {
+    router.navigateToSnapChallengeImageScene()
+  }
+  
+  func addFriends() {
+    router.navigateToAddFriendsScene()
   }
   
   func refresh(sender: UIButton!)

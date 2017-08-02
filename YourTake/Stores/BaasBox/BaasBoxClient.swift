@@ -634,10 +634,6 @@ class BaasBoxClient: BaClient {
             if let baasTakes = objects as? [BaasBoxTake] {
                 if !baasTakes.isEmpty {
                     for baasTake in baasTakes {
-                        // skip takes from logged in user
-                        if baasTake.author == self.client.currentUser!.username() {
-                            return
-                        }
                         let take = TakeDto(id: baasTake.objectId,
                                            challengeId: baasTake.challengeId,
                                            author: baasTake.author,
@@ -687,11 +683,8 @@ class BaasBoxClient: BaClient {
             var takes = [TakeDto]()
             if let baasTakes = objects as? [BaasBoxTake] {
                 if !baasTakes.isEmpty {
+                    var failCount = 0
                     for baasTake in baasTakes {
-                        // skip takes from logged in user
-                        if baasTake.author == self.client.currentUser!.username() {
-                            return
-                        }
                         BAAFile.load(withId: baasTake.overlayId, completion: { (object, error) in
                             if object != nil, let image = UIImage(data: object!) {
                                 let take = TakeDto(
@@ -703,9 +696,9 @@ class BaasBoxClient: BaClient {
                                 takes.append(take)
                             } else {
                                 print("error: unable to load take [description=\(error?.localizedDescription)]")
-                                completion(takes)
+                                failCount += 1
                             }
-                            if takes.count == baasTakes.count {
+                            if takes.count == baasTakes.count - failCount {
                                 takes.sort(by: { (left, right) -> Bool in
                                     if left.votes > right.votes {
                                         return true
