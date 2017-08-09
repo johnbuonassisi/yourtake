@@ -29,7 +29,7 @@ struct ListTakes {
                 var author: String
                 var numberOfVotes: String
                 var likeButtonImage: UIImage
-                var takeImage: UIImage
+                var takeImage: UIImage?
             }
             
             var displayedTakes: [DisplayedTake]

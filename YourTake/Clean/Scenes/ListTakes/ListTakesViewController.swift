@@ -64,7 +64,6 @@ class ListTakesViewController: UICollectionViewController, ListTakesViewControll
     
     func fetchTakesOnLoad() {
         // NOTE: Ask the Interactor to do some work
-        
         let request = ListTakes.FetchTakes.Request(challengeId: challengeId)
         output.fetchTakes(request: request)
     }

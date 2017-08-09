@@ -471,9 +471,9 @@ class BaasBoxClient: BaClient {
                     for baasTake in baasTakes {
                         let take = TakeDto(id: baasTake.objectId,
                                            challengeId: baasTake.challengeId,
-                                           imageId: "",
+                                           imageId: baasTake.overlayId,
                                            author: baasTake.author,
-                                           overlay: UIImage(),
+                                           overlay: nil,
                                            votes: baasTake.votes)
                             takes.append(take)
                             if takes.count == baasTakes.count {
@@ -526,9 +526,9 @@ class BaasBoxClient: BaClient {
                                 let take = TakeDto(
                                     id: baasTake.objectId,
                                     challengeId: baasTake.challengeId,
-                                    imageId: "",
+                                    imageId: baasTake.overlayId,
                                     author: baasTake.author,
-                                    overlay: image,
+                                    overlay: nil,
                                     votes: baasTake.votes)
                                 takes.append(take)
                             } else {

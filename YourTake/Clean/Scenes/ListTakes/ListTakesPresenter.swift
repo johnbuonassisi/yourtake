@@ -27,8 +27,7 @@ class ListTakesPresenter: ListTakesPresenterInput {
     
     // MARK: - Presentation logic
     
-    func presentFetchedTakes(response: ListTakes.FetchTakes.Response)
-    {
+    func presentFetchedTakes(response: ListTakes.FetchTakes.Response) {
         // NOTE: Format the response from the Interactor and pass the result back to the View Controller
         
         var displayedTakes: [ListTakes.FetchTakes.ViewModel.DisplayedTake] = []
@@ -42,7 +41,7 @@ class ListTakesPresenter: ListTakesPresenterInput {
             }
             
             let displayedTake = ListTakes.FetchTakes.ViewModel.DisplayedTake(author: take.author,
-                                                                             numberOfVotes: "\(take.votes)",
+                numberOfVotes: "\(take.votes)",
                 likeButtonImage: likeButtonImage!,
                 takeImage: take.overlay)
             

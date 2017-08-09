@@ -23,6 +23,7 @@ protocol ListTakesInteractorOutput {
 class ListTakesInteractor: ListTakesInteractorInput {
     var output: ListTakesInteractorOutput!
     var takesWorker = TakesWorker(takeStore: TakeBaasBoxStore())
+    var challengesWorker = ChallengesWorker(challengesStore: ChallengesBaasBoxStore())
     
     private var user: User!
     private var takes: [TakeDto] = []
@@ -33,19 +34,36 @@ class ListTakesInteractor: ListTakesInteractorInput {
     
     func fetchTakes(request: ListTakes.FetchTakes.Request) {
         self.challengeId = request.challengeId
+        
+        // Initialize if challenge is expired
+        self.takesWorker.isChallengeExpired(challengeId: self.challengeId, completionHandler: { (isChallengeExpired) -> Void in
+            self.isChallengeExpired = isChallengeExpired
+        })
+        
         // Get the user
         takesWorker.fetchUser(completion: { (user) -> Void in
             self.user = user
             // Get the takes
             self.takesWorker.fetchTakes(challengeId: self.challengeId, completionHandler: {(takes) -> Void in
                 self.takes = takes
-                // Get if challenge is expired
-                self.takesWorker.isChallengeExpired(challengeId: self.challengeId, completionHandler: {(isChallengeExpired) -> Void in
-                    self.isChallengeExpired = isChallengeExpired
-                    let votedForTakeId = self.user.votes[self.challengeId]
-                    let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
-                    self.output.presentFetchedTakes(response: response)
-                })
+                
+                // Find voted for take
+                let votedForTakeId = self.user.votes[self.challengeId]
+                
+                // Present the takes
+                let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
+                self.output.presentFetchedTakes(response: response)
+                
+                for take in takes {
+                    // Download the take image
+                    self.challengesWorker.downloadImage(with: take.imageId, completion: { (image) -> Void in
+                        take.overlay = image
+                        
+                        // Present the takes
+                        let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
+                        self.output.presentFetchedTakes(response: response)
+                    })
+                }
             })
         })
     }

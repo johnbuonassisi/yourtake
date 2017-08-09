@@ -21,13 +21,14 @@ class ListTakesRouter: ListTakesRouterInput {
     // MARK: - Navigation
     
     func navigateToDisplayTakeScene(listTakesViewModel: ListTakes.FetchTakes.ViewModel.DisplayedTake) {
-        let displayTakeViewModel = DisplayTake.ViewModel(author: listTakesViewModel.author,
-                                                         numberOfVotes: listTakesViewModel.numberOfVotes,
-                                                         likeButtonImage: listTakesViewModel.likeButtonImage,
-                                                         takeImage: listTakesViewModel.takeImage)
-        let dtvc = DisplayTakeViewController(viewModel: displayTakeViewModel)
-        viewController.navigationController?.pushViewController(dtvc, animated: true)
-        
+        if let takeImage = listTakesViewModel.takeImage {
+            let displayTakeViewModel = DisplayTake.ViewModel(author: listTakesViewModel.author,
+                                                             numberOfVotes: listTakesViewModel.numberOfVotes,
+                                                             likeButtonImage: listTakesViewModel.likeButtonImage,
+                                                             takeImage: takeImage)
+            let dtvc = DisplayTakeViewController(viewModel: displayTakeViewModel)
+            viewController.navigationController?.pushViewController(dtvc, animated: true)
+        }
     }
     
     // MARK: - Communication
