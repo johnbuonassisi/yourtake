@@ -11,126 +11,118 @@
 
 import UIKit
 
-protocol ListTakesViewControllerInput
-{
-  func displayTakes(viewModel: ListTakes.FetchTakes.ViewModel)
+protocol ListTakesViewControllerInput {
+    func displayTakes(viewModel: ListTakes.FetchTakes.ViewModel)
 }
 
-protocol ListTakesViewControllerOutput
-{
-  func fetchTakes(request: ListTakes.FetchTakes.Request)
-  func voteForTake(request: ListTakes.VoteForTake.Request)
+protocol ListTakesViewControllerOutput {
+    func fetchTakes(request: ListTakes.FetchTakes.Request)
+    func voteForTake(request: ListTakes.VoteForTake.Request)
 }
 
-class ListTakesViewController: UICollectionViewController, ListTakesViewControllerInput
-{
-  var output: ListTakesViewControllerOutput!
-  var router: ListTakesRouter!
-  
-  var listTakesDataSource = ListTakesCollectionViewDataSource()
-  
-  let challengeId: String
-  
-  // MARK: - Object lifecycle
-  
-  init(challengeId: String) {
+class ListTakesViewController: UICollectionViewController, ListTakesViewControllerInput {
+    var output: ListTakesViewControllerOutput!
+    var router: ListTakesRouter!
     
-    self.challengeId = challengeId
+    var listTakesDataSource = ListTakesCollectionViewDataSource()
     
-    let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-    layout.scrollDirection = UICollectionViewScrollDirection.vertical
-    super.init(collectionViewLayout: layout)
+    let challengeId: String
     
-    ListTakesConfigurator.sharedInstance.configure(viewController: self)
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  // MARK: - View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
+    // MARK: - Object lifecycle
     
-    self.collectionView?.dataSource = listTakesDataSource
-    collectionView?.backgroundColor = UIColor.white
-    navigationItem.title = "Takes"
+    init(challengeId: String) {
+        
+        self.challengeId = challengeId
+        
+        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        super.init(collectionViewLayout: layout)
+        
+        ListTakesConfigurator.sharedInstance.configure(viewController: self)
+    }
     
-    let nib = UINib(nibName: "TakeCollectionViewCell", bundle: nil)
-    self.collectionView?.register(nib, forCellWithReuseIdentifier: "TakeCollectionViewCell")
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    fetchTakesOnLoad()
-  }
-  
-  // MARK: - Event handling
-  
-  func fetchTakesOnLoad()
-  {
-    // NOTE: Ask the Interactor to do some work
+    // MARK: - View lifecycle
     
-    let request = ListTakes.FetchTakes.Request(challengeId: challengeId)
-    output.fetchTakes(request: request)
-  }
-  
-  // MARK: - Display logic
-  
-  func displayTakes(viewModel: ListTakes.FetchTakes.ViewModel)
-  {
-    // NOTE: Display the result from the Presenter
-    listTakesDataSource.displayedTakes = viewModel.displayedTakes
-    collectionView?.reloadData()
-  }
-  
-  func cellVoteButtonPressed(sender: UIButton!)
-  {
-    let request = ListTakes.VoteForTake.Request(takeTag: sender.tag)
-    output.voteForTake(request: request)
-  }
-  
-  func cellTakeImagePressed(sender: UIButton!)
-  {
-    let listTakeViewModel = listTakesDataSource.displayedTakes[sender.tag]
-    router.navigateToDisplayTakeScene(listTakesViewModel: listTakeViewModel)
-  }
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.collectionView?.dataSource = listTakesDataSource
+        collectionView?.backgroundColor = UIColor.white
+        navigationItem.title = "Takes"
+        
+        let nib = UINib(nibName: "TakeCollectionViewCell", bundle: nil)
+        self.collectionView?.register(nib, forCellWithReuseIdentifier: "TakeCollectionViewCell")
+        
+        fetchTakesOnLoad()
+    }
+    
+    // MARK: - Event handling
+    
+    func fetchTakesOnLoad() {
+        // NOTE: Ask the Interactor to do some work
+        
+        let request = ListTakes.FetchTakes.Request(challengeId: challengeId)
+        output.fetchTakes(request: request)
+    }
+    
+    // MARK: - Display logic
+    
+    func displayTakes(viewModel: ListTakes.FetchTakes.ViewModel) {
+        // NOTE: Display the result from the Presenter
+        listTakesDataSource.displayedTakes = viewModel.displayedTakes
+        collectionView?.reloadData()
+    }
+    
+    func cellVoteButtonPressed(sender: UIButton!) {
+        let request = ListTakes.VoteForTake.Request(takeTag: sender.tag)
+        output.voteForTake(request: request)
+    }
+    
+    func cellTakeImagePressed(sender: UIButton!) {
+        let listTakeViewModel = listTakesDataSource.displayedTakes[sender.tag]
+        router.navigateToDisplayTakeScene(listTakesViewModel: listTakeViewModel)
+    }
+    
 }
 
 // MARK: Layout Extension
 
 extension ListTakesViewController : UICollectionViewDelegateFlowLayout {
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-    // return the width and height of the collection view cell
-    return CGSize(width: (collectionView.frame.width - 3*5) / 2,
-                  height: ((collectionView.frame.width - 3*5) / 2) + 35)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        // return the width and height of the collection view cell
+        return CGSize(width: (collectionView.frame.width - 3*5) / 2,
+                      height: ((collectionView.frame.width - 3*5) / 2) + 35)
+        
+    }
     
-  }
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        // return the margins to apply to content in the specified section
+        return UIEdgeInsetsMake(5, 5, 5, 5)
+    }
     
-    // return the margins to apply to content in the specified section
-    return UIEdgeInsetsMake(5, 5, 5, 5)
-  }
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        // return the spacing between successive rows or columns of a section
+        return 5.0
+    }
     
-    // return the spacing between successive rows or columns of a section
-    return 5.0
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        // return the spacing between successive items in the rows or columns of a section
+        return 5.0
+    }
     
-    // return the spacing between successive items in the rows or columns of a section
-    return 5.0
-  }
-  
 }

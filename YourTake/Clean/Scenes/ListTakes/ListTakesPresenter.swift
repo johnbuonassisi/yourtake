@@ -11,49 +11,46 @@
 
 import UIKit
 
-protocol ListTakesPresenterInput
-{
-  func presentFetchedTakes(response: ListTakes.FetchTakes.Response)
+protocol ListTakesPresenterInput {
+    func presentFetchedTakes(response: ListTakes.FetchTakes.Response)
 }
 
-protocol ListTakesPresenterOutput: class
-{
-  func displayTakes(viewModel: ListTakes.FetchTakes.ViewModel)
+protocol ListTakesPresenterOutput: class {
+    func displayTakes(viewModel: ListTakes.FetchTakes.ViewModel)
 }
 
-class ListTakesPresenter: ListTakesPresenterInput
-{
-  weak var output: ListTakesPresenterOutput!
-  
-  let likedButtonImage = UIImage(named: "Liked", in: nil, compatibleWith: nil)!
-  let notLikedButtonImage = UIImage(named: "NotLiked", in: nil, compatibleWith: nil)!
-  
-  // MARK: - Presentation logic
-  
-  func presentFetchedTakes(response: ListTakes.FetchTakes.Response)
-  {
-    // NOTE: Format the response from the Interactor and pass the result back to the View Controller
+class ListTakesPresenter: ListTakesPresenterInput {
+    weak var output: ListTakesPresenterOutput!
     
-    var displayedTakes: [ListTakes.FetchTakes.ViewModel.DisplayedTake] = []
-    for take in response.takes {
-      
-      var likeButtonImage: UIImage?
-      if(take.id == response.votedForTakeId) {
-        likeButtonImage = likedButtonImage
-      } else {
-        likeButtonImage = notLikedButtonImage
-      }
-      
-      let displayedTake = ListTakes.FetchTakes.ViewModel.DisplayedTake(author: take.author,
-        numberOfVotes: "\(take.votes)",
-        likeButtonImage: likeButtonImage!,
-        takeImage: take.overlay)
-      
-      displayedTakes.append(displayedTake)
+    let likedButtonImage = UIImage(named: "Liked", in: nil, compatibleWith: nil)!
+    let notLikedButtonImage = UIImage(named: "NotLiked", in: nil, compatibleWith: nil)!
+    
+    // MARK: - Presentation logic
+    
+    func presentFetchedTakes(response: ListTakes.FetchTakes.Response)
+    {
+        // NOTE: Format the response from the Interactor and pass the result back to the View Controller
+        
+        var displayedTakes: [ListTakes.FetchTakes.ViewModel.DisplayedTake] = []
+        for take in response.takes {
+            
+            var likeButtonImage: UIImage?
+            if(take.id == response.votedForTakeId) {
+                likeButtonImage = likedButtonImage
+            } else {
+                likeButtonImage = notLikedButtonImage
+            }
+            
+            let displayedTake = ListTakes.FetchTakes.ViewModel.DisplayedTake(author: take.author,
+                                                                             numberOfVotes: "\(take.votes)",
+                likeButtonImage: likeButtonImage!,
+                takeImage: take.overlay)
+            
+            displayedTakes.append(displayedTake)
+        }
+        
+        let viewModel = ListTakes.FetchTakes.ViewModel(displayedTakes: displayedTakes)
+        output.displayTakes(viewModel: viewModel)
     }
     
-    let viewModel = ListTakes.FetchTakes.ViewModel(displayedTakes: displayedTakes)
-    output.displayTakes(viewModel: viewModel)
-  }
-  
 }

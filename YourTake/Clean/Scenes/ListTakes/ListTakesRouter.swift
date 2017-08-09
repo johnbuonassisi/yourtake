@@ -11,44 +11,39 @@
 
 import UIKit
 
-protocol ListTakesRouterInput
-{
-  func navigateToDisplayTakeScene(listTakesViewModel: ListTakes.FetchTakes.ViewModel.DisplayedTake)
+protocol ListTakesRouterInput {
+    func navigateToDisplayTakeScene(listTakesViewModel: ListTakes.FetchTakes.ViewModel.DisplayedTake)
 }
 
-class ListTakesRouter: ListTakesRouterInput
-{
-  weak var viewController: ListTakesViewController!
-  
-  // MARK: - Navigation
-  
-  func navigateToDisplayTakeScene(listTakesViewModel: ListTakes.FetchTakes.ViewModel.DisplayedTake)
-  {
-    let displayTakeViewModel = DisplayTake.ViewModel(author: listTakesViewModel.author,
-                                                     numberOfVotes: listTakesViewModel.numberOfVotes,
-                                                     likeButtonImage: listTakesViewModel.likeButtonImage,
-                                                     takeImage: listTakesViewModel.takeImage)
-    let dtvc = DisplayTakeViewController(viewModel: displayTakeViewModel)
-    viewController.navigationController?.pushViewController(dtvc, animated: true)
+class ListTakesRouter: ListTakesRouterInput {
+    weak var viewController: ListTakesViewController!
     
-  }
-  
-  // MARK: - Communication
-  
-  func passDataToNextScene(segue: UIStoryboardSegue)
-  {
-    // NOTE: Teach the router which scenes it can communicate with
+    // MARK: - Navigation
     
-    if segue.identifier == "ShowSomewhereScene" {
-      passDataToSomewhereScene(segue: segue)
+    func navigateToDisplayTakeScene(listTakesViewModel: ListTakes.FetchTakes.ViewModel.DisplayedTake) {
+        let displayTakeViewModel = DisplayTake.ViewModel(author: listTakesViewModel.author,
+                                                         numberOfVotes: listTakesViewModel.numberOfVotes,
+                                                         likeButtonImage: listTakesViewModel.likeButtonImage,
+                                                         takeImage: listTakesViewModel.takeImage)
+        let dtvc = DisplayTakeViewController(viewModel: displayTakeViewModel)
+        viewController.navigationController?.pushViewController(dtvc, animated: true)
+        
     }
-  }
-  
-  func passDataToSomewhereScene(segue: UIStoryboardSegue)
-  {
-    // NOTE: Teach the router how to pass data to the next scene
     
-    // let someWhereViewController = segue.destinationViewController as! SomeWhereViewController
-    // someWhereViewController.output.name = viewController.output.name
-  }
+    // MARK: - Communication
+    
+    func passDataToNextScene(segue: UIStoryboardSegue) {
+        // NOTE: Teach the router which scenes it can communicate with
+        
+        if segue.identifier == "ShowSomewhereScene" {
+            passDataToSomewhereScene(segue: segue)
+        }
+    }
+    
+    func passDataToSomewhereScene(segue: UIStoryboardSegue) {
+        // NOTE: Teach the router how to pass data to the next scene
+        
+        // let someWhereViewController = segue.destinationViewController as! SomeWhereViewController
+        // someWhereViewController.output.name = viewController.output.name
+    }
 }

@@ -13,44 +13,39 @@ import UIKit
 
 // MARK: - Connect View, Interactor, and Presenter
 
-extension ListTakesViewController: ListTakesPresenterOutput
-{
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    router.passDataToNextScene(segue: segue)
-  }
+extension ListTakesViewController: ListTakesPresenterOutput {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        router.passDataToNextScene(segue: segue)
+    }
 }
 
-extension ListTakesInteractor: ListTakesViewControllerOutput
-{
+extension ListTakesInteractor: ListTakesViewControllerOutput{
 }
 
-extension ListTakesPresenter: ListTakesInteractorOutput
-{
+extension ListTakesPresenter: ListTakesInteractorOutput{
 }
 
 class ListTakesConfigurator
 {
-  // MARK: - Object lifecycle
-  
-  static let sharedInstance = ListTakesConfigurator()
-  
-  private init() {}
-  
-  // MARK: - Configuration
-  
-  func configure(viewController: ListTakesViewController)
-  {
-    let router = ListTakesRouter()
-    router.viewController = viewController
+    // MARK: - Object lifecycle
     
-    let presenter = ListTakesPresenter()
-    presenter.output = viewController
+    static let sharedInstance = ListTakesConfigurator()
     
-    let interactor = ListTakesInteractor()
-    interactor.output = presenter
+    private init() {}
     
-    viewController.output = interactor
-    viewController.router = router
-  }
+    // MARK: - Configuration
+    
+    func configure(viewController: ListTakesViewController) {
+        let router = ListTakesRouter()
+        router.viewController = viewController
+        
+        let presenter = ListTakesPresenter()
+        presenter.output = viewController
+        
+        let interactor = ListTakesInteractor()
+        interactor.output = presenter
+        
+        viewController.output = interactor
+        viewController.router = router
+    }
 }
