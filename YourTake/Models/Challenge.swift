@@ -57,20 +57,4 @@ class Challenge: NSObject {
             }
         })
     }
-    
-    func getTotalVotes() -> UInt {
-        var totalVotes: UInt = 0
-        
-        let backendClient = Backend.sharedInstance.getClient()
-        
-        var takes = [Take]()
-        backendClient.getTakes(for: self.id, completion: { (objects) -> Void in takes = objects })
-        if !takes.isEmpty {
-            for take in takes {
-                totalVotes += take.votes
-            }
-        }
-        
-        return totalVotes
-    }
 }

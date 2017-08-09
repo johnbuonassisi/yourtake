@@ -40,22 +40,22 @@ class ChallengesBaasBoxStore: ChallengesStoreProtocol {
         })
     }
   
-  func downloadImage(with id: String, completion: @escaping (UIImage?) -> Void) {
-    let backendClient = Backend.sharedInstance.getClient()
-    backendClient.downloadImage(with: id, completion: { (image) -> Void in
-      completion(image)
-    })
-  }
-  
-  func getNumberOfVotes(for challengeId: String, completion: @escaping (UInt) -> Void) {
-    let backendClient = Backend.sharedInstance.getClient()
-    backendClient.getTakeList(for: challengeId, completion: { (takes) -> Void in
-      var totalVotes: UInt = 0
-      for take in takes {
-        totalVotes += take.votes
-      }
-      completion(totalVotes)
-    })
-  }
+    func downloadImage(with id: String, completion: @escaping (UIImage?) -> Void) {
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.downloadImage(with: id, completion: { (image) -> Void in
+            completion(image)
+        })
+    }
+    
+    func getNumberOfVotes(for challengeId: String, completion: @escaping (UInt) -> Void) {
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.getTakeDtoList(for: challengeId, completion: { (takes) -> Void in
+            var totalVotes: UInt = 0
+            for take in takes {
+                totalVotes += take.votes
+            }
+            completion(totalVotes)
+        })
+    }
 
 }

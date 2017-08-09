@@ -224,114 +224,6 @@ class BaasBoxClient: BaClient {
         })
     }
     
-    func getChallenge(with id: String, completion: @escaping BaChallengeCompletionBlock) -> Void {
-        if id.isEmpty {
-            print("error: invalid parameters")
-            completion(nil)
-            return
-        }
-        
-        if client.currentUser == nil || !client.isAuthenticated() {
-            print("error: user not authenticated")
-            completion(nil)
-            return
-        }
-        
-        BaasBoxChallenge.getWithId(id, completion: { (object, error) -> Void in
-            if let baasChallenge = object as? BaasBoxChallenge {
-                BAAFile.load(withId: baasChallenge.imageId, completion: { (object, error) in
-                    if object != nil, let image = UIImage(data: object!) {
-                        completion(Challenge(
-                            id: baasChallenge.objectId,
-                            author: baasChallenge.author,
-                            image: image,
-                            recipients: baasChallenge.recipients,
-                            duration: baasChallenge.duration,
-                            created: baasChallenge.creationDate))
-                    } else {
-                        print("error: unable to load challenge [description=\(error?.localizedDescription)]")
-                        completion(nil)
-                    }
-                })
-            } else {
-                print("error: unable to load challenge [description=\(error?.localizedDescription)]")
-                completion(nil)
-            }
-        })
-    }
-    
-    func getChallenges(for friends: Bool, completion: @escaping BaChallengesCompletionBlock) -> Void {
-        return getChallenges(to: Date(), with: 10, for: friends, completion: completion)
-    }
-    
-    func getChallenges(to date: Date, with maxCount: UInt, for friends: Bool, completion: @escaping BaChallengesCompletionBlock) -> Void {
-        if date > Date() || maxCount == 0 {
-            print("error: invalid parameters")
-            completion([Challenge]())
-            return
-        }
-        
-        if client.currentUser == nil || !client.isAuthenticated() {
-            print("error: user not authenticated")
-            completion([Challenge]())
-            return
-        }
-        
-        let baasObject = BaasBoxChallenge()
-        var params = ["recordsPerPage": "\(maxCount)"]
-        
-        if friends {
-            params["where"] = "recipients in ?"
-            params["params"] = "\(client.currentUser.username()!)"
-        } else {
-            params["where"] = "_author=?"
-            params["params"] = "\(client.currentUser.username()!)"
-        }
-        
-        client.loadCollection(baasObject, withParams: params, completion: { (objects, error) -> Void in
-            var challenges = [Challenge]()
-            if let baasChallenges = objects as? [BaasBoxChallenge] {
-                if !baasChallenges.isEmpty {
-                    var failCount = 0
-                    for baasChallenge in baasChallenges {
-                        BAAFile.load(withId: baasChallenge.imageId, completion: { (object, error) in
-                            if object != nil, let image = UIImage(data: object!) {
-                                let challenge = Challenge(
-                                    id: baasChallenge.objectId,
-                                    author: baasChallenge.author,
-                                    image: image,
-                                    recipients: baasChallenge.recipients,
-                                    duration: baasChallenge.duration,
-                                    created: baasChallenge.creationDate)
-                                challenges.append(challenge)
-                            } else {
-                                print("error: unable to load challenge [description=\(error?.localizedDescription)]")
-                                failCount += 1
-                            }
-                            if challenges.count == baasChallenges.count - failCount {
-                                challenges.sort(by: { (left, right) -> Bool in
-                                    if left.getTimeRemaining() > right.getTimeRemaining() {
-                                        return true
-                                    } else if left.created > right.created {
-                                        return true
-                                    }
-                                    return false
-                                })
-                                completion(challenges)
-                            }
-                        })
-                    }
-                } else {
-                    print("warn: no challenges available")
-                    completion(challenges)
-                }
-            } else {
-                print("error: unable to load challenges [description=\(error?.localizedDescription)]")
-                completion(challenges)
-            }
-        })
-    }
-    
     func getChallengeDto(with id: String, completion: @escaping BaChallengeDtoCompletionBlock) -> Void {
         
         if id.isEmpty {
@@ -363,11 +255,11 @@ class BaasBoxClient: BaClient {
         })
     }
 
-    func getChallengeList(for friends: Bool, completion: @escaping BaChallengeListCompletionBlock) -> Void {
+    func getChallengeList(for friends: Bool, completion: @escaping BaChallengeDtoListCompletionBlock) -> Void {
         return getChallengeList(to: Date(), with: 10, for: friends, completion: completion)
     }
     
-    func getChallengeList(to date: Date, with maxCount: UInt, for friends: Bool, completion: @escaping BaChallengeListCompletionBlock) -> Void {
+    func getChallengeList(to date: Date, with maxCount: UInt, for friends: Bool, completion: @escaping BaChallengeDtoListCompletionBlock) -> Void {
         
         if date > Date() || maxCount == 0 {
             print("error: invalid parameters")
@@ -516,8 +408,8 @@ class BaasBoxClient: BaClient {
             }
         })
     }
-    
-    func getTake(with id: String, completion: @escaping BaTakeCompletionBlock) -> Void {
+  
+    func getTakeDto(with id: String, completion: @escaping BaTakeDtoCompletionBlock) -> Void {
         if id.isEmpty {
             print("error: invalid parameters")
             completion(nil)
@@ -534,9 +426,10 @@ class BaasBoxClient: BaClient {
             if let baasTake = object as? BaasBoxTake {
                 BAAFile.load(withId: baasTake.overlayId, completion: { (object, error) in
                     if object != nil, let image = UIImage(data: object!) {
-                        completion(Take(
+                        completion(TakeDto(
                             id: baasTake.objectId,
                             challengeId: baasTake.challengeId,
+                            imageId: baasTake.overlayId,
                             author: baasTake.author,
                             overlay: image,
                             votes: baasTake.votes))
@@ -551,66 +444,8 @@ class BaasBoxClient: BaClient {
             }
         })
     }
-
-    func getTakes(for challengeId: String, completion: @escaping BaTakesCompletionBlock) -> Void{
-        if challengeId.isEmpty {
-            print("error: invalid parameters")
-            completion([Take]())
-            return
-        }
-        
-        if client.currentUser == nil || !client.isAuthenticated() {
-            print("error: user not authenticated")
-            completion([Take]())
-            return
-        }
-        
-        let baasObject = BaasBoxTake()
-        let params = ["recordsPerPage": "50",
-                      "orderBy": "votes",
-                      "where": "challengeId=?",
-                      "params": challengeId]
-        client.loadCollection(baasObject, withParams: params, completion: { (objects, error) -> Void in
-            var takes = [Take]()
-            if let baasTakes = objects as? [BaasBoxTake] {
-                if !baasTakes.isEmpty {
-                    var failCount = 0
-                    for baasTake in baasTakes {
-                        BAAFile.load(withId: baasTake.overlayId, completion: { (object, error) in
-                            if object != nil, let image = UIImage(data: object!) {
-                                let take = Take(
-                                    id: baasTake.objectId,
-                                    challengeId: baasTake.challengeId,
-                                    author: baasTake.author,
-                                    overlay: image,
-                                    votes: baasTake.votes)
-                                takes.append(take)
-                            } else {
-                                print("error: unable to load take [description=\(error?.localizedDescription)]")
-                                failCount += 1
-                            }
-                            if takes.count == baasTakes.count - failCount{
-                                takes.sort(by: { (left, right) -> Bool in
-                                    if left.votes > right.votes {
-                                        return true
-                                    }
-                                    return false
-                                })
-                                completion(takes)
-                            }
-                        })
-                    }
-                } else {
-                    completion(takes)
-                }
-            } else {
-                print("error: unable to load takes [description=\(error?.localizedDescription)]")
-                completion(takes)
-            }
-        })
-    }
   
-    func getTakeList(for challengeId: String, completion: @escaping ([TakeDto]) -> Void) -> Void{
+    func getTakeDtoList(for challengeId: String, completion: @escaping ([TakeDto]) -> Void) -> Void{
         
         if challengeId.isEmpty {
             print("error: invalid parameters")
@@ -636,6 +471,7 @@ class BaasBoxClient: BaClient {
                     for baasTake in baasTakes {
                         let take = TakeDto(id: baasTake.objectId,
                                            challengeId: baasTake.challengeId,
+                                           imageId: "",
                                            author: baasTake.author,
                                            overlay: UIImage(),
                                            votes: baasTake.votes)
@@ -690,6 +526,7 @@ class BaasBoxClient: BaClient {
                                 let take = TakeDto(
                                     id: baasTake.objectId,
                                     challengeId: baasTake.challengeId,
+                                    imageId: "",
                                     author: baasTake.author,
                                     overlay: image,
                                     votes: baasTake.votes)
