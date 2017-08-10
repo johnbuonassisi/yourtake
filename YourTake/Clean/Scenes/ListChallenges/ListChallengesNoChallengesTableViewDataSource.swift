@@ -9,28 +9,22 @@
 import UIKit
 
 class ListChallengesNoChallengesTableViewDataSource: NSObject, UITableViewDataSource {
-  
-  weak var viewController: ListChallengesViewController!
-  
-  func numberOfSections(in tableView: UITableView) -> Int
-  {
-    return 1;
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-  {
-    return 1;
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-  {
-    let cell = tableView.dequeueReusableCell(withIdentifier: NO_CHALLENGE_CELL_ID, for: indexPath) as! EmptyChallengeTableViewCell
-    cell.createNewChallengeButton.addTarget(viewController,
-                                            action: #selector(viewController.createChallenge),
-                                            for: .touchUpInside)
-    return cell
-  }
-  
-
-
+    
+    weak var viewController: ListChallengesViewController!
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: NO_CHALLENGE_CELL_ID, for: indexPath) as! EmptyChallengeTableViewCell
+        cell.createNewChallengeButton.addTarget(viewController,
+                                                action: #selector(viewController.createChallenge),
+                                                for: .touchUpInside)
+        return cell
+    }
 }

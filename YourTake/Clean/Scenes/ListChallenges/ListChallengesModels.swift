@@ -11,80 +11,75 @@
 
 import UIKit
 
-struct ListChallenges
-{
-  struct RefreshChallenges
-  {
-    struct Request
-    {
-      var challengeType: ChallengeRequestType
-    }
-  }
-  
-  struct FetchChallenges
-  {
-    struct Request
-    {
-      var challengeType: ChallengeRequestType
-      var isChallengeAndImageLoadSeparated: Bool
-    }
+struct ListChallenges {
     
-    struct ViewModel
-    {
-      
-      struct DisplayedChallenge
-      {
-        var id: String
-        var name: String
-        var imageId: String
-        var challengeImage: UIImage?
-        var expiryLabel: String
-        var totalVotesLabel: String?
-        var isDrawButtonEnabled: Bool
-        var listTakesButtonTitleText: String
-      }
-      
-      enum ChallengeViewType: Int {
-        case userChallenges = 0
-        case friendChallenges = 1
-        case noFriends = 2
-        case noChallenges = 3
+    struct RefreshChallenges {
         
-      }
-      
-      var challengeType: ChallengeViewType
-      var displayedChallenges: [DisplayedChallenge]
-      var isChallengeCreationEnabled: Bool
-      
+        struct Request {
+            var challengeType: ChallengeRequestType
+        }
     }
     
-    struct Response
-    {
-      var challengeType: ChallengeResponseType
-      var challenges: [ChallengeResponseModel]
-      
-      enum ChallengeResponseType: Int {
+    struct FetchChallenges {
+        
+        struct Request {
+            var challengeType: ChallengeRequestType
+            var isChallengeAndImageLoadSeparated: Bool
+        }
+        
+        struct ViewModel {
+            
+            struct DisplayedChallenge {
+                var id: String
+                var name: String
+                var imageId: String
+                var challengeImage: UIImage?
+                var expiryLabel: String
+                var totalVotesLabel: String?
+                var isDrawButtonEnabled: Bool
+                var listTakesButtonTitleText: String
+            }
+            
+            enum ChallengeViewType: Int {
+                case userChallenges = 0
+                case friendChallenges = 1
+                case noFriends = 2
+                case noChallenges = 3
+                
+            }
+            
+            var challengeType: ChallengeViewType
+            var displayedChallenges: [DisplayedChallenge]
+            var isChallengeCreationEnabled: Bool
+            
+        }
+        
+        struct Response {
+            var challengeType: ChallengeResponseType
+            var challenges: [ChallengeResponseModel]
+            
+            enum ChallengeResponseType: Int {
+                case userChallenges = 0
+                case friendChallenges = 1
+                case noFriends = 2
+            }
+            
+            struct ChallengeResponseModel
+            {
+                var id : String
+                var author : String
+                var imageId : String
+                var recipients : [String]
+                var duration : TimeInterval
+                var created : Date
+                var image: UIImage?
+                var totalNumberOfVotes: UInt?
+            }
+        }
+    }
+    
+    enum ChallengeRequestType: Int {
         case userChallenges = 0
         case friendChallenges = 1
-        case noFriends = 2
-      }
-      
-      struct ChallengeResponseModel
-      {
-        var id : String
-        var author : String
-        var imageId : String
-        var recipients : [String]
-        var duration : TimeInterval
-        var created : Date
-        var image: UIImage?
-        var totalNumberOfVotes: UInt?
-      }
     }
-  }
-  
-  enum ChallengeRequestType: Int {
-    case userChallenges = 0
-    case friendChallenges = 1
-  }
 }

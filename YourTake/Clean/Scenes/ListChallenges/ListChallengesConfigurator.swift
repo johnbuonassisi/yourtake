@@ -13,44 +13,39 @@ import UIKit
 
 // MARK: - Connect View, Interactor, and Presenter
 
-extension ListChallengesViewController: ListChallengesPresenterOutput
-{
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    router.passDataToNextScene(segue: segue)
-  }
+extension ListChallengesViewController: ListChallengesPresenterOutput {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        router.passDataToNextScene(segue: segue)
+    }
 }
 
-extension ListChallengesInteractor: ListChallengesViewControllerOutput
-{
+extension ListChallengesInteractor: ListChallengesViewControllerOutput {
 }
 
-extension ListChallengesPresenter: ListChallengesInteractorOutput
-{
+extension ListChallengesPresenter: ListChallengesInteractorOutput {
 }
 
 class ListChallengesConfigurator
 {
-  // MARK: - Object lifecycle
-  
-  static let sharedInstance = ListChallengesConfigurator()
-  
-  private init() {}
-  
-  // MARK: - Configuration
-  
-  func configure(viewController: ListChallengesViewController)
-  {
-    let router = ListChallengesRouter()
-    router.viewController = viewController
+    // MARK: - Object lifecycle
     
-    let presenter = ListChallengesPresenter()
-    presenter.output = viewController
+    static let sharedInstance = ListChallengesConfigurator()
     
-    let interactor = ListChallengesInteractor()
-    interactor.output = presenter
+    private init() {}
     
-    viewController.output = interactor
-    viewController.router = router
-  }
+    // MARK: - Configuration
+    
+    func configure(viewController: ListChallengesViewController) {
+        let router = ListChallengesRouter()
+        router.viewController = viewController
+        
+        let presenter = ListChallengesPresenter()
+        presenter.output = viewController
+        
+        let interactor = ListChallengesInteractor()
+        interactor.output = presenter
+        
+        viewController.output = interactor
+        viewController.router = router
+    }
 }

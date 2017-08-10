@@ -11,12 +11,10 @@
 
 import UIKit
 
-class ListChallengesWorker
-{
-  // MARK: - Business Logic
-  
-  func doSomeWork()
-  {
-    // NOTE: Do the work
-  }
+class ListChallengesWorker {
+    // MARK: - Business Logic
+    
+    func doSomeWork() {
+        // NOTE: Do the work
+    }
 }
