@@ -175,12 +175,14 @@ class ChallengeOptionsViewController: UIViewController,
     @IBAction func doneButtonTapped() {
         
         if let friendSelectionTracker = friendSelectionTracker {
-            let newChallenge = Challenge(id: "",
-                                         author: "",
-                                         image: challengeImage!,
-                                         recipients: friendSelectionTracker.getAllSelectedFriends(),
-                                         duration: expiryPicker.countDownDuration,
-                                         created: Date())
+            
+            let newChallenge = ChallengeDto(id: "",
+                                            author: "",
+                                            imageId: "",
+                                            recipients: friendSelectionTracker.getAllSelectedFriends(),
+                                            duration: expiryPicker.countDownDuration,
+                                            created: Date())
+            newChallenge.image = challengeImage!
             
             let backendClient = Backend.sharedInstance.getClient()
             backendClient.createChallenge(newChallenge, completion: { (success) -> Void in

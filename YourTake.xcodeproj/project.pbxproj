@@ -25,7 +25,6 @@
 		52299E301DE807ED00F04C86 /* BAAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E271DE807ED00F04C86 /* BAAObject.m */; };
 		52299E311DE807ED00F04C86 /* BaasBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E291DE807ED00F04C86 /* BaasBox.m */; };
 		52299E321DE807ED00F04C86 /* BAAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E2B1DE807ED00F04C86 /* BAAUser.m */; };
-		523074A71DC704DE002EB030 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074A61DC704DE002EB030 /* Challenge.swift */; };
 		523074A91DC70C4F002EB030 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074A81DC70C4F002EB030 /* User.swift */; };
 		523074B11DC71692002EB030 /* John_Challenge_Andrea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */; };
 		523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */; };
@@ -89,7 +88,6 @@
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
 		52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */; };
-		529DC7C71DCC705F00EFA856 /* Take.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529DC7C61DCC705F00EFA856 /* Take.swift */; };
 		529EFBB11E9F3A3D0054559B /* CreateTakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */; };
 		529EFBB31E9F4E8D0054559B /* CreateTakeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */; };
 		529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */; };
@@ -146,7 +144,6 @@
 		52299E291DE807ED00F04C86 /* BaasBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaasBox.m; sourceTree = "<group>"; };
 		52299E2A1DE807ED00F04C86 /* BAAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAUser.h; sourceTree = "<group>"; };
 		52299E2B1DE807ED00F04C86 /* BAAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAUser.m; sourceTree = "<group>"; };
-		523074A61DC704DE002EB030 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Challenge.swift; path = Models/Challenge.swift; sourceTree = "<group>"; };
 		523074A81DC70C4F002EB030 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Andrea.jpg; sourceTree = "<group>"; };
 		523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Anthony.jpg; sourceTree = "<group>"; };
@@ -212,7 +209,6 @@
 		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		528509971DC6F9470083CC55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipelessNavigationController.swift; path = Clean/Common/SwipelessNavigationController.swift; sourceTree = "<group>"; };
-		529DC7C61DCC705F00EFA856 /* Take.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Take.swift; path = Models/Take.swift; sourceTree = "<group>"; };
 		529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateTakeViewController.swift; path = Clean/Scenes/CreateTake/CreateTakeViewController.swift; sourceTree = "<group>"; };
 		529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTakeViewController.xib; path = Clean/Scenes/CreateTake/CreateTakeViewController.xib; sourceTree = "<group>"; };
 		529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeOptionsViewController.swift; path = Clean/Scenes/SetChallengeOptions/ChallengeOptionsViewController.swift; sourceTree = "<group>"; };
@@ -513,9 +509,7 @@
 		5285099E1DC6F9940083CC55 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				523074A61DC704DE002EB030 /* Challenge.swift */,
 				523074A81DC70C4F002EB030 /* User.swift */,
-				529DC7C61DCC705F00EFA856 /* Take.swift */,
 				33E3AA4C1E248EA600C5D05A /* Backend.swift */,
 				52A868801E63687100F26F31 /* FriendSelectionTracker.swift */,
 				52760BF41E9045270093B921 /* ChallengeDto.swift */,
@@ -771,8 +765,6 @@
 				332283F11E05D5E4008647E4 /* BaasBoxClient.swift in Sources */,
 				52A0D1F31EA2EC6400292B23 /* SignupBaasBoxStore.swift in Sources */,
 				520655161E9B47D90048A575 /* TakeBaasBoxStore.swift in Sources */,
-				529DC7C71DCC705F00EFA856 /* Take.swift in Sources */,
-				523074A71DC704DE002EB030 /* Challenge.swift in Sources */,
 				52B682EC1EA29BFE00DBB0A4 /* UserLoginWorker.swift in Sources */,
 				52B682EA1EA29BFE00DBB0A4 /* UserLoginRouter.swift in Sources */,
 				52A0D1FC1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift in Sources */,

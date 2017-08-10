@@ -17,20 +17,23 @@ class TakeDto: NSObject {
   var overlay : UIImage?
   var votes : UInt
   
-  init(id: String, challengeId: String, imageId: String, author: String, overlay: UIImage?, votes: UInt) {
+  init(id: String, challengeId: String, imageId: String, author: String, votes: UInt) {
     self.id = id
     self.challengeId = challengeId
     self.imageId = imageId
     self.author = author
-    self.overlay = overlay
+    self.overlay = nil
     self.votes = votes
   }
   
   func isValid() -> Bool {
-    if challengeId.isEmpty || overlay!.size.equalTo(CGSize()) {
-      return false
+    if let overlay = self.overlay {
+        if challengeId.isEmpty || overlay.size.equalTo(CGSize()) {
+            return false
+        }
+        return true
     }
-    return true
+    return false
   }
 
 }

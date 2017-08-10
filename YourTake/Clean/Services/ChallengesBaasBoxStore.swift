@@ -14,28 +14,28 @@ class ChallengesBaasBoxStore: ChallengesStoreProtocol {
         
         // get initial data from source
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getChallengeList(for: false, completion:{ (challengeDtos) -> Void in
+        backendClient.getChallengeDtoList(for: false, completion:{ (challengeDtos) -> Void in
             completionHandler(challengeDtos, nil)
         })
     }
     
     func fetchChallenges(completionHandler: @escaping (() throws -> [ChallengeDto]) -> Void) {
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getChallengeList(for: false, completion:{ (challengeDtos) -> Void in
+        backendClient.getChallengeDtoList(for: false, completion:{ (challengeDtos) -> Void in
             completionHandler{challengeDtos}
         })
     }
     
     func fetchChallenges(completionHandler: @escaping (ChallengesStoreResult<[ChallengeDto]>) -> Void) {
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getChallengeList(for: false, completion:{ (challengeDtos) -> Void in
+        backendClient.getChallengeDtoList(for: false, completion:{ (challengeDtos) -> Void in
             completionHandler(ChallengesStoreResult.Success(result: challengeDtos))
         })
     }
     
     func fetchFriendChallenges(completionHandler: @escaping (() throws -> [ChallengeDto]) -> Void) {
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getChallengeList(for: true, completion:{ (challengeDtos) -> Void in
+        backendClient.getChallengeDtoList(for: true, completion:{ (challengeDtos) -> Void in
             completionHandler { return challengeDtos }
         })
     }

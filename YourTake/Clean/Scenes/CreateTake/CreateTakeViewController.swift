@@ -143,7 +143,8 @@ class CreateTakeViewController: UIViewController,
                            orientation: drawImage!.imageOrientation)
     
 
-    let take = Take(id: "", challengeId: challengeId, author: "", overlay: newImage, votes: 0)
+    let take = TakeDto(id: "", challengeId: challengeId, imageId: "", author: "", votes: 0)
+    take.overlay = newImage
     let backendClient = Backend.sharedInstance.getClient()
     backendClient.createTake(take, completion: { (success) -> Void in
       if(success) {
