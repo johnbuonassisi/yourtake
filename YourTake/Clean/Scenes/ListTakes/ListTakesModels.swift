@@ -11,43 +11,39 @@
 
 import UIKit
 
-struct ListTakes
-{
-  struct FetchTakes
-  {
-    struct Request
-    {
-      var challengeId: String
-    }
-    struct Response
-    {
-      var takes: [TakeDto]
-      var votedForTakeId: String?
-    }
-    struct ViewModel
-    {
-      struct DisplayedTake
-      {
-        var author: String
-        var numberOfVotes: String
-        var likeButtonImage: UIImage
-        var takeImage: UIImage
-      }
-      
-      var displayedTakes: [DisplayedTake]
-    }
-  }
-  
-  struct VoteForTake
-  {
-    struct Request
-    {
-      var takeTag: Int
+struct ListTakes {
+    
+    struct FetchTakes {
+        
+        struct Request {
+            var challengeId: String
+        }
+        
+        struct Response {
+            var takes: [TakeDto]
+            var votedForTakeId: String?
+        }
+        
+        struct ViewModel {
+            struct DisplayedTake {
+                var author: String
+                var numberOfVotes: String
+                var likeButtonImage: UIImage
+                var takeImage: UIImage?
+            }
+            
+            var displayedTakes: [DisplayedTake]
+        }
     }
     
-    struct Response
-    {
-      var votedForTakeId: String?
+    struct VoteForTake {
+        
+        struct Request {
+            var takeTag: Int
+        }
+        
+        struct Response {
+            var votedForTakeId: String?
+        }
     }
-  }
 }

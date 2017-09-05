@@ -11,113 +11,127 @@
 
 import UIKit
 
-protocol ListTakesInteractorInput
-{
-  func fetchTakes(request: ListTakes.FetchTakes.Request)
-  func voteForTake(request: ListTakes.VoteForTake.Request)
+protocol ListTakesInteractorInput {
+    func fetchTakes(request: ListTakes.FetchTakes.Request)
+    func voteForTake(request: ListTakes.VoteForTake.Request)
 }
 
-protocol ListTakesInteractorOutput
-{
-  func presentFetchedTakes(response: ListTakes.FetchTakes.Response)
+protocol ListTakesInteractorOutput {
+    func presentFetchedTakes(response: ListTakes.FetchTakes.Response)
 }
 
-class ListTakesInteractor: ListTakesInteractorInput
-{
-  var output: ListTakesInteractorOutput!
-  var takesWorker = TakesWorker(takeStore: TakeBaasBoxStore())
-  
-  private var user: User!
-  private var takes: [TakeDto] = []
-  private var challengeId: String!
-  private var isChallengeExpired: Bool!
-  
-  // MARK: - Business logic
-  
-  func fetchTakes(request: ListTakes.FetchTakes.Request)
-  {
-    self.challengeId = request.challengeId
-    // Get the user
-    takesWorker.fetchUser(completion: { (user) -> Void in
-      self.user = user
-      // Get the takes
-      self.takesWorker.fetchTakes(challengeId: self.challengeId, completionHandler: {(takes) -> Void in
-        self.takes = takes
-        // Get if challenge is expired
-        self.takesWorker.isChallengeExpired(challengeId: self.challengeId, completionHandler: {(isChallengeExpired) -> Void in
-          self.isChallengeExpired = isChallengeExpired
-          let votedForTakeId = self.user.votes[self.challengeId]
-          let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
-          self.output.presentFetchedTakes(response: response)
+class ListTakesInteractor: ListTakesInteractorInput {
+    var output: ListTakesInteractorOutput!
+    var takesWorker = TakesWorker(takeStore: TakeBaasBoxStore())
+    var challengesWorker = ChallengesWorker(challengesStore: ChallengesBaasBoxStore())
+    
+    private var user: User!
+    private var takes: [TakeDto] = []
+    private var challengeId: String!
+    private var isChallengeExpired: Bool!
+    
+    // MARK: - Business logic
+    
+    func fetchTakes(request: ListTakes.FetchTakes.Request) {
+        self.challengeId = request.challengeId
+        
+        // Initialize if challenge is expired
+        self.takesWorker.isChallengeExpired(challengeId: self.challengeId, completionHandler: { (isChallengeExpired) -> Void in
+            self.isChallengeExpired = isChallengeExpired
         })
-      })
-    })
-  }
-  
-  func voteForTake(request: ListTakes.VoteForTake.Request) {
-    
-    if isChallengeExpired == true {
-      return // this effectively disables voting on takes for an expired challenge
-    }
-    
-    let previouslyVotedTakeId = user.votes[challengeId]
-    var newVoteTakeId: String? = takes[request.takeTag].id
-    
-    if(newVoteTakeId == nil) {
-      print("Unexpected take tag of \(request.takeTag) was used")
-      return
-    }
-  
-    if previouslyVotedTakeId == nil {
-      // vote for newVoteTakeId
-      takesWorker.voteForTake(takeId: newVoteTakeId!, completionHandler: { (isSuccess) -> Void in
-        if isSuccess { print("Voted for take with id " + newVoteTakeId!)}
-        else { print("Unable to vote for take with id " + newVoteTakeId!)}
-      })
-      user.votes[challengeId] = newVoteTakeId
-      takes[request.takeTag].votes += 1
-    } else {
-      
-      if(newVoteTakeId == previouslyVotedTakeId) {
-        // unvote for previouslyVotedTakeId
-        takesWorker.unvoteForTake(takeId: previouslyVotedTakeId!, completionHandler: { (isSuccess) -> Void in
-          if(isSuccess) {
-            print("Voted for take with id " + previouslyVotedTakeId!)
-          } else {
-            print("Error voting for take with id " + previouslyVotedTakeId!)
-          }
-        })
-        takes[request.takeTag].votes -= 1
-        user.votes.removeValue(forKey: challengeId)
-        newVoteTakeId = nil
-      } else {
-        // unvote for previouslyVotedTakeId
-        takesWorker.unvoteForTake(takeId: previouslyVotedTakeId!, completionHandler: { (isSuccess) -> Void in
-          if( isSuccess) {
-            
-            print("Unvoted for take with id " + previouslyVotedTakeId!)
-            
-            // vote for newVoteTakeId
-            self.takesWorker.voteForTake(takeId: newVoteTakeId!, completionHandler: { (isSuccess) -> Void in
-              
-              if isSuccess { print("Voted for take with id " + newVoteTakeId!)}
-              else { print("Unable to vote for take with id " + newVoteTakeId!)}
+        
+        // Get the user
+        takesWorker.fetchUser(completion: { (user) -> Void in
+            self.user = user
+            // Get the takes
+            self.takesWorker.fetchTakes(challengeId: self.challengeId, completionHandler: {(takes) -> Void in
+                self.takes = takes
+                
+                // Find voted for take
+                let votedForTakeId = self.user.votes[self.challengeId]
+                
+                // Present the takes
+                let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
+                self.output.presentFetchedTakes(response: response)
+                
+                for take in takes {
+                    // Download the take image
+                    self.challengesWorker.downloadImage(with: take.imageId, completion: { (image) -> Void in
+                        take.overlay = image
+                        
+                        // Present the takes
+                        let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
+                        self.output.presentFetchedTakes(response: response)
+                    })
+                }
             })
-          } else {
-            print("Unable to unvote for take with id " + previouslyVotedTakeId!)
-          }
         })
-        for take in takes {
-          if take.id == previouslyVotedTakeId {
-            take.votes -= 1
-          }
-        }
-        takes[request.takeTag].votes += 1
-        user.votes[challengeId] = newVoteTakeId
-      }
     }
     
-    let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: newVoteTakeId)
-    self.output.presentFetchedTakes(response: response)
-  }
+    func voteForTake(request: ListTakes.VoteForTake.Request) {
+        
+        if isChallengeExpired == true {
+            return // this effectively disables voting on takes for an expired challenge
+        }
+        
+        let previouslyVotedTakeId = user.votes[challengeId]
+        var newVoteTakeId: String? = takes[request.takeTag].id
+        
+        if(newVoteTakeId == nil) {
+            print("Unexpected take tag of \(request.takeTag) was used")
+            return
+        }
+        
+        if previouslyVotedTakeId == nil {
+            // vote for newVoteTakeId
+            takesWorker.voteForTake(takeId: newVoteTakeId!, completionHandler: { (isSuccess) -> Void in
+                if isSuccess { print("Voted for take with id " + newVoteTakeId!)}
+                else { print("Unable to vote for take with id " + newVoteTakeId!)}
+            })
+            user.votes[challengeId] = newVoteTakeId
+            takes[request.takeTag].votes += 1
+        } else {
+            
+            if(newVoteTakeId == previouslyVotedTakeId) {
+                // unvote for previouslyVotedTakeId
+                takesWorker.unvoteForTake(takeId: previouslyVotedTakeId!, completionHandler: { (isSuccess) -> Void in
+                    if(isSuccess) {
+                        print("Voted for take with id " + previouslyVotedTakeId!)
+                    } else {
+                        print("Error voting for take with id " + previouslyVotedTakeId!)
+                    }
+                })
+                takes[request.takeTag].votes -= 1
+                user.votes.removeValue(forKey: challengeId)
+                newVoteTakeId = nil
+            } else {
+                // unvote for previouslyVotedTakeId
+                takesWorker.unvoteForTake(takeId: previouslyVotedTakeId!, completionHandler: { (isSuccess) -> Void in
+                    if( isSuccess) {
+                        
+                        print("Unvoted for take with id " + previouslyVotedTakeId!)
+                        
+                        // vote for newVoteTakeId
+                        self.takesWorker.voteForTake(takeId: newVoteTakeId!, completionHandler: { (isSuccess) -> Void in
+                            
+                            if isSuccess { print("Voted for take with id " + newVoteTakeId!)}
+                            else { print("Unable to vote for take with id " + newVoteTakeId!)}
+                        })
+                    } else {
+                        print("Unable to unvote for take with id " + previouslyVotedTakeId!)
+                    }
+                })
+                for take in takes {
+                    if take.id == previouslyVotedTakeId {
+                        take.votes -= 1
+                    }
+                }
+                takes[request.takeTag].votes += 1
+                user.votes[challengeId] = newVoteTakeId
+            }
+        }
+        
+        let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: newVoteTakeId)
+        self.output.presentFetchedTakes(response: response)
+    }
 }

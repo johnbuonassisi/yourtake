@@ -28,6 +28,16 @@ class ChallengeDto: NSObject {
         self.image = nil
     }
     
+    func isValid() -> Bool {
+        if let image = self.image {
+            if image.size.equalTo(CGSize()) || self.duration <= 0 || self.recipients.isEmpty {
+                return false
+            }
+            return true
+        }
+        return false
+    }
+    
     func getTimeRemaining() -> Date {
         let diff = duration + self.created.timeIntervalSinceNow
         if diff > 0 {

@@ -11,14 +11,12 @@
 
 import UIKit
 
-protocol ListChallengesViewControllerInput
-{
-  func displayFetchedChallenges(viewModel: ListChallenges.FetchChallenges.ViewModel)
+protocol ListChallengesViewControllerInput {
+    func displayFetchedChallenges(viewModel: ListChallenges.FetchChallenges.ViewModel)
 }
 
-protocol ListChallengesViewControllerOutput
-{
-  func fetchChallenges(request: ListChallenges.FetchChallenges.Request)
+protocol ListChallengesViewControllerOutput {
+    func fetchChallenges(request: ListChallenges.FetchChallenges.Request)
 }
 
 let USER_CHALLENGE_CELL_ID = "UserChallengeTableViewCell"
@@ -27,160 +25,151 @@ let NO_CHALLENGE_CELL_ID = "EmptyChallengeTableViewCell"
 let NO_FRIENDS_CELL_ID = "NoFriendsCell"
 
 class ListChallengesViewController: UIViewController,
-                                    UITableViewDelegate,
-                                    UITabBarDelegate,
-                                    ListChallengesViewControllerInput
-{
-  // MARK: - Object lifecycle
-  
-  var output: ListChallengesViewControllerOutput!
-  var router: ListChallengesRouter!
-  
-  var userChallengesDataSource = ListChallengesForUserTableViewDataSource()
-  var friendChallengesDataSource = ListChallengesForFriendsTableViewDataSource()
-  var noChallengesDataSource = ListChallengesNoChallengesTableViewDataSource()
-  var noFriendsDataSource = ListChallengesNoFriendsTableViewDataSource()
-  
-  @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var tabBar: UITabBar!
-  @IBOutlet weak var userTab: UITabBarItem!
-  @IBOutlet weak var friendsTab: UITabBarItem!
-  @IBOutlet weak var addFriendsBarButton: UIBarButtonItem!
-  @IBOutlet weak var createChallengeBarButton: UIBarButtonItem!
-  @IBOutlet weak var settingsBarButton: UIBarButtonItem!
-
-  override func awakeFromNib()
-  {
-    super.awakeFromNib()
-    ListChallengesConfigurator.sharedInstance.configure(viewController: self)
-  }
-  
-  // MARK: - View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
+    UITableViewDelegate,
+    UITabBarDelegate,
+    ListChallengesViewControllerInput {
+    // MARK: - Object lifecycle
     
-    userChallengesDataSource.viewController = self
-    friendChallengesDataSource.viewController = self
-    noChallengesDataSource.viewController = self
-    noFriendsDataSource.viewController = self
+    var output: ListChallengesViewControllerOutput!
+    var router: ListChallengesRouter!
     
-    tableView.dataSource = userChallengesDataSource
-    tableView.delegate = self
-    tableView.rowHeight = ChallengeTableViewCell.CellRowHeight()
-    tableView.allowsSelection = false
+    var userChallengesDataSource = ListChallengesForUserTableViewDataSource()
+    var friendChallengesDataSource = ListChallengesForFriendsTableViewDataSource()
+    var noChallengesDataSource = ListChallengesNoChallengesTableViewDataSource()
+    var noFriendsDataSource = ListChallengesNoFriendsTableViewDataSource()
     
-    let ctNib = UINib(nibName: "ChallengeTableViewCell", bundle: nil)
-    tableView.register(ctNib, forCellReuseIdentifier: USER_CHALLENGE_CELL_ID)
-    tableView.register(ctNib, forCellReuseIdentifier: FRIEND_CHALLENGE_CELL_ID)
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tabBar: UITabBar!
+    @IBOutlet weak var userTab: UITabBarItem!
+    @IBOutlet weak var friendsTab: UITabBarItem!
+    @IBOutlet weak var addFriendsBarButton: UIBarButtonItem!
+    @IBOutlet weak var createChallengeBarButton: UIBarButtonItem!
+    @IBOutlet weak var settingsBarButton: UIBarButtonItem!
     
-    let ectNib = UINib(nibName: "EmptyChallengeTableViewCell", bundle: nil)
-    tableView.register(ectNib, forCellReuseIdentifier: NO_CHALLENGE_CELL_ID)
-    
-    let nftNib = UINib(nibName: "NoFriendsCell", bundle: nil)
-    tableView.register(nftNib, forCellReuseIdentifier: NO_FRIENDS_CELL_ID)
-    
-    tableView.refreshControl = UIRefreshControl()
-    tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
-    tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
-    tableView.refreshControl!.beginRefreshing()
-
-    
-    tabBar.delegate = self
-    tabBar.selectedItem = tabBar.items?[0]
-    
-    fetchChallengesOnLoad()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationController?.navigationBar.isHidden = false
-  }
-  
-  // MARK: - Event handling
-  
-  func fetchChallengesOnLoad()
-  {
-    // NOTE: Ask the Interactor to do some work
-    let tag = tabBar.selectedItem!.tag
-    let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
-    let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
-                                                         isChallengeAndImageLoadSeparated: false)
-    output.fetchChallenges(request: request)
-  }
-  
-  // MARK: - Display logic
-  
-  func displayFetchedChallenges(viewModel: ListChallenges.FetchChallenges.ViewModel)
-  {
-    // NOTE: Display the result from the Presenter
-    switch(viewModel.challengeType) {
-    case .userChallenges:
-      userChallengesDataSource.displayedChallenges = viewModel.displayedChallenges
-      tableView.dataSource = userChallengesDataSource
-    case .friendChallenges:
-      friendChallengesDataSource.displayedChallenges = viewModel.displayedChallenges
-      tableView.dataSource = friendChallengesDataSource
-    case .noChallenges:
-      tableView.dataSource = noChallengesDataSource
-    case .noFriends:
-      tableView.dataSource = noFriendsDataSource
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        ListChallengesConfigurator.sharedInstance.configure(viewController: self)
     }
     
-    createChallengeBarButton.isEnabled = viewModel.isChallengeCreationEnabled
-    tableView.reloadData()
-    tableView.refreshControl!.endRefreshing()
-  }
-  
-  // MARK - Tab Bar Control delegate methods
-  
-  func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem)
-  {
-    fetchChallengesOnLoad()
-  }
-  
-  // MARK - Action methods
-  
-  func userChallengeCellDrawButtonPressed(sender: UIButton!) {
-    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
-    let challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
-    router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
-  }
-  
-  func friendChallengeCellDrawButtonPressed(sender: UIButton!) {
-    let challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
-    let challengeImage = friendChallengesDataSource.displayedChallenges[sender.tag].challengeImage
-    router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
-  }
-
-  func userChallengeCellVoteButtonPressed(sender: UIButton!) {
-    let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
-    router.navigateToTakesScene(with: challengeId)
-  }
-  
-  func friendChallengeCellVoteButtonPressed(sender: UIButton!) {
-    let challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
-    router.navigateToTakesScene(with: challengeId)
-  }
-  
-  func createChallenge() {
-    router.navigateToSnapChallengeImageScene()
-  }
-  
-  func addFriends() {
-    router.navigateToAddFriendsScene()
-  }
-  
-  func refresh(sender: UIButton!)
-  {
-    let tag = tabBar.selectedItem!.tag
-    let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
-    let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
-                                                         isChallengeAndImageLoadSeparated: true)
-    output.fetchChallenges(request: request)
-
-  }
-
-  
+    // MARK: - View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        userChallengesDataSource.viewController = self
+        friendChallengesDataSource.viewController = self
+        noChallengesDataSource.viewController = self
+        noFriendsDataSource.viewController = self
+        
+        tableView.dataSource = userChallengesDataSource
+        tableView.delegate = self
+        tableView.rowHeight = ChallengeTableViewCell.CellRowHeight()
+        tableView.allowsSelection = false
+        
+        let ctNib = UINib(nibName: "ChallengeTableViewCell", bundle: nil)
+        tableView.register(ctNib, forCellReuseIdentifier: USER_CHALLENGE_CELL_ID)
+        tableView.register(ctNib, forCellReuseIdentifier: FRIEND_CHALLENGE_CELL_ID)
+        
+        let ectNib = UINib(nibName: "EmptyChallengeTableViewCell", bundle: nil)
+        tableView.register(ectNib, forCellReuseIdentifier: NO_CHALLENGE_CELL_ID)
+        
+        let nftNib = UINib(nibName: "NoFriendsCell", bundle: nil)
+        tableView.register(nftNib, forCellReuseIdentifier: NO_FRIENDS_CELL_ID)
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
+        tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        tableView.refreshControl!.beginRefreshing()
+        
+        
+        tabBar.delegate = self
+        tabBar.selectedItem = tabBar.items?[0]
+        
+        fetchChallengesOnLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    // MARK: - Event handling
+    
+    func fetchChallengesOnLoad() {
+        // NOTE: Ask the Interactor to do some work
+        let tag = tabBar.selectedItem!.tag
+        let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
+        let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
+                                                             isChallengeAndImageLoadSeparated: false)
+        output.fetchChallenges(request: request)
+    }
+    
+    // MARK: - Display logic
+    
+    func displayFetchedChallenges(viewModel: ListChallenges.FetchChallenges.ViewModel) {
+        // NOTE: Display the result from the Presenter
+        switch(viewModel.challengeType) {
+        case .userChallenges:
+            userChallengesDataSource.displayedChallenges = viewModel.displayedChallenges
+            tableView.dataSource = userChallengesDataSource
+        case .friendChallenges:
+            friendChallengesDataSource.displayedChallenges = viewModel.displayedChallenges
+            tableView.dataSource = friendChallengesDataSource
+        case .noChallenges:
+            tableView.dataSource = noChallengesDataSource
+        case .noFriends:
+            tableView.dataSource = noFriendsDataSource
+        }
+        
+        createChallengeBarButton.isEnabled = viewModel.isChallengeCreationEnabled
+        tableView.reloadData()
+        tableView.refreshControl!.endRefreshing()
+    }
+    
+    // MARK - Tab Bar Control delegate methods
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        fetchChallengesOnLoad()
+    }
+    
+    // MARK - Action methods
+    
+    func userChallengeCellDrawButtonPressed(sender: UIButton!) {
+        let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+        let challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
+        router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
+    }
+    
+    func friendChallengeCellDrawButtonPressed(sender: UIButton!) {
+        let challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
+        let challengeImage = friendChallengesDataSource.displayedChallenges[sender.tag].challengeImage
+        router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
+    }
+    
+    func userChallengeCellVoteButtonPressed(sender: UIButton!) {
+        let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
+        router.navigateToTakesScene(with: challengeId)
+    }
+    
+    func friendChallengeCellVoteButtonPressed(sender: UIButton!) {
+        let challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
+        router.navigateToTakesScene(with: challengeId)
+    }
+    
+    func createChallenge() {
+        router.navigateToSnapChallengeImageScene()
+    }
+    
+    func addFriends() {
+        router.navigateToAddFriendsScene()
+    }
+    
+    func refresh(sender: UIButton!) {
+        let tag = tabBar.selectedItem!.tag
+        let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
+        let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
+                                                             isChallengeAndImageLoadSeparated: true)
+        output.fetchChallenges(request: request)
+        
+    }
 }

@@ -10,12 +10,10 @@ typealias BaBoolCompletionBlock = (Bool) -> Void
 typealias BaStringCompletionBlock = (String) -> Void
 typealias BaStringsCompletionBlock = ([String]) -> Void
 typealias BaUserCompletionBlock = (User?) -> Void
-typealias BaChallengeCompletionBlock = (Challenge?) -> Void
-typealias BaChallengesCompletionBlock = ([Challenge]) -> Void
-typealias BaChallengeListCompletionBlock = ([ChallengeDto]) -> Void
 typealias BaChallengeDtoCompletionBlock = (ChallengeDto?) -> Void
-typealias BaTakeCompletionBlock = (Take?) -> Void
-typealias BaTakesCompletionBlock = ([Take]) -> Void
+typealias BaChallengeDtoListCompletionBlock = ([ChallengeDto]) -> Void
+typealias BaTakeDtoCompletionBlock = (TakeDto?) -> Void
+typealias BaTakeDtoListCompletionBlock = ([TakeDto]) -> Void
 typealias BaImageCompletionBlock = (UIImage?) -> Void
 
 protocol BaClient {
@@ -33,22 +31,17 @@ protocol BaClient {
     func removeFriend(_ username: String, completion: @escaping BaBoolCompletionBlock) -> Void
     
     // challenges
-    func getChallenge(with id: String, completion: @escaping BaChallengeCompletionBlock) -> Void
-    func getChallenges(for friends: Bool, completion: @escaping BaChallengesCompletionBlock) -> Void
-    func getChallenges(to date: Date, with maxCount: UInt, for friends: Bool, completion: @escaping BaChallengesCompletionBlock) -> Void
-    func createChallenge(_ challenge: Challenge, completion: @escaping BaBoolCompletionBlock) -> Void
+    func createChallenge(_ challenge: ChallengeDto, completion: @escaping BaBoolCompletionBlock) -> Void
     func removeChallenge(with id: String, completion: @escaping BaBoolCompletionBlock) -> Void
     func getChallengeDto(with id: String, completion: @escaping BaChallengeDtoCompletionBlock) -> Void
-    func getChallengeList(for friends: Bool, completion: @escaping BaChallengeListCompletionBlock) -> Void
-    func getChallengeList(to date: Date, with maxCount: UInt, for friends: Bool, completion: @escaping BaChallengeListCompletionBlock) -> Void
+    func getChallengeDtoList(for friends: Bool, completion: @escaping BaChallengeDtoListCompletionBlock) -> Void
+    func getChallengeDtoList(to date: Date, with maxCount: UInt, for friends: Bool, completion: @escaping BaChallengeDtoListCompletionBlock) -> Void
     
     // takes
-    func getTake(with id: String, completion: @escaping BaTakeCompletionBlock) -> Void
-    func getTakes(for challengeId: String, completion: @escaping BaTakesCompletionBlock) -> Void
-    func getTakeList(for challengeId: String, completion: @escaping ([TakeDto]) -> Void) -> Void
-    func getTakeDtos(for challengeId: String, completion: @escaping ([TakeDto]) -> Void) -> Void
-    func createTake(_ take: Take, completion: @escaping BaBoolCompletionBlock) -> Void
+    func createTake(_ take: TakeDto, completion: @escaping BaBoolCompletionBlock) -> Void
     func removeTake(with id: String, completion: @escaping BaBoolCompletionBlock) -> Void
+    func getTakeDto(with id: String, completion: @escaping BaTakeDtoCompletionBlock) -> Void
+    func getTakeDtoList(for challengeId: String, completion: @escaping BaTakeDtoListCompletionBlock) -> Void
     
     // vote
     func vote(with takeId: String, completion: @escaping BaBoolCompletionBlock) -> Void

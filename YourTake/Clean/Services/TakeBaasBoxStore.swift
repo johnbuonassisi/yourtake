@@ -17,7 +17,7 @@ class TakeBaasBoxStore: TakesStoreProtocol {
   
   func fetchTakes(challengeId: String, completionHandler: @escaping(_ takes: () throws -> [TakeDto]) -> Void) {
     let backendClient = Backend.sharedInstance.getClient()
-    backendClient.getTakeDtos(for: challengeId, completion: { (takes) -> Void in
+    backendClient.getTakeDtoList(for: challengeId, completion: { (takes) -> Void in
         completionHandler{ return takes}
     })
   }
