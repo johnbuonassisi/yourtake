@@ -9,9 +9,13 @@
 import UIKit
 
 class LoginMemStore: LoginStoreProtocol {
-  
-  func login(username: String, password: String, completion: @escaping (Bool) -> Void) {
-    completion(true)
-  }
-
+    
+    func login(username: String, password: String, completion: @escaping (Bool) -> Void) {
+        completion(true)
+    }
+    
+    func changePassword(oldPassword: String, newPassword: String, completion: @escaping (Bool) -> Void) {
+        completion(true)
+    }
+    
 }

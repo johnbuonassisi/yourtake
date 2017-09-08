@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hyc-MW-hcF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hyc-MW-hcF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -200,7 +200,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXx-Gt-tSx">
-                                <rect key="frame" x="264" y="345.5" width="51" height="30"/>
+                                <rect key="frame" x="264" y="345" width="51" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AkW-M0-bcX"/>
                                     <constraint firstAttribute="width" constant="51" id="l9v-yw-vSl"/>
@@ -368,7 +368,7 @@
                                 <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCd-Sx-n6L">
-                                <rect key="frame" x="252" y="293.5" width="58" height="33"/>
+                                <rect key="frame" x="252" y="294" width="58" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Sign up"/>
                                 <connections>
@@ -553,6 +553,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="tUK-ez-Zxy" kind="show" id="9UF-42-2jB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="mVG-Vt-su9" style="IBUITableViewCellStyleDefault" id="ehd-L3-gkr">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
@@ -764,8 +767,83 @@
             </objects>
             <point key="canvasLocation" x="550" y="887"/>
         </scene>
+        <!--Change Password View Controller-->
+        <scene sceneID="Lh6-Pl-XB4">
+            <objects>
+                <viewController id="tUK-ez-Zxy" customClass="ChangePasswordViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QBY-Pe-iBU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q7C-2S-h9x"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kba-GH-QvT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGL-zY-EZ0">
+                                <rect key="frame" x="16" y="72" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dzd-Ro-NG2">
+                                <rect key="frame" x="16" y="110" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-type New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2vc-Ts-6X6">
+                                <rect key="frame" x="16" y="148" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GB6-4k-Tjp">
+                                <rect key="frame" x="16" y="186" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Save Changes">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveChangesButtonPressed:" destination="tUK-ez-Zxy" eventType="touchUpInside" id="kdm-8N-ylA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpB-Wa-lZj">
+                                <rect key="frame" x="126" y="224" width="123" height="30"/>
+                                <state key="normal" title="Forgot Password?"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JGL-zY-EZ0" firstAttribute="top" secondItem="QBY-Pe-iBU" secondAttribute="bottom" constant="8" id="29E-3d-Rg6"/>
+                            <constraint firstItem="KpB-Wa-lZj" firstAttribute="centerX" secondItem="kba-GH-QvT" secondAttribute="centerX" id="8vT-xg-2uh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JGL-zY-EZ0" secondAttribute="trailing" id="MUI-3T-awz"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="dzd-Ro-NG2" secondAttribute="leading" id="Nhz-9f-n1n"/>
+                            <constraint firstItem="KpB-Wa-lZj" firstAttribute="top" secondItem="GB6-4k-Tjp" secondAttribute="bottom" constant="8" id="O6S-Zd-hES"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dzd-Ro-NG2" secondAttribute="trailing" id="Xy8-rr-2Ht"/>
+                            <constraint firstItem="GB6-4k-Tjp" firstAttribute="top" secondItem="2vc-Ts-6X6" secondAttribute="bottom" constant="8" id="dty-pn-92t"/>
+                            <constraint firstItem="2vc-Ts-6X6" firstAttribute="top" secondItem="dzd-Ro-NG2" secondAttribute="bottom" constant="8" id="hd1-sC-rVe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2vc-Ts-6X6" secondAttribute="trailing" id="mWC-vv-S2b"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="2vc-Ts-6X6" secondAttribute="leading" id="nBO-3M-LqB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GB6-4k-Tjp" secondAttribute="trailing" id="ref-CM-dZe"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="GB6-4k-Tjp" secondAttribute="leading" id="uEH-kg-31z"/>
+                            <constraint firstItem="dzd-Ro-NG2" firstAttribute="top" secondItem="JGL-zY-EZ0" secondAttribute="bottom" constant="8" id="viN-tN-azd"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="JGL-zY-EZ0" secondAttribute="leading" id="xv0-oY-9Rw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="currentPasswordTextField" destination="JGL-zY-EZ0" id="27Q-Mi-Lgh"/>
+                        <outlet property="forgotPasswordButton" destination="KpB-Wa-lZj" id="h0K-z3-W6A"/>
+                        <outlet property="newPasswordTextField" destination="dzd-Ro-NG2" id="4oD-1w-ley"/>
+                        <outlet property="reTypeNewPasswordTextField" destination="2vc-Ts-6X6" id="yKW-S6-ih1"/>
+                        <outlet property="saveChangesButton" destination="GB6-4k-Tjp" id="QOU-og-xcE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9z-CJ-dSp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-327.19999999999999" y="1610.6446776611695"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eLD-xs-e0o"/>
+        <segue reference="8rO-oZ-xR6"/>
     </inferredMetricsTieBreakers>
 </document>
