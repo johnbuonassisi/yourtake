@@ -8,7 +8,7 @@
 
 class BaasBoxClient: BaClient {
     let client: BAAClient = {
-        BaasBox.setBaseURL("http://192.168.0.12:9000", appCode: "1234567890")
+        BaasBox.setBaseURL("http://192.168.0.10:9000", appCode: "1234567890")
         return BAAClient.shared()!
     }()
 

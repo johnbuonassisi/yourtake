@@ -13,6 +13,7 @@ import UIKit
 
 protocol ChangePasswordInteractorInput {
     func changePassword(request: ChangePassword.Request)
+    func validatePasswords(request: ChangePassword.Request)
 }
 
 protocol ChangePasswordInteractorOutput {
@@ -23,21 +24,89 @@ class ChangePasswordInteractor: ChangePasswordInteractorInput {
     
     var output: ChangePasswordInteractorOutput!
     var adminWorker = LoginWorker(loginStore: LoginBaasBoxStore())
+    var userWorker = TakesWorker(takeStore: TakeBaasBoxStore())
     
     // MARK: - Business logic
     
+    func validatePasswords(request: ChangePassword.Request) {
+        if ValidationService.isValidPassword(request.newPassword) &&
+            ValidationService.isValidPassword(request.reTypeNewPassword) {
+            let response = ChangePassword.Response(responseType: .passwordsValid)
+            output.presentSomething(response: response)
+        } else {
+            let response = ChangePassword.Response(responseType: .passwordsInvalid)
+            output.presentSomething(response: response)
+        }
+    }
+    
     func changePassword(request: ChangePassword.Request) {
         
-        if(request.newPassword == request.reTypeNewPassword) {
+        validatePasswords(request: request)
+        
+        if(request.newPassword != request.reTypeNewPassword) {
             let response =
                 ChangePassword.Response(responseType: ChangePassword.Response.ResponseType.newPasswordDoesNotMatch)
             output.presentSomething(response: response)
         } else {
-            adminWorker.changePassword(oldPassword: request.oldPassword, newPassword: request.newPassword,
-                                       completion: {(isChangePasswordSuccess) -> Void in
-                                        let responseType = isChangePasswordSuccess ? ChangePassword.Response.ResponseType.success : ChangePassword.Response.ResponseType.oldPasswordIncorrect
-                                        self.output.presentSomething(response: ChangePassword.Response(responseType: responseType))
+            
+            // Get the stored password
+            var storedPassword: String
+            do {
+                storedPassword = try KeychainPasswordItem.getPassword()
+            } catch {
+                output.presentSomething(response: ChangePassword.Response(responseType: .error))
+                return
+            }
+            
+            // Change the password
+            // 1. Get the current logged in user
+            // 2. Change the password
+            // 3. Login using the new password
+            // 4. Store the new password locally (updates the existing stored password)
+            userWorker.fetchUser(completion: { (user) in
+                if let user = user {
+                    self.changePassword(oldPassword: storedPassword,
+                                        newPassword: request.newPassword,
+                                        userName: user.username)
+                } else {
+                    self.output.presentSomething(response: ChangePassword.Response(responseType: .error))
+                }
             })
         }
+    }
+    
+    private func changePassword(oldPassword: String, newPassword: String, userName: String) {
+        self.adminWorker.changePassword(oldPassword: oldPassword,
+                                        newPassword: newPassword,
+                                        completion: { (isPasswordChanged) in
+                                            if isPasswordChanged {
+                                                self.login(userName: userName, password: newPassword)
+                                            } else {
+                                                self.output.presentSomething(response: ChangePassword.Response(responseType: .error))
+                                            }
+        })
+    }
+    
+    private func login(userName: String, password: String) {
+        adminWorker.login(username: userName, password: password) { (isLoginSuccess) in
+            if isLoginSuccess {
+                self.storeNewPassword(userName: userName, newPassword: password)
+            } else {
+                self.output.presentSomething(response: ChangePassword.Response(responseType: .error))
+            }
+        }
+    }
+    
+    private func storeNewPassword(userName: String, newPassword: String) {
+        // Save the password to the keychain
+        let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
+                                                account: userName,
+                                                accessGroup: KeychainConfiguration.accessGroup)
+        do {
+            try passwordItem.savePassword(newPassword)
+        } catch {
+            output.presentSomething(response: ChangePassword.Response(responseType: .error))
+        }
+        output.presentSomething(response: ChangePassword.Response(responseType: .success))
     }
 }

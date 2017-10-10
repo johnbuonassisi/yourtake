@@ -13,6 +13,7 @@ class UserForgotLoginPasswordViewController: UIViewController, UITextFieldDelega
   @IBOutlet weak var emailAddressTextField: UITextField!
   
   override func viewDidLoad() {
+    super.viewDidLoad()
     
     navigationController?.navigationBar.isHidden = false
     

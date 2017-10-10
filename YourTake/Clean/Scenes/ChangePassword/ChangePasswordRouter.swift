@@ -11,52 +11,61 @@
 
 import UIKit
 
-protocol ChangePasswordRouterInput
-{
-  func navigateToSomewhere()
+protocol ChangePasswordRouterInput {
+    func navigateToSomewhere()
 }
 
-class ChangePasswordRouter: ChangePasswordRouterInput
-{
-  weak var viewController: ChangePasswordViewController!
-  
-  // MARK: - Navigation
-  
-  func navigateToSomewhere()
-  {
-    // NOTE: Teach the router how to navigate to another scene. Some examples follow:
+class ChangePasswordRouter: ChangePasswordRouterInput {
     
-    // 1. Trigger a storyboard segue
-    // viewController.performSegueWithIdentifier("ShowSomewhereScene", sender: nil)
+    weak var viewController: ChangePasswordViewController!
     
-    // 2. Present another view controller programmatically
-    // viewController.presentViewController(someWhereViewController, animated: true, completion: nil)
+    // MARK: - Navigation
     
-    // 3. Ask the navigation controller to push another view controller onto the stack
-    // viewController.navigationController?.pushViewController(someWhereViewController, animated: true)
-    
-    // 4. Present a view controller from a different storyboard
-    // let storyboard = UIStoryboard(name: "OtherThanMain", bundle: nil)
-    // let someWhereViewController = storyboard.instantiateInitialViewController() as! SomeWhereViewController
-    // viewController.navigationController?.pushViewController(someWhereViewController, animated: true)
-  }
-  
-  // MARK: - Communication
-  
-  func passDataToNextScene(segue: UIStoryboardSegue)
-  {
-    // NOTE: Teach the router which scenes it can communicate with
-    
-    if segue.identifier == "ShowSomewhereScene" {
-      passDataToSomewhereScene(segue: segue)
+    func navigateToSomewhere() {
+        // NOTE: Teach the router how to navigate to another scene. Some examples follow:
+        
+        // 1. Trigger a storyboard segue
+        // viewController.performSegueWithIdentifier("ShowSomewhereScene", sender: nil)
+        
+        // 2. Present another view controller programmatically
+        // viewController.presentViewController(someWhereViewController, animated: true, completion: nil)
+        
+        // 3. Ask the navigation controller to push another view controller onto the stack
+        // viewController.navigationController?.pushViewController(someWhereViewController, animated: true)
+        
+        // 4. Present a view controller from a different storyboard
+        // let storyboard = UIStoryboard(name: "OtherThanMain", bundle: nil)
+        // let someWhereViewController = storyboard.instantiateInitialViewController() as! SomeWhereViewController
+        // viewController.navigationController?.pushViewController(someWhereViewController, animated: true)
     }
-  }
-  
-  func passDataToSomewhereScene(segue: UIStoryboardSegue)
-  {
-    // NOTE: Teach the router how to pass data to the next scene
     
-    // let someWhereViewController = segue.destinationViewController as! SomeWhereViewController
-    // someWhereViewController.output.name = viewController.output.name
-  }
+    func present(viewControllerToPresent: UIViewController, completion: (() -> Void)?) {
+        self.viewController.present(viewControllerToPresent, animated: true, completion: completion)
+    }
+    
+    func presentAlertAndPopToRoot(title: String?, message: String, actionTitle: String?) -> UIViewController {
+        let viewControllerToPresent = presentAlert(title: title, message: message, actionTitle: actionTitle)
+        let time = DispatchTime.now() + 3
+        DispatchQueue.main.asyncAfter(deadline: time, execute: {
+            viewControllerToPresent.dismiss(animated: true, completion:{
+                _ = self.viewController.navigationController?.popToRootViewController(animated: true)
+            })
+        })
+        return viewControllerToPresent
+    }
+    
+    func presentAlert(title: String?, message: String, actionTitle: String?) -> UIViewController {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        if let actionTitle = actionTitle {
+            let action = UIAlertAction(title: actionTitle,
+                                       style: .default,
+                                       handler: {
+                                        (action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)})
+            alert.addAction(action)
+        }
+        present(viewControllerToPresent: alert, completion: nil)
+        return viewController
+    }
 }

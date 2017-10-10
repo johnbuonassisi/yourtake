@@ -13,44 +13,35 @@ import UIKit
 
 // MARK: - Connect View, Interactor, and Presenter
 
-extension ChangePasswordViewController: ChangePasswordPresenterOutput
-{
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    router.passDataToNextScene(segue: segue)
-  }
+extension ChangePasswordViewController: ChangePasswordPresenterOutput {
 }
 
-extension ChangePasswordInteractor: ChangePasswordViewControllerOutput
-{
+extension ChangePasswordInteractor: ChangePasswordViewControllerOutput {
 }
 
-extension ChangePasswordPresenter: ChangePasswordInteractorOutput
-{
+extension ChangePasswordPresenter: ChangePasswordInteractorOutput {
 }
 
-class ChangePasswordConfigurator
-{
-  // MARK: - Object lifecycle
-  
-  static let sharedInstance = ChangePasswordConfigurator()
-  
-  private init() {}
-  
-  // MARK: - Configuration
-  
-  func configure(viewController: ChangePasswordViewController)
-  {
-    let router = ChangePasswordRouter()
-    router.viewController = viewController
+class ChangePasswordConfigurator {
+    // MARK: - Object lifecycle
     
-    let presenter = ChangePasswordPresenter()
-    presenter.output = viewController
+    static let sharedInstance = ChangePasswordConfigurator()
     
-    let interactor = ChangePasswordInteractor()
-    interactor.output = presenter
+    private init() {}
     
-    viewController.output = interactor
-    viewController.router = router
-  }
+    // MARK: - Configuration
+    
+    func configure(viewController: ChangePasswordViewController) {
+        let router = ChangePasswordRouter()
+        router.viewController = viewController
+        
+        let presenter = ChangePasswordPresenter()
+        presenter.output = viewController
+        
+        let interactor = ChangePasswordInteractor()
+        interactor.output = presenter
+        
+        viewController.output = interactor
+        viewController.router = router
+    }
 }

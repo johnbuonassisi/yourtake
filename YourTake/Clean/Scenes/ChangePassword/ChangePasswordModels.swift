@@ -14,23 +14,32 @@ import UIKit
 struct ChangePassword {
     
     struct Request {
-        var oldPassword: String
         var newPassword: String
         var reTypeNewPassword: String
     }
     
     struct Response {
-        
         var responseType: ResponseType
         
         enum ResponseType {
             case success
+            case passwordsValid
+            case error
             case newPasswordDoesNotMatch
-            case oldPasswordIncorrect
+            case passwordsInvalid
         }
-        
     }
     
     struct ViewModel {
+        var isPasswordChanged: Bool
+        var alertModel: AlertModel?
+        var isSaveButtonEnabled: Bool
+        var saveButtonColour: UIColor
+        
+        struct AlertModel {
+            var title: String?
+            var message: String
+            var actionTitle: String?
+        }
     }
 }

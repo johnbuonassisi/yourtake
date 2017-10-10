@@ -26,8 +26,6 @@ class UserLoginInteractor: UserLoginInteractorInput
   var output: UserLoginInteractorOutput!
   var worker = LoginWorker(loginStore: LoginBaasBoxStore())
   
-  private let MINIMUM_PASSWORD_SIZE = 8
-  
   // MARK: - Business logic
   
   // NOTE: - Completion will be executed when request type is "LoginRequest"
@@ -35,8 +33,8 @@ class UserLoginInteractor: UserLoginInteractorInput
   {
     switch request.requestType {
     case .loginRequest:
-      if isValidUserName(request.username) == false ||
-        isValidPassword(request.password) == false {
+      if ValidationService.isValidUserName(request.username) == false ||
+        ValidationService.isValidPassword(request.password) == false {
         print("Login form not properly filled by user")
         print("username: \(request.username), password: \(request.password)")
         return
@@ -72,20 +70,12 @@ class UserLoginInteractor: UserLoginInteractorInput
       })
 
     case .updateView:
-      let isUserNameEntered = isValidUserName(request.username)
-      let isPasswordValid = isValidPassword(request.password)
+      let isUserNameEntered = ValidationService.isValidUserName(request.username)
+      let isPasswordValid = ValidationService.isValidPassword(request.password)
       let response = UserLogin.Login.Response(isUserNameEntered: isUserNameEntered,
                                               isPasswordValid: isPasswordValid,
                                               isUserLoggedIn: false)
       output.presentLogin(response: response)
     }
-  }
-  
-  private func isValidUserName(_ username: String) -> Bool {
-    return username.characters.count > 0
-  }
-  
-  private func isValidPassword(_ password: String) -> Bool {
-    return password.characters.count >= MINIMUM_PASSWORD_SIZE
   }
 }

@@ -157,6 +157,17 @@ struct KeychainPasswordItem {
         
         return passwordItems
     }
+    
+    static func getPassword() throws -> String {
+        
+        var passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName,
+                                                               accessGroup: KeychainConfiguration.accessGroup)
+        if passwordItems.count == 0 {
+            throw KeychainError.noPassword
+        }
+        let storedPassword = try passwordItems[0].readPassword()
+        return storedPassword
+    }
 
     // MARK: Convenience
     

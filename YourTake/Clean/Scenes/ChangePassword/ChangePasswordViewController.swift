@@ -12,11 +12,12 @@
 import UIKit
 
 protocol ChangePasswordViewControllerInput {
-    func displaySomething(viewModel: ChangePassword.ViewModel)
+    func displayPasswordChange(viewModel: ChangePassword.ViewModel)
 }
 
 protocol ChangePasswordViewControllerOutput {
     func changePassword(request: ChangePassword.Request)
+    func validatePasswords(request: ChangePassword.Request)
 }
 
 class ChangePasswordViewController: UIViewController, ChangePasswordViewControllerInput {
@@ -24,11 +25,9 @@ class ChangePasswordViewController: UIViewController, ChangePasswordViewControll
     var output: ChangePasswordViewControllerOutput!
     var router: ChangePasswordRouter!
     
-    @IBOutlet weak var reTypeNewPasswordTextField: UITextField!
-    @IBOutlet weak var oldPasswordTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
+    @IBOutlet weak var reTypeNewPasswordTextField: UITextField!
     @IBOutlet weak var saveChangesButton: UIButton!
-    @IBOutlet weak var forgotPasswordButton: UIButton!
     
     // MARK: - Object lifecycle
     
@@ -41,28 +40,54 @@ class ChangePasswordViewController: UIViewController, ChangePasswordViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomethingOnLoad()
+        
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     // MARK: - Event handling
     
-    func doSomethingOnLoad() {
-        // NOTE: Ask the Interactor to do some work
-    }
-    
     @IBAction func saveChangesButtonPressed(_ sender: UIButton) {
-        let request = ChangePassword.Request(oldPassword: oldPasswordTextField.text!,
-                                             newPassword: newPasswordTextField.text!,
-                                             reTypeNewPassword: reTypeNewPasswordTextField.text!);
+        let request = ChangePassword.Request(newPassword: newPasswordTextField.text!,
+                                             reTypeNewPassword: reTypeNewPasswordTextField.text!)
         output.changePassword(request: request);
     }
     
+    @IBAction func passwordChanged(_ sender: Any) {
+        let request = ChangePassword.Request(newPassword: newPasswordTextField.text!,
+                                             reTypeNewPassword: reTypeNewPasswordTextField.text!)
+        output.validatePasswords(request: request)
+    }
+    
+    @IBAction func passwordCopyChanged(_ sender: Any) {
+        let request = ChangePassword.Request(newPassword: newPasswordTextField.text!,
+                                             reTypeNewPassword: reTypeNewPasswordTextField.text!)
+        output.validatePasswords(request: request)
+    }
     
     // MARK: - Display logic
     
-    func displaySomething(viewModel: ChangePassword.ViewModel) {
+    func displayPasswordChange(viewModel: ChangePassword.ViewModel) {
         // NOTE: Display the result from the Presenter
-        
-        // nameTextField.text = viewModel.name
+        if viewModel.isPasswordChanged {
+            if let alertModel = viewModel.alertModel {
+                _ = self.router.presentAlertAndPopToRoot(title: alertModel.title,
+                                                     message: alertModel.message,
+                                                     actionTitle: alertModel.actionTitle)
+            }
+        } else {
+            if let alertModel = viewModel.alertModel {
+                _ = self.router.presentAlert(title: alertModel.title,
+                                             message: alertModel.message,
+                                             actionTitle: alertModel.actionTitle)
+            }
+        }
+        saveChangesButton.isEnabled = viewModel.isSaveButtonEnabled
+        saveChangesButton.backgroundColor = viewModel.saveButtonColour
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
