@@ -40,6 +40,21 @@
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
 		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
 		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
+		5257AE631F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5C1F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift */; };
+		5257AE641F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5D1F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift */; };
+		5257AE651F5E6F6F00CD2A33 /* ChangePasswordModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5E1F5E6F6F00CD2A33 /* ChangePasswordModels.swift */; };
+		5257AE661F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5F1F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift */; };
+		5257AE671F5E6F6F00CD2A33 /* ChangePasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE601F5E6F6F00CD2A33 /* ChangePasswordRouter.swift */; };
+		5257AE681F5E6F6F00CD2A33 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE611F5E6F6F00CD2A33 /* ChangePasswordViewController.swift */; };
+		5257D3371F8C012900A2E05D /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257D3361F8C012900A2E05D /* ValidationService.swift */; };
+		5257D3391F92897700A2E05D /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257D3381F92897600A2E05D /* AlertModel.swift */; };
+		5257D33B1F928B6E00A2E05D /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257D33A1F928B6E00A2E05D /* AlertPresenter.swift */; };
+		52592FB61F8B370A00D6202A /* PasswordVerificationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FAF1F8B370A00D6202A /* PasswordVerificationConfigurator.swift */; };
+		52592FB71F8B370A00D6202A /* PasswordVerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FB01F8B370A00D6202A /* PasswordVerificationInteractor.swift */; };
+		52592FB81F8B370A00D6202A /* PasswordVerificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FB11F8B370A00D6202A /* PasswordVerificationModels.swift */; };
+		52592FB91F8B370A00D6202A /* PasswordVerificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FB21F8B370A00D6202A /* PasswordVerificationPresenter.swift */; };
+		52592FBA1F8B370A00D6202A /* PasswordVerificationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FB31F8B370A00D6202A /* PasswordVerificationRouter.swift */; };
+		52592FBB1F8B370A00D6202A /* PasswordVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FB41F8B370A00D6202A /* PasswordVerificationViewController.swift */; };
 		5263CA521EA2D399001BA2E4 /* SignupUserConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263CA4B1EA2D399001BA2E4 /* SignupUserConfigurator.swift */; };
 		5263CA531EA2D399001BA2E4 /* SignupUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263CA4C1EA2D399001BA2E4 /* SignupUserInteractor.swift */; };
 		5263CA541EA2D399001BA2E4 /* SignupUserModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263CA4D1EA2D399001BA2E4 /* SignupUserModels.swift */; };
@@ -87,6 +102,7 @@
 		527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527FD5E91E0739F90023D420 /* LaunchScreen.xib */; };
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
+		5286FDC91F8BDEBE00A6244D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5286FDC81F8BDEBE00A6244D /* Constants.swift */; };
 		52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */; };
 		529EFBB11E9F3A3D0054559B /* CreateTakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */; };
 		529EFBB31E9F4E8D0054559B /* CreateTakeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */; };
@@ -159,6 +175,21 @@
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Clean/Scenes/SnapChallengeImage/CameraOverlayView.xib; sourceTree = "<group>"; };
 		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewView.xib; sourceTree = "<group>"; };
 		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewViewController.swift; sourceTree = "<group>"; };
+		5257AE5C1F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordConfigurator.swift; path = Clean/Scenes/ChangePassword/ChangePasswordConfigurator.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5257AE5D1F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordInteractor.swift; path = Clean/Scenes/ChangePassword/ChangePasswordInteractor.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5257AE5E1F5E6F6F00CD2A33 /* ChangePasswordModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordModels.swift; path = Clean/Scenes/ChangePassword/ChangePasswordModels.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5257AE5F1F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordPresenter.swift; path = Clean/Scenes/ChangePassword/ChangePasswordPresenter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5257AE601F5E6F6F00CD2A33 /* ChangePasswordRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordRouter.swift; path = Clean/Scenes/ChangePassword/ChangePasswordRouter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5257AE611F5E6F6F00CD2A33 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordViewController.swift; path = Clean/Scenes/ChangePassword/ChangePasswordViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5257D3361F8C012900A2E05D /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ValidationService.swift; path = Clean/Services/ValidationService.swift; sourceTree = "<group>"; };
+		5257D3381F92897600A2E05D /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertModel.swift; path = Clean/Models/AlertModel.swift; sourceTree = "<group>"; };
+		5257D33A1F928B6E00A2E05D /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertPresenter.swift; path = Clean/Common/AlertPresenter.swift; sourceTree = "<group>"; };
+		52592FAF1F8B370A00D6202A /* PasswordVerificationConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationConfigurator.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationConfigurator.swift; sourceTree = "<group>"; };
+		52592FB01F8B370A00D6202A /* PasswordVerificationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationInteractor.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationInteractor.swift; sourceTree = "<group>"; };
+		52592FB11F8B370A00D6202A /* PasswordVerificationModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationModels.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationModels.swift; sourceTree = "<group>"; };
+		52592FB21F8B370A00D6202A /* PasswordVerificationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationPresenter.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationPresenter.swift; sourceTree = "<group>"; };
+		52592FB31F8B370A00D6202A /* PasswordVerificationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationRouter.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationRouter.swift; sourceTree = "<group>"; };
+		52592FB41F8B370A00D6202A /* PasswordVerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationViewController.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationViewController.swift; sourceTree = "<group>"; };
 		5263CA4B1EA2D399001BA2E4 /* SignupUserConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupUserConfigurator.swift; path = Clean/Scenes/SignupUser/SignupUserConfigurator.swift; sourceTree = "<group>"; };
 		5263CA4C1EA2D399001BA2E4 /* SignupUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupUserInteractor.swift; path = Clean/Scenes/SignupUser/SignupUserInteractor.swift; sourceTree = "<group>"; };
 		5263CA4D1EA2D399001BA2E4 /* SignupUserModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupUserModels.swift; path = Clean/Scenes/SignupUser/SignupUserModels.swift; sourceTree = "<group>"; };
@@ -208,13 +239,14 @@
 		5285098B1DC6F9470083CC55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Main/AppDelegate.swift; sourceTree = "<group>"; };
 		528509921DC6F9470083CC55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		528509971DC6F9470083CC55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5286FDC81F8BDEBE00A6244D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Clean/Common/Constants.swift; sourceTree = "<group>"; };
 		52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipelessNavigationController.swift; path = Clean/Common/SwipelessNavigationController.swift; sourceTree = "<group>"; };
 		529EFBB01E9F3A3D0054559B /* CreateTakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateTakeViewController.swift; path = Clean/Scenes/CreateTake/CreateTakeViewController.swift; sourceTree = "<group>"; };
 		529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTakeViewController.xib; path = Clean/Scenes/CreateTake/CreateTakeViewController.xib; sourceTree = "<group>"; };
 		529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeOptionsViewController.swift; path = Clean/Scenes/SetChallengeOptions/ChallengeOptionsViewController.swift; sourceTree = "<group>"; };
 		52A0D1F01EA2EB7700292B23 /* SignupWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupWorker.swift; path = Clean/Workers/SignupWorker.swift; sourceTree = "<group>"; };
 		52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupBaasBoxStore.swift; path = Clean/Services/SignupBaasBoxStore.swift; sourceTree = "<group>"; };
-		52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSettingsViewController.swift; path = Clean/Scenes/UserSettings/UserSettingsViewController.swift; sourceTree = "<group>"; };
+		52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = UserSettingsViewController.swift; path = Clean/Scenes/UserSettings/UserSettingsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		52A0D1FB1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserForgotLoginPasswordViewController.swift; path = Clean/Scenes/UserForgotLoginPassword/UserForgotLoginPasswordViewController.swift; sourceTree = "<group>"; };
 		52A48D291DD90631005A89B8 /* DrawPathsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawPathsView.swift; path = Clean/Views/Drawing/DrawPathsView.swift; sourceTree = "<group>"; };
 		52A868801E63687100F26F31 /* FriendSelectionTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendSelectionTracker.swift; path = Models/FriendSelectionTracker.swift; sourceTree = "<group>"; };
@@ -318,6 +350,32 @@
 			name = Security;
 			sourceTree = "<group>";
 		};
+		5257AE3F1F5E6DF500CD2A33 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				5257AE5C1F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift */,
+				5257AE5D1F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift */,
+				5257AE5E1F5E6F6F00CD2A33 /* ChangePasswordModels.swift */,
+				5257AE5F1F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift */,
+				5257AE601F5E6F6F00CD2A33 /* ChangePasswordRouter.swift */,
+				5257AE611F5E6F6F00CD2A33 /* ChangePasswordViewController.swift */,
+			);
+			name = ChangePassword;
+			sourceTree = "<group>";
+		};
+		52592FAE1F8B36A200D6202A /* PasswordVerification */ = {
+			isa = PBXGroup;
+			children = (
+				52592FAF1F8B370A00D6202A /* PasswordVerificationConfigurator.swift */,
+				52592FB01F8B370A00D6202A /* PasswordVerificationInteractor.swift */,
+				52592FB11F8B370A00D6202A /* PasswordVerificationModels.swift */,
+				52592FB21F8B370A00D6202A /* PasswordVerificationPresenter.swift */,
+				52592FB31F8B370A00D6202A /* PasswordVerificationRouter.swift */,
+				52592FB41F8B370A00D6202A /* PasswordVerificationViewController.swift */,
+			);
+			name = PasswordVerification;
+			sourceTree = "<group>";
+		};
 		5263CA4A1EA2D36E001BA2E4 /* SignupUser */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +431,7 @@
 		52760BF71E90588A0093B921 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5257D3381F92897600A2E05D /* AlertModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -380,6 +439,8 @@
 		52760BF81E9058910093B921 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				52592FAE1F8B36A200D6202A /* PasswordVerification */,
+				5257AE3F1F5E6DF500CD2A33 /* ChangePassword */,
 				52AD64101EA440CA00774D5D /* SetChallengeOptions */,
 				520E2BEA1EA4398E00A5713C /* SnapChallengeImage */,
 				52BD8B6A1EA43422005B142C /* AddFriends */,
@@ -407,6 +468,7 @@
 				52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */,
 				524B02811EC2E93A007DA5EA /* FriendsMemStore.swift */,
 				524540D01EC4498F006FF5EB /* FriendsBaasBoxStore.swift */,
+				5257D3361F8C012900A2E05D /* ValidationService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -617,6 +679,8 @@
 			isa = PBXGroup;
 			children = (
 				52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */,
+				5286FDC81F8BDEBE00A6244D /* Constants.swift */,
+				5257D33A1F928B6E00A2E05D /* AlertPresenter.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -727,7 +791,9 @@
 			files = (
 				52760C1F1E9059610093B921 /* ChallengesWorker.swift in Sources */,
 				524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */,
+				5257AE671F5E6F6F00CD2A33 /* ChangePasswordRouter.swift in Sources */,
 				52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */,
+				52592FB61F8B370A00D6202A /* PasswordVerificationConfigurator.swift in Sources */,
 				5267D8E11E998E0100B94470 /* ListTakesRouter.swift in Sources */,
 				52B682BF1EA296C400DBB0A4 /* DisplayTakeViewController.swift in Sources */,
 				52760C0C1E9058F80093B921 /* ListChallengesConfigurator.swift in Sources */,
@@ -738,17 +804,22 @@
 				52B682E91EA29BFE00DBB0A4 /* UserLoginPresenter.swift in Sources */,
 				5267D8EC1E99A04D00B94470 /* TakeDto.swift in Sources */,
 				52760C1B1E9059520093B921 /* EmptyChallengeTableViewCell.swift in Sources */,
+				5257D33B1F928B6E00A2E05D /* AlertPresenter.swift in Sources */,
 				5267D8E01E998E0100B94470 /* ListTakesPresenter.swift in Sources */,
+				52592FB71F8B370A00D6202A /* PasswordVerificationInteractor.swift in Sources */,
 				52760C0E1E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift in Sources */,
 				52760C0A1E9058F80093B921 /* ListChallengesModels.swift in Sources */,
 				524540D11EC4498F006FF5EB /* FriendsBaasBoxStore.swift in Sources */,
+				52592FBA1F8B370A00D6202A /* PasswordVerificationRouter.swift in Sources */,
 				5263CA561EA2D399001BA2E4 /* SignupUserRouter.swift in Sources */,
 				52760C1D1E9059520093B921 /* ChallengeTableViewCell.swift in Sources */,
 				5267D8E51E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift in Sources */,
+				52592FBB1F8B370A00D6202A /* PasswordVerificationViewController.swift in Sources */,
 				5263CA571EA2D399001BA2E4 /* SignupUserViewController.swift in Sources */,
 				5267D8E31E998E0100B94470 /* ListTakesWorker.swift in Sources */,
 				52B682C11EA296C400DBB0A4 /* DisplayTakeModels.swift in Sources */,
 				52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */,
+				5257D3371F8C012900A2E05D /* ValidationService.swift in Sources */,
 				524B02821EC2E93A007DA5EA /* FriendsMemStore.swift in Sources */,
 				5267D8EE1E9A8E1700B94470 /* TakesWorker.swift in Sources */,
 				33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */,
@@ -756,6 +827,7 @@
 				52760C231E905EDB0093B921 /* ChallengesBaasBoxStore.swift in Sources */,
 				5263CA581EA2D399001BA2E4 /* SignupUserWorker.swift in Sources */,
 				52B682EB1EA29BFE00DBB0A4 /* UserLoginViewController.swift in Sources */,
+				52592FB91F8B370A00D6202A /* PasswordVerificationPresenter.swift in Sources */,
 				52B682F01EA2A19E00DBB0A4 /* LoginMemStore.swift in Sources */,
 				5263CA551EA2D399001BA2E4 /* SignupUserPresenter.swift in Sources */,
 				52B682F21EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift in Sources */,
@@ -781,6 +853,7 @@
 				33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */,
 				52A0D1F81EA3430500292B23 /* UserSettingsViewController.swift in Sources */,
 				5267D8DD1E998E0100B94470 /* ListTakesConfigurator.swift in Sources */,
+				5257AE651F5E6F6F00CD2A33 /* ChangePasswordModels.swift in Sources */,
 				5263CA521EA2D399001BA2E4 /* SignupUserConfigurator.swift in Sources */,
 				52299E2F1DE807ED00F04C86 /* BAAMutableURLRequest.m in Sources */,
 				332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */,
@@ -788,18 +861,22 @@
 				332283F01E05D5E4008647E4 /* BaasBoxChallenge.swift in Sources */,
 				529EFBB11E9F3A3D0054559B /* CreateTakeViewController.swift in Sources */,
 				529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */,
+				5257AE681F5E6F6F00CD2A33 /* ChangePasswordViewController.swift in Sources */,
 				52A0D1F11EA2EB7700292B23 /* SignupWorker.swift in Sources */,
 				5263CA531EA2D399001BA2E4 /* SignupUserInteractor.swift in Sources */,
 				52760BF51E9045280093B921 /* ChallengeDto.swift in Sources */,
+				5257AE661F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift in Sources */,
 				52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */,
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
 				52760C0B1E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift in Sources */,
 				524B02801EC2E601007DA5EA /* FriendsWorker.swift in Sources */,
+				5257AE631F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift in Sources */,
 				5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */,
 				52299E301DE807ED00F04C86 /* BAAObject.m in Sources */,
 				5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */,
 				524540CF1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift in Sources */,
 				52299E2D1DE807ED00F04C86 /* BAAFile.m in Sources */,
+				52592FB81F8B370A00D6202A /* PasswordVerificationModels.swift in Sources */,
 				52760C081E9058F80093B921 /* ListChallengesViewController.swift in Sources */,
 				521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */,
 				5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */,
@@ -808,7 +885,10 @@
 				52760C141E90591E0093B921 /* ChallengesMemStore.swift in Sources */,
 				52B682E61EA29BFE00DBB0A4 /* UserLoginConfigurator.swift in Sources */,
 				332283F31E05D5E4008647E4 /* BaClient.swift in Sources */,
+				5286FDC91F8BDEBE00A6244D /* Constants.swift in Sources */,
 				52760C091E9058F80093B921 /* ListChallengesInteractor.swift in Sources */,
+				5257D3391F92897700A2E05D /* AlertModel.swift in Sources */,
+				5257AE641F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

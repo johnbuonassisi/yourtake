@@ -37,9 +37,9 @@ class SignupUserInteractor: SignupUserInteractorInput
 
     switch request.requestType {
     case .signupRequest:
-      if isValidEmailAddress(request.emailAddress) == false ||
-        isValidUserName(request.username) == false ||
-        isValidPassword(request.password) == false {
+      if ValidationService.isValidEmailAddress(request.emailAddress) == false ||
+        ValidationService.isValidUserName(request.username) == false ||
+        ValidationService.isValidPassword(request.password) == false {
         print("Signup form not properly filled by user")
         print("email: \(request.emailAddress), username: \(request.username), password: \(request.password)")
         return
@@ -66,31 +66,17 @@ class SignupUserInteractor: SignupUserInteractorInput
       })
       return
     case .emailAddressVerification:
-      isValidEmailAddress = isValidEmailAddress(request.emailAddress)
+      isValidEmailAddress = ValidationService.isValidEmailAddress(request.emailAddress)
     case .userNameVerification:
-      isValidUsername = isValidUserName(request.username)
+      isValidUsername = ValidationService.isValidUserName(request.username)
     case .passwordVerification:
-      isValidPassword = isValidPassword(request.password)
+      isValidPassword = ValidationService.isValidPassword(request.password)
     }
     
     let response = SignupUser.Signup.Response(isEmailValid: isValidEmailAddress,
                                               isUserNameValid: isValidUsername,
                                               isPasswordValid: isValidPassword)
     output.presentSignup(response: response)
-  }
-  
-  private func isValidEmailAddress(_ emailAddress: String) -> Bool {
-    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-    let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-    return emailTest.evaluate(with: emailAddress)
-  }
-  
-  private func isValidUserName(_ username: String) -> Bool {
-    return username.characters.count >= 5
-  }
-  
-  private func isValidPassword(_ password: String) -> Bool {
-    return password.characters.count >= 7
   }
   
 }

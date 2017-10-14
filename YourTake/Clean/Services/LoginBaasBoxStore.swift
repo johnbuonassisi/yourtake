@@ -9,13 +9,21 @@
 import UIKit
 
 class LoginBaasBoxStore: LoginStoreProtocol {
-  
-  func login(username: String, password: String, completion: @escaping (Bool) -> Void) {
     
-    let backendClient = Backend.sharedInstance.getClient()
-    backendClient.login(username: username,
-                        password: password,
-                        completion: completion)
-  }
-
+    func login(username: String, password: String, completion: @escaping (Bool) -> Void) {
+        
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.login(username: username,
+                            password: password,
+                            completion: completion)
+    }
+    
+    func changePassword(oldPassword: String, newPassword: String, completion: @escaping (Bool) -> Void) {
+        
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.changePassword(oldPassword: oldPassword,
+                                     newPassword: newPassword,
+                                     completion: completion)
+    }
+    
 }

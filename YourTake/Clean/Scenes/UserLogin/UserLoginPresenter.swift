@@ -25,24 +25,15 @@ class UserLoginPresenter: UserLoginPresenterInput
 {
   weak var output: UserLoginPresenterOutput!
   
-  private let SYSTEM_BLUE_COLOUR = UIColor(red: 0.0,
-                                        green: 122.0/255.0,
-                                        blue: 255.0/255.0,
-                                        alpha: 1.0)
-  private let SYSTEM_LIGHT_GRAY_COLOUR = UIColor(red: 180.0/255.0,
-                                                 green: 180.0/255.0,
-                                                 blue: 180.0/255.0,
-                                                 alpha: 1.0)
-  
   // MARK: - Presentation logic
   
   func presentLogin(response: UserLogin.Login.Response)
   {
     // NOTE: Format the response from the Interactor and pass the result back to the View Controller
     let isLoginButtonEnabled = response.isPasswordValid && response.isUserNameEntered
-    var loginButtonColour =  SYSTEM_LIGHT_GRAY_COLOUR
+    var loginButtonColour =  Constants.systemLightGreyColour
     if( isLoginButtonEnabled) {
-      loginButtonColour = SYSTEM_BLUE_COLOUR
+      loginButtonColour = Constants.systemBlueColour
     }
     
     let viewModel = UserLogin.Login.ViewModel(isUserLoggedIn: response.isUserLoggedIn,
