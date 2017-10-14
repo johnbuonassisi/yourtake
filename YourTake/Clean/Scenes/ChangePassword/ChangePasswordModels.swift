@@ -35,11 +35,5 @@ struct ChangePassword {
         var alertModel: AlertModel?
         var isSaveButtonEnabled: Bool
         var saveButtonColour: UIColor
-        
-        struct AlertModel {
-            var title: String?
-            var message: String
-            var actionTitle: String?
-        }
     }
 }

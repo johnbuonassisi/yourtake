@@ -36,12 +36,6 @@ struct PasswordVerification {
             var alertModel: AlertModel?
             var isContinueButtonEnabled: Bool
             var continueButtonColour: UIColor
-            
-            struct AlertModel {
-                var title: String
-                var message: String
-                var actionTitle: String
-            }
         }
     }
 }

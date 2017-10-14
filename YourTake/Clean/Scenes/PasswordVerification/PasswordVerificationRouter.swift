@@ -13,11 +13,10 @@ import UIKit
 
 protocol PasswordVerificationRouterInput {
     func navigateToChangePasswordScene()
+    func navigateToResetPasswordScene()
 }
 
-class PasswordVerificationRouter: PasswordVerificationRouterInput {
-    
-    weak var viewController: PasswordVerificationViewController!
+class PasswordVerificationRouter: AlertPresenter, PasswordVerificationRouterInput {
 
     // MARK: - Navigation
 
@@ -29,22 +28,6 @@ class PasswordVerificationRouter: PasswordVerificationRouterInput {
     func navigateToResetPasswordScene() {
         viewController.performSegue(withIdentifier: Constants.SegueIdentifiers.PasswordVerificationScene.resetPasswordSegue,
                                     sender: nil)
-    }
-    
-    func presentAlert(title: String?, message: String?, actionTitle: String?) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
-        let action = UIAlertAction(title: actionTitle,
-                                   style: .default,
-                                   handler: {
-                                    (action: UIAlertAction!) in alert.dismiss(animated: true, completion: nil)})
-        alert.addAction(action)
-        present(viewControllerToPresent: alert, completion: nil)
-    }
-    
-    func present(viewControllerToPresent: UIViewController, completion: (() -> Void)?) {
-        self.viewController.present(viewControllerToPresent, animated: true, completion: completion)
     }
 
     // MARK: - Communication

@@ -53,10 +53,9 @@ class PasswordVerificationPresenter: PasswordVerificationPresenterInput {
             } else {
                 message = "Sorry, an unexpected error occurred. Try again."
             }
-            let alertModel = PasswordVerification.VerifyPassword
-                .ViewModel.AlertModel(title: "Error",
-                                      message: message,
-                                      actionTitle: "OK")
+            let alertModel = AlertModel(title: "Error",
+                                        message: message,
+                                        actionTitle: "OK")
             viewModel = PasswordVerification.VerifyPassword.ViewModel(isPasswordVerified: response.isPasswordVerified,
                                                                       alertModel: alertModel,
                                                                       isContinueButtonEnabled: true,

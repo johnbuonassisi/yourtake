@@ -55,7 +55,6 @@ class PasswordVerificationViewController: UIViewController, PasswordVerification
         output.verifyPassword(request: request)
     }
     
-    
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
         router.navigateToResetPasswordScene()
     }

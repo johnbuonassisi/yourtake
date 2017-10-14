@@ -11,54 +11,50 @@
 
 import UIKit
 
-protocol ChangePasswordPresenterInput
-{
-  func presentSomething(response: ChangePassword.Response)
+protocol ChangePasswordPresenterInput {
+    func presentSomething(response: ChangePassword.Response)
 }
 
-protocol ChangePasswordPresenterOutput: class
-{
-  func displayPasswordChange(viewModel: ChangePassword.ViewModel)
+protocol ChangePasswordPresenterOutput: class {
+    func displayPasswordChange(viewModel: ChangePassword.ViewModel)
 }
 
-class ChangePasswordPresenter: ChangePasswordPresenterInput
-{
-  weak var output: ChangePasswordPresenterOutput!
-  
-  // MARK: - Presentation logic
-  
-  func presentSomething(response: ChangePassword.Response)
-  {
-    // NOTE: Format the response from the Interactor and pass the result back to the View Controller
-    var isPasswordChanged = false
-    var alertModel: ChangePassword.ViewModel.AlertModel?
-    var isSaveButtonEnabled = true
-    var saveButtonColour = Constants.systemBlueColour
+class ChangePasswordPresenter: ChangePasswordPresenterInput {
+    weak var output: ChangePasswordPresenterOutput!
     
-    switch response.responseType {
-    case .passwordsValid:
-        break
-    case .passwordsInvalid:
-        isSaveButtonEnabled = false
-        saveButtonColour = Constants.systemLightGreyColour
-    case .newPasswordDoesNotMatch:
-        alertModel = ChangePassword.ViewModel.AlertModel(title: "Error",
-                                                         message: "New passwords are not the same",
-                                                         actionTitle: "Cancel")
-    case .error:
-        alertModel = ChangePassword.ViewModel.AlertModel(title: "Error",
-                                                         message: "An unexpected error occurred",
-                                                         actionTitle: "Cancel")
-    case .success:
-        isPasswordChanged = true
-        alertModel = ChangePassword.ViewModel.AlertModel(title: "Success",
-                                                         message: "Your password was changed.",
-                                                         actionTitle: nil)
+    // MARK: - Presentation logic
+    
+    func presentSomething(response: ChangePassword.Response) {
+        // NOTE: Format the response from the Interactor and pass the result back to the View Controller
+        var isPasswordChanged = false
+        var alertModel: AlertModel?
+        var isSaveButtonEnabled = true
+        var saveButtonColour = Constants.systemBlueColour
+        
+        switch response.responseType {
+        case .passwordsValid:
+            break
+        case .passwordsInvalid:
+            isSaveButtonEnabled = false
+            saveButtonColour = Constants.systemLightGreyColour
+        case .newPasswordDoesNotMatch:
+            alertModel = AlertModel(title: "Error",
+                                    message: "New passwords are not the same",
+                                    actionTitle: "Cancel")
+        case .error:
+            alertModel = AlertModel(title: "Error",
+                                    message: "An unexpected error occurred",
+                                    actionTitle: "Cancel")
+        case .success:
+            isPasswordChanged = true
+            alertModel = AlertModel(title: "Success",
+                                    message: "Your password was changed.",
+                                    actionTitle: nil)
+        }
+        let viewModel = ChangePassword.ViewModel(isPasswordChanged: isPasswordChanged,
+                                                 alertModel: alertModel,
+                                                 isSaveButtonEnabled: isSaveButtonEnabled,
+                                                 saveButtonColour: saveButtonColour)
+        output.displayPasswordChange(viewModel: viewModel)
     }
-    let viewModel = ChangePassword.ViewModel(isPasswordChanged: isPasswordChanged,
-                                             alertModel: alertModel,
-                                             isSaveButtonEnabled: isSaveButtonEnabled,
-                                             saveButtonColour: saveButtonColour)
-    output.displayPasswordChange(viewModel: viewModel)
-  }
 }
