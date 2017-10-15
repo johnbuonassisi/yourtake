@@ -8,7 +8,27 @@
 
 class BaasBoxClient: BaClient {
     let client: BAAClient = {
-        BaasBox.setBaseURL("http://192.168.0.10:9000", appCode: "1234567890")
+        
+        // Get the BaasBox Base URL and App Code from BaasBoxConfig.plist
+        var configDictionary: NSDictionary?
+        if let configPath = Bundle.main.path(forResource: "BaasBoxConfig", ofType: "plist") {
+            configDictionary = NSDictionary(contentsOfFile: configPath)
+        }
+        var baseUrl: NSString?
+        var appCode: NSString?
+        if let configDictionary = configDictionary {
+            baseUrl = configDictionary.value(forKey: "BaasBox Base URL") as? NSString
+            appCode = configDictionary.value(forKey: "BaasBox App Code") as? NSString
+        }
+        
+        if let baseUrl = baseUrl, let appCode = appCode {
+            BaasBox.setBaseURL(baseUrl as String,
+                               appCode: appCode as String)
+        } else {
+            // Set to local default if unable to find base url and appcode keys
+            BaasBox.setBaseURL("http://192.168.0.10:9000", appCode: "1234567890")
+        }
+        
         return BAAClient.shared()!
     }()
 

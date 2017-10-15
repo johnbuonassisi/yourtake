@@ -49,6 +49,7 @@
 		5257D3371F8C012900A2E05D /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257D3361F8C012900A2E05D /* ValidationService.swift */; };
 		5257D3391F92897700A2E05D /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257D3381F92897600A2E05D /* AlertModel.swift */; };
 		5257D33B1F928B6E00A2E05D /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257D33A1F928B6E00A2E05D /* AlertPresenter.swift */; };
+		5257D33D1F9415AC00A2E05D /* BaasBoxConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5257D33C1F9415AC00A2E05D /* BaasBoxConfig.plist */; };
 		52592FB61F8B370A00D6202A /* PasswordVerificationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FAF1F8B370A00D6202A /* PasswordVerificationConfigurator.swift */; };
 		52592FB71F8B370A00D6202A /* PasswordVerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FB01F8B370A00D6202A /* PasswordVerificationInteractor.swift */; };
 		52592FB81F8B370A00D6202A /* PasswordVerificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FB11F8B370A00D6202A /* PasswordVerificationModels.swift */; };
@@ -184,6 +185,7 @@
 		5257D3361F8C012900A2E05D /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ValidationService.swift; path = Clean/Services/ValidationService.swift; sourceTree = "<group>"; };
 		5257D3381F92897600A2E05D /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertModel.swift; path = Clean/Models/AlertModel.swift; sourceTree = "<group>"; };
 		5257D33A1F928B6E00A2E05D /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertPresenter.swift; path = Clean/Common/AlertPresenter.swift; sourceTree = "<group>"; };
+		5257D33C1F9415AC00A2E05D /* BaasBoxConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BaasBoxConfig.plist; sourceTree = "<group>"; };
 		52592FAF1F8B370A00D6202A /* PasswordVerificationConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationConfigurator.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationConfigurator.swift; sourceTree = "<group>"; };
 		52592FB01F8B370A00D6202A /* PasswordVerificationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationInteractor.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationInteractor.swift; sourceTree = "<group>"; };
 		52592FB11F8B370A00D6202A /* PasswordVerificationModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationModels.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationModels.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */,
 				332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */,
 				33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */,
+				5257D33C1F9415AC00A2E05D /* BaasBoxConfig.plist */,
 			);
 			path = BaasBox;
 			sourceTree = "<group>";
@@ -758,6 +761,7 @@
 				524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */,
 				523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */,
 				52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */,
+				5257D33D1F9415AC00A2E05D /* BaasBoxConfig.plist in Resources */,
 				527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */,
 				526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */,
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
