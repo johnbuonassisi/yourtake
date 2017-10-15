@@ -53,17 +53,17 @@ class BaasBoxClient: BaClient {
                             if object != nil {
                                 completion(true)
                             } else {
-                                print("error: unable to create user [description=\(error?.localizedDescription)]")
+                                print("error: unable to create user [description=\(String(describing: error?.localizedDescription))]")
                                 completion(false)
                             }
                         })
                     } else {
-                        print("error: unable to login [description=\(error?.localizedDescription)]")
+                        print("error: unable to login [description=\(String(describing: error?.localizedDescription))]")
                         completion(false)
                     }
                 })
             } else {
-                print("error: unable to register [description=\(error?.localizedDescription)]")
+                print("error: unable to register [description=\(String(describing: error?.localizedDescription))]")
                 completion(false)
             }
         })
@@ -72,7 +72,7 @@ class BaasBoxClient: BaClient {
     func login(username: String, password: String, completion: @escaping BaBoolCompletionBlock) -> Void {
         client.authenticateUser(username, password: password, completion: { (success, error) -> Void in
             if error != nil {
-                print("error: unable to login [description=\(error?.localizedDescription)]")
+                print("error: unable to login [description=\(String(describing: error?.localizedDescription))]")
             } else {
                 self.client.saveUser(toDisk: self.client.currentUser)
             }
@@ -95,7 +95,7 @@ class BaasBoxClient: BaClient {
     
         client.changeOldPassword(oldPassword, toNewPassword: newPassword, completion: { (success, error) -> Void in
             if error != nil {
-                print("error: unable to change password [description=\(error?.localizedDescription)]")
+                print("error: unable to change password [description=\(String(describing: error?.localizedDescription))]")
             }
             completion(success)
         })
@@ -123,14 +123,14 @@ class BaasBoxClient: BaClient {
                         if let baasUser = (objects as! [BaasBoxUser]).first {
                             self.client.resetPassword(forUser: baasUser.author, withCompletion: { (success, error) -> () in
                                 if error != nil {
-                                    print("error: unable to reset password [description=\(error?.localizedDescription)]")
+                                    print("error: unable to reset password [description=\(String(describing: error?.localizedDescription))]")
                                 }
                                 completion(success)
                                 return
                             })
                         }
                     } else {
-                        print("error: unable to load user details [description=\(error?.localizedDescription)]")
+                        print("error: unable to load user details [description=\(String(describing: error?.localizedDescription))]")
                     }
                     completion(false)
                     return
@@ -160,7 +160,7 @@ class BaasBoxClient: BaClient {
                         votes: baasUser.votes))
                 })
             } else {
-                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+                print("error: unable to load user details [description=\(String(describing: error?.localizedDescription))]")
                 completion(nil)
             }
         })
@@ -180,7 +180,7 @@ class BaasBoxClient: BaClient {
                     friends.append(user.username())
                 }
             } else {
-                print("error: unable to get friends [description=\(error?.localizedDescription)]")
+                print("error: unable to get friends [description=\(String(describing: error?.localizedDescription))]")
             }
             completion(friends)
         })
@@ -205,12 +205,12 @@ class BaasBoxClient: BaClient {
                     if object != nil {
                         completion(true)
                     } else {
-                        print("error: unable to add friend [description=\(error?.localizedDescription)]")
+                        print("error: unable to add friend [description=\(String(describing: error?.localizedDescription))]")
                         completion(false)
                     }
                 })
             } else {
-                print("error: unable to find friend [description=\(error?.localizedDescription)]")
+                print("error: unable to find friend [description=\(String(describing: error?.localizedDescription))]")
                 completion(false)
             }
         })
@@ -233,12 +233,12 @@ class BaasBoxClient: BaClient {
             if let friend = object as? BAAUser {
                 self.client.unfollowUser(friend, completion: { (success, error) -> Void in
                     if error != nil {
-                        print("error: unable to remove friend [description=\(error?.localizedDescription)]")
+                        print("error: unable to remove friend [description=\(String(describing: error?.localizedDescription))]")
                     }
                     completion(success)
                 })
             } else {
-                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+                print("error: unable to load user details [description=\(String(describing: error?.localizedDescription))]")
                 completion(false)
             }
         })
@@ -269,7 +269,7 @@ class BaasBoxClient: BaClient {
                             duration: baasChallenge.duration,
                             created: baasChallenge.creationDate))
             } else {
-                print("error: unable to load challenge [description=\(error?.localizedDescription)]")
+                print("error: unable to load challenge [description=\(String(describing: error?.localizedDescription))]")
                         completion(nil)
             }
         })
@@ -334,7 +334,7 @@ class BaasBoxClient: BaClient {
                     completion(challenges)
                 }
             } else { // baasChallenges is null
-                print("error: unable to load challenges [description=\(error?.localizedDescription)]")
+                print("error: unable to load challenges [description=\(String(describing: error?.localizedDescription))]")
                 completion(challenges)
             }
             
@@ -388,14 +388,14 @@ class BaasBoxClient: BaClient {
                         Backend.sharedInstance.challengesInProgress.remove(at: challengeIndex)
                         completion(true)
                     } else {
-                        print("error: unable to create challenge [description=\(error?.localizedDescription)]")
+                        print("error: unable to create challenge [description=\(String(describing: error?.localizedDescription))]")
                         baasFile.delete(completion: nil)
                         Backend.sharedInstance.challengesInProgress.remove(at: challengeIndex)
                         completion(false)
                     }
                 })
             } else {
-                print("error: unable to create challenge [description=\(error?.localizedDescription)]")
+                print("error: unable to create challenge [description=\(String(describing: error?.localizedDescription))]")
                 Backend.sharedInstance.challengesInProgress.remove(at: challengeIndex)
                 completion(false)
             }
@@ -419,12 +419,12 @@ class BaasBoxClient: BaClient {
             if let baasChallenge = object as? BaasBoxChallenge {
                 baasChallenge.delete(completion: { (success, error) -> Void in
                     if error != nil {
-                        print("error: unable to remove challenge [description=\(error?.localizedDescription)]")
+                        print("error: unable to remove challenge [description=\(String(describing: error?.localizedDescription))]")
                     }
                     completion(success)
                 })
             } else {
-                print("error: unable to load challenge [description=\(error?.localizedDescription)]")
+                print("error: unable to load challenge [description=\(String(describing: error?.localizedDescription))]")
                 completion(false)
             }
         })
@@ -453,7 +453,7 @@ class BaasBoxClient: BaClient {
                             author: baasTake.author,
                             votes: baasTake.votes))
             } else {
-                print("error: unable to load take [description=\(error?.localizedDescription)]")
+                print("error: unable to load take [description=\(String(describing: error?.localizedDescription))]")
                 completion(nil)
             }
         })
@@ -504,7 +504,7 @@ class BaasBoxClient: BaClient {
                     completion(takes)
                 }
             } else {
-                print("error: unable to load takes [description=\(error?.localizedDescription)]")
+                print("error: unable to load takes [description=\(String(describing: error?.localizedDescription))]")
                 completion(takes)
             }
         })
@@ -548,14 +548,14 @@ class BaasBoxClient: BaClient {
                         Backend.sharedInstance.takesInProgress.remove(at: takeIndex)
                         completion(true)
                     } else {
-                        print("error: unable to create challenge [description=\(error?.localizedDescription)]")
+                        print("error: unable to create challenge [description=\(String(describing: error?.localizedDescription))]")
                         baasFile.delete(completion: nil)
                         Backend.sharedInstance.takesInProgress.remove(at: takeIndex)
                         completion(false)
                     }
                 })
             } else {
-                print("error: unable to create challenge [description=\(error?.localizedDescription)]")
+                print("error: unable to create challenge [description=\(String(describing: error?.localizedDescription))]")
                 Backend.sharedInstance.takesInProgress.remove(at: takeIndex)
                 completion(false)
             }
@@ -579,12 +579,12 @@ class BaasBoxClient: BaClient {
             if let baasTake = object as? BaasBoxTake {
                 baasTake.delete(completion: { (success, error) -> Void in
                     if error != nil {
-                        print("error: unable to remove take [description=\(error?.localizedDescription)]")
+                        print("error: unable to remove take [description=\(String(describing: error?.localizedDescription))]")
                     }
                     completion(success)
                 })
             } else {
-                print("error: unable to get challenge [description=\(error?.localizedDescription)]")
+                print("error: unable to get challenge [description=\(String(describing: error?.localizedDescription))]")
                 completion(false)
             }
         })
@@ -625,19 +625,19 @@ class BaasBoxClient: BaClient {
                                     })
                                 }
                             } else {
-                                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+                                print("error: unable to load user details [description=\(String(describing: error?.localizedDescription))]")
                                 self.unvote(with: takeId, completion: { _ in ()
                                     completion(false)
                                 })
                             }
                         })
                     } else {
-                        print("error: unable to vote [description=\(error?.localizedDescription)]")
+                        print("error: unable to vote [description=\(String(describing: error?.localizedDescription))]")
                         completion(false)
                     }
                 })
             } else {
-                print("error: unable to load take [description=\(error?.localizedDescription)]")
+                print("error: unable to load take [description=\(String(describing: error?.localizedDescription))]")
                 completion(false)
             }
         })
@@ -669,19 +669,19 @@ class BaasBoxClient: BaClient {
                                     completion(true)
                                 })
                             } else {
-                                print("error: unable to load user details [description=\(error?.localizedDescription)]")
+                                print("error: unable to load user details [description=\(String(describing: error?.localizedDescription))]")
                                 self.vote(with: takeId, completion: { _ in ()
                                     completion(false)
                                 })
                             }
                         })
                     } else {
-                        print("error: unable to unvote [description=\(error?.localizedDescription)]")
+                        print("error: unable to unvote [description=\(String(describing: error?.localizedDescription))]")
                         completion(false)
                     }
                 })
             } else {
-                print("error: unable to load take [description=\(error?.localizedDescription)]")
+                print("error: unable to load take [description=\(String(describing: error?.localizedDescription))]")
                 completion(false)
             }
         })
