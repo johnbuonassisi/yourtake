@@ -9,9 +9,9 @@
 import UIKit
 
 class User: NSObject {
-    let username : String
-    var friends : [String]
-    var votes : [String: String]
+    let username: String
+    var friends: [String]
+    var votes: [String: String] // the take of the challenge a user has voted for - [challenge id: take id]
     
     init(username: String, friends: [String], votes: [String: String]) {
         self.username = username

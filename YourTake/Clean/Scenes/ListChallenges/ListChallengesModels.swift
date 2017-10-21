@@ -64,14 +64,14 @@ struct ListChallenges {
                 case noFriends = 2
             }
             
-            struct ChallengeResponseModel
-            {
+            struct ChallengeResponseModel {
                 var id : String
                 var author : String
                 var imageId : String
                 var recipients : [String]
                 var duration : TimeInterval
                 var created : Date
+                var hasUserSubmittedTake: Bool?
                 var image: UIImage?
                 var totalNumberOfVotes: UInt?
             }

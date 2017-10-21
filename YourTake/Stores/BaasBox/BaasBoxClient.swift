@@ -458,6 +458,39 @@ class BaasBoxClient: BaClient {
             }
         })
     }
+    
+    func getTakeDtoForCurrentUser(fromChallenge challengeId: String, completion: @escaping BaTakeDtoCompletionBlock) -> Void {
+        if challengeId.isEmpty {
+            print("error: invalid parameters")
+            completion(nil)
+            return
+        }
+        
+        if client.currentUser == nil || !client.isAuthenticated() {
+            print("error: user not authenticated")
+            completion(nil)
+            return
+        }
+        
+        let userName = client.currentUser.username()!
+        let params = ["where": "challengeId='" + challengeId + "' and _author='" + userName + "'"]
+        BaasBoxTake.getObjectsWithParams(params) { (objects, error) in
+            if let baasTakes = (objects as? [BaasBoxTake]) {
+                if let baasTake = baasTakes.first {
+                    completion(TakeDto(id: baasTake.objectId,
+                                       challengeId: baasTake.challengeId,
+                                       imageId: baasTake.overlayId,
+                                       author: baasTake.author,
+                                       votes: baasTake.votes))
+                } else {
+                    completion(nil)
+                }
+            } else {
+                print("error: unable to load takes [description=\(String(describing: error?.localizedDescription))]")
+                completion(nil)
+            }
+        }
+    }
   
     func getTakeDtoList(for challengeId: String, completion: @escaping BaTakeDtoListCompletionBlock) -> Void{
         

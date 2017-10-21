@@ -37,8 +37,8 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
             return
         }
         
-        for challenge in response.challenges
-        {
+        for challenge in response.challenges {
+            
             let totalVotesLabel = createTotalVotesLabel(challenge: challenge)
             let expiryLabel = createChallengeExpiryLabel(challenge: challenge)
             
@@ -51,6 +51,18 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
             var isDrawButtonEnabled = true
             if response.challengeType == ListChallenges.FetchChallenges.Response.ChallengeResponseType.userChallenges {
                 isDrawButtonEnabled = false
+            } else if numSecondsRemaining <= 0 {
+                isDrawButtonEnabled = false
+            } else {
+                if let hasUserSubmittedTake = challenge.hasUserSubmittedTake {
+                    if hasUserSubmittedTake {
+                        isDrawButtonEnabled = false
+                    } else {
+                        isDrawButtonEnabled = true
+                    }
+                } else {
+                    isDrawButtonEnabled = false
+                }
             }
             
             let displayedChallenge =
@@ -65,8 +77,7 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
             displayedChallenges.append(displayedChallenge)
         }
         
-        if(displayedChallenges.count == 0)
-        {
+        if(displayedChallenges.count == 0) {
             challengeType = .noChallenges
         }
         

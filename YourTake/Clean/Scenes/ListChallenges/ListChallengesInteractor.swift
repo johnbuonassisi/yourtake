@@ -23,6 +23,7 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
     var output: ListChallengesInteractorOutput!
     var challengesWorker = ChallengesWorker(challengesStore: ChallengesBaasBoxStore())
     var friendsWorker = FriendsWorker(friendsStore: FriendsBaasBoxStore())
+    var takesWorker = TakesWorker(takeStore: TakeBaasBoxStore())
     
     var userChallenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel] = []
     var friendChallenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel] = []
@@ -67,6 +68,7 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
                                                                                            recipients: challenge.recipients,
                                                                                            duration: challenge.duration,
                                                                                            created: challenge.created,
+                                                                                           hasUserSubmittedTake: nil,
                                                                                            image: challenge.image,
                                                                                            totalNumberOfVotes: nil))
                     }
@@ -87,6 +89,7 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
                                                                                            recipients: challenge.recipients,
                                                                                            duration: challenge.duration,
                                                                                            created: challenge.created,
+                                                                                           hasUserSubmittedTake: nil,
                                                                                            image: challenge.image,
                                                                                            totalNumberOfVotes: nil))
                     }
@@ -126,17 +129,23 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
             for i in 0..<challenges.count { // can't use forin loop here because the array contains structs
                 
                 // Download each challenge image
-                challengesWorker.downloadImage(with: challenges[i].imageId, completion: { (image) -> Void in
+                self.challengesWorker.downloadImage(with: challenges[i].imageId, completion: { (image) -> Void in
                     
                     challenges[i].image = image
                     
                     // Get the total number of votes for the challenge
-                    self.challengesWorker.getNumberOfVotes(for: challenges[i].id, completion: { (totalNumberOfVotes) -> Void in
-                        
-                        challenges[i].totalNumberOfVotes = totalNumberOfVotes
-                        let response = ListChallenges.FetchChallenges.Response(challengeType: challengeType,
-                                                                               challenges: challenges)
-                        self.output.presentFetchedChallenges(response: response)
+                    self.challengesWorker.getNumberOfVotes(
+                        for: challenges[i].id, completion: { (totalNumberOfVotes) -> Void in
+                            
+                            challenges[i].totalNumberOfVotes = totalNumberOfVotes
+                            
+                            // Determine if the current user has already submitted a take for the challenge
+                            self.takesWorker.doesTakeExist(forChallenge: challenges[i].id, completionHandler: { (doesTakeExist) in
+                                challenges[i].hasUserSubmittedTake = doesTakeExist
+                                let response = ListChallenges.FetchChallenges.Response(challengeType: challengeType,
+                                                                                       challenges: challenges)
+                                self.output.presentFetchedChallenges(response: response)
+                            })
                     })
                 })
             }
@@ -144,4 +153,5 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
             print("Error: Challenge List is nil")
         }
     }
+
 }
