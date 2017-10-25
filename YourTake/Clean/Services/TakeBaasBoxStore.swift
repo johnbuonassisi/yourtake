@@ -57,5 +57,16 @@ class TakeBaasBoxStore: TakesStoreProtocol {
         }
     })
   }
+    
+    func doesTakeExist(forChallenge challengeId: String, completionHandler: @escaping (Bool) -> Void) {
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.getTakeDtoForCurrentUser(fromChallenge: challengeId) { (take) in
+            if take == nil {
+                completionHandler(false)
+            } else {
+                completionHandler(true)
+            }
+        }
+    }
 
 }

@@ -79,7 +79,9 @@ class TakeMemStore: TakesStoreProtocol {
   
   func isChallengeExpired(challengeId: String, completionHandler: @escaping (Bool) -> Void) {
     completionHandler(false)
-  }
-
-
+    }
+    
+    func doesTakeExist(forChallenge challengeId: String, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(true)
+    }
 }

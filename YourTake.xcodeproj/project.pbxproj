@@ -366,6 +366,13 @@
 			name = ChangePassword;
 			sourceTree = "<group>";
 		};
+		5257D33E1F9426E500A2E05D /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
 		52592FAE1F8B36A200D6202A /* PasswordVerification */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +434,7 @@
 				52760BFB1E9058A60093B921 /* Workers */,
 				52760BFA1E90589E0093B921 /* Views */,
 				52760BF91E9058980093B921 /* Services */,
+				5257D33E1F9426E500A2E05D /* Stores */,
 			);
 			name = Clean;
 			sourceTree = "<group>";
