@@ -70,7 +70,7 @@ class PasswordVerificationViewController: UIViewController, PasswordVerification
             router.navigateToChangePasswordScene()
         } else {
             if let alertModel = viewModel.alertModel {
-                router.presentAlert(title: alertModel.title,
+                _ = router.presentAlert(title: alertModel.title,
                                     message: alertModel.message,
                                     actionTitle: alertModel.actionTitle)
                 currentPasswordTextField.text = nil

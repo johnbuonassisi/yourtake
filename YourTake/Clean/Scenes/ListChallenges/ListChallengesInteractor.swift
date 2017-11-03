@@ -48,7 +48,8 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
             if numberOfFriends == 0 {
                 let emptyChallenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel] = []
                 let response = ListChallenges.FetchChallenges.Response(challengeType: .noFriends,
-                                                                       challenges: emptyChallenges)
+                                                                       challenges: emptyChallenges,
+                                                                       viewSizes: request.viewSizes)
                 self.output.presentFetchedChallenges(response: response)
                 return
             }
@@ -75,7 +76,8 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
                     
                     self.fetchChallengeDataAndSendResponseToPresenter(challenges: self.userChallenges,
                                                                       challengeType: challengeType!,
-                                                                      isChallengeAndImageLoadSeparated: true)
+                                                                      isChallengeAndImageLoadSeparated: true,
+                                                                      viewSizes: request.viewSizes)
                     
                 })
             case .friendChallenges:
@@ -95,7 +97,8 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
                     }
                     self.fetchChallengeDataAndSendResponseToPresenter(challenges: self.friendChallenges,
                                                                       challengeType: challengeType!,
-                                                                      isChallengeAndImageLoadSeparated: true)
+                                                                      isChallengeAndImageLoadSeparated: true,
+                                                                      viewSizes: request.viewSizes)
                 })
             }
         })
@@ -108,11 +111,13 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
     // until all images have been fetched.
     private func fetchChallengeDataAndSendResponseToPresenter(challenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel]?,
                                                               challengeType: ListChallenges.FetchChallenges.Response.ChallengeResponseType,
-                                                              isChallengeAndImageLoadSeparated: Bool) {
+                                                              isChallengeAndImageLoadSeparated: Bool,
+                                                              viewSizes: ListChallenges.ListChallengesViewSizes) {
         
         if var challenges = challenges {
             let response = ListChallenges.FetchChallenges.Response(challengeType: challengeType,
-                                                                   challenges: challenges)
+                                                                   challenges: challenges,
+                                                                   viewSizes: viewSizes)
             
             if(challenges.count == 0) {
                 // When there are no challenges, present something immediately
@@ -143,7 +148,8 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
                             self.takesWorker.doesTakeExist(forChallenge: challenges[i].id, completionHandler: { (doesTakeExist) in
                                 challenges[i].hasUserSubmittedTake = doesTakeExist
                                 let response = ListChallenges.FetchChallenges.Response(challengeType: challengeType,
-                                                                                       challenges: challenges)
+                                                                                       challenges: challenges,
+                                                                                       viewSizes: viewSizes)
                                 self.output.presentFetchedChallenges(response: response)
                             })
                     })
