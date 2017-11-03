@@ -25,38 +25,13 @@ struct ListChallenges {
         struct Request {
             var challengeType: ChallengeRequestType
             var isChallengeAndImageLoadSeparated: Bool
-        }
-        
-        struct ViewModel {
-            
-            struct DisplayedChallenge {
-                var id: String
-                var name: String
-                var imageId: String
-                var challengeImage: UIImage?
-                var expiryLabel: String
-                var totalVotesLabel: String?
-                var isDrawButtonEnabled: Bool
-                var listTakesButtonTitleText: String
-            }
-            
-            enum ChallengeViewType: Int {
-                case userChallenges = 0
-                case friendChallenges = 1
-                case noFriends = 2
-                case noChallenges = 3
-                
-            }
-            
-            var challengeType: ChallengeViewType
-            var displayedChallenges: [DisplayedChallenge]
-            var isChallengeCreationEnabled: Bool
-            
+            var viewSizes: ListChallengesViewSizes
         }
         
         struct Response {
             var challengeType: ChallengeResponseType
             var challenges: [ChallengeResponseModel]
+            var viewSizes: ListChallengesViewSizes
             
             enum ChallengeResponseType: Int {
                 case userChallenges = 0
@@ -76,10 +51,44 @@ struct ListChallenges {
                 var totalNumberOfVotes: UInt?
             }
         }
+        
+        struct ViewModel {
+            
+            var challengeType: ChallengeViewType
+            var displayedChallenges: [DisplayedChallenge]
+            var isChallengeCreationEnabled: Bool
+            var cellRowHeight: CGFloat
+            
+            struct DisplayedChallenge {
+                var id: String
+                var name: String
+                var imageId: String
+                var challengeImage: UIImage?
+                var expiryLabel: String
+                var totalVotesLabel: String?
+                var isDrawButtonEnabled: Bool
+                var listTakesButtonTitleText: String
+            }
+            
+            enum ChallengeViewType: Int {
+                case userChallenges = 0
+                case friendChallenges = 1
+                case noFriends = 2
+                case noChallenges = 3
+                
+            }
+        }
     }
     
     enum ChallengeRequestType: Int {
         case userChallenges = 0
         case friendChallenges = 1
+    }
+    
+    struct ListChallengesViewSizes {
+        var navigationBarHeight: CGFloat
+        var tabBarHeight: CGFloat
+        var screenHeight: CGFloat
+        var screenWidth: CGFloat
     }
 }

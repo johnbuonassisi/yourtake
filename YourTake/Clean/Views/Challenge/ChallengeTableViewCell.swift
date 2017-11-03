@@ -9,17 +9,14 @@
 import UIKit
 
 class ChallengeTableViewCell: UITableViewCell {
-
-  @IBOutlet weak var name: UILabel!
-  @IBOutlet weak var challengeImage: UIImageView!
-  @IBOutlet weak var expiryLabel: UILabel!
-  @IBOutlet weak var totalVotesLabel: UILabel!
-  @IBOutlet weak var drawButton: UIButton!
-  @IBOutlet weak var voteButton: UIButton!
-  
-  static func CellRowHeight() -> CGFloat
-  {
-    return 481.0;
-  }
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var challengeImage: UIImageView!
+    @IBOutlet weak var expiryLabel: UILabel!
+    @IBOutlet weak var totalVotesLabel: UILabel!
+    @IBOutlet weak var drawButton: UIButton!
+    @IBOutlet weak var voteButton: UIButton!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var footerView: UIView!
     
 }

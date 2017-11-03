@@ -63,7 +63,7 @@ class ListChallengesViewController: UIViewController,
         
         tableView.dataSource = userChallengesDataSource
         tableView.delegate = self
-        tableView.rowHeight = ChallengeTableViewCell.CellRowHeight()
+        tableView.rowHeight = UIScreen.main.bounds.size.height
         tableView.allowsSelection = false
         
         let ctNib = UINib(nibName: "ChallengeTableViewCell", bundle: nil)
@@ -80,7 +80,6 @@ class ListChallengesViewController: UIViewController,
         tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
         tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
         tableView.refreshControl!.beginRefreshing()
-        
         
         tabBar.delegate = self
         tabBar.selectedItem = tabBar.items?[0]
@@ -99,8 +98,10 @@ class ListChallengesViewController: UIViewController,
         // NOTE: Ask the Interactor to do some work
         let tag = tabBar.selectedItem!.tag
         let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
+        let viewSizes = getViewSizes()
         let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
-                                                             isChallengeAndImageLoadSeparated: false)
+                                                             isChallengeAndImageLoadSeparated: false,
+                                                             viewSizes: viewSizes)
         output.fetchChallenges(request: request)
     }
     
@@ -122,6 +123,7 @@ class ListChallengesViewController: UIViewController,
         }
         
         createChallengeBarButton.isEnabled = viewModel.isChallengeCreationEnabled
+        tableView.rowHeight = viewModel.cellRowHeight
         tableView.reloadData()
         tableView.refreshControl!.endRefreshing()
     }
@@ -167,9 +169,19 @@ class ListChallengesViewController: UIViewController,
     func refresh(sender: UIButton!) {
         let tag = tabBar.selectedItem!.tag
         let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
+        let viewSizes = getViewSizes()
         let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
-                                                             isChallengeAndImageLoadSeparated: true)
+                                                             isChallengeAndImageLoadSeparated: true,
+                                                             viewSizes: viewSizes)
         output.fetchChallenges(request: request)
-        
+    }
+    
+    private func getViewSizes() -> ListChallenges.ListChallengesViewSizes {
+        let viewSizes = ListChallenges.ListChallengesViewSizes(
+            navigationBarHeight: navigationController!.navigationBar.frame.size.height,
+            tabBarHeight: tabBar.frame.size.height,
+            screenHeight: UIScreen.main.bounds.size.height,
+            screenWidth: UIScreen.main.bounds.size.width)
+        return viewSizes
     }
 }

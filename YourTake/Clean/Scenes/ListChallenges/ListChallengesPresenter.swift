@@ -28,11 +28,12 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
         var challengeType =
             ListChallenges.FetchChallenges.ViewModel.ChallengeViewType(rawValue: response.challengeType.rawValue)
         var displayedChallenges: [ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge] = []
-        
+        let cellRowHeight = getCellRowHeight(viewSizes: response.viewSizes)
         if(challengeType == .noFriends) {
             let viewModel = ListChallenges.FetchChallenges.ViewModel(challengeType: challengeType!,
                                                                      displayedChallenges: displayedChallenges,
-                                                                     isChallengeCreationEnabled: false)
+                                                                     isChallengeCreationEnabled: false,
+                                                                     cellRowHeight: cellRowHeight)
             output.displayFetchedChallenges(viewModel: viewModel)
             return
         }
@@ -43,10 +44,15 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
             let expiryLabel = createChallengeExpiryLabel(challenge: challenge)
             
             let numSecondsRemaining = getNumberOfSecondsRemainingForChallenge(challenge: challenge)
+            
+            // TODO: remove if unnecessary
+            var listTakesButtonTitleText = "";
+            /*
             var listTakesButtonTitleText = "Vote"
             if numSecondsRemaining <= 0 {
                 listTakesButtonTitleText = "View"
             }
+             */
             
             var isDrawButtonEnabled = true
             if response.challengeType == ListChallenges.FetchChallenges.Response.ChallengeResponseType.userChallenges {
@@ -83,7 +89,8 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
         
         let viewModel = ListChallenges.FetchChallenges.ViewModel(challengeType: challengeType!,
                                                                  displayedChallenges: displayedChallenges,
-                                                                 isChallengeCreationEnabled: true)
+                                                                 isChallengeCreationEnabled: true,
+                                                                 cellRowHeight: cellRowHeight)
         output.displayFetchedChallenges(viewModel: viewModel)
     }
     
@@ -145,6 +152,10 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
         }
         
         return Int(expiryDate.timeIntervalSince(Date()))
+    }
+    
+    private func getCellRowHeight(viewSizes: ListChallenges.ListChallengesViewSizes) -> CGFloat {
+        return viewSizes.screenHeight - viewSizes.navigationBarHeight - viewSizes.tabBarHeight
     }
     
 }
