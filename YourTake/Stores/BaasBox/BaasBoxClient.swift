@@ -381,12 +381,21 @@ class BaasBoxClient: BaClient {
                 let baasChallenge = BaasBoxChallenge(dictionary: params)
                 self.client.createObject(baasChallenge, completion: { (object, error) -> Void in
                     if let baasChallenge = object as? BaasBoxChallenge {
-                        // set challenge permission
-                        for recipient in params["recipients"] as! [String] {
-                            baasChallenge.grantAccess(toUser: recipient, ofType: kAclReadPermission, completion: nil)
-                        }
+                        // WORK-AROUND: Grant read access to all friends of this user
+                        // because this only takes a single network call and does not
+                        // depend on the results of the last permission grant action
+                        let friendsOfAuthorRole = "friends_of_" + self.client.currentUser.username()
+                        baasChallenge.grantAccess(toRole: friendsOfAuthorRole, ofType: kAclReadPermission, completion: { (object, error) in
+                            if error == nil {
+                                print("Read access given to friends of \(self.client.currentUser.username()) for challenge \(challengeId)")
+                                completion(true)
+                            } else {
+                                print("error: unable to give read access to friends of \(self.client.currentUser.username()) for challenge \(challengeId)")
+                                print("[description=\(String(describing:error?.localizedDescription))]")
+                                completion(false)
+                            }
+                        })
                         Backend.sharedInstance.challengesInProgress.remove(at: challengeIndex)
-                        completion(true)
                     } else {
                         print("error: unable to create challenge [description=\(String(describing: error?.localizedDescription))]")
                         baasFile.delete(completion: nil)
@@ -575,11 +584,32 @@ class BaasBoxClient: BaClient {
                 
                 let baasTake = BaasBoxTake(dictionary: params)
                 self.client.createObject(baasTake, completion: { (object, error) -> Void in
+                    // Need to nest the grant access calls because the version of the baasTake gets updated after each operation
+                    // Trying to grant access to an old version of a baasTake causes an error
                     if let baasTake = object as? BaasBoxTake {
-                        baasTake.grantAccess(toRole: kAclRegisteredRole, ofType: kAclReadPermission, completion: nil)
-                        baasTake.grantAccess(toRole: kAclRegisteredRole, ofType: kAclUpdatePermission, completion: nil)
-                        Backend.sharedInstance.takesInProgress.remove(at: takeIndex)
-                        completion(true)
+                        baasTake.grantAccess(toRole: kAclRegisteredRole,
+                                             ofType: kAclReadPermission,
+                                             completion: { (object, error) in
+                            if let baasTake = object as? BaasBoxTake {
+                                baasTake.grantAccess(toRole: kAclRegisteredRole,
+                                                     ofType: kAclUpdatePermission,
+                                                     completion: { (object, error) in
+                                                        if object == nil {
+                                                            print("error: unable to grant update permission to registered users for take \(baasTake.objectId)")
+                                                            baasFile.delete(completion: nil)
+                                                            Backend.sharedInstance.takesInProgress.remove(at: takeIndex)
+                                                            completion(false)
+                                                        }
+                                                        Backend.sharedInstance.takesInProgress.remove(at: takeIndex)
+                                                        completion(true)
+                                })
+                            } else {
+                                print("error: unable to grant read access to registered users for take \(baasTake.objectId)")
+                                baasFile.delete(completion: nil)
+                                Backend.sharedInstance.takesInProgress.remove(at: takeIndex)
+                                completion(false)
+                            }
+                        })
                     } else {
                         print("error: unable to create challenge [description=\(String(describing: error?.localizedDescription))]")
                         baasFile.delete(completion: nil)
