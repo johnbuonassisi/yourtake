@@ -288,7 +288,6 @@
 			children = (
 				332283F41E072D76008647E4 /* Local */,
 				332283EB1E05D5E4008647E4 /* BaasBox */,
-				332283EF1E05D5E4008647E4 /* BaClient.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -296,6 +295,8 @@
 		332283EB1E05D5E4008647E4 /* BaasBox */ = {
 			isa = PBXGroup;
 			children = (
+				332283EF1E05D5E4008647E4 /* BaClient.swift */,
+				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
 				332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */,
 				332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */,
 				332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */,
@@ -558,10 +559,9 @@
 		5285098A1DC6F9470083CC55 /* YourTake */ = {
 			isa = PBXGroup;
 			children = (
+				528509971DC6F9470083CC55 /* Info.plist */,
 				52760BF61E90586D0093B921 /* Clean */,
 				5248BE031E56CD9800538A50 /* Security */,
-				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
-				528509971DC6F9470083CC55 /* Info.plist */,
 				5285099D1DC6F98A0083CC55 /* Main */,
 				332283EA1E05D5E4008647E4 /* Stores */,
 				5285099E1DC6F9940083CC55 /* Models */,
@@ -1013,7 +1013,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.enovi.yourtake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/YourTake-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/Stores/BaasBox/YourTake-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1030,7 +1030,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.enovi.yourtake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/YourTake-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/Stores/BaasBox/YourTake-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
