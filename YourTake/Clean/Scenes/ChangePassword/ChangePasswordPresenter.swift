@@ -29,14 +29,14 @@ class ChangePasswordPresenter: ChangePasswordPresenterInput {
         var isPasswordChanged = false
         var alertModel: AlertModel?
         var isSaveButtonEnabled = true
-        var saveButtonColour = Constants.systemBlueColour
+        var saveButtonColour = Constants.SystemColours.blueColour
         
         switch response.responseType {
         case .passwordsValid:
             break
         case .passwordsInvalid:
             isSaveButtonEnabled = false
-            saveButtonColour = Constants.systemLightGreyColour
+            saveButtonColour = Constants.SystemColours.lightGreyColour
         case .newPasswordDoesNotMatch:
             alertModel = AlertModel(title: "Error",
                                     message: "New passwords are not the same",

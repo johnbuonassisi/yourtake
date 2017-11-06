@@ -19,7 +19,8 @@ class ListTakesCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TakeCollectionViewCell", for: indexPath) as! TakeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListTakesSceneCellIdentifiers.takeCellId,
+                                                      for: indexPath) as! TakeCollectionViewCell
         
         let displayedTake = displayedTakes[indexPath.row]
         

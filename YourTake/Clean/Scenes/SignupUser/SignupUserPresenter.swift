@@ -31,7 +31,7 @@ class SignupUserPresenter: SignupUserPresenterInput
   {
     // NOTE: Format the response from the Interactor and pass the result back to the View Controller
     let isSignupButtonEnabled = response.isEmailValid && response.isUserNameValid && response.isPasswordValid
-    let signupButtonColour = isSignupButtonEnabled ? Constants.systemBlueColour : Constants.systemLightGreyColour
+    let signupButtonColour = isSignupButtonEnabled ? Constants.SystemColours.blueColour : Constants.SystemColours.lightGreyColour
     let viewModel = SignupUser.Signup.ViewModel(isEmailSwitchOn: response.isEmailValid,
                                                 isUsernameSwitchOn: response.isUserNameValid,
                                                 isPasswordSwitchOn: response.isPasswordValid,

@@ -31,9 +31,9 @@ class UserLoginPresenter: UserLoginPresenterInput
   {
     // NOTE: Format the response from the Interactor and pass the result back to the View Controller
     let isLoginButtonEnabled = response.isPasswordValid && response.isUserNameEntered
-    var loginButtonColour =  Constants.systemLightGreyColour
+    var loginButtonColour =  Constants.SystemColours.lightGreyColour
     if( isLoginButtonEnabled) {
-      loginButtonColour = Constants.systemBlueColour
+      loginButtonColour = Constants.SystemColours.blueColour
     }
     
     let viewModel = UserLogin.Login.ViewModel(isUserLoggedIn: response.isUserLoggedIn,

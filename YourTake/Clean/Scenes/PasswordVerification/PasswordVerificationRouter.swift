@@ -21,12 +21,12 @@ class PasswordVerificationRouter: AlertPresenter, PasswordVerificationRouterInpu
     // MARK: - Navigation
 
     func navigateToChangePasswordScene() {
-        viewController.performSegue(withIdentifier: Constants.SegueIdentifiers.PasswordVerificationScene.changePasswordSegue,
+        viewController.performSegue(withIdentifier: PasswordVerificationSceneSegueIds.changePasswordSegue,
                                     sender: viewController)
     }
     
     func navigateToResetPasswordScene() {
-        viewController.performSegue(withIdentifier: Constants.SegueIdentifiers.PasswordVerificationScene.resetPasswordSegue,
+        viewController.performSegue(withIdentifier: PasswordVerificationSceneSegueIds.resetPasswordSegue,
                                     sender: nil)
     }
 

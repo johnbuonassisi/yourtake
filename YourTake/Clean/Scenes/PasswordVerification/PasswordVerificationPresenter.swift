@@ -33,17 +33,17 @@ class PasswordVerificationPresenter: PasswordVerificationPresenterInput {
             viewModel = PasswordVerification.VerifyPassword.ViewModel(isPasswordVerified: true,
                                                                       alertModel: nil,
                                                                       isContinueButtonEnabled: true,
-                                                                      continueButtonColour: Constants.systemBlueColour)
+                                                                      continueButtonColour: Constants.SystemColours.blueColour)
         } else if response.error == nil { // Password verified, but no error, ie. password entered but continue was not pressed
             viewModel = PasswordVerification.VerifyPassword.ViewModel(isPasswordVerified: false,
                                                                       alertModel: nil,
                                                                       isContinueButtonEnabled: true,
-                                                                      continueButtonColour: Constants.systemBlueColour)
+                                                                      continueButtonColour: Constants.SystemColours.blueColour)
         } else if response.error! == .invalidPasswordProvided {
             viewModel = PasswordVerification.VerifyPassword.ViewModel(isPasswordVerified: response.isPasswordVerified,
                                                                       alertModel: nil,
                                                                       isContinueButtonEnabled: false,
-                                                                      continueButtonColour: Constants.systemLightGreyColour)
+                                                                      continueButtonColour: Constants.SystemColours.lightGreyColour)
         } else {
             var message: String
             if response.error! == .noStoredPasswordFound || response.error! == .errorRetrievingPassword {
@@ -59,7 +59,7 @@ class PasswordVerificationPresenter: PasswordVerificationPresenterInput {
             viewModel = PasswordVerification.VerifyPassword.ViewModel(isPasswordVerified: response.isPasswordVerified,
                                                                       alertModel: alertModel,
                                                                       isContinueButtonEnabled: true,
-                                                                      continueButtonColour: Constants.systemBlueColour)
+                                                                      continueButtonColour: Constants.SystemColours.blueColour)
         }
         output.displaySomething(viewModel: viewModel)
     }

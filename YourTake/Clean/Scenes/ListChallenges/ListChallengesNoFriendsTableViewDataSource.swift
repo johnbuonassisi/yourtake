@@ -21,7 +21,8 @@ class ListChallengesNoFriendsTableViewDataSource: NSObject, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NO_FRIENDS_CELL_ID, for: indexPath) as! NoFriendsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListChallengeSceneCellIdentifiers.noFriendsCellId,
+                                                 for: indexPath) as! NoFriendsCell
         cell.addFriendsButton.addTarget(viewController,
                                         action: #selector(viewController.addFriends),
                                         for: .touchUpInside)

@@ -23,7 +23,8 @@ class ListChallengesForUserTableViewDataSource: NSObject, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: USER_CHALLENGE_CELL_ID, for: indexPath) as! ChallengeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListChallengeSceneCellIdentifiers.userChallengeCellId,
+                                                 for: indexPath) as! ChallengeTableViewCell
         
         let displayedChallenge = displayedChallenges[indexPath.row]
         

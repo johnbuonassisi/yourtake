@@ -19,11 +19,6 @@ protocol ListChallengesViewControllerOutput {
     func fetchChallenges(request: ListChallenges.FetchChallenges.Request)
 }
 
-let USER_CHALLENGE_CELL_ID = "UserChallengeTableViewCell"
-let FRIEND_CHALLENGE_CELL_ID = "FriendChallengeTableViewCell"
-let NO_CHALLENGE_CELL_ID = "EmptyChallengeTableViewCell"
-let NO_FRIENDS_CELL_ID = "NoFriendsCell"
-
 class ListChallengesViewController: UIViewController,
     UITableViewDelegate,
     UITabBarDelegate,
@@ -67,14 +62,14 @@ class ListChallengesViewController: UIViewController,
         tableView.allowsSelection = false
         
         let ctNib = UINib(nibName: "ChallengeTableViewCell", bundle: nil)
-        tableView.register(ctNib, forCellReuseIdentifier: USER_CHALLENGE_CELL_ID)
-        tableView.register(ctNib, forCellReuseIdentifier: FRIEND_CHALLENGE_CELL_ID)
+        tableView.register(ctNib, forCellReuseIdentifier: ListChallengeSceneCellIdentifiers.userChallengeCellId)
+        tableView.register(ctNib, forCellReuseIdentifier: ListChallengeSceneCellIdentifiers.friendChallengeCellId)
         
         let ectNib = UINib(nibName: "EmptyChallengeTableViewCell", bundle: nil)
-        tableView.register(ectNib, forCellReuseIdentifier: NO_CHALLENGE_CELL_ID)
+        tableView.register(ectNib, forCellReuseIdentifier: ListChallengeSceneCellIdentifiers.noChallengeCellId)
         
         let nftNib = UINib(nibName: "NoFriendsCell", bundle: nil)
-        tableView.register(nftNib, forCellReuseIdentifier: NO_FRIENDS_CELL_ID)
+        tableView.register(nftNib, forCellReuseIdentifier: ListChallengeSceneCellIdentifiers.noFriendsCellId)
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
