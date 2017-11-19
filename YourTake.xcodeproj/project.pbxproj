@@ -14,6 +14,7 @@
 		332283F91E072F12008647E4 /* LocalClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283F81E072F12008647E4 /* LocalClient.swift */; };
 		33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AA4C1E248EA600C5D05A /* Backend.swift */; };
 		33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */; };
+		520232C11FC242B6003C5F96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520232C01FC242B6003C5F96 /* LaunchScreen.storyboard */; };
 		520655161E9B47D90048A575 /* TakeBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */; };
 		520E2BE91EA4364600A5713C /* FriendNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */; };
 		521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */; };
@@ -142,6 +143,7 @@
 		332283F81E072F12008647E4 /* LocalClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocalClient.swift; sourceTree = "<group>"; };
 		33E3AA4C1E248EA600C5D05A /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Backend.swift; path = Models/Backend.swift; sourceTree = "<group>"; };
 		33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxUser.swift; sourceTree = "<group>"; };
+		520232C01FC242B6003C5F96 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Clean/Views/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeBaasBoxStore.swift; path = Clean/Services/TakeBaasBoxStore.swift; sourceTree = "<group>"; };
 		520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendNameTableViewCell.swift; path = Clean/Scenes/AddFriends/FriendNameTableViewCell.swift; sourceTree = "<group>"; };
 		521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoFriendsCell.xib; path = Clean/Views/Challenge/NoFriendsCell.xib; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				52760C201E9059880093B921 /* Main.storyboard */,
+				520232C01FC242B6003C5F96 /* LaunchScreen.storyboard */,
 				52BD8B671EA42FDF005B142C /* Common */,
 				52760BF81E9058910093B921 /* Scenes */,
 				52760BF71E90588A0093B921 /* Models */,
@@ -770,6 +773,7 @@
 				523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */,
 				52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */,
 				5257D33D1F9415AC00A2E05D /* BaasBoxConfig.plist in Resources */,
+				520232C11FC242B6003C5F96 /* LaunchScreen.storyboard in Resources */,
 				527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */,
 				526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */,
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
