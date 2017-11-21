@@ -200,7 +200,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXx-Gt-tSx">
-                                <rect key="frame" x="264" y="345.5" width="51" height="30"/>
+                                <rect key="frame" x="264" y="345" width="51" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AkW-M0-bcX"/>
                                     <constraint firstAttribute="width" constant="51" id="l9v-yw-vSl"/>
@@ -234,7 +234,7 @@
                                 <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up to put your take on your friend's photos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltj-wD-IkN">
-                                <rect key="frame" x="72.5" y="98" width="231" height="41"/>
+                                <rect key="frame" x="72" y="98" width="231" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="231" id="VrV-dw-9wV"/>
                                 </constraints>
@@ -780,7 +780,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Sx-Rc-ZWq">
-                                <rect key="frame" x="16" y="185" width="343" height="30"/>
+                                <rect key="frame" x="16" y="164.5" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -789,13 +789,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To change your password, please enter your current password first." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omk-bi-vHn">
-                                <rect key="frame" x="16" y="136" width="343" height="41"/>
+                                <rect key="frame" x="16" y="136" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFO-l6-M0q">
-                                <rect key="frame" x="16" y="253" width="343" height="30"/>
+                                <rect key="frame" x="16" y="232.5" width="343" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Continue">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -805,7 +805,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8li-Di-IHJ">
-                                <rect key="frame" x="16" y="291" width="123" height="30"/>
+                                <rect key="frame" x="16" y="270.5" width="123" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="123" id="Kev-ga-YH9"/>
                                 </constraints>

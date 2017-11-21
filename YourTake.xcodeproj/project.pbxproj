@@ -7,15 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		332283F01E05D5E4008647E4 /* BaasBoxChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */; };
-		332283F11E05D5E4008647E4 /* BaasBoxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */; };
-		332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */; };
-		332283F31E05D5E4008647E4 /* BaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283EF1E05D5E4008647E4 /* BaClient.swift */; };
-		332283F91E072F12008647E4 /* LocalClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332283F81E072F12008647E4 /* LocalClient.swift */; };
-		33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AA4C1E248EA600C5D05A /* Backend.swift */; };
-		33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */; };
 		520232C11FC242B6003C5F96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520232C01FC242B6003C5F96 /* LaunchScreen.storyboard */; };
-		520655161E9B47D90048A575 /* TakeBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */; };
+		520232C61FC3FAAA003C5F96 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232C51FC3FAAA003C5F96 /* Reachability.swift */; };
+		520232CA1FC3FB57003C5F96 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232C81FC3FB57003C5F96 /* KeychainPasswordItem.swift */; };
+		520232CB1FC3FB57003C5F96 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232C91FC3FB57003C5F96 /* KeychainConfiguration.swift */; };
+		520232E31FC3FCFC003C5F96 /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232E21FC3FCFC003C5F96 /* ValidationService.swift */; };
+		520232EA1FC3FD9A003C5F96 /* FriendsMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232E61FC3FD99003C5F96 /* FriendsMemStore.swift */; };
+		520232EB1FC3FD9A003C5F96 /* LoginMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232E71FC3FD99003C5F96 /* LoginMemStore.swift */; };
+		520232EC1FC3FD9A003C5F96 /* TakeMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232E81FC3FD9A003C5F96 /* TakeMemStore.swift */; };
+		520232ED1FC3FD9A003C5F96 /* ChallengesMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232E91FC3FD9A003C5F96 /* ChallengesMemStore.swift */; };
+		520232F41FC3FE77003C5F96 /* LoginBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232EF1FC3FE77003C5F96 /* LoginBaasBoxStore.swift */; };
+		520232F51FC3FE77003C5F96 /* ChallengesBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232F01FC3FE77003C5F96 /* ChallengesBaasBoxStore.swift */; };
+		520232F61FC3FE77003C5F96 /* FriendsBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232F11FC3FE77003C5F96 /* FriendsBaasBoxStore.swift */; };
+		520232F71FC3FE77003C5F96 /* SignupBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232F21FC3FE77003C5F96 /* SignupBaasBoxStore.swift */; };
+		520232F81FC3FE77003C5F96 /* TakeBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232F31FC3FE77003C5F96 /* TakeBaasBoxStore.swift */; };
+		520233001FC3FEED003C5F96 /* BaasBoxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232F91FC3FEED003C5F96 /* BaasBoxClient.swift */; };
+		520233011FC3FEED003C5F96 /* BaasBoxChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232FA1FC3FEED003C5F96 /* BaasBoxChallenge.swift */; };
+		520233021FC3FEED003C5F96 /* BaasBoxTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232FB1FC3FEED003C5F96 /* BaasBoxTake.swift */; };
+		520233031FC3FEED003C5F96 /* BaasBoxConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 520232FC1FC3FEED003C5F96 /* BaasBoxConfig.plist */; };
+		520233041FC3FEED003C5F96 /* BaasBoxUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232FD1FC3FEED003C5F96 /* BaasBoxUser.swift */; };
+		520233051FC3FEED003C5F96 /* BaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520232FE1FC3FEED003C5F96 /* BaClient.swift */; };
+		520233071FC400F3003C5F96 /* LocalClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520233061FC400F3003C5F96 /* LocalClient.swift */; };
+		520233091FC40170003C5F96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520233081FC40170003C5F96 /* Main.storyboard */; };
+		5202330F1FC402D2003C5F96 /* FriendSelectionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330A1FC402D1003C5F96 /* FriendSelectionTracker.swift */; };
+		520233101FC402D2003C5F96 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330B1FC402D2003C5F96 /* Backend.swift */; };
+		520233111FC402D2003C5F96 /* ChallengeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330C1FC402D2003C5F96 /* ChallengeDto.swift */; };
+		520233121FC402D2003C5F96 /* TakeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330D1FC402D2003C5F96 /* TakeDto.swift */; };
+		520233131FC402D2003C5F96 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330E1FC402D2003C5F96 /* User.swift */; };
 		520E2BE91EA4364600A5713C /* FriendNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */; };
 		521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */; };
 		521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */; };
@@ -26,18 +44,13 @@
 		52299E301DE807ED00F04C86 /* BAAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E271DE807ED00F04C86 /* BAAObject.m */; };
 		52299E311DE807ED00F04C86 /* BaasBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E291DE807ED00F04C86 /* BaasBox.m */; };
 		52299E321DE807ED00F04C86 /* BAAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E2B1DE807ED00F04C86 /* BAAUser.m */; };
-		523074A91DC70C4F002EB030 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523074A81DC70C4F002EB030 /* User.swift */; };
 		523074B11DC71692002EB030 /* John_Challenge_Andrea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */; };
 		523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */; };
 		523074B31DC71692002EB030 /* John_Challenge_Ashling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */; };
 		523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */; };
 		523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074B01DC71692002EB030 /* John_Challenge.jpg */; };
 		524540CF1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524540CE1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift */; };
-		524540D11EC4498F006FF5EB /* FriendsBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524540D01EC4498F006FF5EB /* FriendsBaasBoxStore.swift */; };
-		5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */; };
-		5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */; };
 		524B02801EC2E601007DA5EA /* FriendsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B027F1EC2E601007DA5EA /* FriendsWorker.swift */; };
-		524B02821EC2E93A007DA5EA /* FriendsMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B02811EC2E93A007DA5EA /* FriendsMemStore.swift */; };
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
 		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
 		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
@@ -47,10 +60,8 @@
 		5257AE661F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5F1F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift */; };
 		5257AE671F5E6F6F00CD2A33 /* ChangePasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE601F5E6F6F00CD2A33 /* ChangePasswordRouter.swift */; };
 		5257AE681F5E6F6F00CD2A33 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE611F5E6F6F00CD2A33 /* ChangePasswordViewController.swift */; };
-		5257D3371F8C012900A2E05D /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257D3361F8C012900A2E05D /* ValidationService.swift */; };
 		5257D3391F92897700A2E05D /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257D3381F92897600A2E05D /* AlertModel.swift */; };
 		5257D33B1F928B6E00A2E05D /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257D33A1F928B6E00A2E05D /* AlertPresenter.swift */; };
-		5257D33D1F9415AC00A2E05D /* BaasBoxConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5257D33C1F9415AC00A2E05D /* BaasBoxConfig.plist */; };
 		52592FB61F8B370A00D6202A /* PasswordVerificationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FAF1F8B370A00D6202A /* PasswordVerificationConfigurator.swift */; };
 		52592FB71F8B370A00D6202A /* PasswordVerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FB01F8B370A00D6202A /* PasswordVerificationInteractor.swift */; };
 		52592FB81F8B370A00D6202A /* PasswordVerificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52592FB11F8B370A00D6202A /* PasswordVerificationModels.swift */; };
@@ -74,15 +85,12 @@
 		5267D8E51E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8E41E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift */; };
 		5267D8E81E99965400B94470 /* TakeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8E71E99965400B94470 /* TakeCollectionViewCell.swift */; };
 		5267D8EA1E99968100B94470 /* TakeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */; };
-		5267D8EC1E99A04D00B94470 /* TakeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8EB1E99A04D00B94470 /* TakeDto.swift */; };
 		5267D8EE1E9A8E1700B94470 /* TakesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8ED1E9A8E1700B94470 /* TakesWorker.swift */; };
-		5267D8F01E9A93DE00B94470 /* TakeMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8EF1E9A93DE00B94470 /* TakeMemStore.swift */; };
 		526AF0521DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF04D1DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg */; };
 		526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF04E1DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg */; };
 		526AF0541DCFCE86003350B4 /* Ashling_Challenge_John.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */; };
 		526AF0551DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF0501DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg */; };
 		526AF0561DCFCE86003350B4 /* Ashling_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF0511DCFCE86003350B4 /* Ashling_Challenge.jpg */; };
-		52760BF51E9045280093B921 /* ChallengeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BF41E9045270093B921 /* ChallengeDto.swift */; };
 		52760C071E9058F80093B921 /* ListChallengesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */; };
 		52760C081E9058F80093B921 /* ListChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFE1E9058F80093B921 /* ListChallengesViewController.swift */; };
 		52760C091E9058F80093B921 /* ListChallengesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFF1E9058F80093B921 /* ListChallengesInteractor.swift */; };
@@ -93,14 +101,11 @@
 		52760C0E1E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C041E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift */; };
 		52760C0F1E9058F80093B921 /* ListChallengesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C051E9058F80093B921 /* ListChallengesRouter.swift */; };
 		52760C101E9058F80093B921 /* ListChallengesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C061E9058F80093B921 /* ListChallengesWorker.swift */; };
-		52760C141E90591E0093B921 /* ChallengesMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C131E90591E0093B921 /* ChallengesMemStore.swift */; };
 		52760C1A1E9059520093B921 /* EmptyChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52760C161E9059520093B921 /* EmptyChallengeTableViewCell.xib */; };
 		52760C1B1E9059520093B921 /* EmptyChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C171E9059520093B921 /* EmptyChallengeTableViewCell.swift */; };
 		52760C1C1E9059520093B921 /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52760C181E9059520093B921 /* ChallengeTableViewCell.xib */; };
 		52760C1D1E9059520093B921 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C191E9059520093B921 /* ChallengeTableViewCell.swift */; };
 		52760C1F1E9059610093B921 /* ChallengesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C1E1E9059610093B921 /* ChallengesWorker.swift */; };
-		52760C211E9059880093B921 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52760C201E9059880093B921 /* Main.storyboard */; };
-		52760C231E905EDB0093B921 /* ChallengesBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C221E905EDB0093B921 /* ChallengesBaasBoxStore.swift */; };
 		527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527FD5E91E0739F90023D420 /* LaunchScreen.xib */; };
 		5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285098B1DC6F9470083CC55 /* AppDelegate.swift */; };
 		528509931DC6F9470083CC55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528509921DC6F9470083CC55 /* Assets.xcassets */; };
@@ -110,11 +115,9 @@
 		529EFBB31E9F4E8D0054559B /* CreateTakeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */; };
 		529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */; };
 		52A0D1F11EA2EB7700292B23 /* SignupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1F01EA2EB7700292B23 /* SignupWorker.swift */; };
-		52A0D1F31EA2EC6400292B23 /* SignupBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */; };
 		52A0D1F81EA3430500292B23 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */; };
 		52A0D1FC1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A0D1FB1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift */; };
 		52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A48D291DD90631005A89B8 /* DrawPathsView.swift */; };
-		52A868811E63687100F26F31 /* FriendSelectionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A868801E63687100F26F31 /* FriendSelectionTracker.swift */; };
 		52A868831E63E20B00F26F31 /* ChallengeOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A868821E63E20B00F26F31 /* ChallengeOptionsViewController.xib */; };
 		52AD64141EA441E700774D5D /* FriendPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AD64121EA441E700774D5D /* FriendPickerCell.swift */; };
 		52AD64151EA441E700774D5D /* FriendPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AD64131EA441E700774D5D /* FriendPickerCell.xib */; };
@@ -129,26 +132,42 @@
 		52B682EB1EA29BFE00DBB0A4 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682E41EA29BFE00DBB0A4 /* UserLoginViewController.swift */; };
 		52B682EC1EA29BFE00DBB0A4 /* UserLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682E51EA29BFE00DBB0A4 /* UserLoginWorker.swift */; };
 		52B682EE1EA29FFF00DBB0A4 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */; };
-		52B682F01EA2A19E00DBB0A4 /* LoginMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682EF1EA2A19E00DBB0A4 /* LoginMemStore.swift */; };
-		52B682F21EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */; };
 		52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD8B6B1EA43464005B142C /* FriendViewController.swift */; };
 		52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaasBoxChallenge.swift; sourceTree = "<group>"; wrapsLines = 1; };
-		332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaasBoxClient.swift; sourceTree = "<group>"; };
-		332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaasBoxTake.swift; sourceTree = "<group>"; };
-		332283EF1E05D5E4008647E4 /* BaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaClient.swift; sourceTree = "<group>"; };
-		332283F81E072F12008647E4 /* LocalClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LocalClient.swift; sourceTree = "<group>"; };
-		33E3AA4C1E248EA600C5D05A /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Backend.swift; path = Models/Backend.swift; sourceTree = "<group>"; };
-		33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaasBoxUser.swift; sourceTree = "<group>"; };
 		520232C01FC242B6003C5F96 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Clean/Views/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeBaasBoxStore.swift; path = Clean/Services/TakeBaasBoxStore.swift; sourceTree = "<group>"; };
+		520232C51FC3FAAA003C5F96 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Clean/Services/Reachability/Reachability.swift; sourceTree = "<group>"; };
+		520232C81FC3FB57003C5F96 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Clean/Services/Security/KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		520232C91FC3FB57003C5F96 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainConfiguration.swift; path = Clean/Services/Security/KeychainConfiguration.swift; sourceTree = "<group>"; };
+		520232E21FC3FCFC003C5F96 /* ValidationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValidationService.swift; path = Clean/Services/Utility/ValidationService.swift; sourceTree = "<group>"; };
+		520232E61FC3FD99003C5F96 /* FriendsMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsMemStore.swift; path = Clean/Stores/Memory/FriendsMemStore.swift; sourceTree = "<group>"; };
+		520232E71FC3FD99003C5F96 /* LoginMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginMemStore.swift; path = Clean/Stores/Memory/LoginMemStore.swift; sourceTree = "<group>"; };
+		520232E81FC3FD9A003C5F96 /* TakeMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeMemStore.swift; path = Clean/Stores/Memory/TakeMemStore.swift; sourceTree = "<group>"; };
+		520232E91FC3FD9A003C5F96 /* ChallengesMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengesMemStore.swift; path = Clean/Stores/Memory/ChallengesMemStore.swift; sourceTree = "<group>"; };
+		520232EF1FC3FE77003C5F96 /* LoginBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBaasBoxStore.swift; path = Clean/Stores/BaasBox/LoginBaasBoxStore.swift; sourceTree = "<group>"; };
+		520232F01FC3FE77003C5F96 /* ChallengesBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengesBaasBoxStore.swift; path = Clean/Stores/BaasBox/ChallengesBaasBoxStore.swift; sourceTree = "<group>"; };
+		520232F11FC3FE77003C5F96 /* FriendsBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsBaasBoxStore.swift; path = Clean/Stores/BaasBox/FriendsBaasBoxStore.swift; sourceTree = "<group>"; };
+		520232F21FC3FE77003C5F96 /* SignupBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupBaasBoxStore.swift; path = Clean/Stores/BaasBox/SignupBaasBoxStore.swift; sourceTree = "<group>"; };
+		520232F31FC3FE77003C5F96 /* TakeBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeBaasBoxStore.swift; path = Clean/Stores/BaasBox/TakeBaasBoxStore.swift; sourceTree = "<group>"; };
+		520232F91FC3FEED003C5F96 /* BaasBoxClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaasBoxClient.swift; path = Clean/Services/BaasBox/BaasBoxClient.swift; sourceTree = "<group>"; };
+		520232FA1FC3FEED003C5F96 /* BaasBoxChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaasBoxChallenge.swift; path = Clean/Services/BaasBox/BaasBoxChallenge.swift; sourceTree = "<group>"; };
+		520232FB1FC3FEED003C5F96 /* BaasBoxTake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaasBoxTake.swift; path = Clean/Services/BaasBox/BaasBoxTake.swift; sourceTree = "<group>"; };
+		520232FC1FC3FEED003C5F96 /* BaasBoxConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BaasBoxConfig.plist; path = Clean/Services/BaasBox/BaasBoxConfig.plist; sourceTree = "<group>"; };
+		520232FD1FC3FEED003C5F96 /* BaasBoxUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaasBoxUser.swift; path = Clean/Services/BaasBox/BaasBoxUser.swift; sourceTree = "<group>"; };
+		520232FE1FC3FEED003C5F96 /* BaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaClient.swift; path = Clean/Services/BaasBox/BaClient.swift; sourceTree = "<group>"; };
+		520232FF1FC3FEED003C5F96 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "YourTake-Bridging-Header.h"; path = "Clean/Services/BaasBox/YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
+		520233061FC400F3003C5F96 /* LocalClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalClient.swift; path = Clean/Services/BaasBox/LocalClient.swift; sourceTree = "<group>"; };
+		520233081FC40170003C5F96 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Main/Main.storyboard; sourceTree = "<group>"; };
+		5202330A1FC402D1003C5F96 /* FriendSelectionTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendSelectionTracker.swift; path = Clean/Models/FriendSelectionTracker.swift; sourceTree = "<group>"; };
+		5202330B1FC402D2003C5F96 /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Backend.swift; path = Clean/Models/Backend.swift; sourceTree = "<group>"; };
+		5202330C1FC402D2003C5F96 /* ChallengeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeDto.swift; path = Clean/Models/ChallengeDto.swift; sourceTree = "<group>"; };
+		5202330D1FC402D2003C5F96 /* TakeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeDto.swift; path = Clean/Models/TakeDto.swift; sourceTree = "<group>"; };
+		5202330E1FC402D2003C5F96 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Clean/Models/User.swift; sourceTree = "<group>"; };
 		520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendNameTableViewCell.swift; path = Clean/Scenes/AddFriends/FriendNameTableViewCell.swift; sourceTree = "<group>"; };
 		521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoFriendsCell.xib; path = Clean/Views/Challenge/NoFriendsCell.xib; sourceTree = "<group>"; };
 		521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoFriendsCell.swift; path = Clean/Views/Challenge/NoFriendsCell.swift; sourceTree = "<group>"; };
-		52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YourTake-Bridging-Header.h"; sourceTree = "<group>"; };
 		52299E1E1DE807ED00F04C86 /* BAAClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAClient.h; sourceTree = "<group>"; };
 		52299E1F1DE807ED00F04C86 /* BAAClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAClient.m; sourceTree = "<group>"; };
 		52299E201DE807ED00F04C86 /* BAAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAFile.h; sourceTree = "<group>"; };
@@ -163,18 +182,13 @@
 		52299E291DE807ED00F04C86 /* BaasBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaasBox.m; sourceTree = "<group>"; };
 		52299E2A1DE807ED00F04C86 /* BAAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAUser.h; sourceTree = "<group>"; };
 		52299E2B1DE807ED00F04C86 /* BAAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAUser.m; sourceTree = "<group>"; };
-		523074A81DC70C4F002EB030 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Andrea.jpg; sourceTree = "<group>"; };
 		523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Anthony.jpg; sourceTree = "<group>"; };
 		523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Ashling.jpg; sourceTree = "<group>"; };
 		523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Peter.jpg; sourceTree = "<group>"; };
 		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge.jpg; sourceTree = "<group>"; };
 		524540CE1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesNoFriendsTableViewDataSource.swift; path = Clean/Scenes/ListChallenges/ListChallengesNoFriendsTableViewDataSource.swift; sourceTree = "<group>"; };
-		524540D01EC4498F006FF5EB /* FriendsBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsBaasBoxStore.swift; path = Clean/Services/FriendsBaasBoxStore.swift; sourceTree = "<group>"; };
-		5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainConfiguration.swift; path = Security/KeychainConfiguration.swift; sourceTree = "<group>"; };
-		5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Security/KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		524B027F1EC2E601007DA5EA /* FriendsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsWorker.swift; path = Clean/Workers/FriendsWorker.swift; sourceTree = "<group>"; };
-		524B02811EC2E93A007DA5EA /* FriendsMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsMemStore.swift; path = Clean/Services/FriendsMemStore.swift; sourceTree = "<group>"; };
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Clean/Scenes/SnapChallengeImage/CameraOverlayView.xib; sourceTree = "<group>"; };
 		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewView.xib; sourceTree = "<group>"; };
 		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewViewController.swift; sourceTree = "<group>"; };
@@ -184,10 +198,8 @@
 		5257AE5F1F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordPresenter.swift; path = Clean/Scenes/ChangePassword/ChangePasswordPresenter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5257AE601F5E6F6F00CD2A33 /* ChangePasswordRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordRouter.swift; path = Clean/Scenes/ChangePassword/ChangePasswordRouter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5257AE611F5E6F6F00CD2A33 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordViewController.swift; path = Clean/Scenes/ChangePassword/ChangePasswordViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		5257D3361F8C012900A2E05D /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ValidationService.swift; path = Clean/Services/ValidationService.swift; sourceTree = "<group>"; };
 		5257D3381F92897600A2E05D /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertModel.swift; path = Clean/Models/AlertModel.swift; sourceTree = "<group>"; };
 		5257D33A1F928B6E00A2E05D /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertPresenter.swift; path = Clean/Common/AlertPresenter.swift; sourceTree = "<group>"; };
-		5257D33C1F9415AC00A2E05D /* BaasBoxConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BaasBoxConfig.plist; sourceTree = "<group>"; };
 		52592FAF1F8B370A00D6202A /* PasswordVerificationConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationConfigurator.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationConfigurator.swift; sourceTree = "<group>"; };
 		52592FB01F8B370A00D6202A /* PasswordVerificationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationInteractor.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationInteractor.swift; sourceTree = "<group>"; };
 		52592FB11F8B370A00D6202A /* PasswordVerificationModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordVerificationModels.swift; path = Clean/Scenes/PasswordVerification/PasswordVerificationModels.swift; sourceTree = "<group>"; };
@@ -211,15 +223,12 @@
 		5267D8E41E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTakesCollectionViewDataSource.swift; path = Clean/Scenes/ListTakes/ListTakesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		5267D8E71E99965400B94470 /* TakeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeCollectionViewCell.swift; path = Clean/Views/Take/TakeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TakeCollectionViewCell.xib; path = Clean/Views/Take/TakeCollectionViewCell.xib; sourceTree = "<group>"; };
-		5267D8EB1E99A04D00B94470 /* TakeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeDto.swift; path = Models/TakeDto.swift; sourceTree = "<group>"; };
 		5267D8ED1E9A8E1700B94470 /* TakesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakesWorker.swift; path = Clean/Workers/TakesWorker.swift; sourceTree = "<group>"; };
-		5267D8EF1E9A93DE00B94470 /* TakeMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeMemStore.swift; path = Clean/Services/TakeMemStore.swift; sourceTree = "<group>"; };
 		526AF04D1DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Andrea.jpg; sourceTree = "<group>"; };
 		526AF04E1DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Anthony.jpg; sourceTree = "<group>"; };
 		526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_John.jpg; sourceTree = "<group>"; };
 		526AF0501DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Peter.jpg; sourceTree = "<group>"; };
 		526AF0511DCFCE86003350B4 /* Ashling_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge.jpg; sourceTree = "<group>"; };
-		52760BF41E9045270093B921 /* ChallengeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeDto.swift; path = Models/ChallengeDto.swift; sourceTree = "<group>"; };
 		52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesPresenter.swift; path = Clean/Scenes/ListChallenges/ListChallengesPresenter.swift; sourceTree = "<group>"; };
 		52760BFE1E9058F80093B921 /* ListChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesViewController.swift; path = Clean/Scenes/ListChallenges/ListChallengesViewController.swift; sourceTree = "<group>"; };
 		52760BFF1E9058F80093B921 /* ListChallengesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesInteractor.swift; path = Clean/Scenes/ListChallenges/ListChallengesInteractor.swift; sourceTree = "<group>"; };
@@ -230,14 +239,11 @@
 		52760C041E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesForUserTableViewDataSource.swift; path = Clean/Scenes/ListChallenges/ListChallengesForUserTableViewDataSource.swift; sourceTree = "<group>"; };
 		52760C051E9058F80093B921 /* ListChallengesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesRouter.swift; path = Clean/Scenes/ListChallenges/ListChallengesRouter.swift; sourceTree = "<group>"; };
 		52760C061E9058F80093B921 /* ListChallengesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesWorker.swift; path = Clean/Scenes/ListChallenges/ListChallengesWorker.swift; sourceTree = "<group>"; };
-		52760C131E90591E0093B921 /* ChallengesMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengesMemStore.swift; path = Clean/Services/ChallengesMemStore.swift; sourceTree = "<group>"; };
 		52760C161E9059520093B921 /* EmptyChallengeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyChallengeTableViewCell.xib; path = Clean/Views/Challenge/EmptyChallengeTableViewCell.xib; sourceTree = "<group>"; };
 		52760C171E9059520093B921 /* EmptyChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyChallengeTableViewCell.swift; path = Clean/Views/Challenge/EmptyChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		52760C181E9059520093B921 /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeTableViewCell.xib; path = Clean/Views/Challenge/ChallengeTableViewCell.xib; sourceTree = "<group>"; };
 		52760C191E9059520093B921 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeTableViewCell.swift; path = Clean/Views/Challenge/ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		52760C1E1E9059610093B921 /* ChallengesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengesWorker.swift; path = Clean/Workers/ChallengesWorker.swift; sourceTree = "<group>"; };
-		52760C201E9059880093B921 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Clean/Main.storyboard; sourceTree = "<group>"; };
-		52760C221E905EDB0093B921 /* ChallengesBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengesBaasBoxStore.swift; path = Clean/Services/ChallengesBaasBoxStore.swift; sourceTree = "<group>"; };
 		527FD5E91E0739F90023D420 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Clean/Views/Main/LaunchScreen.xib; sourceTree = "<group>"; };
 		528509881DC6F9470083CC55 /* YourTake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5285098B1DC6F9470083CC55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Main/AppDelegate.swift; sourceTree = "<group>"; };
@@ -249,11 +255,9 @@
 		529EFBB21E9F4E8D0054559B /* CreateTakeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTakeViewController.xib; path = Clean/Scenes/CreateTake/CreateTakeViewController.xib; sourceTree = "<group>"; };
 		529FB8371DE23AA800861826 /* ChallengeOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeOptionsViewController.swift; path = Clean/Scenes/SetChallengeOptions/ChallengeOptionsViewController.swift; sourceTree = "<group>"; };
 		52A0D1F01EA2EB7700292B23 /* SignupWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupWorker.swift; path = Clean/Workers/SignupWorker.swift; sourceTree = "<group>"; };
-		52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupBaasBoxStore.swift; path = Clean/Services/SignupBaasBoxStore.swift; sourceTree = "<group>"; };
 		52A0D1F71EA3430500292B23 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = UserSettingsViewController.swift; path = Clean/Scenes/UserSettings/UserSettingsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		52A0D1FB1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserForgotLoginPasswordViewController.swift; path = Clean/Scenes/UserForgotLoginPassword/UserForgotLoginPasswordViewController.swift; sourceTree = "<group>"; };
 		52A48D291DD90631005A89B8 /* DrawPathsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawPathsView.swift; path = Clean/Views/Drawing/DrawPathsView.swift; sourceTree = "<group>"; };
-		52A868801E63687100F26F31 /* FriendSelectionTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendSelectionTracker.swift; path = Models/FriendSelectionTracker.swift; sourceTree = "<group>"; };
 		52A868821E63E20B00F26F31 /* ChallengeOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeOptionsViewController.xib; path = Clean/Scenes/SetChallengeOptions/ChallengeOptionsViewController.xib; sourceTree = "<group>"; };
 		52AD64121EA441E700774D5D /* FriendPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendPickerCell.swift; path = Clean/Scenes/SetChallengeOptions/FriendPickerCell.swift; sourceTree = "<group>"; };
 		52AD64131EA441E700774D5D /* FriendPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendPickerCell.xib; path = Clean/Scenes/SetChallengeOptions/FriendPickerCell.xib; sourceTree = "<group>"; };
@@ -268,8 +272,6 @@
 		52B682E41EA29BFE00DBB0A4 /* UserLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserLoginViewController.swift; path = Clean/Scenes/UserLogin/UserLoginViewController.swift; sourceTree = "<group>"; };
 		52B682E51EA29BFE00DBB0A4 /* UserLoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserLoginWorker.swift; path = Clean/Scenes/UserLogin/UserLoginWorker.swift; sourceTree = "<group>"; };
 		52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWorker.swift; path = Clean/Workers/LoginWorker.swift; sourceTree = "<group>"; };
-		52B682EF1EA2A19E00DBB0A4 /* LoginMemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginMemStore.swift; path = Clean/Services/LoginMemStore.swift; sourceTree = "<group>"; };
-		52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBaasBoxStore.swift; path = Clean/Services/LoginBaasBoxStore.swift; sourceTree = "<group>"; };
 		52BD8B6B1EA43464005B142C /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = Clean/Scenes/AddFriends/FriendViewController.swift; sourceTree = "<group>"; };
 		52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -285,35 +287,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		332283EA1E05D5E4008647E4 /* Stores */ = {
+		520232C21FC3F9BA003C5F96 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				332283F41E072D76008647E4 /* Local */,
-				332283EB1E05D5E4008647E4 /* BaasBox */,
+				520232C51FC3FAAA003C5F96 /* Reachability.swift */,
 			);
-			path = Stores;
+			name = Reachability;
 			sourceTree = "<group>";
 		};
-		332283EB1E05D5E4008647E4 /* BaasBox */ = {
+		520232C71FC3FAE9003C5F96 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				332283EF1E05D5E4008647E4 /* BaClient.swift */,
-				52299E1D1DE807EC00F04C86 /* YourTake-Bridging-Header.h */,
-				332283ED1E05D5E4008647E4 /* BaasBoxClient.swift */,
-				332283EC1E05D5E4008647E4 /* BaasBoxChallenge.swift */,
-				332283EE1E05D5E4008647E4 /* BaasBoxTake.swift */,
-				33E3AA8B1E2ACF6D00C5D05A /* BaasBoxUser.swift */,
-				5257D33C1F9415AC00A2E05D /* BaasBoxConfig.plist */,
+				520232C91FC3FB57003C5F96 /* KeychainConfiguration.swift */,
+				520232C81FC3FB57003C5F96 /* KeychainPasswordItem.swift */,
 			);
-			path = BaasBox;
+			name = Security;
 			sourceTree = "<group>";
 		};
-		332283F41E072D76008647E4 /* Local */ = {
+		520232E11FC3FCDC003C5F96 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				332283F81E072F12008647E4 /* LocalClient.swift */,
+				520232E21FC3FCFC003C5F96 /* ValidationService.swift */,
 			);
-			path = Local;
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		520232E41FC3FD49003C5F96 /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				520232E91FC3FD9A003C5F96 /* ChallengesMemStore.swift */,
+				520232E61FC3FD99003C5F96 /* FriendsMemStore.swift */,
+				520232E71FC3FD99003C5F96 /* LoginMemStore.swift */,
+				520232E81FC3FD9A003C5F96 /* TakeMemStore.swift */,
+			);
+			name = Memory;
+			sourceTree = "<group>";
+		};
+		520232E51FC3FD56003C5F96 /* BaasBox */ = {
+			isa = PBXGroup;
+			children = (
+				520232F01FC3FE77003C5F96 /* ChallengesBaasBoxStore.swift */,
+				520232F11FC3FE77003C5F96 /* FriendsBaasBoxStore.swift */,
+				520232EF1FC3FE77003C5F96 /* LoginBaasBoxStore.swift */,
+				520232F21FC3FE77003C5F96 /* SignupBaasBoxStore.swift */,
+				520232F31FC3FE77003C5F96 /* TakeBaasBoxStore.swift */,
+			);
+			name = BaasBox;
+			sourceTree = "<group>";
+		};
+		520232EE1FC3FE3A003C5F96 /* BaasBox */ = {
+			isa = PBXGroup;
+			children = (
+				520233061FC400F3003C5F96 /* LocalClient.swift */,
+				520232FA1FC3FEED003C5F96 /* BaasBoxChallenge.swift */,
+				520232F91FC3FEED003C5F96 /* BaasBoxClient.swift */,
+				520232FC1FC3FEED003C5F96 /* BaasBoxConfig.plist */,
+				520232FB1FC3FEED003C5F96 /* BaasBoxTake.swift */,
+				520232FD1FC3FEED003C5F96 /* BaasBoxUser.swift */,
+				520232FE1FC3FEED003C5F96 /* BaClient.swift */,
+				520232FF1FC3FEED003C5F96 /* YourTake-Bridging-Header.h */,
+			);
+			name = BaasBox;
 			sourceTree = "<group>";
 		};
 		520E2BEA1EA4398E00A5713C /* SnapChallengeImage */ = {
@@ -347,15 +381,6 @@
 			path = "BaasBox-iOS-SDK";
 			sourceTree = "<group>";
 		};
-		5248BE031E56CD9800538A50 /* Security */ = {
-			isa = PBXGroup;
-			children = (
-				5248BE0D1E58D85100538A50 /* KeychainConfiguration.swift */,
-				5248BE0E1E58D85100538A50 /* KeychainPasswordItem.swift */,
-			);
-			name = Security;
-			sourceTree = "<group>";
-		};
 		5257AE3F1F5E6DF500CD2A33 /* ChangePassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +397,8 @@
 		5257D33E1F9426E500A2E05D /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				520232E51FC3FD56003C5F96 /* BaasBox */,
+				520232E41FC3FD49003C5F96 /* Memory */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -430,8 +457,6 @@
 		52760BF61E90586D0093B921 /* Clean */ = {
 			isa = PBXGroup;
 			children = (
-				52760C201E9059880093B921 /* Main.storyboard */,
-				520232C01FC242B6003C5F96 /* LaunchScreen.storyboard */,
 				52BD8B671EA42FDF005B142C /* Common */,
 				52760BF81E9058910093B921 /* Scenes */,
 				52760BF71E90588A0093B921 /* Models */,
@@ -446,6 +471,11 @@
 		52760BF71E90588A0093B921 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5202330B1FC402D2003C5F96 /* Backend.swift */,
+				5202330C1FC402D2003C5F96 /* ChallengeDto.swift */,
+				5202330A1FC402D1003C5F96 /* FriendSelectionTracker.swift */,
+				5202330D1FC402D2003C5F96 /* TakeDto.swift */,
+				5202330E1FC402D2003C5F96 /* User.swift */,
 				5257D3381F92897600A2E05D /* AlertModel.swift */,
 			);
 			name = Models;
@@ -474,16 +504,10 @@
 		52760BF91E9058980093B921 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				52760C131E90591E0093B921 /* ChallengesMemStore.swift */,
-				52760C221E905EDB0093B921 /* ChallengesBaasBoxStore.swift */,
-				5267D8EF1E9A93DE00B94470 /* TakeMemStore.swift */,
-				520655151E9B47D80048A575 /* TakeBaasBoxStore.swift */,
-				52B682EF1EA2A19E00DBB0A4 /* LoginMemStore.swift */,
-				52B682F11EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift */,
-				52A0D1F21EA2EC6400292B23 /* SignupBaasBoxStore.swift */,
-				524B02811EC2E93A007DA5EA /* FriendsMemStore.swift */,
-				524540D01EC4498F006FF5EB /* FriendsBaasBoxStore.swift */,
-				5257D3361F8C012900A2E05D /* ValidationService.swift */,
+				520232EE1FC3FE3A003C5F96 /* BaasBox */,
+				520232E11FC3FCDC003C5F96 /* Utility */,
+				520232C71FC3FAE9003C5F96 /* Security */,
+				520232C21FC3F9BA003C5F96 /* Reachability */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -564,9 +588,7 @@
 			children = (
 				528509971DC6F9470083CC55 /* Info.plist */,
 				52760BF61E90586D0093B921 /* Clean */,
-				5248BE031E56CD9800538A50 /* Security */,
 				5285099D1DC6F98A0083CC55 /* Main */,
-				332283EA1E05D5E4008647E4 /* Stores */,
 				5285099E1DC6F9940083CC55 /* Models */,
 				528509A11DC6F9B40083CC55 /* Supporting Files */,
 				52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */,
@@ -577,6 +599,8 @@
 		5285099D1DC6F98A0083CC55 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				520233081FC40170003C5F96 /* Main.storyboard */,
+				520232C01FC242B6003C5F96 /* LaunchScreen.storyboard */,
 				5285098B1DC6F9470083CC55 /* AppDelegate.swift */,
 			);
 			name = Main;
@@ -585,11 +609,6 @@
 		5285099E1DC6F9940083CC55 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				523074A81DC70C4F002EB030 /* User.swift */,
-				33E3AA4C1E248EA600C5D05A /* Backend.swift */,
-				52A868801E63687100F26F31 /* FriendSelectionTracker.swift */,
-				52760BF41E9045270093B921 /* ChallengeDto.swift */,
-				5267D8EB1E99A04D00B94470 /* TakeDto.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -772,13 +791,13 @@
 				524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */,
 				523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */,
 				52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */,
-				5257D33D1F9415AC00A2E05D /* BaasBoxConfig.plist in Resources */,
 				520232C11FC242B6003C5F96 /* LaunchScreen.storyboard in Resources */,
+				520233031FC3FEED003C5F96 /* BaasBoxConfig.plist in Resources */,
 				527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */,
 				526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */,
+				520233091FC40170003C5F96 /* Main.storyboard in Resources */,
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
 				524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */,
-				52760C211E9059880093B921 /* Main.storyboard in Resources */,
 				526AF0521DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg in Resources */,
 				52A868831E63E20B00F26F31 /* ChallengeOptionsViewController.xib in Resources */,
 				52760C1A1E9059520093B921 /* EmptyChallengeTableViewCell.xib in Resources */,
@@ -807,87 +826,89 @@
 			files = (
 				52760C1F1E9059610093B921 /* ChallengesWorker.swift in Sources */,
 				524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */,
+				520232F71FC3FE77003C5F96 /* SignupBaasBoxStore.swift in Sources */,
+				520232F41FC3FE77003C5F96 /* LoginBaasBoxStore.swift in Sources */,
+				520232F61FC3FE77003C5F96 /* FriendsBaasBoxStore.swift in Sources */,
+				520233051FC3FEED003C5F96 /* BaClient.swift in Sources */,
 				5257AE671F5E6F6F00CD2A33 /* ChangePasswordRouter.swift in Sources */,
 				52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */,
 				52592FB61F8B370A00D6202A /* PasswordVerificationConfigurator.swift in Sources */,
 				5267D8E11E998E0100B94470 /* ListTakesRouter.swift in Sources */,
+				520232E31FC3FCFC003C5F96 /* ValidationService.swift in Sources */,
 				52B682BF1EA296C400DBB0A4 /* DisplayTakeViewController.swift in Sources */,
 				52760C0C1E9058F80093B921 /* ListChallengesConfigurator.swift in Sources */,
-				332283F91E072F12008647E4 /* LocalClient.swift in Sources */,
 				52B682EE1EA29FFF00DBB0A4 /* LoginWorker.swift in Sources */,
-				523074A91DC70C4F002EB030 /* User.swift in Sources */,
 				52760C101E9058F80093B921 /* ListChallengesWorker.swift in Sources */,
 				52B682E91EA29BFE00DBB0A4 /* UserLoginPresenter.swift in Sources */,
-				5267D8EC1E99A04D00B94470 /* TakeDto.swift in Sources */,
+				520232EA1FC3FD9A003C5F96 /* FriendsMemStore.swift in Sources */,
 				52760C1B1E9059520093B921 /* EmptyChallengeTableViewCell.swift in Sources */,
 				5257D33B1F928B6E00A2E05D /* AlertPresenter.swift in Sources */,
 				5267D8E01E998E0100B94470 /* ListTakesPresenter.swift in Sources */,
+				520232EB1FC3FD9A003C5F96 /* LoginMemStore.swift in Sources */,
+				520232F81FC3FE77003C5F96 /* TakeBaasBoxStore.swift in Sources */,
 				52592FB71F8B370A00D6202A /* PasswordVerificationInteractor.swift in Sources */,
 				52760C0E1E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift in Sources */,
 				52760C0A1E9058F80093B921 /* ListChallengesModels.swift in Sources */,
-				524540D11EC4498F006FF5EB /* FriendsBaasBoxStore.swift in Sources */,
 				52592FBA1F8B370A00D6202A /* PasswordVerificationRouter.swift in Sources */,
 				5263CA561EA2D399001BA2E4 /* SignupUserRouter.swift in Sources */,
 				52760C1D1E9059520093B921 /* ChallengeTableViewCell.swift in Sources */,
+				520233131FC402D2003C5F96 /* User.swift in Sources */,
 				5267D8E51E9994BE00B94470 /* ListTakesCollectionViewDataSource.swift in Sources */,
 				52592FBB1F8B370A00D6202A /* PasswordVerificationViewController.swift in Sources */,
 				5263CA571EA2D399001BA2E4 /* SignupUserViewController.swift in Sources */,
+				5202330F1FC402D2003C5F96 /* FriendSelectionTracker.swift in Sources */,
 				5267D8E31E998E0100B94470 /* ListTakesWorker.swift in Sources */,
 				52B682C11EA296C400DBB0A4 /* DisplayTakeModels.swift in Sources */,
 				52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */,
-				5257D3371F8C012900A2E05D /* ValidationService.swift in Sources */,
-				524B02821EC2E93A007DA5EA /* FriendsMemStore.swift in Sources */,
 				5267D8EE1E9A8E1700B94470 /* TakesWorker.swift in Sources */,
-				33E3AA8C1E2ACF6D00C5D05A /* BaasBoxUser.swift in Sources */,
 				5267D8DE1E998E0100B94470 /* ListTakesInteractor.swift in Sources */,
-				52760C231E905EDB0093B921 /* ChallengesBaasBoxStore.swift in Sources */,
 				5263CA581EA2D399001BA2E4 /* SignupUserWorker.swift in Sources */,
 				52B682EB1EA29BFE00DBB0A4 /* UserLoginViewController.swift in Sources */,
+				520233001FC3FEED003C5F96 /* BaasBoxClient.swift in Sources */,
 				52592FB91F8B370A00D6202A /* PasswordVerificationPresenter.swift in Sources */,
-				52B682F01EA2A19E00DBB0A4 /* LoginMemStore.swift in Sources */,
+				520232C61FC3FAAA003C5F96 /* Reachability.swift in Sources */,
 				5263CA551EA2D399001BA2E4 /* SignupUserPresenter.swift in Sources */,
-				52B682F21EA2A1E600DBB0A4 /* LoginBaasBoxStore.swift in Sources */,
-				52A868811E63687100F26F31 /* FriendSelectionTracker.swift in Sources */,
 				5267D8E21E998E0100B94470 /* ListTakesViewController.swift in Sources */,
-				5267D8F01E9A93DE00B94470 /* TakeMemStore.swift in Sources */,
-				332283F11E05D5E4008647E4 /* BaasBoxClient.swift in Sources */,
-				52A0D1F31EA2EC6400292B23 /* SignupBaasBoxStore.swift in Sources */,
-				520655161E9B47D90048A575 /* TakeBaasBoxStore.swift in Sources */,
 				52B682EC1EA29BFE00DBB0A4 /* UserLoginWorker.swift in Sources */,
 				52B682EA1EA29BFE00DBB0A4 /* UserLoginRouter.swift in Sources */,
 				52A0D1FC1EA3482D00292B23 /* UserForgotLoginPasswordViewController.swift in Sources */,
 				52B682E81EA29BFE00DBB0A4 /* UserLoginModels.swift in Sources */,
 				52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */,
 				52AD64141EA441E700774D5D /* FriendPickerCell.swift in Sources */,
+				520232CA1FC3FB57003C5F96 /* KeychainPasswordItem.swift in Sources */,
 				5263CA541EA2D399001BA2E4 /* SignupUserModels.swift in Sources */,
+				520233111FC402D2003C5F96 /* ChallengeDto.swift in Sources */,
 				5267D8DF1E998E0100B94470 /* ListTakesModels.swift in Sources */,
 				52881F291DF91F0A0034A77A /* SwipelessNavigationController.swift in Sources */,
+				520232F51FC3FE77003C5F96 /* ChallengesBaasBoxStore.swift in Sources */,
 				5267D8E81E99965400B94470 /* TakeCollectionViewCell.swift in Sources */,
 				52B682E71EA29BFE00DBB0A4 /* UserLoginInteractor.swift in Sources */,
 				52760C0D1E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift in Sources */,
+				520233121FC402D2003C5F96 /* TakeDto.swift in Sources */,
 				52760C0F1E9058F80093B921 /* ListChallengesRouter.swift in Sources */,
-				33E3AA4D1E248EA600C5D05A /* Backend.swift in Sources */,
 				52A0D1F81EA3430500292B23 /* UserSettingsViewController.swift in Sources */,
 				5267D8DD1E998E0100B94470 /* ListTakesConfigurator.swift in Sources */,
 				5257AE651F5E6F6F00CD2A33 /* ChangePasswordModels.swift in Sources */,
 				5263CA521EA2D399001BA2E4 /* SignupUserConfigurator.swift in Sources */,
 				52299E2F1DE807ED00F04C86 /* BAAMutableURLRequest.m in Sources */,
-				332283F21E05D5E4008647E4 /* BaasBoxTake.swift in Sources */,
+				520233011FC3FEED003C5F96 /* BaasBoxChallenge.swift in Sources */,
 				52760C071E9058F80093B921 /* ListChallengesPresenter.swift in Sources */,
-				332283F01E05D5E4008647E4 /* BaasBoxChallenge.swift in Sources */,
 				529EFBB11E9F3A3D0054559B /* CreateTakeViewController.swift in Sources */,
 				529FB8381DE23AA800861826 /* ChallengeOptionsViewController.swift in Sources */,
 				5257AE681F5E6F6F00CD2A33 /* ChangePasswordViewController.swift in Sources */,
 				52A0D1F11EA2EB7700292B23 /* SignupWorker.swift in Sources */,
 				5263CA531EA2D399001BA2E4 /* SignupUserInteractor.swift in Sources */,
-				52760BF51E9045280093B921 /* ChallengeDto.swift in Sources */,
 				5257AE661F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift in Sources */,
+				520233071FC400F3003C5F96 /* LocalClient.swift in Sources */,
 				52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */,
+				520233021FC3FEED003C5F96 /* BaasBoxTake.swift in Sources */,
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
 				52760C0B1E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift in Sources */,
 				524B02801EC2E601007DA5EA /* FriendsWorker.swift in Sources */,
+				520233101FC402D2003C5F96 /* Backend.swift in Sources */,
 				5257AE631F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift in Sources */,
-				5248BE0F1E58D85100538A50 /* KeychainConfiguration.swift in Sources */,
+				520232CB1FC3FB57003C5F96 /* KeychainConfiguration.swift in Sources */,
+				520232ED1FC3FD9A003C5F96 /* ChallengesMemStore.swift in Sources */,
 				52299E301DE807ED00F04C86 /* BAAObject.m in Sources */,
 				5285098C1DC6F9470083CC55 /* AppDelegate.swift in Sources */,
 				524540CF1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift in Sources */,
@@ -895,15 +916,14 @@
 				52592FB81F8B370A00D6202A /* PasswordVerificationModels.swift in Sources */,
 				52760C081E9058F80093B921 /* ListChallengesViewController.swift in Sources */,
 				521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */,
-				5248BE101E58D85100538A50 /* KeychainPasswordItem.swift in Sources */,
 				52299E311DE807ED00F04C86 /* BaasBox.m in Sources */,
 				520E2BE91EA4364600A5713C /* FriendNameTableViewCell.swift in Sources */,
-				52760C141E90591E0093B921 /* ChallengesMemStore.swift in Sources */,
 				52B682E61EA29BFE00DBB0A4 /* UserLoginConfigurator.swift in Sources */,
-				332283F31E05D5E4008647E4 /* BaClient.swift in Sources */,
 				5286FDC91F8BDEBE00A6244D /* Constants.swift in Sources */,
 				52760C091E9058F80093B921 /* ListChallengesInteractor.swift in Sources */,
 				5257D3391F92897700A2E05D /* AlertModel.swift in Sources */,
+				520233041FC3FEED003C5F96 /* BaasBoxUser.swift in Sources */,
+				520232EC1FC3FD9A003C5F96 /* TakeMemStore.swift in Sources */,
 				5257AE641F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1034,7 +1054,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.enovi.yourtake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/Stores/BaasBox/YourTake-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/Clean/Services/BaasBox/YourTake-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1052,7 +1072,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.enovi.yourtake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/Stores/BaasBox/YourTake-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/Clean/Services/BaasBox/YourTake-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
