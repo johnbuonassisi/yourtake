@@ -589,7 +589,6 @@
 				528509971DC6F9470083CC55 /* Info.plist */,
 				52760BF61E90586D0093B921 /* Clean */,
 				5285099D1DC6F98A0083CC55 /* Main */,
-				5285099E1DC6F9940083CC55 /* Models */,
 				528509A11DC6F9B40083CC55 /* Supporting Files */,
 				52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */,
 			);
@@ -604,13 +603,6 @@
 				5285098B1DC6F9470083CC55 /* AppDelegate.swift */,
 			);
 			name = Main;
-			sourceTree = "<group>";
-		};
-		5285099E1DC6F9940083CC55 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 		528509A11DC6F9B40083CC55 /* Supporting Files */ = {
