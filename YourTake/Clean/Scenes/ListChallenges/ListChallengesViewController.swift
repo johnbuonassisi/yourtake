@@ -19,7 +19,7 @@ protocol ListChallengesViewControllerOutput {
     func fetchChallenges(request: ListChallenges.FetchChallenges.Request)
 }
 
-class ListChallengesViewController: UIViewController,
+class ListChallengesViewController: ReachabilityViewController,
     UITableViewDelegate,
     UITabBarDelegate,
     ListChallengesViewControllerInput {
@@ -85,6 +85,20 @@ class ListChallengesViewController: UIViewController,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+    }
+    
+    // TODO - Use this method to trigger actions when the network is not available
+    override func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            print("Reachable via WiFi in List Challenges Scene")
+        case .cellular:
+            print("Reachable via Cellular in List Challenges Scene")
+        case .none:
+            print("Network not reachable in List Challenges Scene")
+        }
     }
     
     // MARK: - Event handling

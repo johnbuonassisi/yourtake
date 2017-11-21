@@ -121,6 +121,7 @@
 		52A868831E63E20B00F26F31 /* ChallengeOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A868821E63E20B00F26F31 /* ChallengeOptionsViewController.xib */; };
 		52AD64141EA441E700774D5D /* FriendPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AD64121EA441E700774D5D /* FriendPickerCell.swift */; };
 		52AD64151EA441E700774D5D /* FriendPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AD64131EA441E700774D5D /* FriendPickerCell.xib */; };
+		52B253B01FC407CA0072D342 /* ReachabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B253AF1FC407CA0072D342 /* ReachabilityViewController.swift */; };
 		52B682BF1EA296C400DBB0A4 /* DisplayTakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682BC1EA296C400DBB0A4 /* DisplayTakeViewController.swift */; };
 		52B682C01EA296C400DBB0A4 /* DisplayTakeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B682BD1EA296C400DBB0A4 /* DisplayTakeViewController.xib */; };
 		52B682C11EA296C400DBB0A4 /* DisplayTakeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682BE1EA296C400DBB0A4 /* DisplayTakeModels.swift */; };
@@ -261,6 +262,7 @@
 		52A868821E63E20B00F26F31 /* ChallengeOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengeOptionsViewController.xib; path = Clean/Scenes/SetChallengeOptions/ChallengeOptionsViewController.xib; sourceTree = "<group>"; };
 		52AD64121EA441E700774D5D /* FriendPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendPickerCell.swift; path = Clean/Scenes/SetChallengeOptions/FriendPickerCell.swift; sourceTree = "<group>"; };
 		52AD64131EA441E700774D5D /* FriendPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendPickerCell.xib; path = Clean/Scenes/SetChallengeOptions/FriendPickerCell.xib; sourceTree = "<group>"; };
+		52B253AF1FC407CA0072D342 /* ReachabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReachabilityViewController.swift; path = Clean/Common/ReachabilityViewController.swift; sourceTree = "<group>"; };
 		52B682BC1EA296C400DBB0A4 /* DisplayTakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayTakeViewController.swift; path = Clean/Scenes/DisplayTake/DisplayTakeViewController.swift; sourceTree = "<group>"; };
 		52B682BD1EA296C400DBB0A4 /* DisplayTakeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DisplayTakeViewController.xib; path = Clean/Scenes/DisplayTake/DisplayTakeViewController.xib; sourceTree = "<group>"; };
 		52B682BE1EA296C400DBB0A4 /* DisplayTakeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayTakeModels.swift; path = Clean/Scenes/DisplayTake/DisplayTakeModels.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 				52881F281DF91F0A0034A77A /* SwipelessNavigationController.swift */,
 				5286FDC81F8BDEBE00A6244D /* Constants.swift */,
 				5257D33A1F928B6E00A2E05D /* AlertPresenter.swift */,
+				52B253AF1FC407CA0072D342 /* ReachabilityViewController.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				52A0D1F11EA2EB7700292B23 /* SignupWorker.swift in Sources */,
 				5263CA531EA2D399001BA2E4 /* SignupUserInteractor.swift in Sources */,
 				5257AE661F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift in Sources */,
+				52B253B01FC407CA0072D342 /* ReachabilityViewController.swift in Sources */,
 				520233071FC400F3003C5F96 /* LocalClient.swift in Sources */,
 				52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */,
 				520233021FC3FEED003C5F96 /* BaasBoxTake.swift in Sources */,
