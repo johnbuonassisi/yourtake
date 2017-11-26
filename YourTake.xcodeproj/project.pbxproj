@@ -1004,7 +1004,7 @@
 				DEVELOPMENT_TEAM = A99NKDYD4J;
 				INFOPLIST_FILE = YourTake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.enovi.yourtake;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.enovi.yourtake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/Clean/Services/BaasBox/YourTake-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1022,7 +1022,7 @@
 				DEVELOPMENT_TEAM = A99NKDYD4J;
 				INFOPLIST_FILE = YourTake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.enovi.yourtake;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.enovi.yourtake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "YourTake/Clean/Services/BaasBox/YourTake-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
