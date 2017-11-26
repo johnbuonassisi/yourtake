@@ -44,11 +44,6 @@
 		52299E301DE807ED00F04C86 /* BAAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E271DE807ED00F04C86 /* BAAObject.m */; };
 		52299E311DE807ED00F04C86 /* BaasBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E291DE807ED00F04C86 /* BaasBox.m */; };
 		52299E321DE807ED00F04C86 /* BAAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E2B1DE807ED00F04C86 /* BAAUser.m */; };
-		523074B11DC71692002EB030 /* John_Challenge_Andrea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */; };
-		523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */; };
-		523074B31DC71692002EB030 /* John_Challenge_Ashling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */; };
-		523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */; };
-		523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 523074B01DC71692002EB030 /* John_Challenge.jpg */; };
 		524540CF1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524540CE1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift */; };
 		524B02801EC2E601007DA5EA /* FriendsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B027F1EC2E601007DA5EA /* FriendsWorker.swift */; };
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
@@ -86,11 +81,6 @@
 		5267D8E81E99965400B94470 /* TakeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8E71E99965400B94470 /* TakeCollectionViewCell.swift */; };
 		5267D8EA1E99968100B94470 /* TakeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */; };
 		5267D8EE1E9A8E1700B94470 /* TakesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8ED1E9A8E1700B94470 /* TakesWorker.swift */; };
-		526AF0521DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF04D1DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg */; };
-		526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF04E1DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg */; };
-		526AF0541DCFCE86003350B4 /* Ashling_Challenge_John.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */; };
-		526AF0551DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF0501DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg */; };
-		526AF0561DCFCE86003350B4 /* Ashling_Challenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526AF0511DCFCE86003350B4 /* Ashling_Challenge.jpg */; };
 		52760C071E9058F80093B921 /* ListChallengesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */; };
 		52760C081E9058F80093B921 /* ListChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFE1E9058F80093B921 /* ListChallengesViewController.swift */; };
 		52760C091E9058F80093B921 /* ListChallengesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFF1E9058F80093B921 /* ListChallengesInteractor.swift */; };
@@ -134,7 +124,6 @@
 		52B682EC1EA29BFE00DBB0A4 /* UserLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682E51EA29BFE00DBB0A4 /* UserLoginWorker.swift */; };
 		52B682EE1EA29FFF00DBB0A4 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */; };
 		52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD8B6B1EA43464005B142C /* FriendViewController.swift */; };
-		52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -183,11 +172,6 @@
 		52299E291DE807ED00F04C86 /* BaasBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaasBox.m; sourceTree = "<group>"; };
 		52299E2A1DE807ED00F04C86 /* BAAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAUser.h; sourceTree = "<group>"; };
 		52299E2B1DE807ED00F04C86 /* BAAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAUser.m; sourceTree = "<group>"; };
-		523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Andrea.jpg; sourceTree = "<group>"; };
-		523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Anthony.jpg; sourceTree = "<group>"; };
-		523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Ashling.jpg; sourceTree = "<group>"; };
-		523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_Peter.jpg; sourceTree = "<group>"; };
-		523074B01DC71692002EB030 /* John_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge.jpg; sourceTree = "<group>"; };
 		524540CE1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesNoFriendsTableViewDataSource.swift; path = Clean/Scenes/ListChallenges/ListChallengesNoFriendsTableViewDataSource.swift; sourceTree = "<group>"; };
 		524B027F1EC2E601007DA5EA /* FriendsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsWorker.swift; path = Clean/Workers/FriendsWorker.swift; sourceTree = "<group>"; };
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Clean/Scenes/SnapChallengeImage/CameraOverlayView.xib; sourceTree = "<group>"; };
@@ -225,11 +209,6 @@
 		5267D8E71E99965400B94470 /* TakeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeCollectionViewCell.swift; path = Clean/Views/Take/TakeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TakeCollectionViewCell.xib; path = Clean/Views/Take/TakeCollectionViewCell.xib; sourceTree = "<group>"; };
 		5267D8ED1E9A8E1700B94470 /* TakesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakesWorker.swift; path = Clean/Workers/TakesWorker.swift; sourceTree = "<group>"; };
-		526AF04D1DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Andrea.jpg; sourceTree = "<group>"; };
-		526AF04E1DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Anthony.jpg; sourceTree = "<group>"; };
-		526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_John.jpg; sourceTree = "<group>"; };
-		526AF0501DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge_Peter.jpg; sourceTree = "<group>"; };
-		526AF0511DCFCE86003350B4 /* Ashling_Challenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ashling_Challenge.jpg; sourceTree = "<group>"; };
 		52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesPresenter.swift; path = Clean/Scenes/ListChallenges/ListChallengesPresenter.swift; sourceTree = "<group>"; };
 		52760BFE1E9058F80093B921 /* ListChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesViewController.swift; path = Clean/Scenes/ListChallenges/ListChallengesViewController.swift; sourceTree = "<group>"; };
 		52760BFF1E9058F80093B921 /* ListChallengesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesInteractor.swift; path = Clean/Scenes/ListChallenges/ListChallengesInteractor.swift; sourceTree = "<group>"; };
@@ -275,7 +254,6 @@
 		52B682E51EA29BFE00DBB0A4 /* UserLoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserLoginWorker.swift; path = Clean/Scenes/UserLogin/UserLoginWorker.swift; sourceTree = "<group>"; };
 		52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWorker.swift; path = Clean/Workers/LoginWorker.swift; sourceTree = "<group>"; };
 		52BD8B6B1EA43464005B142C /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = Clean/Scenes/AddFriends/FriendViewController.swift; sourceTree = "<group>"; };
-		52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_Challenge_2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,17 +588,6 @@
 		528509A11DC6F9B40083CC55 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				526AF04D1DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg */,
-				526AF04E1DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg */,
-				526AF04F1DCFCE86003350B4 /* Ashling_Challenge_John.jpg */,
-				526AF0501DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg */,
-				526AF0511DCFCE86003350B4 /* Ashling_Challenge.jpg */,
-				52DC0AC61DCA3BEB00DA2BDC /* John_Challenge_2.jpg */,
-				523074AC1DC71692002EB030 /* John_Challenge_Andrea.jpg */,
-				523074AD1DC71692002EB030 /* John_Challenge_Anthony.jpg */,
-				523074AE1DC71692002EB030 /* John_Challenge_Ashling.jpg */,
-				523074AF1DC71692002EB030 /* John_Challenge_Peter.jpg */,
-				523074B01DC71692002EB030 /* John_Challenge.jpg */,
 				528509921DC6F9470083CC55 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
@@ -784,31 +751,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */,
-				523074B21DC71692002EB030 /* John_Challenge_Anthony.jpg in Resources */,
-				52DC0AC71DCA3BEB00DA2BDC /* John_Challenge_2.jpg in Resources */,
 				520232C11FC242B6003C5F96 /* LaunchScreen.storyboard in Resources */,
 				520233031FC3FEED003C5F96 /* BaasBoxConfig.plist in Resources */,
 				527FD5EA1E0739F90023D420 /* LaunchScreen.xib in Resources */,
-				526AF0531DCFCE86003350B4 /* Ashling_Challenge_Anthony.jpg in Resources */,
 				520233091FC40170003C5F96 /* Main.storyboard in Resources */,
 				528509931DC6F9470083CC55 /* Assets.xcassets in Resources */,
 				524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */,
-				526AF0521DCFCE86003350B4 /* Ashling_Challenge_Andrea.jpg in Resources */,
 				52A868831E63E20B00F26F31 /* ChallengeOptionsViewController.xib in Resources */,
 				52760C1A1E9059520093B921 /* EmptyChallengeTableViewCell.xib in Resources */,
 				52AD64151EA441E700774D5D /* FriendPickerCell.xib in Resources */,
-				526AF0541DCFCE86003350B4 /* Ashling_Challenge_John.jpg in Resources */,
 				52B682C01EA296C400DBB0A4 /* DisplayTakeViewController.xib in Resources */,
-				526AF0551DCFCE86003350B4 /* Ashling_Challenge_Peter.jpg in Resources */,
 				5267D8EA1E99968100B94470 /* TakeCollectionViewCell.xib in Resources */,
 				529EFBB31E9F4E8D0054559B /* CreateTakeViewController.xib in Resources */,
-				523074B51DC71692002EB030 /* John_Challenge.jpg in Resources */,
 				521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */,
-				523074B41DC71692002EB030 /* John_Challenge_Peter.jpg in Resources */,
 				52760C1C1E9059520093B921 /* ChallengeTableViewCell.xib in Resources */,
-				526AF0561DCFCE86003350B4 /* Ashling_Challenge.jpg in Resources */,
-				523074B11DC71692002EB030 /* John_Challenge_Andrea.jpg in Resources */,
-				523074B31DC71692002EB030 /* John_Challenge_Ashling.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
