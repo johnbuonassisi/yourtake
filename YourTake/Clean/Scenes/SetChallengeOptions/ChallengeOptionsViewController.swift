@@ -16,7 +16,7 @@ class ChallengeOptionsViewController: UIViewController,
     @IBOutlet weak var expiryPicker: UIDatePicker!
     @IBOutlet weak var friendSelectionTableView: UITableView!
     
-    private var user: User?
+    private var friends: [String]?
     private var challengeImage : UIImage?
     private var friendSelectionTracker: FriendSelectionTracker?
     
@@ -57,15 +57,18 @@ class ChallengeOptionsViewController: UIViewController,
         navigationItem.title = "Create Challenge"
         
         // get initial data from source
+        
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getUser(completion: { (user) -> Void in
-            if user != nil {
-                self.user = user
-                self.friendSelectionTracker = FriendSelectionTracker(withFriends: user!.friends)
+        backendClient.getFollowers { (followers) in
+            backendClient.getFollowing(completion: { (following) in
+                let followersSet = Set(followers)
+                let followingSet = Set(following)
+                let friendSet = followersSet.intersection(followingSet)
+                self.friends = friendSet.sorted()
+                self.friendSelectionTracker = FriendSelectionTracker(withFriends: self.friends!)
                 self.friendSelectionTableView.reloadData()
-            }
-            
-        })
+            })
+        }
 
     }
     
@@ -91,9 +94,9 @@ class ChallengeOptionsViewController: UIViewController,
             }
 
         case 1:
-            print("Selection: " + "\(user!.friends[indexPath.row])")
+            print("Selection: " + "\(friends![indexPath.row])")
             if let friendSelectionTracker = friendSelectionTracker {
-                _ = friendSelectionTracker.changeSelection(forFriend: user!.friends[indexPath.row])
+                _ = friendSelectionTracker.changeSelection(forFriend: friends![indexPath.row])
                 tableView.reloadData()
             }
             return
@@ -123,8 +126,8 @@ class ChallengeOptionsViewController: UIViewController,
         case 0: // Date Picker Section
             return 1
         case 1: // Friend Picker Section
-            if user != nil {
-                return user!.friends.count
+            if friends != nil {
+                return friends!.count
             } else {
                 return 0
             }
@@ -149,7 +152,7 @@ class ChallengeOptionsViewController: UIViewController,
         case 1: // Friend Picker Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
             
-            if let friends = user?.friends {
+            if let friends = friends {
                 
                 let friendName = friends[indexPath.row]
                 cell.friendName.text = friendName

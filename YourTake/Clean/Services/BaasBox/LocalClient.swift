@@ -30,7 +30,7 @@
         return nil
     }
     
-    func getFriends() -> [String] {
+    func getFollowing() -> [String] {
         return [String]()
     }
     

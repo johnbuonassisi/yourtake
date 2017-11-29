@@ -34,7 +34,6 @@
 		520233111FC402D2003C5F96 /* ChallengeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330C1FC402D2003C5F96 /* ChallengeDto.swift */; };
 		520233121FC402D2003C5F96 /* TakeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330D1FC402D2003C5F96 /* TakeDto.swift */; };
 		520233131FC402D2003C5F96 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330E1FC402D2003C5F96 /* User.swift */; };
-		520E2BE91EA4364600A5713C /* FriendNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */; };
 		521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */; };
 		521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */; };
 		52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E1F1DE807ED00F04C86 /* BAAClient.m */; };
@@ -130,7 +129,8 @@
 		52B682EB1EA29BFE00DBB0A4 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682E41EA29BFE00DBB0A4 /* UserLoginViewController.swift */; };
 		52B682EC1EA29BFE00DBB0A4 /* UserLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682E51EA29BFE00DBB0A4 /* UserLoginWorker.swift */; };
 		52B682EE1EA29FFF00DBB0A4 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */; };
-		52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD8B6B1EA43464005B142C /* FriendViewController.swift */; };
+		52EB63DA1FCE7A5C00E225E7 /* FriendManagementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EB63D91FCE7A5C00E225E7 /* FriendManagementTableViewCell.xib */; };
+		52EB63DC1FCE7CC200E225E7 /* FriendManagementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB63DB1FCE7CC200E225E7 /* FriendManagementTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,7 +162,6 @@
 		5202330C1FC402D2003C5F96 /* ChallengeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeDto.swift; path = Clean/Models/ChallengeDto.swift; sourceTree = "<group>"; };
 		5202330D1FC402D2003C5F96 /* TakeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeDto.swift; path = Clean/Models/TakeDto.swift; sourceTree = "<group>"; };
 		5202330E1FC402D2003C5F96 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Clean/Models/User.swift; sourceTree = "<group>"; };
-		520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendNameTableViewCell.swift; path = Clean/Scenes/AddFriends/FriendNameTableViewCell.swift; sourceTree = "<group>"; };
 		521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoFriendsCell.xib; path = Clean/Views/Challenge/NoFriendsCell.xib; sourceTree = "<group>"; };
 		521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoFriendsCell.swift; path = Clean/Views/Challenge/NoFriendsCell.swift; sourceTree = "<group>"; };
 		52299E1E1DE807ED00F04C86 /* BAAClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAClient.h; sourceTree = "<group>"; };
@@ -267,7 +266,8 @@
 		52B682E41EA29BFE00DBB0A4 /* UserLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserLoginViewController.swift; path = Clean/Scenes/UserLogin/UserLoginViewController.swift; sourceTree = "<group>"; };
 		52B682E51EA29BFE00DBB0A4 /* UserLoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserLoginWorker.swift; path = Clean/Scenes/UserLogin/UserLoginWorker.swift; sourceTree = "<group>"; };
 		52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWorker.swift; path = Clean/Workers/LoginWorker.swift; sourceTree = "<group>"; };
-		52BD8B6B1EA43464005B142C /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = Clean/Scenes/AddFriends/FriendViewController.swift; sourceTree = "<group>"; };
+		52EB63D91FCE7A5C00E225E7 /* FriendManagementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FriendManagementTableViewCell.xib; path = Clean/Views/Friend/FriendManagementTableViewCell.xib; sourceTree = "<group>"; };
+		52EB63DB1FCE7CC200E225E7 /* FriendManagementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendManagementTableViewCell.swift; path = Clean/Views/Friend/FriendManagementTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,7 +497,6 @@
 				5257AE3F1F5E6DF500CD2A33 /* ChangePassword */,
 				52AD64101EA440CA00774D5D /* SetChallengeOptions */,
 				520E2BEA1EA4398E00A5713C /* SnapChallengeImage */,
-				52BD8B6A1EA43422005B142C /* AddFriends */,
 				52A0D1FA1EA3475600292B23 /* UserForgotLoginPassword */,
 				52A0D1F41EA3425900292B23 /* UserSettings */,
 				5263CA4A1EA2D36E001BA2E4 /* SignupUser */,
@@ -524,6 +523,7 @@
 		52760BFA1E90589E0093B921 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52EB63D81FCE7A2300E225E7 /* Friend */,
 				52AD64111EA4413D00774D5D /* Main */,
 				52A0D1F91EA344E900292B23 /* Drawing */,
 				5267D8E61E99961400B94470 /* Take */,
@@ -709,13 +709,13 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
-		52BD8B6A1EA43422005B142C /* AddFriends */ = {
+		52EB63D81FCE7A2300E225E7 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
-				52BD8B6B1EA43464005B142C /* FriendViewController.swift */,
-				520E2BE81EA4364600A5713C /* FriendNameTableViewCell.swift */,
+				52EB63DB1FCE7CC200E225E7 /* FriendManagementTableViewCell.swift */,
+				52EB63D91FCE7A5C00E225E7 /* FriendManagementTableViewCell.xib */,
 			);
-			name = AddFriends;
+			name = Friend;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -793,6 +793,7 @@
 				5267D8EA1E99968100B94470 /* TakeCollectionViewCell.xib in Resources */,
 				529EFBB31E9F4E8D0054559B /* CreateTakeViewController.xib in Resources */,
 				521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */,
+				52EB63DA1FCE7A5C00E225E7 /* FriendManagementTableViewCell.xib in Resources */,
 				52760C1C1E9059520093B921 /* ChallengeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,6 +859,7 @@
 				52B682E81EA29BFE00DBB0A4 /* UserLoginModels.swift in Sources */,
 				52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */,
 				52AD64141EA441E700774D5D /* FriendPickerCell.swift in Sources */,
+				52EB63DC1FCE7CC200E225E7 /* FriendManagementTableViewCell.swift in Sources */,
 				520232CA1FC3FB57003C5F96 /* KeychainPasswordItem.swift in Sources */,
 				5276F3941FCD60FC0078A7D0 /* FriendManagementTableViewDataSource.swift in Sources */,
 				5263CA541EA2D399001BA2E4 /* SignupUserModels.swift in Sources */,
@@ -886,7 +888,6 @@
 				5257AE661F5E6F6F00CD2A33 /* ChangePasswordPresenter.swift in Sources */,
 				52B253B01FC407CA0072D342 /* ReachabilityViewController.swift in Sources */,
 				520233071FC400F3003C5F96 /* LocalClient.swift in Sources */,
-				52BD8B6C1EA43464005B142C /* FriendViewController.swift in Sources */,
 				520233021FC3FEED003C5F96 /* BaasBoxTake.swift in Sources */,
 				52299E321DE807ED00F04C86 /* BAAUser.m in Sources */,
 				52760C0B1E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift in Sources */,
@@ -904,7 +905,6 @@
 				52760C081E9058F80093B921 /* ListChallengesViewController.swift in Sources */,
 				521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */,
 				52299E311DE807ED00F04C86 /* BaasBox.m in Sources */,
-				520E2BE91EA4364600A5713C /* FriendNameTableViewCell.swift in Sources */,
 				52B682E61EA29BFE00DBB0A4 /* UserLoginConfigurator.swift in Sources */,
 				5286FDC91F8BDEBE00A6244D /* Constants.swift in Sources */,
 				52760C091E9058F80093B921 /* ListChallengesInteractor.swift in Sources */,

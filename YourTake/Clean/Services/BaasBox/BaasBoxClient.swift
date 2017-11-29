@@ -153,7 +153,7 @@ class BaasBoxClient: BaClient {
         let params = ["_author": "\(client.currentUser.username()!)"]
         BaasBoxUser.getObjectsWithParams(params, completion: { (objects, error) -> Void in
             if let baasUser = (objects as? [BaasBoxUser])?.first {
-                self.getFriends(completion: { (friends) -> Void in
+                self.getFollowing(completion: { (friends) -> Void in
                     completion(User(
                         username: self.client.currentUser.username(),
                         friends: friends,
@@ -166,7 +166,7 @@ class BaasBoxClient: BaClient {
         })
     }
     
-    func getFriends(completion: @escaping BaStringsCompletionBlock) -> Void {
+    func getFollowing(completion: @escaping BaStringsCompletionBlock) -> Void {
         if client.currentUser == nil || !client.isAuthenticated() {
             print("error: user not authenticated")
             completion([String]())
@@ -180,9 +180,50 @@ class BaasBoxClient: BaClient {
                     friends.append(user.username())
                 }
             } else {
-                print("error: unable to get friends [description=\(String(describing: error?.localizedDescription))]")
+                print("error: unable to get following [description=\(String(describing: error?.localizedDescription))]")
             }
             completion(friends)
+        })
+    }
+    
+    func getFollowers(completion: @escaping BaStringsCompletionBlock) -> Void {
+        if client.currentUser == nil || !client.isAuthenticated() {
+            print("error: user not authenticated")
+            completion([String]())
+            return
+        }
+        
+        client.loadFollowers(of: client.currentUser, completion: { (objects, error) in
+            var followers = [String]()
+            if let users = objects as? [BAAUser] {
+                for follower in users {
+                    followers.append(follower.username())
+                }
+            } else {
+                print("error: unable to get followers [description=\(String(describing: error?.localizedDescription))]")
+            }
+            completion(followers)
+        })
+    }
+    
+    func getUsers(completion: @escaping BaStringsCompletionBlock) -> Void {
+        if client.currentUser == nil || !client.isAuthenticated() {
+            print("error: user not authenticated")
+            completion([String]())
+            return
+        }
+        
+        client.loadUsers( completion: { (objects, error) in
+            var users = [String]()
+            if let baasUsers = objects as? [BAAUser] {
+                for user in baasUsers {
+                    users.append(user.username())
+                }
+            } else {
+                print("error: unable to get users [description=\(String(describing: error?.localizedDescription))]")
+            }
+            users = users.filter{ $0 != self.client.currentUser.username() }
+            completion(users)
         })
     }
 
@@ -373,7 +414,7 @@ class BaasBoxClient: BaClient {
         
         client.uploadFile(baasFileImage, withPermissions: permissions, completion: { (object, error) -> Void in
             if let baasFile = object as? BAAFile {
-                var params = ["id": challengeId,
+                let params = ["id": challengeId,
                               "imageId": baasFile.fileId,
                               "duration": challenge.duration,
                               "recipients": challenge.recipients] as [String : Any]

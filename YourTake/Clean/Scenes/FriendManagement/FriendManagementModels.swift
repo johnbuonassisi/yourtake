@@ -12,13 +12,19 @@
 
 struct FriendManagementScene {
     
-    struct AcceptFriendshipRequest {
+    struct UpdateNeworkStatus {
+        struct Request {
+            var isEnabled: Bool
+        }
+    }
+    
+    struct AcceptFriendRequest {
         struct Request {
             var userName: String
         }
     }
     
-    struct SendFriendshipRequest {
+    struct SendFriendRequest {
         struct Request {
             var userName: String
         }
@@ -36,31 +42,35 @@ struct FriendManagementScene {
         }
         
         struct Response {
-            var friendsAndAcquaintances: [UserResponseModel]
-            var otherUsers: [UserResponseModel]
-            
-            struct UserResponseModel {
-                var userName: String
-                var userRelationship: UserRelationship
-            }
-            
-            enum UserRelationship {
-                case friend
-                case sentFriendshipRequest
-                case receivedFriendshipRequest
-                case notFriend
-            }
+            var acceptedSet: Set<String>
+            var acceptSet: Set<String>
+            var acceptingSet: Set<String>
+            var requestedSet: Set<String>
+            var requestSet: Set<String>
+            var requestingSet: Set<String>
         }
         
         struct ViewModel {
             var friendsAndAcquaintances: [UserViewModel]
             var otherUsers: [UserViewModel]
+            var freindsAndAcquaintancesHeaderTitle: String
+            var otherUsersHeaderTitle: String
             
             struct UserViewModel {
                 var userName: String
                 var buttonTitle: String
                 var isButtonEnabled: Bool
                 var buttonColour: UIColor
+                var friendRequestType: FriendRequestType
+            }
+            
+            enum FriendRequestType {
+                case accepted
+                case accept
+                case accepting
+                case requested
+                case request
+                case requesting
             }
         }
     }

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BaasBox Base URL</key>
-	<string>http://34.214.225.134:9000</string>
+	<string>http://192.168.0.12:9000</string>
 	<key>BaasBox App Code</key>
 	<string>1234567890</string>
 </dict>

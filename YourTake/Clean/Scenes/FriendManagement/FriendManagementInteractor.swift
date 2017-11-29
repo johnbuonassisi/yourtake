@@ -9,9 +9,10 @@
 //  https://github.com/HelmMobile/clean-swift-templates
 
 protocol FriendManagementInteractorInput {
-    func fetchTakes(request: FriendManagementScene.FetchFriends.Request)
-    func acceptFriendshipRequest(request: FriendManagementScene.AcceptFriendshipRequest.Request)
-    func sendFriendshipRequest(request: FriendManagementScene.SendFriendshipRequest.Request)
+    func fetchFriends(request: FriendManagementScene.FetchFriends.Request)
+    func acceptFriendRequest(request: FriendManagementScene.AcceptFriendRequest.Request)
+    func sendFriendRequest(request: FriendManagementScene.SendFriendRequest.Request)
+    func updateNetworkStatus(request: FriendManagementScene.UpdateNeworkStatus.Request)
 }
 
 protocol FriendManagementInteractorOutput {
@@ -29,18 +30,100 @@ protocol FriendManagementDataDestination {
 class FriendManagementInteractor: FriendManagementInteractorInput, FriendManagementDataSource, FriendManagementDataDestination {
     
     var output: FriendManagementInteractorOutput?
+    let friendsStore = FriendsWorker(friendsStore: FriendsBaasBoxStore())
+    
+    private var userSet = Set<String>()
+    private var followersSet = Set<String>()
+    private var followingSet = Set<String>()
+    
+    private var acceptingSet = Set<String>()
+    private var requestingSet = Set<String>()
+    
+    private var isInteractorEnabled = true
     
     // MARK: Business logic
-    func fetchTakes(request: FriendManagementScene.FetchFriends.Request) {
+    func fetchFriends(request: FriendManagementScene.FetchFriends.Request) {
         
+        if(!isInteractorEnabled) {
+            return
+        }
+        
+        friendsStore.getFollowers { (followers) in
+            self.followersSet = Set(followers)
+            self.friendsStore.getFollowing(completion: { (following) in
+                self.followingSet = Set(following)
+                self.friendsStore.getUsers(completion: { (users) in
+                    self.userSet = Set(users)
+                    self.processUserLists()
+                })
+            })
+        }
     }
     
-    func acceptFriendshipRequest(request: FriendManagementScene.AcceptFriendshipRequest.Request) {
+    func acceptFriendRequest(request: FriendManagementScene.AcceptFriendRequest.Request) {
         
+        if(!isInteractorEnabled) {
+            return
+        }
+        
+        acceptingSet.insert(request.userName)
+        processUserLists()
+        
+        friendsStore.followUser(userName: request.userName) { (isFollowed) in
+            if(isFollowed) {
+                print("Successfully followed \(request.userName)")
+            } else {
+                print("Error occurred while trying to follow \(request.userName)")
+            }
+            self.acceptingSet.remove(request.userName)
+            self.friendsStore.getFollowing(completion: { (updatedFollowing) in
+                self.followingSet = Set(updatedFollowing)
+                self.processUserLists()
+            })
+        }
     }
     
-    func sendFriendshipRequest(request: FriendManagementScene.SendFriendshipRequest.Request) {
+    func sendFriendRequest(request: FriendManagementScene.SendFriendRequest.Request) {
         
+        if(!isInteractorEnabled) {
+            return
+        }
+        
+        requestingSet.insert(request.userName)
+        processUserLists()
+        
+        friendsStore.followUser(userName: request.userName) { (isFollowed) in
+            if(isFollowed) {
+                print("Successfully followed \(request.userName)")
+            } else {
+                print("Error occurred while trying to follow \(request.userName)")
+            }
+            self.requestingSet.remove(request.userName)
+            self.friendsStore.getFollowing(completion: { (updatedFollowing) in
+                self.followingSet = Set(updatedFollowing)
+                self.processUserLists()
+            })
+        }
+    }
+    
+    func updateNetworkStatus(request: FriendManagementScene.UpdateNeworkStatus.Request) {
+        isInteractorEnabled = request.isEnabled
+    }
+    
+    private func processUserLists() {
+        
+        let friendsSet = followersSet.intersection(followingSet)
+        let acceptSet = followersSet.subtracting(friendsSet)
+        let requestedSet = followingSet.subtracting(friendsSet)
+        let requestSet = userSet.subtracting(followersSet.union(followingSet))
+        
+        let response = FriendManagementScene.FetchFriends.Response(acceptedSet: friendsSet,
+                                                                   acceptSet: acceptSet,
+                                                                   acceptingSet: acceptingSet,
+                                                                   requestedSet: requestedSet,
+                                                                   requestSet: requestSet,
+                                                                   requestingSet: requestingSet)
+        output?.presentFriends(response: response)
     }
     
 }

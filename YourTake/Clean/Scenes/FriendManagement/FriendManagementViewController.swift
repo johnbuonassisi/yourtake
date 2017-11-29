@@ -15,9 +15,11 @@ protocol FriendManagementViewControllerInput {
 }
 
 protocol FriendManagementViewControllerOutput {
-    func fetchTakes(request: FriendManagementScene.FetchFriends.Request)
-    func acceptFriendshipRequest(request: FriendManagementScene.AcceptFriendshipRequest.Request)
-    func sendFriendshipRequest(request: FriendManagementScene.SendFriendshipRequest.Request)
+    func fetchFriends(request: FriendManagementScene.FetchFriends.Request)
+    func acceptFriendRequest(request: FriendManagementScene.AcceptFriendRequest.Request)
+    func sendFriendRequest(request: FriendManagementScene.SendFriendRequest.Request)
+    func updateNetworkStatus(request: FriendManagementScene.UpdateNeworkStatus.Request)
+    
 }
 
 class FriendManagementViewController: ReachabilityViewController,
@@ -27,9 +29,9 @@ FriendManagementViewControllerInput {
     var output: FriendManagementViewControllerOutput?
     var router: FriendManagementRouter?
     
-    var friendManagementTableViewDataSource = FriendManagementTableViewDataSource()
+    var tableViewDataSource = FriendManagementTableViewDataSource()
     
-    @IBOutlet weak var friendManagementTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     // MARK: Object lifecycle
     
@@ -43,8 +45,18 @@ FriendManagementViewControllerInput {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        friendManagementTableViewDataSource.viewController = self
-        friendManagementTableView.delegate = self
+        tableViewDataSource.viewController = self
+        tableView.delegate = self
+        tableView.dataSource = tableViewDataSource
+        tableView.allowsSelection = false
+        
+        let nib = UINib(nibName: "FriendManagementTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: FriendManagementCellIdentifiers.friendManagementCellId)
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
+        tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        tableView.refreshControl!.beginRefreshing()
         
         fetchFriendsOnLoad()
     }
@@ -53,16 +65,54 @@ FriendManagementViewControllerInput {
     
     func fetchFriendsOnLoad() {
         let request = FriendManagementScene.FetchFriends.Request(requestType: .fetchAll)
-        output?.fetchTakes(request: request)
+        output?.fetchFriends(request: request)
     }
     
     func fetchFriendsOnUpdate() {
         let request = FriendManagementScene.FetchFriends.Request(requestType: .fetchUpdate)
-        output?.fetchTakes(request: request)
+        output?.fetchFriends(request: request)
+    }
+    
+    func refresh() {
+        fetchFriendsOnUpdate()
+    }
+    
+    func acceptFriend(userName: String) {
+        print("Accept \(userName) friend request")
+        let request = FriendManagementScene.AcceptFriendRequest.Request(userName: userName)
+        output?.acceptFriendRequest(request: request)
+    }
+    
+    func requestFriend(userName: String) {
+        print("Send friend request to \(userName)")
+        let request = FriendManagementScene.SendFriendRequest.Request(userName: userName)
+        output?.sendFriendRequest(request: request)
+    }
+    
+    override func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            print("Reachable via WiFi in Friend Management Scene")
+            output?.updateNetworkStatus(request: FriendManagementScene.UpdateNeworkStatus.Request(isEnabled: true))
+        case .cellular:
+            print("Reachable via Cellular in Friend Management Scene")
+            output?.updateNetworkStatus(request: FriendManagementScene.UpdateNeworkStatus.Request(isEnabled: true))
+        case .none:
+            print("Network not reachable in Friend Management Scene")
+            output?.updateNetworkStatus(request: FriendManagementScene.UpdateNeworkStatus.Request(isEnabled: false))
+        }
     }
     
     // MARK: Display logic
     func displayFriends(response: FriendManagementScene.FetchFriends.ViewModel) {
+        tableViewDataSource.section1Model = response.friendsAndAcquaintances
+        tableViewDataSource.section2Model = response.otherUsers
+        tableViewDataSource.section1HeaderTitle = response.freindsAndAcquaintancesHeaderTitle
+        tableViewDataSource.section2HeaderTitle = response.otherUsersHeaderTitle
+        tableView.reloadData()
+        tableView.refreshControl?.endRefreshing()
     }
     
 }

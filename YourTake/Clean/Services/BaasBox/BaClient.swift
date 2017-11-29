@@ -26,7 +26,9 @@ protocol BaClient {
     
     // social
     func getUser(completion: @escaping BaUserCompletionBlock) -> Void
-    func getFriends(completion: @escaping BaStringsCompletionBlock) -> Void
+    func getFollowing(completion: @escaping BaStringsCompletionBlock) -> Void
+    func getFollowers(completion: @escaping BaStringsCompletionBlock) -> Void
+    func getUsers(completion: @escaping BaStringsCompletionBlock) -> Void
     func addFriend(_ username: String, completion: @escaping BaBoolCompletionBlock) -> Void
     func removeFriend(_ username: String, completion: @escaping BaBoolCompletionBlock) -> Void
     

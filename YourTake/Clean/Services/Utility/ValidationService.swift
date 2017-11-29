@@ -20,11 +20,11 @@ class ValidationService: NSObject {
     }
     
     static func isValidUserName(_ username: String) -> Bool {
-        return username.characters.count >= MINIMUM_USERNAME_SIZE
+        return username.count >= MINIMUM_USERNAME_SIZE
     }
     
     static func isValidPassword(_ password: String) -> Bool {
-        return password.characters.count >= MINIMUM_PASSWORD_SIZE
+        return password.count >= MINIMUM_PASSWORD_SIZE
     }
 
 }
