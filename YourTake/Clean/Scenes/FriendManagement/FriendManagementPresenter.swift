@@ -51,7 +51,7 @@ class FriendManagementPresenter: FriendManagementPresenterInput {
         let viewModel = FriendManagementScene.FetchFriends
             .ViewModel(friendsAndAcquaintances: friendsAndAcquiantances,
                        otherUsers: otherUsers,
-                       freindsAndAcquaintancesHeaderTitle: defaultFriendsAndAcquiantancesHeaderTitle,
+                       friendsAndAcquaintancesHeaderTitle: defaultFriendsAndAcquiantancesHeaderTitle,
                        otherUsersHeaderTitle: otherUsersHeaderTitle)
         output?.displayFriends(response: viewModel)
     }

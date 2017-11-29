@@ -53,7 +53,7 @@ struct FriendManagementScene {
         struct ViewModel {
             var friendsAndAcquaintances: [UserViewModel]
             var otherUsers: [UserViewModel]
-            var freindsAndAcquaintancesHeaderTitle: String?
+            var friendsAndAcquaintancesHeaderTitle: String?
             var otherUsersHeaderTitle: String?
             
             struct UserViewModel {

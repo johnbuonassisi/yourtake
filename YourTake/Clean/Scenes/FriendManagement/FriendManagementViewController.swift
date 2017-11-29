@@ -109,7 +109,7 @@ FriendManagementViewControllerInput {
     func displayFriends(response: FriendManagementScene.FetchFriends.ViewModel) {
         tableViewDataSource.section1Model = response.friendsAndAcquaintances
         tableViewDataSource.section2Model = response.otherUsers
-        tableViewDataSource.section1HeaderTitle = response.freindsAndAcquaintancesHeaderTitle
+        tableViewDataSource.section1HeaderTitle = response.friendsAndAcquaintancesHeaderTitle
         tableViewDataSource.section2HeaderTitle = response.otherUsersHeaderTitle
         tableView.reloadData()
         tableView.refreshControl?.endRefreshing()
