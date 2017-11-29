@@ -24,8 +24,8 @@ class FriendManagementPresenter: FriendManagementPresenterInput {
         [FriendManagementScene.FetchFriends.ViewModel.FriendRequestType: String] =
         [.accept: "accept", .accepted: "accepted", .accepting: "accepting",
          .request: "request", .requested: "requested", .requesting: "requesting"]
-    private let friendsAndAcquiantancesHeaderTitle = "Friend Requests"
-    private let otherUsersHeaderTitle = "People You May Know"
+    private let defaultFriendsAndAcquiantancesHeaderTitle = "Friend Requests"
+    private let defaultOtherUsersHeaderTitle = "People You May Know"
     
     // MARK: Presentation logic
     func presentFriends(response: FriendManagementScene.FetchFriends.Response) {
@@ -47,10 +47,11 @@ class FriendManagementPresenter: FriendManagementPresenterInput {
                                       requestingSet: response.requestingSet,
                                       viewModelList: &otherUsers)
         
+        let otherUsersHeaderTitle = otherUsers.count == 0 ? nil : defaultOtherUsersHeaderTitle
         let viewModel = FriendManagementScene.FetchFriends
             .ViewModel(friendsAndAcquaintances: friendsAndAcquiantances,
                        otherUsers: otherUsers,
-                       freindsAndAcquaintancesHeaderTitle: friendsAndAcquiantancesHeaderTitle,
+                       freindsAndAcquaintancesHeaderTitle: defaultFriendsAndAcquiantancesHeaderTitle,
                        otherUsersHeaderTitle: otherUsersHeaderTitle)
         output?.displayFriends(response: viewModel)
     }

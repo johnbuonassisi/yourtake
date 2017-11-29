@@ -12,16 +12,14 @@ class FriendManagementTableViewDataSource: NSObject, UITableViewDataSource {
     
     var section1Model: [FriendManagementScene.FetchFriends.ViewModel.UserViewModel]
     var section2Model: [FriendManagementScene.FetchFriends.ViewModel.UserViewModel]
-    var section1HeaderTitle: String
-    var section2HeaderTitle: String
+    var section1HeaderTitle: String?
+    var section2HeaderTitle: String?
     
     weak var viewController: FriendManagementViewController!
     
     override init() {
         section1Model = [FriendManagementScene.FetchFriends.ViewModel.UserViewModel]()
         section2Model = [FriendManagementScene.FetchFriends.ViewModel.UserViewModel]()
-        section1HeaderTitle = String()
-        section2HeaderTitle = String()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
