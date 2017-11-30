@@ -51,7 +51,7 @@ UINavigationControllerDelegate {
                                    target: self,
                                    action: #selector(submitToChallenge))
         navigationItem.rightBarButtonItem = rbbi
-        navigationItem.title = "Your Take"
+        navigationItem.title = "Draw"
         
         textField.delegate = self
     }
