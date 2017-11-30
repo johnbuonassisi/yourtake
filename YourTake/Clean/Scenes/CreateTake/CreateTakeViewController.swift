@@ -19,6 +19,7 @@ class CreateTakeViewController: UIViewController,
   @IBOutlet weak var textField: UITextField!
   
   private var prevTextFieldPosition : CGFloat?
+    private var wasTextFieldDragged = false
   
   private let challengeId: String
   private let challengeImage: UIImage
@@ -53,15 +54,6 @@ class CreateTakeViewController: UIViewController,
     navigationItem.title = "Your Take"
     
     textField.delegate = self
-    
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(keyboardWillShow),
-                                           name: .UIKeyboardWillShow,
-                                           object: nil)
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(keyboardWillHide),
-                                           name: .UIKeyboardWillHide,
-                                           object: nil)
   }
   
   // MARK: Action Methods
@@ -115,12 +107,17 @@ class CreateTakeViewController: UIViewController,
         topOfText >= topOfDraw {
         textField.center.y = point.y
       }
+        wasTextFieldDragged = true;
     }
   }
   
   
   @IBAction func textFieldTapped(_ sender: Any) {
-      textField.becomeFirstResponder()
+    if !wasTextFieldDragged {
+        textField.becomeFirstResponder()
+    } else {
+        wasTextFieldDragged = false
+    }
   }
   
   @IBAction func submitToChallenge() {
@@ -162,18 +159,6 @@ class CreateTakeViewController: UIViewController,
     colourSlider.minimumTrackTintColor = colour
     colourSlider.maximumTrackTintColor = colour
   }
-  
-  @objc func keyboardWillShow(notification: Notification) {
-    if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-      
-      let keyboardHeight = keyboardFrame.height
-      textField.frame.origin.y = view.frame.height - 65 - textField.frame.height - keyboardHeight
-    }
-  }
-  
-  @objc func keyboardWillHide(notification: Notification) {
-  }
-  
 }
 
 extension CreateTakeViewController: UITextFieldDelegate {
