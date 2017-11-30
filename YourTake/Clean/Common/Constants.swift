@@ -9,6 +9,7 @@
 typealias PasswordVerificationSceneSegueIds = Constants.SegueIdentifiers.PasswordVerificationScene
 typealias ListChallengeSceneCellIdentifiers = Constants.CellIdentifiers.ListChallengesScene
 typealias ListTakesSceneCellIdentifiers = Constants.CellIdentifiers.ListTakesScene
+typealias FriendManagementCellIdentifiers = Constants.CellIdentifiers.FriendManagementScene
 
 struct Constants {
     
@@ -29,6 +30,11 @@ struct Constants {
             static let changePasswordSegue = "ChangePasswordSegue"
             static let resetPasswordSegue = "ResetPasswordSegue"
         }
+        struct ListChallengesScene {
+            static let photoPreviewSegue = "PhotoPreviewSegue"
+            static let friendManagementSegue = "FriendManagementSegue"
+            static let settingsSegue = "SettingsSegue"
+        }
     }
     
     struct CellIdentifiers {
@@ -40,6 +46,9 @@ struct Constants {
         }
         struct ListTakesScene {
             static let takeCellId = "TakeCollectionViewCell"
+        }
+        struct FriendManagementScene {
+            static let friendManagementCellId = "FriendManagementTableViewCell"
         }
     }
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="4" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="QNB-rh-E22">
-                    <rect key="frame" x="52" y="565" width="270" height="31"/>
+                    <rect key="frame" x="14" y="565" width="347" height="31"/>
                     <connections>
                         <action selector="strokeSizeSliderValueChanged:" destination="-1" eventType="valueChanged" id="qP3-ht-mzx"/>
                     </connections>
@@ -77,7 +77,7 @@
                     </connections>
                 </button>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ae9-Cz-nSk">
-                    <rect key="frame" x="52" y="518" width="270" height="31"/>
+                    <rect key="frame" x="14" y="518" width="347" height="31"/>
                     <color key="minimumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="maximumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
@@ -87,19 +87,19 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="QNB-rh-E22" secondAttribute="trailing" constant="55" id="3tQ-iB-nyq"/>
+                <constraint firstAttribute="trailing" secondItem="QNB-rh-E22" secondAttribute="trailing" constant="16" id="3tQ-iB-nyq"/>
                 <constraint firstItem="cXD-na-Wms" firstAttribute="leading" secondItem="wHG-1S-7lC" secondAttribute="leading" constant="8" id="9BY-26-ZWa"/>
                 <constraint firstAttribute="trailing" secondItem="cXD-na-Wms" secondAttribute="trailing" constant="8" id="ArR-cJ-gwM"/>
-                <constraint firstItem="QNB-rh-E22" firstAttribute="leading" secondItem="wHG-1S-7lC" secondAttribute="leading" constant="54" id="BhX-ln-pld"/>
+                <constraint firstItem="QNB-rh-E22" firstAttribute="leading" secondItem="wHG-1S-7lC" secondAttribute="leading" constant="16" id="BhX-ln-pld"/>
                 <constraint firstItem="NYl-oc-OcO" firstAttribute="top" secondItem="wHG-1S-7lC" secondAttribute="top" constant="65" id="DYh-Ce-xNS"/>
                 <constraint firstItem="eod-FK-a9L" firstAttribute="top" secondItem="QNB-rh-E22" secondAttribute="bottom" constant="8" id="F0P-C3-8i3"/>
-                <constraint firstAttribute="trailing" secondItem="Ae9-Cz-nSk" secondAttribute="trailing" constant="55" id="IFs-to-TU5"/>
-                <constraint firstItem="Ae9-Cz-nSk" firstAttribute="leading" secondItem="wHG-1S-7lC" secondAttribute="leading" constant="54" id="Ob1-BV-x9s"/>
+                <constraint firstAttribute="trailing" secondItem="Ae9-Cz-nSk" secondAttribute="trailing" constant="16" id="IFs-to-TU5"/>
+                <constraint firstItem="Ae9-Cz-nSk" firstAttribute="leading" secondItem="wHG-1S-7lC" secondAttribute="leading" constant="16" id="Ob1-BV-x9s"/>
                 <constraint firstAttribute="bottom" secondItem="WzB-Uh-BXf" secondAttribute="bottom" constant="20" id="TUW-eX-KGQ"/>
                 <constraint firstAttribute="trailing" secondItem="NYl-oc-OcO" secondAttribute="trailing" id="WP9-9v-Fax"/>
-                <constraint firstItem="eod-FK-a9L" firstAttribute="trailing" secondItem="QNB-rh-E22" secondAttribute="trailing" id="c1S-TF-gjZ"/>
+                <constraint firstItem="eod-FK-a9L" firstAttribute="trailing" secondItem="QNB-rh-E22" secondAttribute="trailing" constant="-39" id="c1S-TF-gjZ"/>
                 <constraint firstItem="NYl-oc-OcO" firstAttribute="leading" secondItem="wHG-1S-7lC" secondAttribute="leading" id="dhO-Cb-J7T"/>
-                <constraint firstItem="WzB-Uh-BXf" firstAttribute="leading" secondItem="QNB-rh-E22" secondAttribute="leading" id="ewj-pK-Pms"/>
+                <constraint firstItem="WzB-Uh-BXf" firstAttribute="leading" secondItem="QNB-rh-E22" secondAttribute="leading" constant="38" id="ewj-pK-Pms"/>
                 <constraint firstAttribute="bottom" secondItem="eod-FK-a9L" secondAttribute="bottom" constant="20" id="iDQ-v6-aLc"/>
                 <constraint firstItem="WzB-Uh-BXf" firstAttribute="top" secondItem="QNB-rh-E22" secondAttribute="bottom" constant="8" id="ih6-el-Fdc"/>
                 <constraint firstItem="QNB-rh-E22" firstAttribute="top" secondItem="Ae9-Cz-nSk" secondAttribute="bottom" constant="17" id="uXI-kf-qyg"/>

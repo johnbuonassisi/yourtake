@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-788" y="125"/>
         </scene>
-        <!--YourTake-->
+        <!--Challenges-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ChallengeList" id="BYZ-38-t0r" customClass="ListChallengesViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rhq-33-Qym">
-                                <rect key="frame" x="0.0" y="-44" width="375" height="662"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHg-r0-BpV">
@@ -56,42 +56,45 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gHg-r0-BpV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="EtE-xR-dl0"/>
+                            <constraint firstItem="Rhq-33-Qym" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MBh-fG-WoF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gHg-r0-BpV" secondAttribute="trailing" constant="-16" id="ONn-tm-8kj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gHg-r0-BpV" secondAttribute="bottom" id="QVV-xy-2a8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Rhq-33-Qym" secondAttribute="trailing" constant="-16" id="Sga-48-VSP"/>
-                            <constraint firstItem="Rhq-33-Qym" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Xz6-Wb-RPs"/>
+                            <constraint firstAttribute="trailing" secondItem="Rhq-33-Qym" secondAttribute="trailing" id="Wll-jz-yyP"/>
                             <constraint firstItem="gHg-r0-BpV" firstAttribute="top" secondItem="Rhq-33-Qym" secondAttribute="bottom" id="s4O-sv-dNA"/>
                             <constraint firstItem="Rhq-33-Qym" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="wkY-4Z-hEo"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="YourTake" id="3Jx-tw-5O8">
+                    <navigationItem key="navigationItem" title="Challenges" id="3Jx-tw-5O8">
                         <barButtonItem key="leftBarButtonItem" systemItem="organize" id="dzk-hM-5hf">
                             <connections>
-                                <segue destination="ixY-I8-QgS" kind="show" identifier="Settings" id="Skp-bd-f9n"/>
+                                <segue destination="ixY-I8-QgS" kind="show" identifier="SettingsSegue" id="Skp-bd-f9n"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="camera" id="hpm-uB-Gzc">
                                 <connections>
-                                    <segue destination="K3g-3J-N4h" kind="show" identifier="PhotoPreviewViewController" id="eHH-Xn-P8C"/>
+                                    <action selector="createChallenge:" destination="BYZ-38-t0r" id="nds-Ga-hxi"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="add" id="Trb-RV-Ahr">
                                 <connections>
-                                    <segue destination="oAz-ua-HtD" kind="show" identifier="Friends" id="eLD-xs-e0o"/>
+                                    <action selector="viewFriendsManagement:" destination="BYZ-38-t0r" id="2Qg-ao-NOS"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="addFriendsBarButton" destination="Trb-RV-Ahr" id="bYO-J6-oev"/>
+                        <outlet property="addFriendsBarButton" destination="Trb-RV-Ahr" id="2ya-DH-LYE"/>
                         <outlet property="createChallengeBarButton" destination="hpm-uB-Gzc" id="bDL-QL-LyY"/>
                         <outlet property="friendsTab" destination="Clz-uS-ezC" id="Gyh-cX-bDt"/>
                         <outlet property="settingsBarButton" destination="dzk-hM-5hf" id="S16-cd-FX9"/>
                         <outlet property="tabBar" destination="gHg-r0-BpV" id="oAa-Mt-Rvj"/>
                         <outlet property="tableView" destination="Rhq-33-Qym" id="KBv-v6-gMx"/>
                         <outlet property="userTab" destination="qva-Tr-q8X" id="X4P-xo-Htq"/>
+                        <segue destination="Tmi-dV-E9D" kind="show" identifier="FriendManagementSegue" id="Qtu-cr-NJy"/>
+                        <segue destination="K3g-3J-N4h" kind="show" identifier="PhotoPreviewSegue" id="MT2-Sz-I61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -385,7 +388,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with your existing account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4j0-SJ-cHZ">
-                                <rect key="frame" x="65" y="98" width="246" height="21"/>
+                                <rect key="frame" x="64.5" y="98" width="246" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -522,7 +525,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vu7-dM-fnf">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Manage Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vu7-dM-fnf">
                                                     <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -532,9 +535,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="oAz-ua-HtD" kind="show" id="8rO-oZ-xR6">
-                                                <nil key="action"/>
-                                            </segue>
+                                            <segue destination="Tmi-dV-E9D" kind="show" id="17E-Qc-HOd"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Que-UA-nm8" style="IBUITableViewCellStyleDefault" id="07K-Ds-XW7">
@@ -553,6 +554,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Mqq-o1-Mww" kind="show" id="fej-cV-XkS"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="mVG-Vt-su9" style="IBUITableViewCellStyleDefault" id="ehd-L3-gkr">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
@@ -699,82 +703,39 @@
             </objects>
             <point key="canvasLocation" x="-327" y="887"/>
         </scene>
-        <!--Friends-->
-        <scene sceneID="6xn-w0-ufn">
+        <!--Friend Management-->
+        <scene sceneID="KbI-7g-DIs">
             <objects>
-                <viewController storyboardIdentifier="Friends" title="Friends" id="oAz-ua-HtD" customClass="FriendViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Friends" title="Friend Management" id="Tmi-dV-E9D" userLabel="Friend Management" customClass="FriendManagementViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eji-0R-Nss"/>
-                        <viewControllerLayoutGuide type="bottom" id="pn8-Mz-HMl"/>
+                        <viewControllerLayoutGuide type="top" id="6RE-Os-PjO"/>
+                        <viewControllerLayoutGuide type="bottom" id="G2V-KS-lJB"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Q7C-6l-NJG">
+                    <view key="view" contentMode="scaleToFill" id="JDs-lt-7wC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hT-W4-HXf">
-                                <rect key="frame" x="16" y="88" width="343" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Add Friend">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="addFriendsButtonTapped:" destination="oAz-ua-HtD" eventType="touchUpInside" id="LGw-Mw-9wM"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter friend's user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pFV-LI-1KC">
-                                <rect key="frame" x="16" y="50" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi3-tY-U5G">
-                                <rect key="frame" x="16" y="21" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q2W-cv-xC0">
-                                <rect key="frame" x="0.0" y="171" width="375" height="496"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="16" sectionFooterHeight="16" translatesAutoresizingMaskIntoConstraints="NO" id="SwW-iu-2jH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd5-GL-t0Y">
-                                <rect key="frame" x="16" y="126" width="343" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="QQd-nG-8ae"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="q2W-cv-xC0" firstAttribute="leading" secondItem="Q7C-6l-NJG" secondAttribute="leadingMargin" constant="-16" id="0gn-mH-y7s"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="pFV-LI-1KC" secondAttribute="trailing" id="0zJ-AE-is3"/>
-                            <constraint firstItem="xd5-GL-t0Y" firstAttribute="top" secondItem="3hT-W4-HXf" secondAttribute="bottom" constant="8" id="AbG-J6-Khz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="q2W-cv-xC0" secondAttribute="trailing" constant="-16" id="JJX-X8-vd3"/>
-                            <constraint firstItem="q2W-cv-xC0" firstAttribute="top" secondItem="3hT-W4-HXf" secondAttribute="bottom" constant="53" id="KfV-zP-pFd"/>
-                            <constraint firstItem="3hT-W4-HXf" firstAttribute="trailing" secondItem="pFV-LI-1KC" secondAttribute="trailing" id="MLJ-Fq-cdZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xd5-GL-t0Y" secondAttribute="trailing" id="MSS-xt-W6v"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="xd5-GL-t0Y" secondAttribute="leading" id="Zh2-K2-dqo"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="pFV-LI-1KC" secondAttribute="leading" id="a6R-vI-7UU"/>
-                            <constraint firstItem="3hT-W4-HXf" firstAttribute="top" secondItem="pFV-LI-1KC" secondAttribute="bottom" constant="8" id="cch-Wu-sQe"/>
-                            <constraint firstItem="3hT-W4-HXf" firstAttribute="leading" secondItem="pFV-LI-1KC" secondAttribute="leading" id="fPR-pY-yoH"/>
-                            <constraint firstItem="pFV-LI-1KC" firstAttribute="top" secondItem="eji-0R-Nss" secondAttribute="bottom" constant="30" id="iYg-np-C62"/>
-                            <constraint firstItem="pn8-Mz-HMl" firstAttribute="top" secondItem="q2W-cv-xC0" secondAttribute="bottom" id="udM-cy-LyT"/>
+                            <constraint firstItem="SwW-iu-2jH" firstAttribute="leading" secondItem="JDs-lt-7wC" secondAttribute="leading" id="GQt-m5-0Ad"/>
+                            <constraint firstItem="SwW-iu-2jH" firstAttribute="top" secondItem="6RE-Os-PjO" secondAttribute="bottom" constant="-64" id="Nw8-he-UB7"/>
+                            <constraint firstAttribute="trailing" secondItem="SwW-iu-2jH" secondAttribute="trailing" id="Os7-bB-PFs"/>
+                            <constraint firstItem="G2V-KS-lJB" firstAttribute="top" secondItem="SwW-iu-2jH" secondAttribute="bottom" id="yCF-8R-aJx"/>
                         </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="addFriendButton" destination="3hT-W4-HXf" id="RTW-Od-aHr"/>
-                        <outlet property="messageLabel" destination="xd5-GL-t0Y" id="Tlm-4A-YSz"/>
-                        <outlet property="tableView" destination="q2W-cv-xC0" id="YCE-qZ-qyp"/>
-                        <outlet property="userNameTextField" destination="pFV-LI-1KC" id="HH0-VW-0VA"/>
+                        <outlet property="tableView" destination="SwW-iu-2jH" id="Pgs-Bs-POC"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r4W-g0-oBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gHp-Pd-v1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="550" y="887"/>
+            <point key="canvasLocation" x="529" y="887"/>
         </scene>
         <!--Password Verification View Controller-->
         <scene sceneID="7Sb-U3-72r">
@@ -968,7 +929,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have an questions, feeback, or suggestions please send an email to yourtake_app@gmail.com." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae1-z1-Pw2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have an questions, feeback, or suggestions please send an email to johnbuonassisi@gmail.com." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae1-z1-Pw2">
                                 <rect key="frame" x="18" y="141" width="338" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="aF3-9o-aiZ"/>
@@ -1008,7 +969,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcb-En-ayz">
                                 <rect key="frame" x="16" y="72" width="343" height="81.5"/>
-                                <string key="text">We'll get one of these eventually! For now you'll have to trust us. Send any questions, feedback, or suggestions to yourtake_app@gmail.com.</string>
+                                <string key="text">We'll get one of these eventually! For now you'll have to trust us. Send any questions, feedback, or suggestions to johnbuonassisi@gmail.com.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1041,7 +1002,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icl-dO-FJn">
                                 <rect key="frame" x="16" y="72" width="343" height="81.5"/>
-                                <string key="text">Hmmm, we'll have to back to you on this one. For now just give the app a try and send any questions, feedback, or suggestions to yourtake_app@gmail.com.</string>
+                                <string key="text">Hmmm, we'll have to back to you on this one. For now just give the app a try and send any questions, feedback, or suggestions to johnbuonassisi@gmail.com.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1060,9 +1021,41 @@
             </objects>
             <point key="canvasLocation" x="2988" y="1655.6221889055473"/>
         </scene>
+        <!--Change Email-->
+        <scene sceneID="Uve-DF-1p5">
+            <objects>
+                <viewController title="Change Email" id="Mqq-o1-Mww" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uog-Dj-vZ4"/>
+                        <viewControllerLayoutGuide type="bottom" id="7hQ-UA-GD7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aFX-8o-aIw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This feature is still under construction. If assistance is required send an email to johnbuonassisi@gmail.com." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49y-jP-pBu">
+                                <rect key="frame" x="16" y="72" width="343" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="49y-jP-pBu" secondAttribute="trailing" constant="16" id="1aY-LG-taX"/>
+                            <constraint firstItem="49y-jP-pBu" firstAttribute="leading" secondItem="aFX-8o-aIw" secondAttribute="leading" constant="16" id="kJ2-zw-elj"/>
+                            <constraint firstItem="49y-jP-pBu" firstAttribute="top" secondItem="Uog-Dj-vZ4" secondAttribute="bottom" constant="8" id="wuY-4W-Yne"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKA-Z1-EJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3709.5999999999999" y="1655.6221889055473"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8rO-oZ-xR6"/>
+        <segue reference="Qtu-cr-NJy"/>
         <segue reference="bMw-5X-QCr"/>
     </inferredMetricsTieBreakers>
 </document>

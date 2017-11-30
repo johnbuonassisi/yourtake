@@ -167,12 +167,12 @@ class ListChallengesViewController: ReachabilityViewController,
         router.navigateToTakesScene(with: challengeId)
     }
     
-    func createChallenge() {
+    @IBAction func createChallenge(_ sender: Any) {
         router.navigateToSnapChallengeImageScene()
     }
     
-    func addFriends() {
-        router.navigateToAddFriendsScene()
+    @IBAction func viewFriendsManagement(_ sender: Any) {
+        router.navigateToFriendManagementScene()
     }
     
     func refresh(sender: UIButton!) {

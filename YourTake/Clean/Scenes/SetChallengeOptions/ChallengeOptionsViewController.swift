@@ -9,14 +9,14 @@
 import UIKit
 
 class ChallengeOptionsViewController: UIViewController,
-                                      UITableViewDelegate,
-                                      UITableViewDataSource,
-                                      UINavigationControllerDelegate {
+    UITableViewDelegate,
+    UITableViewDataSource,
+UINavigationControllerDelegate {
     
     @IBOutlet weak var expiryPicker: UIDatePicker!
     @IBOutlet weak var friendSelectionTableView: UITableView!
     
-    private var user: User?
+    private var friends: [String]?
     private var challengeImage : UIImage?
     private var friendSelectionTracker: FriendSelectionTracker?
     
@@ -57,16 +57,29 @@ class ChallengeOptionsViewController: UIViewController,
         navigationItem.title = "Create Challenge"
         
         // get initial data from source
+        
         let backendClient = Backend.sharedInstance.getClient()
-        backendClient.getUser(completion: { (user) -> Void in
-            if user != nil {
-                self.user = user
-                self.friendSelectionTracker = FriendSelectionTracker(withFriends: user!.friends)
-                self.friendSelectionTableView.reloadData()
+        backendClient.getFollowers { (followers) in
+            if let followers = followers {
+                backendClient.getFollowing(completion: { (following) in
+                    if let following = following {
+                        let followersSet = Set(followers)
+                        let followingSet = Set(following)
+                        let friendSet = followersSet.intersection(followingSet)
+                        self.friends = friendSet.sorted()
+                        self.friendSelectionTracker = FriendSelectionTracker(withFriends: self.friends!)
+                        self.friendSelectionTableView.reloadData()
+                    } else {
+                        print("Error occurred while getting following, unable to get following")
+                        return
+                    }
+                })
+            } else {
+                print("Error occurred while getting friends, unable to get followers")
+                return
             }
-            
-        })
-
+        }
+        
     }
     
     // MARK: UITableViewDelegate Methods
@@ -89,11 +102,11 @@ class ChallengeOptionsViewController: UIViewController,
                 _ = friendSelectionTracker.changeSelectionOfAllFriends()
                 tableView.reloadData()
             }
-
+            
         case 1:
-            print("Selection: " + "\(user!.friends[indexPath.row])")
+            print("Selection: " + "\(friends![indexPath.row])")
             if let friendSelectionTracker = friendSelectionTracker {
-                _ = friendSelectionTracker.changeSelection(forFriend: user!.friends[indexPath.row])
+                _ = friendSelectionTracker.changeSelection(forFriend: friends![indexPath.row])
                 tableView.reloadData()
             }
             return
@@ -123,8 +136,8 @@ class ChallengeOptionsViewController: UIViewController,
         case 0: // Date Picker Section
             return 1
         case 1: // Friend Picker Section
-            if user != nil {
-                return user!.friends.count
+            if friends != nil {
+                return friends!.count
             } else {
                 return 0
             }
@@ -149,7 +162,7 @@ class ChallengeOptionsViewController: UIViewController,
         case 1: // Friend Picker Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendPickerCell", for: indexPath) as! FriendPickerCell
             
-            if let friends = user?.friends {
+            if let friends = friends {
                 
                 let friendName = friends[indexPath.row]
                 cell.friendName.text = friendName
@@ -200,47 +213,47 @@ class ChallengeOptionsViewController: UIViewController,
     // MARK: Private Methods
     
     /*
-    private func setUploadingScreen() {
-        
-        let width: CGFloat = 120
-        let height: CGFloat = 120
-        let x = tableView.frame.width / 2 - width / 2
-        let y = tableView.frame.height / 2 - height / 2 - 50
-        uploadActivityView.frame = CGRect(x: x, y: y, width: width, height: height)
-        uploadActivityView.isHidden = true
-        uploadActivityView.backgroundColor = UIColor.black
-        
-        // set uploading text
-        uploadingLabel.textColor = UIColor.gray
-        uploadingLabel.textAlignment = .center
-        uploadingLabel.text = "Uploading..."
-        uploadingLabel.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
-        
-        // set spinner
-        spinner.activityIndicatorViewStyle = .gray
-        spinner.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        
-        uploadActivityView.addSubview(uploadingLabel)
-        uploadActivityView.addSubview(spinner)
-        
-        // add spinner to view
-        self.tableView.addSubview(uploadActivityView)
-    }
-    
-    private func showUploadingAlert() {
-        alert = UIAlertController(title: "Uploading",
-                                      message: nil,
-                                      preferredStyle: .alert)
-        let indicator = UIActivityIndicatorView(frame: alert.view.bounds)
-        indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        indicator.activityIndicatorViewStyle = .gray
-        
-        alert.view.addSubview(indicator)
-        indicator.isUserInteractionEnabled = false
-        indicator.startAnimating()
-        
-        present(alert, animated: true, completion: nil)
-    }
+     private func setUploadingScreen() {
+     
+     let width: CGFloat = 120
+     let height: CGFloat = 120
+     let x = tableView.frame.width / 2 - width / 2
+     let y = tableView.frame.height / 2 - height / 2 - 50
+     uploadActivityView.frame = CGRect(x: x, y: y, width: width, height: height)
+     uploadActivityView.isHidden = true
+     uploadActivityView.backgroundColor = UIColor.black
+     
+     // set uploading text
+     uploadingLabel.textColor = UIColor.gray
+     uploadingLabel.textAlignment = .center
+     uploadingLabel.text = "Uploading..."
+     uploadingLabel.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
+     
+     // set spinner
+     spinner.activityIndicatorViewStyle = .gray
+     spinner.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+     
+     uploadActivityView.addSubview(uploadingLabel)
+     uploadActivityView.addSubview(spinner)
+     
+     // add spinner to view
+     self.tableView.addSubview(uploadActivityView)
+     }
+     
+     private func showUploadingAlert() {
+     alert = UIAlertController(title: "Uploading",
+     message: nil,
+     preferredStyle: .alert)
+     let indicator = UIActivityIndicatorView(frame: alert.view.bounds)
+     indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+     indicator.activityIndicatorViewStyle = .gray
+     
+     alert.view.addSubview(indicator)
+     indicator.isUserInteractionEnabled = false
+     indicator.startAnimating()
+     
+     present(alert, animated: true, completion: nil)
+     }
      */
-
+    
 }

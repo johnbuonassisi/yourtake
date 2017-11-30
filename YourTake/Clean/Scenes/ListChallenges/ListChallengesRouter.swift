@@ -49,12 +49,14 @@ class ListChallengesRouter: ListChallengesRouterInput {
     
     func navigateToSnapChallengeImageScene() {
         print("Navigating to Snap Challenge Scene")
-        viewController.performSegue(withIdentifier: "PhotoPreviewViewController", sender: nil)
+        viewController.performSegue(withIdentifier: Constants.SegueIdentifiers.ListChallengesScene.photoPreviewSegue,
+                                    sender: nil)
     }
     
-    func navigateToAddFriendsScene() {
+    func navigateToFriendManagementScene() {
         print("Navigating to Add Friends Scene")
-        viewController.performSegue(withIdentifier: "Friends", sender: nil)
+        viewController.performSegue(withIdentifier: Constants.SegueIdentifiers.ListChallengesScene.friendManagementSegue,
+                                    sender: nil)
     }
     
     // MARK: - Communication

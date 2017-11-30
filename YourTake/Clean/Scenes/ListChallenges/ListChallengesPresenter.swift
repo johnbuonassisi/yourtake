@@ -46,7 +46,7 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
             let numSecondsRemaining = getNumberOfSecondsRemainingForChallenge(challenge: challenge)
             
             // TODO: remove if unnecessary
-            var listTakesButtonTitleText = "";
+            let listTakesButtonTitleText = "";
             /*
             var listTakesButtonTitleText = "Vote"
             if numSecondsRemaining <= 0 {
