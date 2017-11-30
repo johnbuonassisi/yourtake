@@ -56,10 +56,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gHg-r0-BpV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="EtE-xR-dl0"/>
+                            <constraint firstItem="Rhq-33-Qym" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MBh-fG-WoF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gHg-r0-BpV" secondAttribute="trailing" constant="-16" id="ONn-tm-8kj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gHg-r0-BpV" secondAttribute="bottom" id="QVV-xy-2a8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Rhq-33-Qym" secondAttribute="trailing" constant="-16" id="Sga-48-VSP"/>
-                            <constraint firstItem="Rhq-33-Qym" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Xz6-Wb-RPs"/>
+                            <constraint firstAttribute="trailing" secondItem="Rhq-33-Qym" secondAttribute="trailing" id="Wll-jz-yyP"/>
                             <constraint firstItem="gHg-r0-BpV" firstAttribute="top" secondItem="Rhq-33-Qym" secondAttribute="bottom" id="s4O-sv-dNA"/>
                             <constraint firstItem="Rhq-33-Qym" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="wkY-4Z-hEo"/>
                         </constraints>
@@ -203,7 +203,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXx-Gt-tSx">
-                                <rect key="frame" x="264" y="345.5" width="51" height="30"/>
+                                <rect key="frame" x="264" y="345" width="51" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AkW-M0-bcX"/>
                                     <constraint firstAttribute="width" constant="51" id="l9v-yw-vSl"/>
@@ -371,7 +371,7 @@
                                 <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCd-Sx-n6L">
-                                <rect key="frame" x="252" y="294" width="58" height="33"/>
+                                <rect key="frame" x="252" y="293.5" width="58" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Sign up"/>
                                 <connections>
