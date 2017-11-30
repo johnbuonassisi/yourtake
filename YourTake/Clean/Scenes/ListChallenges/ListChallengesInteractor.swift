@@ -44,13 +44,17 @@ class ListChallengesInteractor: ListChallengesInteractorInput {
     
     func fetchChallenges(request: ListChallenges.FetchChallenges.Request) {
         friendsWorker.getNumberOfFriends(completion:{ (numberOfFriends) -> Void in
-            
-            if numberOfFriends == 0 {
-                let emptyChallenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel] = []
-                let response = ListChallenges.FetchChallenges.Response(challengeType: .noFriends,
-                                                                       challenges: emptyChallenges,
-                                                                       viewSizes: request.viewSizes)
-                self.output.presentFetchedChallenges(response: response)
+            if let numberOfFriends = numberOfFriends {
+                if numberOfFriends == 0 {
+                    let emptyChallenges: [ListChallenges.FetchChallenges.Response.ChallengeResponseModel] = []
+                    let response = ListChallenges.FetchChallenges.Response(challengeType: .noFriends,
+                                                                           challenges: emptyChallenges,
+                                                                           viewSizes: request.viewSizes)
+                    self.output.presentFetchedChallenges(response: response)
+                    return
+                }
+            } else {
+                print("Unable to get number of friends for the user")
                 return
             }
             

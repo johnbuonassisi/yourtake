@@ -49,14 +49,29 @@ class FriendManagementInteractor: FriendManagementInteractorInput, FriendManagem
         }
         
         friendsStore.getFollowers { (followers) in
-            self.followersSet = Set(followers)
-            self.friendsStore.getFollowing(completion: { (following) in
-                self.followingSet = Set(following)
-                self.friendsStore.getUsers(completion: { (users) in
-                    self.userSet = Set(users)
-                    self.processUserLists()
+            if let followers = followers {
+                self.followersSet = Set(followers)
+                self.friendsStore.getFollowing(completion: { (following) in
+                    if let following = following {
+                        self.followingSet = Set(following)
+                        self.friendsStore.getUsers(completion: { (users) in
+                            if let users = users {
+                                self.userSet = Set(users)
+                                self.processUserLists()
+                            } else {
+                                print("Error occurred while fetching friends, unable to get users")
+                                return
+                            }
+                        })
+                    } else {
+                        print("Erorr occurred while fetching friends, unable to get following")
+                        return
+                    }
                 })
-            })
+            } else {
+                print("Error occurred while fetching friends, unable to get followers")
+                return
+            }
         }
     }
     
@@ -76,10 +91,7 @@ class FriendManagementInteractor: FriendManagementInteractorInput, FriendManagem
                 print("Error occurred while trying to follow \(request.userName)")
             }
             self.acceptingSet.remove(request.userName)
-            self.friendsStore.getFollowing(completion: { (updatedFollowing) in
-                self.followingSet = Set(updatedFollowing)
-                self.processUserLists()
-            })
+            self.updateFollowing()
         }
     }
     
@@ -99,15 +111,23 @@ class FriendManagementInteractor: FriendManagementInteractorInput, FriendManagem
                 print("Error occurred while trying to follow \(request.userName)")
             }
             self.requestingSet.remove(request.userName)
-            self.friendsStore.getFollowing(completion: { (updatedFollowing) in
-                self.followingSet = Set(updatedFollowing)
-                self.processUserLists()
-            })
+            self.updateFollowing()
         }
     }
     
     func updateNetworkStatus(request: FriendManagementScene.UpdateNeworkStatus.Request) {
         isInteractorEnabled = request.isEnabled
+    }
+    
+    private func updateFollowing() {
+        self.friendsStore.getFollowing(completion: { (updatedFollowing) in
+            if let updatedFollowing = updatedFollowing {
+                self.followingSet = Set(updatedFollowing)
+                self.processUserLists()
+            } else {
+                print("Error occurred while updating following, unable to get following")
+            }
+        })
     }
     
     private func processUserLists() {

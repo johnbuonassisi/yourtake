@@ -25,15 +25,15 @@ class FriendsMemStore: FriendsStoreProtocol {
         completion(friendList.count)
     }
     
-    func getFollowers(completion: @escaping ([String]) -> Void) {
+    func getFollowers(completion: @escaping ([String]?) -> Void) {
         completion(followerList)
     }
     
-    func getFollowing(completion: @escaping ([String]) -> Void) {
+    func getFollowing(completion: @escaping ([String]?) -> Void) {
         completion(followingList)
     }
     
-    func getUsers(completion: @escaping ([String]) -> Void) {
+    func getUsers(completion: @escaping ([String]?) -> Void) {
         completion(userList)
     }
     

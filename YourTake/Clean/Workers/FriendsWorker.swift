@@ -16,23 +16,34 @@ class FriendsWorker {
         self.friendsStore = friendsStore
     }
     
-    func getFriends(completion: @escaping ([String]) -> Void) {
-        friendsStore.getFriends(completion: completion)
+    func getNumberOfFriends(completion: @escaping (Int?) -> Void) {
+        friendsStore.getFollowers { (followers) in
+            if let followers = followers {
+                self.friendsStore.getFollowing(completion: { (following) in
+                    if let following = following {
+                        let followersSet = Set(followers)
+                        let followingSet = Set(following)
+                        let friendsSet = followersSet.intersection(followingSet)
+                        completion(friendsSet.count)
+                    } else {
+                        completion(nil)
+                    }
+                })
+            } else {
+                completion(nil)
+            }
+        }
     }
     
-    func getNumberOfFriends(completion: @escaping (Int) -> Void) {
-        friendsStore.getNumberOfFriends(completion: completion)
-    }
-    
-    func getFollowers(completion: @escaping ([String]) -> Void) {
+    func getFollowers(completion: @escaping ([String]?) -> Void) {
         friendsStore.getFollowers(completion: completion)
     }
     
-    func getFollowing(completion: @escaping ([String]) -> Void) {
+    func getFollowing(completion: @escaping ([String]?) -> Void) {
         friendsStore.getFollowing(completion: completion)
     }
     
-    func getUsers(completion: @escaping ([String]) -> Void) {
+    func getUsers(completion: @escaping ([String]?) -> Void) {
         friendsStore.getUsers(completion: completion)
     }
     
@@ -42,11 +53,8 @@ class FriendsWorker {
 }
 
 protocol FriendsStoreProtocol {
-    
-    func getFriends(completion: @escaping ([String]) -> Void)
-    func getNumberOfFriends(completion: @escaping (Int) -> Void)
-    func getFollowers(completion: @escaping ([String]) -> Void)
-    func getFollowing(completion: @escaping ([String]) -> Void)
-    func getUsers(completion: @escaping ([String]) -> Void)
+    func getFollowers(completion: @escaping ([String]?) -> Void)
+    func getFollowing(completion: @escaping ([String]?) -> Void)
+    func getUsers(completion: @escaping ([String]?) -> Void)
     func followUser(userName: String, completion: @escaping (Bool) -> Void)
 }

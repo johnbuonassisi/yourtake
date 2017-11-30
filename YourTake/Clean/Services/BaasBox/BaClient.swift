@@ -9,6 +9,7 @@
 typealias BaBoolCompletionBlock = (Bool) -> Void
 typealias BaStringCompletionBlock = (String) -> Void
 typealias BaStringsCompletionBlock = ([String]) -> Void
+typealias BaStringsOptionalCompletionBlock = ([String]?) -> Void
 typealias BaUserCompletionBlock = (User?) -> Void
 typealias BaChallengeDtoCompletionBlock = (ChallengeDto?) -> Void
 typealias BaChallengeDtoListCompletionBlock = ([ChallengeDto]) -> Void
@@ -26,9 +27,9 @@ protocol BaClient {
     
     // social
     func getUser(completion: @escaping BaUserCompletionBlock) -> Void
-    func getFollowing(completion: @escaping BaStringsCompletionBlock) -> Void
-    func getFollowers(completion: @escaping BaStringsCompletionBlock) -> Void
-    func getUsers(completion: @escaping BaStringsCompletionBlock) -> Void
+    func getFollowing(completion: @escaping BaStringsOptionalCompletionBlock) -> Void
+    func getFollowers(completion: @escaping BaStringsOptionalCompletionBlock) -> Void
+    func getUsers(completion: @escaping BaStringsOptionalCompletionBlock) -> Void
     func addFriend(_ username: String, completion: @escaping BaBoolCompletionBlock) -> Void
     func removeFriend(_ username: String, completion: @escaping BaBoolCompletionBlock) -> Void
     

@@ -154,10 +154,15 @@ class BaasBoxClient: BaClient {
         BaasBoxUser.getObjectsWithParams(params, completion: { (objects, error) -> Void in
             if let baasUser = (objects as? [BaasBoxUser])?.first {
                 self.getFollowing(completion: { (friends) -> Void in
-                    completion(User(
-                        username: self.client.currentUser.username(),
-                        friends: friends,
-                        votes: baasUser.votes))
+                    if let friends = friends {
+                        completion(User(
+                            username: self.client.currentUser.username(),
+                            friends: friends,
+                            votes: baasUser.votes))
+                    } else {
+                        print("error: unable to load user details because unable to fetch following")
+                        completion(nil)
+                    }
                 })
             } else {
                 print("error: unable to load user details [description=\(String(describing: error?.localizedDescription))]")
@@ -166,7 +171,7 @@ class BaasBoxClient: BaClient {
         })
     }
     
-    func getFollowing(completion: @escaping BaStringsCompletionBlock) -> Void {
+    func getFollowing(completion: @escaping BaStringsOptionalCompletionBlock) -> Void {
         if client.currentUser == nil || !client.isAuthenticated() {
             print("error: user not authenticated")
             completion([String]())
@@ -181,12 +186,13 @@ class BaasBoxClient: BaClient {
                 }
             } else {
                 print("error: unable to get following [description=\(String(describing: error?.localizedDescription))]")
+                completion(nil)
             }
             completion(friends)
         })
     }
     
-    func getFollowers(completion: @escaping BaStringsCompletionBlock) -> Void {
+    func getFollowers(completion: @escaping BaStringsOptionalCompletionBlock) -> Void {
         if client.currentUser == nil || !client.isAuthenticated() {
             print("error: user not authenticated")
             completion([String]())
@@ -201,12 +207,13 @@ class BaasBoxClient: BaClient {
                 }
             } else {
                 print("error: unable to get followers [description=\(String(describing: error?.localizedDescription))]")
+                completion(nil)
             }
             completion(followers)
         })
     }
     
-    func getUsers(completion: @escaping BaStringsCompletionBlock) -> Void {
+    func getUsers(completion: @escaping BaStringsOptionalCompletionBlock) -> Void {
         if client.currentUser == nil || !client.isAuthenticated() {
             print("error: user not authenticated")
             completion([String]())
@@ -221,6 +228,7 @@ class BaasBoxClient: BaClient {
                 }
             } else {
                 print("error: unable to get users [description=\(String(describing: error?.localizedDescription))]")
+                completion(nil)
             }
             users = users.filter{ $0 != self.client.currentUser.username() }
             completion(users)
