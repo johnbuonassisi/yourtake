@@ -1489,6 +1489,13 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     [[self.session dataTaskWithRequest:request
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                          
+                         // Added check here in case the response is nil for some reason, this seems to happen if
+                         // a request is made while the phone switches between using cellular and wifi
+                         if(response == nil || data == nil) {
+                             failure(error);
+                             return;
+                         }
+                         
                          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
                          NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
                                                                                     options:kNilOptions
