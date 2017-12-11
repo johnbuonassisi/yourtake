@@ -19,8 +19,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="414.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oN8-8y-uV9">
-                        <rect key="frame" x="16" y="11" width="56" height="32"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oN8-8y-uV9">
+                        <rect key="frame" x="16" y="11" width="157" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="157" id="VIh-Va-qmo"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -51,6 +54,7 @@
                             <barButtonItem style="plain" systemItem="flexibleSpace" id="uUA-dI-MFs"/>
                             <barButtonItem image="Draw" id="Ipg-l1-n8e"/>
                             <barButtonItem title="Draw" id="gEY-YT-GjE"/>
+                            <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="aUs-qW-XMo"/>
                         </items>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </toolbar>
@@ -58,14 +62,14 @@
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="oN8-8y-uV9" firstAttribute="leading" secondItem="GV1-1M-713" secondAttribute="leading" constant="16" id="2Rg-PF-F2x"/>
-                    <constraint firstItem="bJo-c3-1o6" firstAttribute="top" secondItem="GV1-1M-713" secondAttribute="top" constant="11" id="DFR-SF-x5o"/>
+                    <constraint firstAttribute="trailing" secondItem="bJo-c3-1o6" secondAttribute="trailing" constant="16" id="FHY-gF-HM3"/>
                     <constraint firstItem="uNX-kc-hkZ" firstAttribute="leading" secondItem="GV1-1M-713" secondAttribute="leading" id="H4U-ZO-due"/>
                     <constraint firstItem="05B-E3-KnZ" firstAttribute="leading" secondItem="GV1-1M-713" secondAttribute="leading" id="JWq-FI-m24"/>
+                    <constraint firstItem="bJo-c3-1o6" firstAttribute="top" secondItem="GV1-1M-713" secondAttribute="top" constant="11" id="Kyk-dP-rl3"/>
                     <constraint firstAttribute="bottom" secondItem="uNX-kc-hkZ" secondAttribute="bottom" constant="14" id="MNY-KX-67s"/>
                     <constraint firstItem="oN8-8y-uV9" firstAttribute="top" secondItem="GV1-1M-713" secondAttribute="top" constant="11" id="VeI-6h-t8j"/>
                     <constraint firstItem="QpH-ST-hj9" firstAttribute="top" secondItem="bJo-c3-1o6" secondAttribute="bottom" id="VjF-Rk-ohm"/>
                     <constraint firstItem="uNX-kc-hkZ" firstAttribute="top" secondItem="05B-E3-KnZ" secondAttribute="bottom" constant="14" id="Zs1-SR-EXG"/>
-                    <constraint firstAttribute="trailing" secondItem="bJo-c3-1o6" secondAttribute="trailing" constant="16" id="cCE-Mu-9vH"/>
                     <constraint firstAttribute="trailing" secondItem="05B-E3-KnZ" secondAttribute="trailing" id="je2-2k-IZ9"/>
                     <constraint firstAttribute="trailing" secondItem="uNX-kc-hkZ" secondAttribute="trailing" id="lUF-jy-aXu"/>
                     <constraint firstAttribute="trailing" secondItem="QpH-ST-hj9" secondAttribute="trailing" constant="16" id="q8I-6P-pNP"/>

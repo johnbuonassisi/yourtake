@@ -12,6 +12,7 @@ class ValidationService: NSObject {
     
     private static let MINIMUM_PASSWORD_SIZE = 7
     private static let MINIMUM_USERNAME_SIZE = 5
+    private static let MAXIMUM_USERNAME_SIZE = 16
     
     static func isValidEmailAddress(_ emailAddress: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
@@ -22,7 +23,9 @@ class ValidationService: NSObject {
     static func isValidUserName(_ username: String) -> Bool {
         let userNameRegEx = "[A-Z0-9a-z._]*"
         let userNameTest = NSPredicate(format: "SELF MATCHES %@", userNameRegEx)
-        return username.count >= MINIMUM_USERNAME_SIZE && userNameTest.evaluate(with: username)
+        return username.count >= MINIMUM_USERNAME_SIZE &&
+            username.count <= MAXIMUM_USERNAME_SIZE &&
+            userNameTest.evaluate(with: username)
     }
     
     static func isValidPassword(_ password: String) -> Bool {
