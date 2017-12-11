@@ -20,7 +20,9 @@ class ValidationService: NSObject {
     }
     
     static func isValidUserName(_ username: String) -> Bool {
-        return username.count >= MINIMUM_USERNAME_SIZE
+        let userNameRegEx = "[A-Z0-9a-z._]*"
+        let userNameTest = NSPredicate(format: "SELF MATCHES %@", userNameRegEx)
+        return username.count >= MINIMUM_USERNAME_SIZE && userNameTest.evaluate(with: username)
     }
     
     static func isValidPassword(_ password: String) -> Bool {

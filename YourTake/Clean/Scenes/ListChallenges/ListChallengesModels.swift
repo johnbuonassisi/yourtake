@@ -25,13 +25,11 @@ struct ListChallenges {
         struct Request {
             var challengeType: ChallengeRequestType
             var isChallengeAndImageLoadSeparated: Bool
-            var viewSizes: ListChallengesViewSizes
         }
         
         struct Response {
             var challengeType: ChallengeResponseType
             var challenges: [ChallengeResponseModel]
-            var viewSizes: ListChallengesViewSizes
             
             enum ChallengeResponseType: Int {
                 case userChallenges = 0
@@ -57,7 +55,6 @@ struct ListChallenges {
             var challengeType: ChallengeViewType
             var displayedChallenges: [DisplayedChallenge]
             var isChallengeCreationEnabled: Bool
-            var cellRowHeight: CGFloat
             
             struct DisplayedChallenge {
                 var id: String
@@ -83,12 +80,5 @@ struct ListChallenges {
     enum ChallengeRequestType: Int {
         case userChallenges = 0
         case friendChallenges = 1
-    }
-    
-    struct ListChallengesViewSizes {
-        var navigationBarHeight: CGFloat
-        var tabBarHeight: CGFloat
-        var screenHeight: CGFloat
-        var screenWidth: CGFloat
     }
 }

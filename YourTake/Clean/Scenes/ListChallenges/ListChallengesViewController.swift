@@ -76,6 +76,8 @@ class ListChallengesViewController: ReachabilityViewController,
         tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
         tableView.refreshControl!.beginRefreshing()
         
+        tableView.rowHeight = ChallengeTableViewCell.getHeightofCell(for: UIScreen.main.bounds.size.width)
+        
         tabBar.delegate = self
         tabBar.selectedItem = tabBar.items?[0]
         
@@ -107,10 +109,8 @@ class ListChallengesViewController: ReachabilityViewController,
         // NOTE: Ask the Interactor to do some work
         let tag = tabBar.selectedItem!.tag
         let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
-        let viewSizes = getViewSizes()
         let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
-                                                             isChallengeAndImageLoadSeparated: false,
-                                                             viewSizes: viewSizes)
+                                                             isChallengeAndImageLoadSeparated: false)
         output.fetchChallenges(request: request)
     }
     
@@ -132,7 +132,6 @@ class ListChallengesViewController: ReachabilityViewController,
         }
         
         createChallengeBarButton.isEnabled = viewModel.isChallengeCreationEnabled
-        tableView.rowHeight = viewModel.cellRowHeight
         tableView.reloadData()
         tableView.refreshControl!.endRefreshing()
     }
@@ -145,24 +144,24 @@ class ListChallengesViewController: ReachabilityViewController,
     
     // MARK - Action methods
     
-    func userChallengeCellDrawButtonPressed(sender: UIButton!) {
+    func userChallengeCellDrawButtonPressed(sender: UIBarButtonItem!) {
         let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
         let challengeImage = userChallengesDataSource.displayedChallenges[sender.tag].challengeImage
         router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
     }
     
-    func friendChallengeCellDrawButtonPressed(sender: UIButton!) {
+    func friendChallengeCellDrawButtonPressed(sender: UIBarButtonItem!) {
         let challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
         let challengeImage = friendChallengesDataSource.displayedChallenges[sender.tag].challengeImage
         router.navigateToCreateTakeScene(challengeId: challengeId, challengeImage: challengeImage!)
     }
     
-    func userChallengeCellVoteButtonPressed(sender: UIButton!) {
+    func userChallengeCellVoteButtonPressed(sender: UIBarButtonItem!) {
         let challengeId = userChallengesDataSource.displayedChallenges[sender.tag].id
         router.navigateToTakesScene(with: challengeId)
     }
     
-    func friendChallengeCellVoteButtonPressed(sender: UIButton!) {
+    func friendChallengeCellVoteButtonPressed(sender: UIBarButtonItem!) {
         let challengeId = friendChallengesDataSource.displayedChallenges[sender.tag].id
         router.navigateToTakesScene(with: challengeId)
     }
@@ -178,19 +177,8 @@ class ListChallengesViewController: ReachabilityViewController,
     func refresh(sender: UIButton!) {
         let tag = tabBar.selectedItem!.tag
         let challengeType = ListChallenges.ChallengeRequestType(rawValue: tag)
-        let viewSizes = getViewSizes()
         let request = ListChallenges.FetchChallenges.Request(challengeType: challengeType!,
-                                                             isChallengeAndImageLoadSeparated: true,
-                                                             viewSizes: viewSizes)
+                                                             isChallengeAndImageLoadSeparated: true)
         output.fetchChallenges(request: request)
-    }
-    
-    private func getViewSizes() -> ListChallenges.ListChallengesViewSizes {
-        let viewSizes = ListChallenges.ListChallengesViewSizes(
-            navigationBarHeight: navigationController!.navigationBar.frame.size.height,
-            tabBarHeight: tabBar.frame.size.height,
-            screenHeight: UIScreen.main.bounds.size.height,
-            screenWidth: UIScreen.main.bounds.size.width)
-        return viewSizes
     }
 }

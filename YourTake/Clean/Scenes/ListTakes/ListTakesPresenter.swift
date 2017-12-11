@@ -22,8 +22,8 @@ protocol ListTakesPresenterOutput: class {
 class ListTakesPresenter: ListTakesPresenterInput {
     weak var output: ListTakesPresenterOutput!
     
-    let likedButtonImage = UIImage(named: "Liked", in: nil, compatibleWith: nil)!
-    let notLikedButtonImage = UIImage(named: "NotLiked", in: nil, compatibleWith: nil)!
+    let likedButtonImage = UIImage(named: "Checked (System Blue)", in: nil, compatibleWith: nil)!
+    let notLikedButtonImage = UIImage(named: "Checked (Light Grey)", in: nil, compatibleWith: nil)!
     
     // MARK: - Presentation logic
     

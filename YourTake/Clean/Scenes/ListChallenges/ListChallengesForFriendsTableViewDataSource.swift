@@ -32,19 +32,25 @@ class ListChallengesForFriendsTableViewDataSource: NSObject, UITableViewDataSour
         cell.challengeImage.image = displayedChallenge.challengeImage
         cell.expiryLabel.text = displayedChallenge.expiryLabel
         cell.totalVotesLabel.text = displayedChallenge.totalVotesLabel
-        cell.drawButton.isEnabled = displayedChallenge.isDrawButtonEnabled
-        cell.voteButton.setTitle(displayedChallenge.listTakesButtonTitleText, for: .normal)
         
-        cell.drawButton.tag = indexPath.row
-        cell.drawButton.addTarget(viewController,
-                                  action: #selector(viewController.friendChallengeCellDrawButtonPressed),
-                                  for: .touchUpInside)
+        cell.drawToolBarButtonItem.isEnabled = displayedChallenge.isDrawButtonEnabled
+        cell.drawToolBarButtonItem.tag = indexPath.row
+        cell.drawToolBarButtonItem.target = viewController
+        cell.drawToolBarButtonItem.action = #selector(viewController.friendChallengeCellDrawButtonPressed)
         
-        cell.voteButton.tag = indexPath.row
-        cell.voteButton.addTarget(viewController,
-                                  action: #selector(viewController.friendChallengeCellVoteButtonPressed),
-                                  for: .touchUpInside)
+        cell.drawTextToolBarButtonItem.isEnabled = displayedChallenge.isDrawButtonEnabled
+        cell.drawTextToolBarButtonItem.tag = indexPath.row
+        cell.drawTextToolBarButtonItem.target = viewController
+        cell.drawTextToolBarButtonItem.action = #selector(viewController.friendChallengeCellDrawButtonPressed)
         
+        cell.voteToolBarButtonItem.tag = indexPath.row
+        cell.voteToolBarButtonItem.target = viewController
+        cell.voteToolBarButtonItem.action = #selector(viewController.friendChallengeCellVoteButtonPressed)
+        
+        cell.voteTextToolBarButtonItem.tag = indexPath.row
+        cell.voteTextToolBarButtonItem.target = viewController
+        cell.voteTextToolBarButtonItem.action = #selector(viewController.friendChallengeCellVoteButtonPressed)
+ 
         return cell
     }
 }

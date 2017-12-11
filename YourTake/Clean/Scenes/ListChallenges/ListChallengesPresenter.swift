@@ -28,12 +28,10 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
         var challengeType =
             ListChallenges.FetchChallenges.ViewModel.ChallengeViewType(rawValue: response.challengeType.rawValue)
         var displayedChallenges: [ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge] = []
-        let cellRowHeight = getCellRowHeight(viewSizes: response.viewSizes)
         if(challengeType == .noFriends) {
             let viewModel = ListChallenges.FetchChallenges.ViewModel(challengeType: challengeType!,
                                                                      displayedChallenges: displayedChallenges,
-                                                                     isChallengeCreationEnabled: false,
-                                                                     cellRowHeight: cellRowHeight)
+                                                                     isChallengeCreationEnabled: false)
             output.displayFetchedChallenges(viewModel: viewModel)
             return
         }
@@ -89,8 +87,7 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
         
         let viewModel = ListChallenges.FetchChallenges.ViewModel(challengeType: challengeType!,
                                                                  displayedChallenges: displayedChallenges,
-                                                                 isChallengeCreationEnabled: true,
-                                                                 cellRowHeight: cellRowHeight)
+                                                                 isChallengeCreationEnabled: true)
         output.displayFetchedChallenges(viewModel: viewModel)
     }
     
@@ -152,10 +149,6 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
         }
         
         return Int(expiryDate.timeIntervalSince(Date()))
-    }
-    
-    private func getCellRowHeight(viewSizes: ListChallenges.ListChallengesViewSizes) -> CGFloat {
-        return viewSizes.screenHeight - viewSizes.navigationBarHeight - viewSizes.tabBarHeight
     }
     
 }

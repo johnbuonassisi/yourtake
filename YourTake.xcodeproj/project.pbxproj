@@ -579,6 +579,7 @@
 			isa = PBXGroup;
 			children = (
 				5285098A1DC6F9470083CC55 /* YourTake */,
+				52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */,
 				528509891DC6F9470083CC55 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -599,7 +600,6 @@
 				52760BF61E90586D0093B921 /* Clean */,
 				5285099D1DC6F98A0083CC55 /* Main */,
 				528509A11DC6F9B40083CC55 /* Supporting Files */,
-				52299E1C1DE807CD00F04C86 /* BaasBox-iOS-SDK */,
 			);
 			path = YourTake;
 			sourceTree = "<group>";

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hyc-MW-hcF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hyc-MW-hcF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -40,44 +40,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rhq-33-Qym">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rhq-33-Qym">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHg-r0-BpV">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem title="Me" id="qva-Tr-q8X"/>
-                                    <tabBarItem tag="1" title="Friends" id="Clz-uS-ezC"/>
+                                    <tabBarItem title="Me" image="Me" id="qva-Tr-q8X"/>
+                                    <tabBarItem tag="1" title="Friends" image="Friends" id="Clz-uS-ezC"/>
                                 </items>
                             </tabBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gHg-r0-BpV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="EtE-xR-dl0"/>
+                            <constraint firstAttribute="trailing" secondItem="gHg-r0-BpV" secondAttribute="trailing" id="HfS-7Q-EGW"/>
                             <constraint firstItem="Rhq-33-Qym" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MBh-fG-WoF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gHg-r0-BpV" secondAttribute="trailing" constant="-16" id="ONn-tm-8kj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gHg-r0-BpV" secondAttribute="bottom" id="QVV-xy-2a8"/>
                             <constraint firstAttribute="trailing" secondItem="Rhq-33-Qym" secondAttribute="trailing" id="Wll-jz-yyP"/>
                             <constraint firstItem="gHg-r0-BpV" firstAttribute="top" secondItem="Rhq-33-Qym" secondAttribute="bottom" id="s4O-sv-dNA"/>
+                            <constraint firstItem="gHg-r0-BpV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sW1-mL-bvI"/>
                             <constraint firstItem="Rhq-33-Qym" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="wkY-4Z-hEo"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Challenges" id="3Jx-tw-5O8">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="dzk-hM-5hf">
+                        <barButtonItem key="leftBarButtonItem" image="Settings" id="dzk-hM-5hf">
                             <connections>
                                 <segue destination="ixY-I8-QgS" kind="show" identifier="SettingsSegue" id="Skp-bd-f9n"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="camera" id="hpm-uB-Gzc">
+                            <barButtonItem image="Camera" id="hpm-uB-Gzc">
                                 <connections>
                                     <action selector="createChallenge:" destination="BYZ-38-t0r" id="nds-Ga-hxi"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="add" id="Trb-RV-Ahr">
+                            <barButtonItem image="Friends" id="Trb-RV-Ahr">
                                 <connections>
                                     <action selector="viewFriendsManagement:" destination="BYZ-38-t0r" id="2Qg-ao-NOS"/>
                                 </connections>
@@ -687,6 +691,26 @@
                                             <segue destination="bKL-2j-HK7" kind="show" id="K5n-jp-zWT"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="oc4-wa-rWD" style="IBUITableViewCellStyleDefault" id="mFx-lI-iF4">
+                                        <rect key="frame" x="0.0" y="463.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mFx-lI-iF4" id="7aX-rE-88V">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Acknowledgements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oc4-wa-rWD">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="7jE-uf-2Bt" kind="show" id="Qev-mq-ePn"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="FoQ-Jv-GOx">
@@ -1053,7 +1077,64 @@
             </objects>
             <point key="canvasLocation" x="3709.5999999999999" y="1655.6221889055473"/>
         </scene>
+        <!--Acknowledgements-->
+        <scene sceneID="M9h-oo-rCH">
+            <objects>
+                <viewController title="Acknowledgements" id="7jE-uf-2Bt" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oa7-qF-ebF"/>
+                        <viewControllerLayoutGuide type="bottom" id="m1a-ra-axu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PWx-PQ-SeR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks to Ashling for putting up with many late nights and for being a great sounding board." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of3-1C-xyU">
+                                <rect key="frame" x="16" y="72" width="343" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks to Olivier for doing the inital backend work. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Aq-8x-gRU">
+                                <rect key="frame" x="16" y="141" width="343" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TG0-Lg-oVI">
+                                <rect key="frame" x="16" y="190" width="343" height="81.5"/>
+                                <string key="text">Thanks to Smashicons from Flaticon for providing free icons that are used in this app. Check them out at https://www.flaticon.com/authors/smashicons.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="of3-1C-xyU" firstAttribute="leading" secondItem="PWx-PQ-SeR" secondAttribute="leading" constant="16" id="4eo-BG-ukR"/>
+                            <constraint firstItem="TG0-Lg-oVI" firstAttribute="leading" secondItem="PWx-PQ-SeR" secondAttribute="leading" constant="16" id="4j0-E4-N8B"/>
+                            <constraint firstItem="of3-1C-xyU" firstAttribute="top" secondItem="oa7-qF-ebF" secondAttribute="bottom" constant="8" id="7dl-kL-LAJ"/>
+                            <constraint firstAttribute="trailing" secondItem="TG0-Lg-oVI" secondAttribute="trailing" constant="16" id="Bgw-z6-Y4g"/>
+                            <constraint firstAttribute="trailing" secondItem="of3-1C-xyU" secondAttribute="trailing" constant="16" id="Pmb-i1-xry"/>
+                            <constraint firstItem="TG0-Lg-oVI" firstAttribute="top" secondItem="8Aq-8x-gRU" secondAttribute="bottom" constant="8" id="jRn-UN-cKa"/>
+                            <constraint firstAttribute="trailing" secondItem="8Aq-8x-gRU" secondAttribute="trailing" constant="16" id="kxd-yq-2OQ"/>
+                            <constraint firstItem="8Aq-8x-gRU" firstAttribute="leading" secondItem="PWx-PQ-SeR" secondAttribute="leading" constant="16" id="nU0-ZR-UYw"/>
+                            <constraint firstItem="8Aq-8x-gRU" firstAttribute="top" secondItem="of3-1C-xyU" secondAttribute="bottom" constant="8" id="nyO-YQ-dWz"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wI8-0I-q3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4453.6000000000004" y="1656.521739130435"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Camera" width="32" height="32"/>
+        <image name="Friends" width="32" height="32"/>
+        <image name="Me" width="32" height="32"/>
+        <image name="Settings" width="32" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Qtu-cr-NJy"/>
         <segue reference="bMw-5X-QCr"/>
