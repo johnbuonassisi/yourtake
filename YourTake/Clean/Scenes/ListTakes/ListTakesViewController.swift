@@ -51,8 +51,13 @@ class ListTakesViewController: UICollectionViewController, ListTakesViewControll
         super.viewDidLoad()
         
         self.collectionView?.dataSource = listTakesDataSource
-        collectionView?.backgroundColor = UIColor.white
-        navigationItem.title = "Takes"
+        self.collectionView?.backgroundColor = UIColor.white
+        self.collectionView?.refreshControl = UIRefreshControl()
+        self.collectionView?.refreshControl?.beginRefreshing()
+        self.collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "")
+        self.collectionView?.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        
+        self.navigationItem.title = "Takes"
         
         let nib = UINib(nibName: "TakeCollectionViewCell", bundle: nil)
         self.collectionView?.register(nib, forCellWithReuseIdentifier: "TakeCollectionViewCell")
@@ -68,12 +73,17 @@ class ListTakesViewController: UICollectionViewController, ListTakesViewControll
         output.fetchTakes(request: request)
     }
     
+    func refresh() {
+        fetchTakesOnLoad()
+    }
+    
     // MARK: - Display logic
     
     func displayTakes(viewModel: ListTakes.FetchTakes.ViewModel) {
         // NOTE: Display the result from the Presenter
         listTakesDataSource.displayedTakes = viewModel.displayedTakes
         collectionView?.reloadData()
+        self.collectionView?.refreshControl?.endRefreshing()
     }
     
     func cellVoteButtonPressed(sender: UIButton!) {
