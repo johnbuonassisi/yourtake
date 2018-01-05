@@ -32,6 +32,7 @@ UINavigationControllerDelegate {
         self.challengeImage = challengeImage
         
         super.init(nibName: "CreateTakeViewController", bundle: nil)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,7 +44,6 @@ UINavigationControllerDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         drawingView.setBackground(withImage: challengeImage)
         
         let rbbi = UIBarButtonItem(title: "Submit",

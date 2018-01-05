@@ -64,12 +64,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     completion: { (success) -> Void in
                                         if success {
                                             // When login success, push challenge vc
-                                            navigationVc.pushViewController(challengeVc, animated: false)
+                                            //navigationVc.pushViewController(challengeVc, animated: false)
                                         } else {
                                             // When login fails, push challenge then login vcs
-                                            navigationVc.pushViewController(challengeVc, animated: false)
+                                            //navigationVc.pushViewController(challengeVc, animated: false)
                                             let signUpVc = cleanStoryBoard.instantiateViewController(withIdentifier: "Signup")
-                                            navigationVc.pushViewController(signUpVc, animated: false)
+                                            //navigationVc.pushViewController(signUpVc, animated: false)
                                         }
                 })
             } catch {
@@ -77,13 +77,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             // If existing username/password do not exist, show signup vc
-            navigationVc.pushViewController(challengeVc, animated: false)
+            //navigationVc.pushViewController(challengeVc, animated: false)
             let signUpVc = cleanStoryBoard.instantiateViewController(withIdentifier: "Signup")
-            navigationVc.pushViewController(signUpVc, animated: false)
+            //navigationVc.pushViewController(signUpVc, animated: false)
         }
         
         // Always show the navigation controller, challenge controller will be pushed after login
-        window?.rootViewController = navigationVc
+        window?.rootViewController = challengeVc
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
         return true
