@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListFriendChallengesViewController: ListChallengesViewControllerV2 {
+class ListFriendChallengesViewController: ListChallengesViewController {
     
     override func awakeFromNib() {
         super.awakeFromNib()

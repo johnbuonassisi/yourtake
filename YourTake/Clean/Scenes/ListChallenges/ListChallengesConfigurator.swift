@@ -13,7 +13,7 @@ import UIKit
 
 // MARK: - Connect View, Interactor, and Presenter
 
-extension ListChallengesViewControllerV2: ListChallengesPresenterOutput {
+extension ListChallengesViewController: ListChallengesPresenterOutput {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue: segue)
     }
@@ -35,7 +35,7 @@ class ListChallengesConfigurator
     
     // MARK: - Configuration
     
-    func configure(viewController: ListChallengesViewControllerV2) {
+    func configure(viewController: ListChallengesViewController) {
         let router = ListChallengesRouter()
         router.viewController = viewController
         
