@@ -1,17 +1,22 @@
 //
-//  ListChallengesForUserTableViewDataSource.swift
-//  YourTakeClean
+//  ListChallengesTableViewDataSource.swift
+//  YourTake
 //
-//  Created by John Buonassisi on 2017-03-29.
-//  Copyright © 2017 JAB. All rights reserved.
+//  Created by John Buonassisi on 2018-01-05.
+//  Copyright © 2018 Enovi Inc. All rights reserved.
 //
 
 import UIKit
 
-class ListChallengesForUserTableViewDataSource: NSObject, UITableViewDataSource {
+protocol ListChallengesTableViewDataSourceDelegate: class {
+    func drawOnChallenge(inRow row: Int)
+    func voteOnChallenge(inRow row: Int)
+}
+
+class ListChallengesTableViewDataSource: NSObject, UITableViewDataSource {
     
     var displayedChallenges: [ListChallenges.FetchChallenges.ViewModel.DisplayedChallenge] = []
-    weak var viewController: ListChallengesViewController!
+    weak var delegate: ListChallengesTableViewDataSourceDelegate!
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
@@ -35,23 +40,31 @@ class ListChallengesForUserTableViewDataSource: NSObject, UITableViewDataSource 
         
         cell.drawToolBarButtonItem.isEnabled = displayedChallenge.isDrawButtonEnabled
         cell.drawToolBarButtonItem.tag = indexPath.row
-        cell.drawToolBarButtonItem.target = viewController
-        cell.drawToolBarButtonItem.action = #selector(viewController.userChallengeCellDrawButtonPressed)
+        cell.drawToolBarButtonItem.target = self
+        cell.drawToolBarButtonItem.action = #selector(self.cellDrawButtonPressed)
         
         cell.drawTextToolBarButtonItem.isEnabled = displayedChallenge.isDrawButtonEnabled
         cell.drawTextToolBarButtonItem.tag = indexPath.row
-        cell.drawTextToolBarButtonItem.target = viewController
-        cell.drawTextToolBarButtonItem.action = #selector(viewController.userChallengeCellDrawButtonPressed)
+        cell.drawTextToolBarButtonItem.target = self
+        cell.drawTextToolBarButtonItem.action = #selector(self.cellDrawButtonPressed)
         
         cell.voteToolBarButtonItem.tag = indexPath.row
-        cell.voteToolBarButtonItem.target = viewController
-        cell.voteToolBarButtonItem.action = #selector(viewController.userChallengeCellVoteButtonPressed)
+        cell.voteToolBarButtonItem.target = self
+        cell.voteToolBarButtonItem.action = #selector(self.cellVoteButtonPressed)
         
         cell.voteTextToolBarButtonItem.tag = indexPath.row
-        cell.voteTextToolBarButtonItem.target = viewController
-        cell.voteTextToolBarButtonItem.action = #selector(viewController.userChallengeCellVoteButtonPressed)
+        cell.voteTextToolBarButtonItem.target = self
+        cell.voteTextToolBarButtonItem.action = #selector(self.cellVoteButtonPressed)
         
         return cell
+    }
+    
+    @objc private func cellDrawButtonPressed(sender: UIBarButtonItem!) {
+        delegate.drawOnChallenge(inRow: sender.tag)
+    }
+    
+    @objc private func cellVoteButtonPressed(sender: UIBarButtonItem!) {
+        delegate.voteOnChallenge(inRow: sender.tag)
     }
     
 }

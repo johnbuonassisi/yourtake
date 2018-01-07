@@ -8,9 +8,13 @@
 
 import UIKit
 
+@objc protocol ListChallengesNoFriendsTableViewDataSourceDelegate: class {
+    func viewFriendsManagement(_ sender: Any)
+}
+
 class ListChallengesNoFriendsTableViewDataSource: NSObject, UITableViewDataSource {
     
-    weak var viewController: ListChallengesViewController!
+    weak var delegate: ListChallengesNoFriendsTableViewDataSourceDelegate!
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
@@ -23,8 +27,8 @@ class ListChallengesNoFriendsTableViewDataSource: NSObject, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListChallengeSceneCellIdentifiers.noFriendsCellId,
                                                  for: indexPath) as! NoFriendsCell
-        cell.addFriendsButton.addTarget(viewController,
-                                        action: #selector(viewController.viewFriendsManagement),
+        cell.addFriendsButton.addTarget(delegate,
+                                        action: #selector(delegate.viewFriendsManagement),
                                         for: .touchUpInside)
         return cell
     }

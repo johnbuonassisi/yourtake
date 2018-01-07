@@ -16,34 +16,21 @@ protocol ListChallengesRouterInput {
 }
 
 class ListChallengesRouter: ListChallengesRouterInput {
-    weak var viewController: ListChallengesViewController!
+    weak var viewController: UIViewController!
     
     // MARK: - Navigation
     
     func navigateToTakesScene(with challengeId: String) {
-        // NOTE: Teach the router how to navigate to another scene. Some examples follow:
-        
-        // 1. Trigger a storyboard segue
-        // viewController.performSegueWithIdentifier("ShowSomewhereScene", sender: nil)
-        
-        // 2. Present another view controller programmatically
-        // viewController.presentViewController(someWhereViewController, animated: true, completion: nil)
         print("Navigating to Take List Scene")
         let ltvc = ListTakesViewController(challengeId: challengeId)
+        ltvc.hidesBottomBarWhenPushed = true
         viewController.navigationController?.pushViewController(ltvc, animated: true)
-        
-        // 3. Ask the navigation controller to push another view controller onto the stack
-        // viewController.navigationController?.pushViewController(someWhereViewController, animated: true)
-        
-        // 4. Present a view controller from a different storyboard
-        // let storyboard = UIStoryboard(name: "OtherThanMain", bundle: nil)
-        // let someWhereViewController = storyboard.instantiateInitialViewController() as! SomeWhereViewController
-        // viewController.navigationController?.pushViewController(someWhereViewController, animated: true)
     }
     
     func navigateToCreateTakeScene(challengeId: String, challengeImage: UIImage) {
         print("Navigating to Create Take Scene")
         let ctvc = CreateTakeViewController(challengeId: challengeId, challengeImage: challengeImage)
+        ctvc.hidesBottomBarWhenPushed = true
         viewController.navigationController?.pushViewController(ctvc, animated: true)
     }
     

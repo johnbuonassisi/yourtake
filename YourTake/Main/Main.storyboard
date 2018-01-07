@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hyc-MW-hcF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ONO-CU-pp7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,103 +12,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="pWE-3t-5l3">
-            <objects>
-                <navigationController toolbarHidden="NO" id="hyc-MW-hcF" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lgd-6f-ryk">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="Main" id="8oR-my-7r6"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8gL-1l-CHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-788" y="125"/>
-        </scene>
-        <!--Challenges-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="ChallengeList" id="BYZ-38-t0r" customClass="ListChallengesViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rhq-33-Qym">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </tableView>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHg-r0-BpV">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem title="Me" image="Me" id="qva-Tr-q8X"/>
-                                    <tabBarItem tag="1" title="Friends" image="Friends" id="Clz-uS-ezC"/>
-                                </items>
-                            </tabBar>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="gHg-r0-BpV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="EtE-xR-dl0"/>
-                            <constraint firstAttribute="trailing" secondItem="gHg-r0-BpV" secondAttribute="trailing" id="HfS-7Q-EGW"/>
-                            <constraint firstItem="Rhq-33-Qym" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MBh-fG-WoF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gHg-r0-BpV" secondAttribute="trailing" constant="-16" id="ONn-tm-8kj"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gHg-r0-BpV" secondAttribute="bottom" id="QVV-xy-2a8"/>
-                            <constraint firstAttribute="trailing" secondItem="Rhq-33-Qym" secondAttribute="trailing" id="Wll-jz-yyP"/>
-                            <constraint firstItem="gHg-r0-BpV" firstAttribute="top" secondItem="Rhq-33-Qym" secondAttribute="bottom" id="s4O-sv-dNA"/>
-                            <constraint firstItem="gHg-r0-BpV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sW1-mL-bvI"/>
-                            <constraint firstItem="Rhq-33-Qym" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="wkY-4Z-hEo"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Challenges" id="3Jx-tw-5O8">
-                        <barButtonItem key="leftBarButtonItem" image="Settings" id="dzk-hM-5hf">
-                            <connections>
-                                <segue destination="ixY-I8-QgS" kind="show" identifier="SettingsSegue" id="Skp-bd-f9n"/>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem image="Camera" id="hpm-uB-Gzc">
-                                <connections>
-                                    <action selector="createChallenge:" destination="BYZ-38-t0r" id="nds-Ga-hxi"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="Friends" id="Trb-RV-Ahr">
-                                <connections>
-                                    <action selector="viewFriendsManagement:" destination="BYZ-38-t0r" id="2Qg-ao-NOS"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="addFriendsBarButton" destination="Trb-RV-Ahr" id="2ya-DH-LYE"/>
-                        <outlet property="createChallengeBarButton" destination="hpm-uB-Gzc" id="bDL-QL-LyY"/>
-                        <outlet property="friendsTab" destination="Clz-uS-ezC" id="Gyh-cX-bDt"/>
-                        <outlet property="settingsBarButton" destination="dzk-hM-5hf" id="S16-cd-FX9"/>
-                        <outlet property="tabBar" destination="gHg-r0-BpV" id="oAa-Mt-Rvj"/>
-                        <outlet property="tableView" destination="Rhq-33-Qym" id="KBv-v6-gMx"/>
-                        <outlet property="userTab" destination="qva-Tr-q8X" id="X4P-xo-Htq"/>
-                        <segue destination="Tmi-dV-E9D" kind="show" identifier="FriendManagementSegue" id="Qtu-cr-NJy"/>
-                        <segue destination="K3g-3J-N4h" kind="show" identifier="PhotoPreviewSegue" id="MT2-Sz-I61"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="113" y="125"/>
-        </scene>
         <!--Photo Preview View Controller-->
         <scene sceneID="HCx-FF-Cdg">
             <objects>
-                <viewController id="K3g-3J-N4h" customClass="PhotoPreviewViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="K3g-3J-N4h" customClass="PhotoPreviewViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k5A-gh-U0C"/>
                         <viewControllerLayoutGuide type="bottom" id="Yfh-db-pzJ"/>
@@ -155,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7OB-rw-2hr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1127" y="125"/>
+            <point key="canvasLocation" x="4194" y="-319"/>
         </scene>
         <!--Signup User View Controller-->
         <scene sceneID="xef-aK-axr">
@@ -308,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OrX-wq-ytu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2482" y="125"/>
+            <point key="canvasLocation" x="-1242" y="-319"/>
         </scene>
         <!--User Login View Controller-->
         <scene sceneID="1yF-p3-ywJ">
@@ -439,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3OY-cR-MRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1620" y="125"/>
+            <point key="canvasLocation" x="-1242" y="466"/>
         </scene>
         <!--User Forgot Login Password View Controller-->
         <scene sceneID="9HS-Yi-Sfa">
@@ -508,12 +415,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XeB-X2-ejA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1409" y="887"/>
+            <point key="canvasLocation" x="-460" y="467"/>
         </scene>
         <!--Settings-->
         <scene sceneID="gCe-oX-Zz7">
             <objects>
-                <tableViewController storyboardIdentifier="Settings" title="Settings" id="ixY-I8-QgS" customClass="UserSettingsViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Settings" title="Settings" hidesBottomBarWhenPushed="YES" id="ixY-I8-QgS" customClass="UserSettingsViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="JJA-K6-8tz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -725,12 +632,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KdK-kS-lYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-327" y="887"/>
+            <point key="canvasLocation" x="2506" y="-319"/>
         </scene>
         <!--Friend Management-->
         <scene sceneID="KbI-7g-DIs">
             <objects>
-                <viewController storyboardIdentifier="Friends" title="Friend Management" id="Tmi-dV-E9D" userLabel="Friend Management" customClass="FriendManagementViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Friends" title="Friend Management" hidesBottomBarWhenPushed="YES" id="Tmi-dV-E9D" userLabel="Friend Management" customClass="FriendManagementViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6RE-Os-PjO"/>
                         <viewControllerLayoutGuide type="bottom" id="G2V-KS-lJB"/>
@@ -759,7 +666,138 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHp-Pd-v1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="529" y="887"/>
+            <point key="canvasLocation" x="3398" y="-319"/>
+        </scene>
+        <!--Challenges-->
+        <scene sceneID="PP4-n2-vmx">
+            <objects>
+                <viewController id="c9Z-s4-qXF" customClass="ListFriendChallengesViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NRt-sa-W9q"/>
+                        <viewControllerLayoutGuide type="bottom" id="o9A-MG-FZA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vpR-Zp-6zF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ghS-Dq-Mrb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ghS-Dq-Mrb" firstAttribute="top" secondItem="NRt-sa-W9q" secondAttribute="bottom" id="1jU-pM-AyY"/>
+                            <constraint firstItem="ghS-Dq-Mrb" firstAttribute="leading" secondItem="vpR-Zp-6zF" secondAttribute="leading" id="Dls-1V-0v7"/>
+                            <constraint firstItem="o9A-MG-FZA" firstAttribute="top" secondItem="ghS-Dq-Mrb" secondAttribute="bottom" id="O3J-Dn-3SF"/>
+                            <constraint firstAttribute="trailing" secondItem="ghS-Dq-Mrb" secondAttribute="trailing" id="fkz-6W-1eP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Challenges" id="oZz-ZI-5nd">
+                        <barButtonItem key="leftBarButtonItem" image="Settings" id="t3F-9V-24Q">
+                            <connections>
+                                <segue destination="ixY-I8-QgS" kind="show" id="CRr-4x-fcq"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="Camera" id="KZf-bj-IE5">
+                                <connections>
+                                    <segue destination="K3g-3J-N4h" kind="show" id="eza-xh-WXg"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="Friends" id="srL-eM-4XZ">
+                                <connections>
+                                    <segue destination="Tmi-dV-E9D" kind="show" id="BU1-Iq-cvP"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addFriendsBarButton" destination="srL-eM-4XZ" id="ltY-rJ-cVa"/>
+                        <outlet property="createChallengeBarButton" destination="KZf-bj-IE5" id="OJc-fy-6x4"/>
+                        <outlet property="settingsBarButton" destination="t3F-9V-24Q" id="8SL-ss-Y3A"/>
+                        <outlet property="tableView" destination="ghS-Dq-Mrb" id="2V3-t8-43e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EeZ-yT-4TL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1524" y="90"/>
+        </scene>
+        <!--Challenges-->
+        <scene sceneID="e6b-q5-qGl">
+            <objects>
+                <viewController id="JsL-da-y9P" customClass="ListUserChallengesViewController" customModule="YourTake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pjh-10-DZJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="3CT-Xt-N6g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="doN-rv-lgZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ndf-p0-z9q">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3CT-Xt-N6g" firstAttribute="top" secondItem="Ndf-p0-z9q" secondAttribute="bottom" id="Cgh-wd-tCc"/>
+                            <constraint firstAttribute="trailing" secondItem="Ndf-p0-z9q" secondAttribute="trailing" id="Tcb-TT-BGT"/>
+                            <constraint firstItem="Ndf-p0-z9q" firstAttribute="top" secondItem="Pjh-10-DZJ" secondAttribute="bottom" id="bsv-wm-Z37"/>
+                            <constraint firstItem="Ndf-p0-z9q" firstAttribute="leading" secondItem="doN-rv-lgZ" secondAttribute="leading" id="zU4-8J-3K0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Challenges" id="Zdn-PK-uUl">
+                        <barButtonItem key="leftBarButtonItem" image="Settings" id="izz-fn-1YI">
+                            <connections>
+                                <segue destination="ixY-I8-QgS" kind="show" id="dP5-DK-rBG"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="Camera" id="kfJ-Px-dYC">
+                                <connections>
+                                    <segue destination="K3g-3J-N4h" kind="show" id="gMg-sD-asY"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="Friends" id="8bN-wm-BDP">
+                                <connections>
+                                    <segue destination="Tmi-dV-E9D" kind="show" id="q5L-9e-bxs"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addFriendsBarButton" destination="8bN-wm-BDP" id="t5o-3X-lyp"/>
+                        <outlet property="createChallengeBarButton" destination="kfJ-Px-dYC" id="x5c-hO-oV6"/>
+                        <outlet property="settingsBarButton" destination="izz-fn-1YI" id="qPM-We-BOe"/>
+                        <outlet property="tableView" destination="Ndf-p0-z9q" id="GBW-7v-WK1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xzn-sR-9ea" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1524" y="-716"/>
+        </scene>
+        <!--Challenges-->
+        <scene sceneID="ySF-NE-HZx">
+            <objects>
+                <tabBarController storyboardIdentifier="ChallengeList" title="Challenges" id="ONO-CU-pp7" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FgE-o5-d8v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="eUy-Df-igo" kind="relationship" relationship="viewControllers" id="uXb-xd-kEg"/>
+                        <segue destination="bKA-HM-ncP" kind="relationship" relationship="viewControllers" id="Fkk-DO-ggQ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vJ0-gx-LT4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-460" y="-318"/>
         </scene>
         <!--Password Verification View Controller-->
         <scene sceneID="7Sb-U3-72r">
@@ -806,6 +844,7 @@
                                 <state key="normal" title="Forgot Password?"/>
                                 <connections>
                                     <action selector="forgotPasswordButtonPressed:" destination="VZq-NF-QZv" eventType="touchUpInside" id="pD1-cz-8a4"/>
+                                    <segue destination="WSP-F0-BuP" kind="show" id="Yr6-dk-4ed"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YourTake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drD-yR-dxj">
@@ -840,12 +879,11 @@
                         <outlet property="continueButton" destination="JFO-l6-M0q" id="Msu-jt-hf2"/>
                         <outlet property="currentPasswordTextField" destination="4Sx-Rc-ZWq" id="87H-LB-gN6"/>
                         <segue destination="xCm-8w-hbd" kind="show" identifier="ChangePasswordSegue" id="xfb-7h-xeC"/>
-                        <segue destination="WSP-F0-BuP" kind="show" identifier="ResetPasswordSegue" id="bMw-5X-QCr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ag-aR-AeR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-510" y="1811"/>
+            <point key="canvasLocation" x="652" y="815"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="3pB-zC-Vyn">
@@ -933,7 +971,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeM-wM-Yrn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="550" y="1812"/>
+            <point key="canvasLocation" x="1524" y="815"/>
         </scene>
         <!--About Us View Controller-->
         <scene sceneID="22H-Rh-Q1a">
@@ -977,7 +1015,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="veq-OM-dlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1476" y="1655.6221889055473"/>
+            <point key="canvasLocation" x="2505" y="815"/>
         </scene>
         <!--Privacy Policy-->
         <scene sceneID="g3Z-p7-9uk">
@@ -1010,7 +1048,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLr-Rx-ngW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236" y="1655.6221889055473"/>
+            <point key="canvasLocation" x="3265" y="815"/>
         </scene>
         <!--Terms of Service-->
         <scene sceneID="5sI-gA-mGz">
@@ -1043,7 +1081,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNt-x0-Cmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2988" y="1655.6221889055473"/>
+            <point key="canvasLocation" x="4017" y="815"/>
         </scene>
         <!--Change Email-->
         <scene sceneID="Uve-DF-1p5">
@@ -1075,7 +1113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKA-Z1-EJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3709.5999999999999" y="1655.6221889055473"/>
+            <point key="canvasLocation" x="4740" y="815"/>
         </scene>
         <!--Acknowledgements-->
         <scene sceneID="M9h-oo-rCH">
@@ -1126,7 +1164,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wI8-0I-q3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4453.6000000000004" y="1656.521739130435"/>
+            <point key="canvasLocation" x="5484" y="816"/>
+        </scene>
+        <!--Me-->
+        <scene sceneID="fZL-hz-K7C">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="eUy-Df-igo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Me" image="Me" id="hhq-JK-8Dn"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="48l-AX-tEH">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JsL-da-y9P" kind="relationship" relationship="rootViewController" id="SvD-YD-uzm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ke5-Da-t92" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652" y="-716"/>
+        </scene>
+        <!--Friends-->
+        <scene sceneID="fJh-NY-ni5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bKA-HM-ncP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Friends" image="Friends" id="snM-ye-6up"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XQR-jB-sod">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="c9Z-s4-qXF" kind="relationship" relationship="rootViewController" id="z4q-NE-Jkt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QVw-lD-d3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652" y="90"/>
         </scene>
     </scenes>
     <resources>
@@ -1136,7 +1210,9 @@
         <image name="Settings" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qtu-cr-NJy"/>
-        <segue reference="bMw-5X-QCr"/>
+        <segue reference="17E-Qc-HOd"/>
+        <segue reference="CRr-4x-fcq"/>
+        <segue reference="iNI-yl-pWs"/>
+        <segue reference="eza-xh-WXg"/>
     </inferredMetricsTieBreakers>
 </document>

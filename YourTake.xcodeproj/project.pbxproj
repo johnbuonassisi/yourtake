@@ -34,6 +34,7 @@
 		520233111FC402D2003C5F96 /* ChallengeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330C1FC402D2003C5F96 /* ChallengeDto.swift */; };
 		520233121FC402D2003C5F96 /* TakeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330D1FC402D2003C5F96 /* TakeDto.swift */; };
 		520233131FC402D2003C5F96 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202330E1FC402D2003C5F96 /* User.swift */; };
+		520FF1C02001B4DD0028FD88 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FF1BF2001B4DD0028FD88 /* Notifier.swift */; };
 		521BC6BE1E66A3210083D6E6 /* NoFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */; };
 		521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */; };
 		52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 52299E1F1DE807ED00F04C86 /* BAAClient.m */; };
@@ -81,13 +82,10 @@
 		5267D8EA1E99968100B94470 /* TakeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */; };
 		5267D8EE1E9A8E1700B94470 /* TakesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267D8ED1E9A8E1700B94470 /* TakesWorker.swift */; };
 		52760C071E9058F80093B921 /* ListChallengesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */; };
-		52760C081E9058F80093B921 /* ListChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFE1E9058F80093B921 /* ListChallengesViewController.swift */; };
 		52760C091E9058F80093B921 /* ListChallengesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760BFF1E9058F80093B921 /* ListChallengesInteractor.swift */; };
 		52760C0A1E9058F80093B921 /* ListChallengesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C001E9058F80093B921 /* ListChallengesModels.swift */; };
 		52760C0B1E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C011E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift */; };
 		52760C0C1E9058F80093B921 /* ListChallengesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C021E9058F80093B921 /* ListChallengesConfigurator.swift */; };
-		52760C0D1E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C031E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift */; };
-		52760C0E1E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C041E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift */; };
 		52760C0F1E9058F80093B921 /* ListChallengesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C051E9058F80093B921 /* ListChallengesRouter.swift */; };
 		52760C101E9058F80093B921 /* ListChallengesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52760C061E9058F80093B921 /* ListChallengesWorker.swift */; };
 		52760C1A1E9059520093B921 /* EmptyChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52760C161E9059520093B921 /* EmptyChallengeTableViewCell.xib */; };
@@ -129,6 +127,10 @@
 		52B682EB1EA29BFE00DBB0A4 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682E41EA29BFE00DBB0A4 /* UserLoginViewController.swift */; };
 		52B682EC1EA29BFE00DBB0A4 /* UserLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682E51EA29BFE00DBB0A4 /* UserLoginWorker.swift */; };
 		52B682EE1EA29FFF00DBB0A4 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */; };
+		52DFC8631FFF5FA2008E1167 /* ListUserChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFC8621FFF5FA2008E1167 /* ListUserChallengesViewController.swift */; };
+		52DFC8651FFF6005008E1167 /* ListFriendChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFC8641FFF6005008E1167 /* ListFriendChallengesViewController.swift */; };
+		52DFC8671FFF65E5008E1167 /* ListChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFC8661FFF65E5008E1167 /* ListChallengesViewController.swift */; };
+		52DFC8691FFF6810008E1167 /* ListChallengesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DFC8681FFF6810008E1167 /* ListChallengesTableViewDataSource.swift */; };
 		52EB63DA1FCE7A5C00E225E7 /* FriendManagementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EB63D91FCE7A5C00E225E7 /* FriendManagementTableViewCell.xib */; };
 		52EB63DC1FCE7CC200E225E7 /* FriendManagementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB63DB1FCE7CC200E225E7 /* FriendManagementTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -162,6 +164,7 @@
 		5202330C1FC402D2003C5F96 /* ChallengeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeDto.swift; path = Clean/Models/ChallengeDto.swift; sourceTree = "<group>"; };
 		5202330D1FC402D2003C5F96 /* TakeDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeDto.swift; path = Clean/Models/TakeDto.swift; sourceTree = "<group>"; };
 		5202330E1FC402D2003C5F96 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Clean/Models/User.swift; sourceTree = "<group>"; };
+		520FF1BF2001B4DD0028FD88 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notifier.swift; path = Clean/Common/Notifier.swift; sourceTree = "<group>"; };
 		521BC6BD1E66A3210083D6E6 /* NoFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoFriendsCell.xib; path = Clean/Views/Challenge/NoFriendsCell.xib; sourceTree = "<group>"; };
 		521BC6BF1E66A4270083D6E6 /* NoFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoFriendsCell.swift; path = Clean/Views/Challenge/NoFriendsCell.swift; sourceTree = "<group>"; };
 		52299E1E1DE807ED00F04C86 /* BAAClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAClient.h; sourceTree = "<group>"; };
@@ -216,13 +219,10 @@
 		5267D8E91E99968100B94470 /* TakeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TakeCollectionViewCell.xib; path = Clean/Views/Take/TakeCollectionViewCell.xib; sourceTree = "<group>"; };
 		5267D8ED1E9A8E1700B94470 /* TakesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakesWorker.swift; path = Clean/Workers/TakesWorker.swift; sourceTree = "<group>"; };
 		52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesPresenter.swift; path = Clean/Scenes/ListChallenges/ListChallengesPresenter.swift; sourceTree = "<group>"; };
-		52760BFE1E9058F80093B921 /* ListChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesViewController.swift; path = Clean/Scenes/ListChallenges/ListChallengesViewController.swift; sourceTree = "<group>"; };
 		52760BFF1E9058F80093B921 /* ListChallengesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesInteractor.swift; path = Clean/Scenes/ListChallenges/ListChallengesInteractor.swift; sourceTree = "<group>"; };
 		52760C001E9058F80093B921 /* ListChallengesModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesModels.swift; path = Clean/Scenes/ListChallenges/ListChallengesModels.swift; sourceTree = "<group>"; };
 		52760C011E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesNoChallengesTableViewDataSource.swift; path = Clean/Scenes/ListChallenges/ListChallengesNoChallengesTableViewDataSource.swift; sourceTree = "<group>"; };
 		52760C021E9058F80093B921 /* ListChallengesConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesConfigurator.swift; path = Clean/Scenes/ListChallenges/ListChallengesConfigurator.swift; sourceTree = "<group>"; };
-		52760C031E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesForFriendsTableViewDataSource.swift; path = Clean/Scenes/ListChallenges/ListChallengesForFriendsTableViewDataSource.swift; sourceTree = "<group>"; };
-		52760C041E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesForUserTableViewDataSource.swift; path = Clean/Scenes/ListChallenges/ListChallengesForUserTableViewDataSource.swift; sourceTree = "<group>"; };
 		52760C051E9058F80093B921 /* ListChallengesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesRouter.swift; path = Clean/Scenes/ListChallenges/ListChallengesRouter.swift; sourceTree = "<group>"; };
 		52760C061E9058F80093B921 /* ListChallengesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListChallengesWorker.swift; path = Clean/Scenes/ListChallenges/ListChallengesWorker.swift; sourceTree = "<group>"; };
 		52760C161E9059520093B921 /* EmptyChallengeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyChallengeTableViewCell.xib; path = Clean/Views/Challenge/EmptyChallengeTableViewCell.xib; sourceTree = "<group>"; };
@@ -266,6 +266,10 @@
 		52B682E41EA29BFE00DBB0A4 /* UserLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserLoginViewController.swift; path = Clean/Scenes/UserLogin/UserLoginViewController.swift; sourceTree = "<group>"; };
 		52B682E51EA29BFE00DBB0A4 /* UserLoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserLoginWorker.swift; path = Clean/Scenes/UserLogin/UserLoginWorker.swift; sourceTree = "<group>"; };
 		52B682ED1EA29FFF00DBB0A4 /* LoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWorker.swift; path = Clean/Workers/LoginWorker.swift; sourceTree = "<group>"; };
+		52DFC8621FFF5FA2008E1167 /* ListUserChallengesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListUserChallengesViewController.swift; path = Clean/Scenes/ListChallenges/ListUserChallengesViewController.swift; sourceTree = "<group>"; };
+		52DFC8641FFF6005008E1167 /* ListFriendChallengesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListFriendChallengesViewController.swift; path = Clean/Scenes/ListChallenges/ListFriendChallengesViewController.swift; sourceTree = "<group>"; };
+		52DFC8661FFF65E5008E1167 /* ListChallengesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListChallengesViewController.swift; path = Clean/Scenes/ListChallenges/ListChallengesViewController.swift; sourceTree = "<group>"; };
+		52DFC8681FFF6810008E1167 /* ListChallengesTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListChallengesTableViewDataSource.swift; path = Clean/Scenes/ListChallenges/ListChallengesTableViewDataSource.swift; sourceTree = "<group>"; };
 		52EB63D91FCE7A5C00E225E7 /* FriendManagementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FriendManagementTableViewCell.xib; path = Clean/Views/Friend/FriendManagementTableViewCell.xib; sourceTree = "<group>"; };
 		52EB63DB1FCE7CC200E225E7 /* FriendManagementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendManagementTableViewCell.swift; path = Clean/Views/Friend/FriendManagementTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -547,7 +551,10 @@
 		52760BFC1E9058E40093B921 /* ListChallenges */ = {
 			isa = PBXGroup;
 			children = (
-				52760BFE1E9058F80093B921 /* ListChallengesViewController.swift */,
+				52DFC8661FFF65E5008E1167 /* ListChallengesViewController.swift */,
+				52DFC8681FFF6810008E1167 /* ListChallengesTableViewDataSource.swift */,
+				52DFC8621FFF5FA2008E1167 /* ListUserChallengesViewController.swift */,
+				52DFC8641FFF6005008E1167 /* ListFriendChallengesViewController.swift */,
 				52760BFF1E9058F80093B921 /* ListChallengesInteractor.swift */,
 				52760BFD1E9058F80093B921 /* ListChallengesPresenter.swift */,
 				52760C021E9058F80093B921 /* ListChallengesConfigurator.swift */,
@@ -555,8 +562,6 @@
 				52760C061E9058F80093B921 /* ListChallengesWorker.swift */,
 				52760C001E9058F80093B921 /* ListChallengesModels.swift */,
 				52760C011E9058F80093B921 /* ListChallengesNoChallengesTableViewDataSource.swift */,
-				52760C031E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift */,
-				52760C041E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift */,
 				524540CE1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift */,
 			);
 			name = ListChallenges;
@@ -705,6 +710,7 @@
 				5286FDC81F8BDEBE00A6244D /* Constants.swift */,
 				5257D33A1F928B6E00A2E05D /* AlertPresenter.swift */,
 				52B253AF1FC407CA0072D342 /* ReachabilityViewController.swift */,
+				520FF1BF2001B4DD0028FD88 /* Notifier.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -820,8 +826,10 @@
 				52760C0C1E9058F80093B921 /* ListChallengesConfigurator.swift in Sources */,
 				5276F38D1FCD54150078A7D0 /* FriendManagementConfigurator.swift in Sources */,
 				52B682EE1EA29FFF00DBB0A4 /* LoginWorker.swift in Sources */,
+				52DFC8671FFF65E5008E1167 /* ListChallengesViewController.swift in Sources */,
 				5276F3921FCD54150078A7D0 /* FriendManagementViewController.swift in Sources */,
 				52760C101E9058F80093B921 /* ListChallengesWorker.swift in Sources */,
+				52DFC8631FFF5FA2008E1167 /* ListUserChallengesViewController.swift in Sources */,
 				52B682E91EA29BFE00DBB0A4 /* UserLoginPresenter.swift in Sources */,
 				520232EA1FC3FD9A003C5F96 /* FriendsMemStore.swift in Sources */,
 				52760C1B1E9059520093B921 /* EmptyChallengeTableViewCell.swift in Sources */,
@@ -830,7 +838,6 @@
 				520232EB1FC3FD9A003C5F96 /* LoginMemStore.swift in Sources */,
 				520232F81FC3FE77003C5F96 /* TakeBaasBoxStore.swift in Sources */,
 				52592FB71F8B370A00D6202A /* PasswordVerificationInteractor.swift in Sources */,
-				52760C0E1E9058F80093B921 /* ListChallengesForUserTableViewDataSource.swift in Sources */,
 				52760C0A1E9058F80093B921 /* ListChallengesModels.swift in Sources */,
 				52592FBA1F8B370A00D6202A /* PasswordVerificationRouter.swift in Sources */,
 				5263CA561EA2D399001BA2E4 /* SignupUserRouter.swift in Sources */,
@@ -844,6 +851,7 @@
 				52B682C11EA296C400DBB0A4 /* DisplayTakeModels.swift in Sources */,
 				52299E2E1DE807ED00F04C86 /* BAAGlobals.m in Sources */,
 				5267D8EE1E9A8E1700B94470 /* TakesWorker.swift in Sources */,
+				52DFC8651FFF6005008E1167 /* ListFriendChallengesViewController.swift in Sources */,
 				5276F38E1FCD54150078A7D0 /* FriendManagementInteractor.swift in Sources */,
 				5267D8DE1E998E0100B94470 /* ListTakesInteractor.swift in Sources */,
 				5263CA581EA2D399001BA2E4 /* SignupUserWorker.swift in Sources */,
@@ -852,6 +860,7 @@
 				52592FB91F8B370A00D6202A /* PasswordVerificationPresenter.swift in Sources */,
 				520232C61FC3FAAA003C5F96 /* Reachability.swift in Sources */,
 				5263CA551EA2D399001BA2E4 /* SignupUserPresenter.swift in Sources */,
+				52DFC8691FFF6810008E1167 /* ListChallengesTableViewDataSource.swift in Sources */,
 				5267D8E21E998E0100B94470 /* ListTakesViewController.swift in Sources */,
 				52B682EC1EA29BFE00DBB0A4 /* UserLoginWorker.swift in Sources */,
 				52B682EA1EA29BFE00DBB0A4 /* UserLoginRouter.swift in Sources */,
@@ -859,6 +868,7 @@
 				52B682E81EA29BFE00DBB0A4 /* UserLoginModels.swift in Sources */,
 				52A48D2A1DD90631005A89B8 /* DrawPathsView.swift in Sources */,
 				52AD64141EA441E700774D5D /* FriendPickerCell.swift in Sources */,
+				520FF1C02001B4DD0028FD88 /* Notifier.swift in Sources */,
 				52EB63DC1FCE7CC200E225E7 /* FriendManagementTableViewCell.swift in Sources */,
 				520232CA1FC3FB57003C5F96 /* KeychainPasswordItem.swift in Sources */,
 				5276F3941FCD60FC0078A7D0 /* FriendManagementTableViewDataSource.swift in Sources */,
@@ -869,7 +879,6 @@
 				520232F51FC3FE77003C5F96 /* ChallengesBaasBoxStore.swift in Sources */,
 				5267D8E81E99965400B94470 /* TakeCollectionViewCell.swift in Sources */,
 				52B682E71EA29BFE00DBB0A4 /* UserLoginInteractor.swift in Sources */,
-				52760C0D1E9058F80093B921 /* ListChallengesForFriendsTableViewDataSource.swift in Sources */,
 				520233121FC402D2003C5F96 /* TakeDto.swift in Sources */,
 				52760C0F1E9058F80093B921 /* ListChallengesRouter.swift in Sources */,
 				52A0D1F81EA3430500292B23 /* UserSettingsViewController.swift in Sources */,
@@ -902,7 +911,6 @@
 				524540CF1EC43CFE006FF5EB /* ListChallengesNoFriendsTableViewDataSource.swift in Sources */,
 				52299E2D1DE807ED00F04C86 /* BAAFile.m in Sources */,
 				52592FB81F8B370A00D6202A /* PasswordVerificationModels.swift in Sources */,
-				52760C081E9058F80093B921 /* ListChallengesViewController.swift in Sources */,
 				521BC6C01E66A4270083D6E6 /* NoFriendsCell.swift in Sources */,
 				52299E311DE807ED00F04C86 /* BaasBox.m in Sources */,
 				52B682E61EA29BFE00DBB0A4 /* UserLoginConfigurator.swift in Sources */,

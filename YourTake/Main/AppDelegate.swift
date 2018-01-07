@@ -64,10 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     completion: { (success) -> Void in
                                         if success {
                                             // When login success, push challenge vc
-                                            navigationVc.pushViewController(challengeVc, animated: false)
+                                            self.window?.rootViewController = challengeVc
                                         } else {
                                             // When login fails, push challenge then login vcs
-                                            navigationVc.pushViewController(challengeVc, animated: false)
                                             let signUpVc = cleanStoryBoard.instantiateViewController(withIdentifier: "Signup")
                                             navigationVc.pushViewController(signUpVc, animated: false)
                                         }
@@ -77,7 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             // If existing username/password do not exist, show signup vc
-            navigationVc.pushViewController(challengeVc, animated: false)
             let signUpVc = cleanStoryBoard.instantiateViewController(withIdentifier: "Signup")
             navigationVc.pushViewController(signUpVc, animated: false)
         }

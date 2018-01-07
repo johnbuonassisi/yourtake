@@ -32,6 +32,7 @@ UINavigationControllerDelegate {
         self.challengeImage = challengeImage
         
         super.init(nibName: "CreateTakeViewController", bundle: nil)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,7 +44,6 @@ UINavigationControllerDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         drawingView.setBackground(withImage: challengeImage)
         
         let rbbi = UIBarButtonItem(title: "Submit",
@@ -143,10 +143,14 @@ UINavigationControllerDelegate {
         let take = TakeDto(id: "", challengeId: challengeId, imageId: "", author: "", votes: 0)
         take.overlay = newImage
         let backendClient = Backend.sharedInstance.getClient()
+        
+        TakeCreationNotifier.postNotification(notification: .creatingTake)
         backendClient.createTake(take, completion: { (success) -> Void in
             if(success) {
+                TakeCreationNotifier.postNotification(notification: .successfullyCreatedTake)
                 print("Take successfuly created")
             } else {
+                TakeCreationNotifier.postNotification(notification: .failedToCreateTake)
                 print("Error creating take")
             }
         })
