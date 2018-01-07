@@ -198,10 +198,14 @@ UINavigationControllerDelegate {
             newChallenge.image = challengeImage!
             
             let backendClient = Backend.sharedInstance.getClient()
+            ChallengeCreationNotifier.postNotification(notification: .creatingChallenge)
             backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
                 if success {
+                    // Notify interested parties that a new challenge was successfully created
+                    ChallengeCreationNotifier.postNotification(notification: .successfullyCreatedChallenge)
                     print("Challenge created successfully!")
                 } else {
+                    ChallengeCreationNotifier.postNotification(notification: .failedToCreateChallenge)
                     print("Failed to create challenge!")
                 }
             })

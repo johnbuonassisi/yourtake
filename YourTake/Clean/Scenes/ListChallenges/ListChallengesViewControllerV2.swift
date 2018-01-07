@@ -71,11 +71,39 @@ class ListChallengesViewControllerV2: ReachabilityViewController,
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.attributedTitle = NSAttributedString(string: "")
         tableView.refreshControl!.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
-        tableView.refreshControl!.beginRefreshing()
         
         tableView.rowHeight = ChallengeTableViewCell.getHeightofCell(for: UIScreen.main.bounds.size.width)
         
+        addObservers()
+        
         fetchChallengesOnLoad()
+    }
+    
+    private func addObservers() {
+        
+        ChallengeCreationNotifier.addObserver(observer: self,
+                                              selector: #selector(self.handleCreatingChallengeNotification),
+                                              notification: .creatingChallenge)
+        
+        ChallengeCreationNotifier.addObserver(observer: self,
+                                              selector: #selector(self.handleSuccessfullyCreatedChallengeNotification),
+                                              notification: .successfullyCreatedChallenge)
+        
+        ChallengeCreationNotifier.addObserver(observer: self,
+                                              selector: #selector(self.handleFailedToCreateChallengeNotification),
+                                              notification: .failedToCreateChallenge)
+        
+        TakeCreationNotifier.addObserver(observer: self,
+                                         selector: #selector(self.handleCreatingTakeNotification),
+                                         notification: .creatingTake)
+        
+        TakeCreationNotifier.addObserver(observer: self,
+                                         selector: #selector(self.handleSuccessfullyCreatedTakeNotification),
+                                         notification: .successfullyCreatedTake)
+        
+        TakeCreationNotifier.addObserver(observer: self,
+                                         selector: #selector(self.handleFailedToCreateTakeNotification),
+                                         notification: .failedToCreateTake)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +129,7 @@ class ListChallengesViewControllerV2: ReachabilityViewController,
     
     func fetchChallengesOnLoad() {
         // NOTE: Ask the Interactor to do some work
+        tableView.refreshControl!.beginRefreshing()
         let request = ListChallenges.FetchChallenges.Request(challengeType: challengeRequestType,
                                                              isChallengeAndImageLoadSeparated: false)
         output.fetchChallenges(request: request)
@@ -153,6 +182,30 @@ class ListChallengesViewControllerV2: ReachabilityViewController,
         let request = ListChallenges.FetchChallenges.Request(challengeType: challengeRequestType,
                                                              isChallengeAndImageLoadSeparated: true)
         output.fetchChallenges(request: request)
+    }
+    
+    func handleCreatingChallengeNotification(notification: Notification) {
+        tableView.refreshControl!.beginRefreshing()
+    }
+    
+    func handleSuccessfullyCreatedChallengeNotification(notification: Notification) {
+        fetchChallengesOnLoad()
+    }
+    
+    func handleFailedToCreateChallengeNotification(notification: Notification) {
+        tableView.refreshControl!.endRefreshing()
+    }
+    
+    func handleCreatingTakeNotification(notification: Notification) {
+        tableView.refreshControl!.beginRefreshing()
+    }
+    
+    func handleSuccessfullyCreatedTakeNotification(notification: Notification) {
+        fetchChallengesOnLoad()
+    }
+    
+    func handleFailedToCreateTakeNotification(notification: Notification) {
+        tableView.refreshControl!.endRefreshing()
     }
 }
 
