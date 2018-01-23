@@ -143,6 +143,10 @@ class BaasBoxClient: BaClient {
         completion("")
     }
     
+    func getCurrentUserName() -> String {
+        return client.currentUser.username()
+    }
+    
     func getUser(completion: @escaping BaUserCompletionBlock) -> Void {
         if client.currentUser == nil || !client.isAuthenticated() {
             print("error: user not authenticated")
@@ -808,5 +812,20 @@ class BaasBoxClient: BaClient {
             }
             completion(image)
         })
+    }
+    
+    func enablePushNotificationsForCurrentUser(token: Data, completion: @escaping BaBoolErrorCompletionBlock) {
+        client.enablePushNotifications(token, completion: completion )
+    }
+    
+    func disablePushNotificationsForCurrentUser(completion: @escaping BaBoolErrorCompletionBlock) {
+        client.disablePushNotifications(completion: completion )
+    }
+    
+    func sendPushNotification(username: String, message: String, customPayload: [AnyHashable: Any]?, completion: @escaping BaBoolErrorCompletionBlock) {
+        client.pushNotification(toUsername: username,
+                                withMessage: message,
+                                customPayload: customPayload,
+                                completion: completion)
     }
 }

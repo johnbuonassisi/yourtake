@@ -32,6 +32,8 @@ class FriendManagementInteractor: FriendManagementInteractorInput, FriendManagem
     var output: FriendManagementInteractorOutput?
     let friendsStore = FriendsWorker(friendsStore: FriendsBaasBoxStore())
     
+    private let notificationService: NotificationServiceProtocol = NotificationService()
+    
     private var userSet = Set<String>()
     private var followersSet = Set<String>()
     private var followingSet = Set<String>()
@@ -107,6 +109,13 @@ class FriendManagementInteractor: FriendManagementInteractorInput, FriendManagem
         friendsStore.followUser(userName: request.userName) { (isFollowed) in
             if(isFollowed) {
                 print("Successfully followed \(request.userName)")
+                self.notificationService
+                    .sendPushNotification(username: request.userName,
+                        message: "\(self.friendsStore.getCurrentUserName()!) sent you a friend request",
+                        customPayload: nil,
+                        completion: { (isSuccess, error) in
+                            print("Notification status: \(isSuccess), error: \(String(describing: error?.localizedDescription))")
+                    })
             } else {
                 print("Error occurred while trying to follow \(request.userName)")
             }

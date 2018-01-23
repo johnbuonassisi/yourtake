@@ -7,6 +7,7 @@
 //
 
 typealias BaBoolCompletionBlock = (Bool) -> Void
+typealias BaBoolErrorCompletionBlock = (Bool, Error?) -> Void
 typealias BaStringCompletionBlock = (String) -> Void
 typealias BaStringsCompletionBlock = ([String]) -> Void
 typealias BaStringsOptionalCompletionBlock = ([String]?) -> Void
@@ -26,6 +27,7 @@ protocol BaClient {
     func getServerTime(completion: @escaping BaStringCompletionBlock) -> Void
     
     // social
+    func getCurrentUserName() -> String
     func getUser(completion: @escaping BaUserCompletionBlock) -> Void
     func getFollowing(completion: @escaping BaStringsOptionalCompletionBlock) -> Void
     func getFollowers(completion: @escaping BaStringsOptionalCompletionBlock) -> Void
@@ -53,5 +55,10 @@ protocol BaClient {
     
     // download
     func downloadImage(with id: String, completion: @escaping BaImageCompletionBlock)
+    
+    // push notifications
+    func enablePushNotificationsForCurrentUser(token: Data, completion: @escaping BaBoolErrorCompletionBlock)
+    func disablePushNotificationsForCurrentUser(completion: @escaping BaBoolErrorCompletionBlock)
+    func sendPushNotification(username: String, message: String, customPayload: [AnyHashable: Any]?, completion: @escaping BaBoolErrorCompletionBlock)
 }
 

@@ -65,6 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         if success {
                                             // When login success, push challenge vc
                                             self.window?.rootViewController = challengeVc
+                                            let notificationService: NotificationServiceProtocol = NotificationService()
+                                            notificationService.registerForPushNotifications()
                                         } else {
                                             // When login fails, push challenge then login vcs
                                             let signUpVc = cleanStoryBoard.instantiateViewController(withIdentifier: "Signup")
@@ -85,6 +87,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken
+        deviceToken: Data) {
+        
+        let token = deviceToken.map { String(format: "%02hhx", $0) }.joined()
+        print("Registered for Remote Notifications, Device Token: \(token)")
+        
+        let backendClient = Backend.sharedInstance.getClient()
+        backendClient.enablePushNotificationsForCurrentUser(token: deviceToken) { (isSuccess, error) in
+            guard isSuccess else {
+                print("Failed to enable push notification for user \(backendClient.getCurrentUserName()) \(String(describing: error?.localizedDescription))")
+                return
+            }
+            print("Successfully enabled push notifications for user \(backendClient.getCurrentUserName())")
+        }
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register for Remote Notifications")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

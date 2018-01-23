@@ -20,6 +20,8 @@ UINavigationControllerDelegate {
     private var challengeImage : UIImage?
     private var friendSelectionTracker: FriendSelectionTracker?
     
+    private let notificationService: NotificationServiceProtocol = NotificationService()
+    
     // Uploading View
     let uploadActivityView = UIView()
     let uploadingLabel = UILabel()
@@ -201,6 +203,12 @@ UINavigationControllerDelegate {
             ChallengeCreationNotifier.postNotification(notification: .creatingChallenge)
             backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
                 if success {
+                    self.notificationService.sendPushNotifications(usernames: friendSelectionTracker.getAllSelectedFriends(),
+                                                                  message: "\(backendClient.getCurrentUserName()) has sent you a Challenge!",
+                        customPayload: nil,
+                        completion: { (isSuccess, error) in
+                            print("Notification status: \(isSuccess), error: \(String(describing: error?.localizedDescription))")
+                    })
                     // Notify interested parties that a new challenge was successfully created
                     ChallengeCreationNotifier.postNotification(notification: .successfullyCreatedChallenge)
                     print("Challenge created successfully!")

@@ -29,4 +29,9 @@ class FriendsBaasBoxStore: FriendsStoreProtocol {
         let backendClient = Backend.sharedInstance.getClient()
         backendClient.addFriend(userName, completion: completion)
     }
+    
+    func getCurrentUserName() -> String? {
+        let backendClient = Backend.sharedInstance.getClient()
+        return backendClient.getCurrentUserName()
+    }
 }

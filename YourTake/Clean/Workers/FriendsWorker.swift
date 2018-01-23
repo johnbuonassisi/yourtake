@@ -50,6 +50,10 @@ class FriendsWorker {
     func followUser(userName: String, completion: @escaping (Bool) -> Void) {
         friendsStore.followUser(userName: userName, completion: completion)
     }
+    
+    func getCurrentUserName() -> String? {
+        return friendsStore.getCurrentUserName()
+    }
 }
 
 protocol FriendsStoreProtocol {
@@ -57,4 +61,5 @@ protocol FriendsStoreProtocol {
     func getFollowing(completion: @escaping ([String]?) -> Void)
     func getUsers(completion: @escaping ([String]?) -> Void)
     func followUser(userName: String, completion: @escaping (Bool) -> Void)
+    func getCurrentUserName() -> String?
 }
