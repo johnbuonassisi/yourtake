@@ -59,6 +59,6 @@ protocol BaClient {
     // push notifications
     func enablePushNotificationsForCurrentUser(token: Data, completion: @escaping BaBoolErrorCompletionBlock)
     func disablePushNotificationsForCurrentUser(completion: @escaping BaBoolErrorCompletionBlock)
-    func sendPushNotification(username: String, message: String, customPayload: [AnyHashable: Any]?, completion: @escaping BaBoolErrorCompletionBlock)
+    func sendPushNotification(username: String, message: String, customPayload: [String: String]?, completion: @escaping BaBoolErrorCompletionBlock)
 }
 

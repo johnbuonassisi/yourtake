@@ -822,7 +822,10 @@ class BaasBoxClient: BaClient {
         client.disablePushNotifications(completion: completion )
     }
     
-    func sendPushNotification(username: String, message: String, customPayload: [AnyHashable: Any]?, completion: @escaping BaBoolErrorCompletionBlock) {
+    func sendPushNotification(username: String, message: String,
+                              customPayload: [String: String]?,
+                              completion: @escaping BaBoolErrorCompletionBlock) {
+        print("Sending push notification to \(username)")
         client.pushNotification(toUsername: username,
                                 withMessage: message,
                                 customPayload: customPayload,
