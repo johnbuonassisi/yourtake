@@ -10,17 +10,49 @@ import UserNotifications
 
 protocol NotificationServiceProtocol {
     func registerForPushNotifications()
-    func sendPushNotification(username: String,
-                              message: String,
-                              customPayload: [AnyHashable: Any]?,
-                              completion: @escaping BaBoolErrorCompletionBlock)
-    func sendPushNotifications(usernames: [String],
-                              message: String,
-                              customPayload: [AnyHashable: Any]?,
-                              completion: @escaping BaBoolErrorCompletionBlock)
+    func sendPushNotificationsForNewChallenge(recipients: [String],
+                                              secondsRemainingInChallenge: Int,
+                                              completion: @escaping BaBoolErrorCompletionBlock)
+    func sendPushNotificationForFriendRequest(friend: String, completion: @escaping BaBoolErrorCompletionBlock)
+    func sendPushNotificationForFriendRequestAcceptance(friend: String, completion: @escaping BaBoolErrorCompletionBlock)
+    func getNotificationType(from dictionary: [String: AnyObject]) -> NotificationType?
 }
 
 class NotificationService: NotificationServiceProtocol {
+    
+    func sendPushNotificationsForNewChallenge(recipients: [String],
+                                              secondsRemainingInChallenge: Int,
+                                              completion: @escaping BaBoolErrorCompletionBlock) {
+        let backendClient = Backend.sharedInstance.getClient()
+        let roundedTimeRemaining = TimeService.getRoundedTimeRemaining(numSecondsRemaining: secondsRemainingInChallenge)
+        let message = "\(backendClient.getCurrentUserName()) has sent you a new challenge!" +
+            " Hurry you only have \(roundedTimeRemaining) to respond."
+        let customPayload = [NotificationPayload.notificationTypeKey: NotificationType.newChallenge]
+        sendPushNotifications(usernames: recipients,
+                              message: message,
+                              customPayload: customPayload,
+                              completion: completion)
+    }
+    
+    func sendPushNotificationForFriendRequest(friend: String, completion: @escaping BaBoolErrorCompletionBlock) {
+        let backendClient = Backend.sharedInstance.getClient()
+        let message = "\(backendClient.getCurrentUserName()) sent you a friend request."
+        let customPayload = [NotificationPayload.notificationTypeKey: NotificationType.friendRequest]
+        sendPushNotification(username: friend,
+                             message: message,
+                             customPayload: customPayload,
+                             completion: completion)
+    }
+    
+    func sendPushNotificationForFriendRequestAcceptance(friend: String, completion: @escaping BaBoolErrorCompletionBlock) {
+        let backendClient = Backend.sharedInstance.getClient()
+        let message = "You and \(backendClient.getCurrentUserName()) are now friends. Send \(backendClient.getCurrentUserName()) a challenge!"
+        let customPayload = [NotificationPayload.notificationTypeKey: NotificationType.friendRequestAcceptance]
+        sendPushNotification(username: friend,
+                             message: message,
+                             customPayload: customPayload,
+                             completion: completion)
+    }
     
     func registerForPushNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
@@ -36,7 +68,17 @@ class NotificationService: NotificationServiceProtocol {
         }
     }
     
-    func sendPushNotification(username: String,
+    func getNotificationType(from dictionary: [String: AnyObject]) -> NotificationType? {
+        var notificationType: NotificationType?
+        if let customPayload = dictionary[NotificationPayload.customPayloadKey] as? [String: String] {
+            if let notificationTypeString = customPayload[NotificationPayload.notificationTypeKey] {
+                notificationType = NotificationType(rawValue: notificationTypeString)
+            }
+        }
+        return notificationType
+    }
+    
+    private func sendPushNotification(username: String,
                               message: String,
                               customPayload: [AnyHashable: Any]?,
                               completion: @escaping BaBoolErrorCompletionBlock) {
@@ -48,7 +90,7 @@ class NotificationService: NotificationServiceProtocol {
     }
     
     // Note that the completion block in this method will be executed for each push notification sent
-    func sendPushNotifications(usernames: [String],
+    private func sendPushNotifications(usernames: [String],
                               message: String,
                               customPayload: [AnyHashable: Any]?,
                               completion: @escaping BaBoolErrorCompletionBlock) {

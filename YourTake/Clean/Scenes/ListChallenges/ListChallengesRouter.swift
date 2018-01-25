@@ -16,7 +16,7 @@ protocol ListChallengesRouterInput {
 }
 
 class ListChallengesRouter: ListChallengesRouterInput {
-    weak var viewController: UIViewController!
+    weak var viewController: ListChallengesViewController!
     
     // MARK: - Navigation
     
@@ -36,14 +36,28 @@ class ListChallengesRouter: ListChallengesRouterInput {
     
     func navigateToSnapChallengeImageScene() {
         print("Navigating to Snap Challenge Scene")
-        viewController.performSegue(withIdentifier: Constants.SegueIdentifiers.ListChallengesScene.photoPreviewSegue,
-                                    sender: nil)
+        if viewController.challengeRequestType == .friendChallenges {
+            viewController.performSegue(withIdentifier: SegueIdentifiers.ListChallengesScene.FriendListChallengeScene.photoPreviewSegue,
+                                        sender: nil)
+        } else if viewController.challengeRequestType == .userChallenges {
+            viewController.performSegue(withIdentifier: SegueIdentifiers.ListChallengesScene.UserListChallengesScene.photoPreviewSegue,
+                                        sender: nil)
+        } else {
+            print("Invalid challenge request type")
+        }
     }
     
     func navigateToFriendManagementScene() {
         print("Navigating to Add Friends Scene")
-        viewController.performSegue(withIdentifier: Constants.SegueIdentifiers.ListChallengesScene.friendManagementSegue,
-                                    sender: nil)
+        if viewController.challengeRequestType == .friendChallenges {
+            viewController.performSegue(withIdentifier: SegueIdentifiers.ListChallengesScene.FriendListChallengeScene.friendManagementSegue,
+                                        sender: nil)
+        } else if viewController.challengeRequestType == .userChallenges {
+            viewController.performSegue(withIdentifier: SegueIdentifiers.ListChallengesScene.UserListChallengesScene.friendManagementSegue,
+                                        sender: nil)
+        } else {
+            print("Invalid challenge request type")
+        }
     }
     
     // MARK: - Communication

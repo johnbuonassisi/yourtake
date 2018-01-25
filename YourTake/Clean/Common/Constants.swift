@@ -10,6 +10,9 @@ typealias PasswordVerificationSceneSegueIds = Constants.SegueIdentifiers.Passwor
 typealias ListChallengeSceneCellIdentifiers = Constants.CellIdentifiers.ListChallengesScene
 typealias ListTakesSceneCellIdentifiers = Constants.CellIdentifiers.ListTakesScene
 typealias FriendManagementCellIdentifiers = Constants.CellIdentifiers.FriendManagementScene
+typealias NotificationType = Constants.PushNotifications.CustomPayload.NotificationType
+typealias NotificationPayload = Constants.PushNotifications.CustomPayload
+typealias SegueIdentifiers = Constants.SegueIdentifiers
 
 struct Constants {
     
@@ -28,15 +31,28 @@ struct Constants {
                                              alpha: 1.0)
     }
     
+    struct StoryboardIdentifiers {
+        static let MainStoryboard = "Main"
+        static let RootViewController = "RootViewController"
+        static let SignupViewController = "SignupViewController"
+    }
+    
     struct SegueIdentifiers {
         struct PasswordVerificationScene {
             static let changePasswordSegue = "ChangePasswordSegue"
             static let resetPasswordSegue = "ResetPasswordSegue"
         }
         struct ListChallengesScene {
-            static let photoPreviewSegue = "PhotoPreviewSegue"
-            static let friendManagementSegue = "FriendManagementSegue"
-            static let settingsSegue = "SettingsSegue"
+            struct UserListChallengesScene {
+                static let friendManagementSegue = "UserChallengeListFriendManagementSegue"
+                static let photoPreviewSegue = "UserChallengeListPhotoPreviewSegue"
+                static let settingsSegue = "UserChallengeListSettingsSegue"
+            }
+            struct FriendListChallengeScene {
+                static let friendManagementSegue = "FriendChallengeListFriendManagementSegue"
+                static let photoPreviewSegue = "FriendChallengeListPhotoPreviewSegue"
+                static let settingsSegue = "FriendChallengeListSettingsSegue"
+            }
         }
     }
     
@@ -58,5 +74,18 @@ struct Constants {
     struct Dimensions {
         static let navigationBarHeight: CGFloat = 44.0
         static let toolBarHeight: CGFloat = 44.0
+    }
+    
+    struct PushNotifications {
+        struct CustomPayload {
+            static let customPayloadKey = "custom"
+            static let notificationTypeKey = "notificationType"
+            
+            enum NotificationType: String {
+                case newChallenge = "newChallenge"
+                case friendRequest = "friendRequest"
+                case friendRequestAcceptance = "friendRequestAcceptance"
+            }
+        }
     }
 }

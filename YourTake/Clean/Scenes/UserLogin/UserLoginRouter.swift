@@ -36,8 +36,8 @@ class UserLoginRouter: UserLoginRouterInput
     DispatchQueue.main.asyncAfter(deadline: time, execute: {
       alert.dismiss(animated: true, completion:{
         self.viewController.navigationController?.navigationBar.isHidden = false
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let listChallengesViewController = storyboard.instantiateViewController(withIdentifier: "ChallengeList")
+        let storyboard = UIStoryboard(name: Constants.StoryboardIdentifiers.MainStoryboard, bundle: nil)
+        let listChallengesViewController = storyboard.instantiateViewController(withIdentifier: Constants.StoryboardIdentifiers.RootViewController)
         UIApplication.shared.keyWindow?.rootViewController = listChallengesViewController
       })
     })

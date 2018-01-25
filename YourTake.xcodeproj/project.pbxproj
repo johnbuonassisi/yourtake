@@ -50,6 +50,7 @@
 		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
 		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
 		5253EBFD20108C1600FD3743 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253EBFC20108C1600FD3743 /* NotificationService.swift */; };
+		5253EBFF2017053000FD3743 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253EBFE2017053000FD3743 /* TimeService.swift */; };
 		5257AE631F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5C1F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift */; };
 		5257AE641F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5D1F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift */; };
 		5257AE651F5E6F6F00CD2A33 /* ChangePasswordModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5E1F5E6F6F00CD2A33 /* ChangePasswordModels.swift */; };
@@ -189,6 +190,7 @@
 		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		5253EBFA200DC16800FD3743 /* YourTake.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YourTake.entitlements; sourceTree = "<group>"; };
 		5253EBFC20108C1600FD3743 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationService.swift; path = Clean/Services/Notification/NotificationService.swift; sourceTree = "<group>"; };
+		5253EBFE2017053000FD3743 /* TimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeService.swift; path = Clean/Services/Utility/TimeService.swift; sourceTree = "<group>"; };
 		5257AE5C1F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordConfigurator.swift; path = Clean/Scenes/ChangePassword/ChangePasswordConfigurator.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5257AE5D1F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordInteractor.swift; path = Clean/Scenes/ChangePassword/ChangePasswordInteractor.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5257AE5E1F5E6F6F00CD2A33 /* ChangePasswordModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordModels.swift; path = Clean/Scenes/ChangePassword/ChangePasswordModels.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -309,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				520232E21FC3FCFC003C5F96 /* ValidationService.swift */,
+				5253EBFE2017053000FD3743 /* TimeService.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				520232EB1FC3FD9A003C5F96 /* LoginMemStore.swift in Sources */,
 				520232F81FC3FE77003C5F96 /* TakeBaasBoxStore.swift in Sources */,
 				52592FB71F8B370A00D6202A /* PasswordVerificationInteractor.swift in Sources */,
+				5253EBFF2017053000FD3743 /* TimeService.swift in Sources */,
 				52760C0A1E9058F80093B921 /* ListChallengesModels.swift in Sources */,
 				52592FBA1F8B370A00D6202A /* PasswordVerificationRouter.swift in Sources */,
 				5263CA561EA2D399001BA2E4 /* SignupUserRouter.swift in Sources */,

@@ -203,11 +203,15 @@ UINavigationControllerDelegate {
             ChallengeCreationNotifier.postNotification(notification: .creatingChallenge)
             backendClient.createChallenge(newChallenge, completion: { (success) -> Void in
                 if success {
-                    self.notificationService.sendPushNotifications(usernames: friendSelectionTracker.getAllSelectedFriends(),
-                                                                  message: "\(backendClient.getCurrentUserName()) has sent you a Challenge!",
-                        customPayload: nil,
-                        completion: { (isSuccess, error) in
-                            print("Notification status: \(isSuccess), error: \(String(describing: error?.localizedDescription))")
+                    let secondsRemaining = Int(exactly: self.expiryPicker.countDownDuration)
+                    guard secondsRemaining != nil else {
+                        print("Expiry Picker Count Down Duration is not exact")
+                        return
+                    }
+                    self.notificationService
+                        .sendPushNotificationsForNewChallenge(recipients: friendSelectionTracker.getAllSelectedFriends(), secondsRemainingInChallenge: secondsRemaining!,
+                            completion: { (isSuccess, error) in
+                                print("Notification status: \(isSuccess), error: \(String(describing: error?.localizedDescription))")
                     })
                     // Notify interested parties that a new challenge was successfully created
                     ChallengeCreationNotifier.postNotification(notification: .successfullyCreatedChallenge)
