@@ -25,6 +25,8 @@ class UserLoginInteractor: UserLoginInteractorInput
 {
   var output: UserLoginInteractorOutput!
   var worker = LoginWorker(loginStore: LoginBaasBoxStore())
+    
+  private let notificationService: NotificationServiceProtocol = NotificationService()
   
   // MARK: - Business logic
   
@@ -53,6 +55,8 @@ class UserLoginInteractor: UserLoginInteractorInput
                       } catch {
                         fatalError("Error saving password - \(error)")
                       }
+                        
+                      self.notificationService.registerForPushNotifications()
                       
                       let response = UserLogin.Login.Response(isUserNameEntered: true,
                                                               isPasswordValid: true,

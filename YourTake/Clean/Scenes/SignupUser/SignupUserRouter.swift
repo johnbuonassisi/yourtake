@@ -36,8 +36,8 @@ class SignupUserRouter: SignupUserRouterInput
     let time = DispatchTime.now() + 3
     DispatchQueue.main.asyncAfter(deadline: time, execute: {
       alert.dismiss(animated: true, completion:{
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let listChallengesViewController = storyboard.instantiateViewController(withIdentifier: "ChallengeList")
+        let storyboard = UIStoryboard(name: Constants.StoryboardIdentifiers.MainStoryboard, bundle: nil)
+        let listChallengesViewController = storyboard.instantiateViewController(withIdentifier: Constants.StoryboardIdentifiers.RootViewController)
         UIApplication.shared.keyWindow?.rootViewController = listChallengesViewController
       })
     })

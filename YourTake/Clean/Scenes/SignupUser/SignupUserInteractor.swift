@@ -25,7 +25,9 @@ class SignupUserInteractor: SignupUserInteractorInput
 {
   var output: SignupUserInteractorOutput!
   var worker = SignupWorker(signupStore: SignupBaasBoxStore())
-  
+
+  private let notificationService: NotificationServiceProtocol = NotificationService()
+    
   private var isValidEmailAddress = false
   private var isValidUsername = false
   private var isValidPassword = false
@@ -59,6 +61,9 @@ class SignupUserInteractor: SignupUserInteractorInput
                       } catch {
                         fatalError("Error updating keychain - \(error)")
                       }
+                        
+                      self.notificationService.registerForPushNotifications()
+                        
                       completion!(true)
                     } else {
                       completion!(false)

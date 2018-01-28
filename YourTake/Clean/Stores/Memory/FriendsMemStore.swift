@@ -42,4 +42,8 @@ class FriendsMemStore: FriendsStoreProtocol {
         completion(true)
     }
     
+    func getCurrentUserName() -> String? {
+        return "John"
+    }
+    
 }

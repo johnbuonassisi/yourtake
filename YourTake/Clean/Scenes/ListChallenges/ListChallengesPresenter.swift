@@ -101,39 +101,11 @@ class ListChallengesPresenter: ListChallengesPresenterInput {
         
         // Determine how the expiry date should be displayed
         let numSecondsRemaining = getNumberOfSecondsRemainingForChallenge(challenge: challenge)
-        
-        if( numSecondsRemaining <= 0){
-            return String("Challenge completed")
+        if numSecondsRemaining <= 0 {
+            return "Challenge completed"
         }
+        return "\(TimeService.getRoundedTimeRemaining(numSecondsRemaining: numSecondsRemaining)) remaining"
         
-        let numDaysRemaining = numSecondsRemaining / ( 60 * 60 * 24)
-        if(numDaysRemaining > 0) {
-            if numDaysRemaining == 1 {
-                return String(numDaysRemaining) + " day remaining"
-            }
-            return String(numDaysRemaining) + " days remaining"
-        }
-        
-        let numHoursRemaining = numSecondsRemaining / ( 60 * 60 )
-        if( numHoursRemaining > 0) {
-            if numHoursRemaining == 1 {
-                return String(numHoursRemaining) + " hour remaining"
-            }
-            return String(numHoursRemaining) + " hours remaining"
-        }
-        
-        let numMinutesRemaining = numSecondsRemaining / 60
-        if(numMinutesRemaining > 0){
-            if numHoursRemaining == 1 {
-                return String(numMinutesRemaining) + " minute remaining"
-            }
-            return String(numMinutesRemaining) + " minutes remaining"
-        }
-        if numSecondsRemaining == 1 {
-            return String(numSecondsRemaining) + "second remaining"
-        }
-        
-        return String(numSecondsRemaining) + " seconds remaining"
     }
     
     private func getNumberOfSecondsRemainingForChallenge(challenge:

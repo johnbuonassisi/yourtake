@@ -97,8 +97,8 @@ class UserSettingsViewController: UITableViewController {
         DispatchQueue.main.async {
           // Replace the current View Controllers in the Navigation Controller with new ones
           // This wipes out data stored in the Challenge View Controller
-          let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-          let suvc = mainStoryBoard.instantiateViewController(withIdentifier: "Signup")
+          let mainStoryBoard = UIStoryboard(name: Constants.StoryboardIdentifiers.MainStoryboard, bundle: nil)
+          let suvc = mainStoryBoard.instantiateViewController(withIdentifier: Constants.StoryboardIdentifiers.SignupViewController)
           let navVc = UINavigationController(rootViewController: suvc)
           UIApplication.shared.keyWindow?.rootViewController = navVc
         }

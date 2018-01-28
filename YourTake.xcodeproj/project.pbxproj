@@ -49,6 +49,8 @@
 		524D1DED1DEA504000776A1D /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */; };
 		524D1DEF1DEA7F2E00776A1D /* PhotoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */; };
 		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
+		5253EBFD20108C1600FD3743 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253EBFC20108C1600FD3743 /* NotificationService.swift */; };
+		5253EBFF2017053000FD3743 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253EBFE2017053000FD3743 /* TimeService.swift */; };
 		5257AE631F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5C1F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift */; };
 		5257AE641F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5D1F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift */; };
 		5257AE651F5E6F6F00CD2A33 /* ChangePasswordModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5E1F5E6F6F00CD2A33 /* ChangePasswordModels.swift */; };
@@ -186,6 +188,9 @@
 		524D1DEC1DEA504000776A1D /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayView.xib; path = Clean/Scenes/SnapChallengeImage/CameraOverlayView.xib; sourceTree = "<group>"; };
 		524D1DEE1DEA7F2E00776A1D /* PhotoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoPreviewView.xib; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewView.xib; sourceTree = "<group>"; };
 		524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoPreviewViewController.swift; path = Clean/Scenes/SnapChallengeImage/PhotoPreviewViewController.swift; sourceTree = "<group>"; };
+		5253EBFA200DC16800FD3743 /* YourTake.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YourTake.entitlements; sourceTree = "<group>"; };
+		5253EBFC20108C1600FD3743 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationService.swift; path = Clean/Services/Notification/NotificationService.swift; sourceTree = "<group>"; };
+		5253EBFE2017053000FD3743 /* TimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeService.swift; path = Clean/Services/Utility/TimeService.swift; sourceTree = "<group>"; };
 		5257AE5C1F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordConfigurator.swift; path = Clean/Scenes/ChangePassword/ChangePasswordConfigurator.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5257AE5D1F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordInteractor.swift; path = Clean/Scenes/ChangePassword/ChangePasswordInteractor.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5257AE5E1F5E6F6F00CD2A33 /* ChangePasswordModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordModels.swift; path = Clean/Scenes/ChangePassword/ChangePasswordModels.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -306,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				520232E21FC3FCFC003C5F96 /* ValidationService.swift */,
+				5253EBFE2017053000FD3743 /* TimeService.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -391,6 +397,14 @@
 				5276F3931FCD60FC0078A7D0 /* FriendManagementTableViewDataSource.swift */,
 			);
 			name = FriendManagement;
+			sourceTree = "<group>";
+		};
+		5253EBFB20108BEA00FD3743 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5253EBFC20108C1600FD3743 /* NotificationService.swift */,
+			);
+			name = Notification;
 			sourceTree = "<group>";
 		};
 		5257AE3F1F5E6DF500CD2A33 /* ChangePassword */ = {
@@ -516,6 +530,7 @@
 		52760BF91E9058980093B921 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5253EBFB20108BEA00FD3743 /* Notification */,
 				520232EE1FC3FE3A003C5F96 /* BaasBox */,
 				520232E11FC3FCDC003C5F96 /* Utility */,
 				520232C71FC3FAE9003C5F96 /* Security */,
@@ -601,6 +616,7 @@
 		5285098A1DC6F9470083CC55 /* YourTake */ = {
 			isa = PBXGroup;
 			children = (
+				5253EBFA200DC16800FD3743 /* YourTake.entitlements */,
 				528509971DC6F9470083CC55 /* Info.plist */,
 				52760BF61E90586D0093B921 /* Clean */,
 				5285099D1DC6F98A0083CC55 /* Main */,
@@ -759,6 +775,11 @@
 						DevelopmentTeam = A99NKDYD4J;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -818,6 +839,7 @@
 				520232F61FC3FE77003C5F96 /* FriendsBaasBoxStore.swift in Sources */,
 				520233051FC3FEED003C5F96 /* BaClient.swift in Sources */,
 				5257AE671F5E6F6F00CD2A33 /* ChangePasswordRouter.swift in Sources */,
+				5253EBFD20108C1600FD3743 /* NotificationService.swift in Sources */,
 				52299E2C1DE807ED00F04C86 /* BAAClient.m in Sources */,
 				52592FB61F8B370A00D6202A /* PasswordVerificationConfigurator.swift in Sources */,
 				5267D8E11E998E0100B94470 /* ListTakesRouter.swift in Sources */,
@@ -838,6 +860,7 @@
 				520232EB1FC3FD9A003C5F96 /* LoginMemStore.swift in Sources */,
 				520232F81FC3FE77003C5F96 /* TakeBaasBoxStore.swift in Sources */,
 				52592FB71F8B370A00D6202A /* PasswordVerificationInteractor.swift in Sources */,
+				5253EBFF2017053000FD3743 /* TimeService.swift in Sources */,
 				52760C0A1E9058F80093B921 /* ListChallengesModels.swift in Sources */,
 				52592FBA1F8B370A00D6202A /* PasswordVerificationRouter.swift in Sources */,
 				5263CA561EA2D399001BA2E4 /* SignupUserRouter.swift in Sources */,
@@ -1043,6 +1066,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = YourTake/YourTake.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A99NKDYD4J;
@@ -1061,6 +1085,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = YourTake/YourTake.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A99NKDYD4J;
