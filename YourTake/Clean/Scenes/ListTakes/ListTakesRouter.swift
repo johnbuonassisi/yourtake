@@ -25,7 +25,8 @@ class ListTakesRouter: ListTakesRouterInput {
             let displayTakeViewModel = DisplayTake.ViewModel(author: listTakesViewModel.author,
                                                              numberOfVotes: listTakesViewModel.numberOfVotes,
                                                              likeButtonImage: listTakesViewModel.likeButtonImage,
-                                                             takeImage: takeImage)
+                                                             takeImage: takeImage,
+                                                             voters: listTakesViewModel.voters)
             let dtvc = DisplayTakeViewController(viewModel: displayTakeViewModel)
             viewController.navigationController?.pushViewController(dtvc, animated: true)
         }

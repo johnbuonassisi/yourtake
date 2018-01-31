@@ -10,6 +10,7 @@ typealias PasswordVerificationSceneSegueIds = Constants.SegueIdentifiers.Passwor
 typealias ListChallengeSceneCellIdentifiers = Constants.CellIdentifiers.ListChallengesScene
 typealias ListTakesSceneCellIdentifiers = Constants.CellIdentifiers.ListTakesScene
 typealias FriendManagementCellIdentifiers = Constants.CellIdentifiers.FriendManagementScene
+typealias DisplayTakeCellIdentifiers = Constants.CellIdentifiers.DisplayTakeScene
 typealias NotificationType = Constants.PushNotifications.CustomPayload.NotificationType
 typealias NotificationPayload = Constants.PushNotifications.CustomPayload
 typealias SegueIdentifiers = Constants.SegueIdentifiers
@@ -68,6 +69,9 @@ struct Constants {
         }
         struct FriendManagementScene {
             static let friendManagementCellId = "FriendManagementTableViewCell"
+        }
+        struct DisplayTakeScene {
+            static let votersCellId = "VotersTableViewCell"
         }
     }
     

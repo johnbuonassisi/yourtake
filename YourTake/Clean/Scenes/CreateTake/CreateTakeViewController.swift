@@ -140,7 +140,7 @@ UINavigationControllerDelegate {
                                orientation: drawImage!.imageOrientation)
         
         
-        let take = TakeDto(id: "", challengeId: challengeId, imageId: "", author: "", votes: 0)
+        let take = TakeDto(id: "", challengeId: challengeId, imageId: "", author: "", votes: 0, voters: Set<String>())
         take.overlay = newImage
         let backendClient = Backend.sharedInstance.getClient()
         

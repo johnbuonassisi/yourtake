@@ -51,6 +51,7 @@
 		524D1DF11DEA7FED00776A1D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D1DF01DEA7FED00776A1D /* PhotoPreviewViewController.swift */; };
 		5253EBFD20108C1600FD3743 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253EBFC20108C1600FD3743 /* NotificationService.swift */; };
 		5253EBFF2017053000FD3743 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253EBFE2017053000FD3743 /* TimeService.swift */; };
+		5253EC012020372700FD3743 /* DisplayTakeVotersTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253EC002020372700FD3743 /* DisplayTakeVotersTableViewDataSource.swift */; };
 		5257AE631F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5C1F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift */; };
 		5257AE641F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5D1F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift */; };
 		5257AE651F5E6F6F00CD2A33 /* ChangePasswordModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257AE5E1F5E6F6F00CD2A33 /* ChangePasswordModels.swift */; };
@@ -191,6 +192,7 @@
 		5253EBFA200DC16800FD3743 /* YourTake.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YourTake.entitlements; sourceTree = "<group>"; };
 		5253EBFC20108C1600FD3743 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationService.swift; path = Clean/Services/Notification/NotificationService.swift; sourceTree = "<group>"; };
 		5253EBFE2017053000FD3743 /* TimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeService.swift; path = Clean/Services/Utility/TimeService.swift; sourceTree = "<group>"; };
+		5253EC002020372700FD3743 /* DisplayTakeVotersTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayTakeVotersTableViewDataSource.swift; path = Clean/Scenes/DisplayTake/DisplayTakeVotersTableViewDataSource.swift; sourceTree = "<group>"; };
 		5257AE5C1F5E6F6F00CD2A33 /* ChangePasswordConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordConfigurator.swift; path = Clean/Scenes/ChangePassword/ChangePasswordConfigurator.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5257AE5D1F5E6F6F00CD2A33 /* ChangePasswordInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordInteractor.swift; path = Clean/Scenes/ChangePassword/ChangePasswordInteractor.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5257AE5E1F5E6F6F00CD2A33 /* ChangePasswordModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChangePasswordModels.swift; path = Clean/Scenes/ChangePassword/ChangePasswordModels.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -701,6 +703,7 @@
 				52B682BC1EA296C400DBB0A4 /* DisplayTakeViewController.swift */,
 				52B682BD1EA296C400DBB0A4 /* DisplayTakeViewController.xib */,
 				52B682BE1EA296C400DBB0A4 /* DisplayTakeModels.swift */,
+				5253EC002020372700FD3743 /* DisplayTakeVotersTableViewDataSource.swift */,
 			);
 			name = DisplayTake;
 			sourceTree = "<group>";
@@ -879,6 +882,7 @@
 				5267D8DE1E998E0100B94470 /* ListTakesInteractor.swift in Sources */,
 				5263CA581EA2D399001BA2E4 /* SignupUserWorker.swift in Sources */,
 				52B682EB1EA29BFE00DBB0A4 /* UserLoginViewController.swift in Sources */,
+				5253EC012020372700FD3743 /* DisplayTakeVotersTableViewDataSource.swift in Sources */,
 				520233001FC3FEED003C5F96 /* BaasBoxClient.swift in Sources */,
 				52592FB91F8B370A00D6202A /* PasswordVerificationPresenter.swift in Sources */,
 				520232C61FC3FAAA003C5F96 /* Reachability.swift in Sources */,

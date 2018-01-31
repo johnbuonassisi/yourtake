@@ -12,12 +12,14 @@ class BaasBoxTake: BAAObject {
     var challengeId = String()
     var overlayId = String()
     var votes = UInt(0)
+    var voters = [String]()
     
     init() {
         let dictionary: [AnyHashable : Any]! =
             ["challengeId": self.challengeId,
              "overlayId": self.overlayId,
-             "votes": self.votes]
+             "votes": self.votes,
+             "voters": self.voters]
         
         super.init(dictionary: dictionary)
     }
@@ -26,6 +28,11 @@ class BaasBoxTake: BAAObject {
         self.challengeId = dictionary["challengeId"] as! String
         self.overlayId = dictionary["overlayId"] as! String
         self.votes = dictionary["votes"] as! UInt
+        if let voters = dictionary["voters"] as? [String] {
+            self.voters = voters
+        } else {
+            self.voters = Array()
+        }
         
         super.init(dictionary: dictionary)
      }

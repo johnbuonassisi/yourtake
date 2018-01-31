@@ -58,6 +58,9 @@ class ListTakesInteractor: ListTakesInteractorInput {
                     // Download the take image
                     self.challengesWorker.downloadImage(with: take.imageId, completion: { (image) -> Void in
                         take.overlay = image
+                        if image == nil {
+                            take.overlay = UIImage()
+                        }
                         
                         // Present the takes
                         let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
@@ -90,6 +93,7 @@ class ListTakesInteractor: ListTakesInteractorInput {
             })
             user.votes[challengeId] = newVoteTakeId
             takes[request.takeTag].votes += 1
+            takes[request.takeTag].voters.insert(user.username)
         } else {
             
             if(newVoteTakeId == previouslyVotedTakeId) {
@@ -102,6 +106,7 @@ class ListTakesInteractor: ListTakesInteractorInput {
                     }
                 })
                 takes[request.takeTag].votes -= 1
+                takes[request.takeTag].voters.remove(user.username)
                 user.votes.removeValue(forKey: challengeId)
                 newVoteTakeId = nil
             } else {
@@ -124,9 +129,11 @@ class ListTakesInteractor: ListTakesInteractorInput {
                 for take in takes {
                     if take.id == previouslyVotedTakeId {
                         take.votes -= 1
+                        take.voters.remove(user.username)
                     }
                 }
                 takes[request.takeTag].votes += 1
+                takes[request.takeTag].voters.insert(user.username)
                 user.votes[challengeId] = newVoteTakeId
             }
         }

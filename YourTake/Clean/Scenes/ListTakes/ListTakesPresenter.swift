@@ -43,7 +43,8 @@ class ListTakesPresenter: ListTakesPresenterInput {
             let displayedTake = ListTakes.FetchTakes.ViewModel.DisplayedTake(author: take.author,
                 numberOfVotes: "\(take.votes)",
                 likeButtonImage: likeButtonImage!,
-                takeImage: take.overlay)
+                takeImage: take.overlay,
+                voters: take.voters)
             
             displayedTakes.append(displayedTake)
         }
