@@ -9,11 +9,12 @@
 import UIKit
 
 struct DisplayTake {
-  
-  struct ViewModel {
-    var author: String
-    var numberOfVotes: String
-    var likeButtonImage: UIImage
-    var takeImage: UIImage
-  }
+    
+    struct ViewModel {
+        var author: String
+        var numberOfVotes: String
+        var likeButtonImage: UIImage
+        var takeImage: UIImage
+        var voters: Set<String>
+    }
 }

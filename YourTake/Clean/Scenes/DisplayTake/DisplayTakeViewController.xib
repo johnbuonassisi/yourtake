@@ -12,10 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DisplayTakeViewController" customModule="YourTake" customModuleProvider="target">
             <connections>
-                <outlet property="likeImageView" destination="ENU-hS-dGj" id="shI-SM-meT"/>
-                <outlet property="numberOfVotesLabel" destination="Xw3-5h-EdY" id="6ME-oz-xN0"/>
                 <outlet property="takeImageView" destination="08v-VD-ehX" id="sQg-9b-93s"/>
                 <outlet property="view" destination="73b-nk-vl2" id="U0d-qo-OnS"/>
+                <outlet property="votersTableView" destination="qT1-zB-C4X" id="HTH-6x-qwl"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -29,29 +28,20 @@
                         <constraint firstAttribute="width" secondItem="08v-VD-ehX" secondAttribute="height" multiplier="1:1" id="7qr-0G-TDr"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ENU-hS-dGj">
-                    <rect key="frame" x="16" y="445" width="82" height="82"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="82" id="2gE-cs-mRo"/>
-                        <constraint firstAttribute="width" secondItem="ENU-hS-dGj" secondAttribute="height" multiplier="1:1" id="eb8-NY-TPy"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xw3-5h-EdY">
-                    <rect key="frame" x="106" y="464" width="41" height="45.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qT1-zB-C4X">
+                    <rect key="frame" x="0.0" y="445" width="375" height="222"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Xw3-5h-EdY" firstAttribute="leading" secondItem="ENU-hS-dGj" secondAttribute="trailing" constant="8" id="2AC-8k-EX3"/>
+                <constraint firstAttribute="bottom" secondItem="qT1-zB-C4X" secondAttribute="bottom" id="CJf-FX-ox8"/>
                 <constraint firstAttribute="trailing" secondItem="08v-VD-ehX" secondAttribute="trailing" id="IIj-8Y-SAN"/>
-                <constraint firstItem="Xw3-5h-EdY" firstAttribute="top" secondItem="08v-VD-ehX" secondAttribute="bottom" constant="27" id="Q8q-sZ-cuQ"/>
                 <constraint firstItem="08v-VD-ehX" firstAttribute="top" secondItem="73b-nk-vl2" secondAttribute="top" constant="62" id="UNB-1i-uoO"/>
+                <constraint firstAttribute="trailing" secondItem="qT1-zB-C4X" secondAttribute="trailing" id="W7U-EW-d5s"/>
                 <constraint firstItem="08v-VD-ehX" firstAttribute="leading" secondItem="73b-nk-vl2" secondAttribute="leading" id="eds-00-N33"/>
-                <constraint firstItem="ENU-hS-dGj" firstAttribute="top" secondItem="08v-VD-ehX" secondAttribute="bottom" constant="8" id="vzL-vS-pgR"/>
-                <constraint firstItem="ENU-hS-dGj" firstAttribute="leading" secondItem="73b-nk-vl2" secondAttribute="leading" constant="16" id="yFk-Th-oLc"/>
+                <constraint firstItem="qT1-zB-C4X" firstAttribute="leading" secondItem="73b-nk-vl2" secondAttribute="leading" id="oWg-ST-z8t"/>
+                <constraint firstItem="qT1-zB-C4X" firstAttribute="top" secondItem="08v-VD-ehX" secondAttribute="bottom" constant="8" id="ynd-o7-tCg"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="-41.5" y="83.5"/>

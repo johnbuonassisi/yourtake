@@ -513,7 +513,8 @@ class BaasBoxClient: BaClient {
                             challengeId: baasTake.challengeId,
                             imageId: baasTake.overlayId,
                             author: baasTake.author,
-                            votes: baasTake.votes))
+                            votes: baasTake.votes,
+                            voters: Set(baasTake.voters)))
             } else {
                 print("error: unable to load take [description=\(String(describing: error?.localizedDescription))]")
                 completion(nil)
@@ -543,7 +544,8 @@ class BaasBoxClient: BaClient {
                                        challengeId: baasTake.challengeId,
                                        imageId: baasTake.overlayId,
                                        author: baasTake.author,
-                                       votes: baasTake.votes))
+                                       votes: baasTake.votes,
+                                       voters: Set(baasTake.voters)))
                 } else {
                     completion(nil)
                 }
@@ -582,7 +584,8 @@ class BaasBoxClient: BaClient {
                                            challengeId: baasTake.challengeId,
                                            imageId: baasTake.overlayId,
                                            author: baasTake.author,
-                                           votes: baasTake.votes)
+                                           votes: baasTake.votes,
+                                           voters: Set(baasTake.voters))
                             takes.append(take)
                             if takes.count == baasTakes.count {
                                 takes.sort(by: { (left, right) -> Bool in
@@ -633,7 +636,8 @@ class BaasBoxClient: BaClient {
                 let params = ["id": takeId,
                               "challengeId": take.challengeId,
                               "overlayId": baasFile.fileId,
-                              "votes": take.votes] as [String : Any]
+                              "votes": take.votes,
+                              "voters": Array(take.voters)] as [String : Any]
                 
                 let baasTake = BaasBoxTake(dictionary: params)
                 self.client.createObject(baasTake, completion: { (object, error) -> Void in
@@ -722,6 +726,9 @@ class BaasBoxClient: BaClient {
         BaasBoxTake.getWithId(takeId, completion: { (object, error) -> Void in
             if let baasTake = object as? BaasBoxTake {
                 baasTake.votes += 1
+                if !baasTake.voters.contains(self.getCurrentUserName()) {
+                    baasTake.voters.append(self.getCurrentUserName())
+                }
                 baasTake.save(completion: { (object, error) -> Void in
                     if object != nil {
                         let params = ["_author": "\(self.client.currentUser.username()!)"]
@@ -775,6 +782,9 @@ class BaasBoxClient: BaClient {
         BaasBoxTake.getWithId(takeId, completion: { (object, error) -> Void in
             if let baasTake = object as? BaasBoxTake {
                 baasTake.votes -= 1
+                if let offset = baasTake.voters.index(of: self.getCurrentUserName()) {
+                    baasTake.voters.remove(at: offset)
+                }
                 baasTake.save(completion: { (object, error) -> Void in
                     if object != nil {
                         let params = ["_author": "\(self.client.currentUser.username()!)"]

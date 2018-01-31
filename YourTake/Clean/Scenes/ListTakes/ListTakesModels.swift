@@ -30,6 +30,7 @@ struct ListTakes {
                 var numberOfVotes: String
                 var likeButtonImage: UIImage
                 var takeImage: UIImage?
+                var voters: Set<String>
             }
             
             var displayedTakes: [DisplayedTake]

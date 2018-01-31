@@ -8,31 +8,30 @@
 
 import UIKit
 
-class DisplayTakeViewController: UIViewController{
-
-  
-  @IBOutlet weak var takeImageView: UIImageView!
-  @IBOutlet weak var likeImageView: UIImageView!
-  @IBOutlet weak var numberOfVotesLabel: UILabel!
-  
-  let displayedViewModel: DisplayTake.ViewModel
-  
-  init(viewModel: DisplayTake.ViewModel) {
-    self.displayedViewModel = viewModel
-    super.init(nibName: "DisplayTakeViewController", bundle: nil)
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    takeImageView.image = displayedViewModel.takeImage
-    likeImageView.image = displayedViewModel.likeButtonImage
-    numberOfVotesLabel.text = displayedViewModel.numberOfVotes
+class DisplayTakeViewController: UIViewController {
     
-    self.navigationItem.title = displayedViewModel.author
-  }
-  
+    @IBOutlet weak var takeImageView: UIImageView!
+    @IBOutlet weak var votersTableView: UITableView!
+    
+    private let displayedViewModel: DisplayTake.ViewModel
+    private let votersTableViewDataSource: DisplayTakeVotersTableViewDataSource
+    
+    init(viewModel: DisplayTake.ViewModel) {
+        self.displayedViewModel = viewModel
+        self.votersTableViewDataSource = DisplayTakeVotersTableViewDataSource(voters: viewModel.voters)
+        super.init(nibName: "DisplayTakeViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.takeImageView.image = displayedViewModel.takeImage
+        self.navigationItem.title = displayedViewModel.author
+        self.votersTableView.register(UITableViewCell.self, forCellReuseIdentifier: DisplayTakeCellIdentifiers.votersCellId)
+        self.votersTableView.dataSource = votersTableViewDataSource
+        self.votersTableView.allowsSelection = false
+    }
 }
