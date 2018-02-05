@@ -11,7 +11,8 @@ import UIKit
 class UserForgotLoginPasswordViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var emailAddressTextField: UITextField!
-  
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -26,18 +27,26 @@ class UserForgotLoginPasswordViewController: UIViewController, UITextFieldDelega
   
   @IBAction func resetPasswordButtonPressed(_ sender: UIButton) {
     
+    sender.isEnabled = false
+    sender.backgroundColor = Constants.SystemColours.lightGreyColour
+    activityIndicator.startAnimating()
+    
     // reset password for specified email address
     let backendClient = Backend.sharedInstance.getClient()
+    
     backendClient.resetPassword(for: emailAddressTextField.text!, completion: { (success) -> Void in
       if success {
-        self.presentAlertAndPop(withTitle: "Your password was reset",
-                                withMessage: "We have sent you an email containing your new password.",
+        self.presentAlert(withTitle: "Password reset email sent",
+                                withMessage: "Check your email for instructions on how to reset your password",
                                 withActionTitle: "Dismiss")
       } else {
         self.presentAlert(withTitle: "Ooops!",
-                          withMessage: "Something went wrong, try again",
+                          withMessage: "Something went wrong",
                           withActionTitle: "Let me try again")
       }
+        sender.isEnabled = true
+        sender.backgroundColor = Constants.SystemColours.blueColour
+        self.activityIndicator.stopAnimating()
     })
   }
   
