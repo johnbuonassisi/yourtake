@@ -38,8 +38,9 @@ class BaasBoxClient: BaClient {
             completion(false)
             return
         }
-        
-        client.createUser(withUsername: username, password: password, completion: { (success, error) -> Void in
+        client.createUser(withUsername: username, password: password, visibleByTheUser: ["email": email],
+                          visibleByFriends: nil, visibleByRegisteredUsers: nil, visibleByAnonymousUsers: nil,
+                          completion: { (success, error) -> Void in
             if success {
                 self.client.authenticateUser(username, password: password, completion: { (success, error) -> Void in
                     if success {
@@ -117,8 +118,8 @@ class BaasBoxClient: BaClient {
                 print("info: unable to reset password with username trying with email")
                 
                 // try email
-                let params = ["email": "\(username)", "recordsPerPage": "1"]
-                BAAObject.getObjectsWithParams(params, completion: { (objects, error) -> Void in
+                let params = ["where": "email='" + username + "'"]
+                BaasBoxUser.getObjectsWithParams(params, completion: { (objects, error) -> Void in
                     if objects != nil {
                         if let baasUser = (objects as! [BaasBoxUser]).first {
                             self.client.resetPassword(forUser: baasUser.author, withCompletion: { (success, error) -> () in
@@ -128,12 +129,16 @@ class BaasBoxClient: BaClient {
                                 completion(success)
                                 return
                             })
+                        } else {
+                            print("error: unable to load user details [description=\(String(describing: error?.localizedDescription))]")
+                            completion(false)
+                            return
                         }
                     } else {
                         print("error: unable to load user details [description=\(String(describing: error?.localizedDescription))]")
+                        completion(false)
+                        return
                     }
-                    completion(false)
-                    return
                 })
             }
         })
