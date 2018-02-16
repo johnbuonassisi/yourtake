@@ -48,11 +48,13 @@ struct Constants {
                 static let friendManagementSegue = "UserChallengeListFriendManagementSegue"
                 static let photoPreviewSegue = "UserChallengeListPhotoPreviewSegue"
                 static let settingsSegue = "UserChallengeListSettingsSegue"
+                static let listTakesSegue = "UserChallengeListTakesSegue"
             }
             struct FriendListChallengeScene {
                 static let friendManagementSegue = "FriendChallengeListFriendManagementSegue"
                 static let photoPreviewSegue = "FriendChallengeListPhotoPreviewSegue"
                 static let settingsSegue = "FriendChallengeListSettingsSegue"
+                static let listTakesSegue = "FriendChallengeListTakesSegue"
             }
         }
     }

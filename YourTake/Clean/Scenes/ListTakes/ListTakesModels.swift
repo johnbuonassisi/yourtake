@@ -22,6 +22,7 @@ struct ListTakes {
         struct Response {
             var takes: [TakeDto]
             var votedForTakeId: String?
+            var isChallengeExpired: Bool
         }
         
         struct ViewModel {
@@ -34,6 +35,11 @@ struct ListTakes {
             }
             
             var displayedTakes: [DisplayedTake]
+            var areTakesHidden: Bool
+            var isNoTakesTitleHidden: Bool
+            var isNoTakesDescriptionHidden: Bool
+            var noTakesTitle: String
+            var noTakesDescription: String
         }
     }
     

@@ -51,7 +51,9 @@ class ListTakesInteractor: ListTakesInteractorInput {
                 let votedForTakeId = self.user.votes[self.challengeId]
                 
                 // Present the takes
-                let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
+                let response = ListTakes.FetchTakes.Response(takes: takes,
+                                                             votedForTakeId: votedForTakeId,
+                                                             isChallengeExpired: self.isChallengeExpired)
                 self.output.presentFetchedTakes(response: response)
                 
                 for take in takes {
@@ -63,7 +65,9 @@ class ListTakesInteractor: ListTakesInteractorInput {
                         }
                         
                         // Present the takes
-                        let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: votedForTakeId)
+                        let response = ListTakes.FetchTakes.Response(takes: takes,
+                                                                     votedForTakeId: votedForTakeId,
+                                                                     isChallengeExpired: self.isChallengeExpired)
                         self.output.presentFetchedTakes(response: response)
                     })
                 }
@@ -138,7 +142,7 @@ class ListTakesInteractor: ListTakesInteractorInput {
             }
         }
         
-        let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: newVoteTakeId)
+        let response = ListTakes.FetchTakes.Response(takes: takes, votedForTakeId: newVoteTakeId, isChallengeExpired: self.isChallengeExpired)
         self.output.presentFetchedTakes(response: response)
     }
 }

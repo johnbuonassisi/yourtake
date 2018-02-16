@@ -17,14 +17,21 @@ protocol ListChallengesRouterInput {
 
 class ListChallengesRouter: ListChallengesRouterInput {
     weak var viewController: ListChallengesViewController!
-    
+    var challengeId: String!
     // MARK: - Navigation
     
     func navigateToTakesScene(with challengeId: String) {
         print("Navigating to Take List Scene")
-        let ltvc = ListTakesViewController(challengeId: challengeId)
-        ltvc.hidesBottomBarWhenPushed = true
-        viewController.navigationController?.pushViewController(ltvc, animated: true)
+        self.challengeId = challengeId
+        if viewController.challengeRequestType == .friendChallenges {
+            viewController.performSegue(withIdentifier: SegueIdentifiers.ListChallengesScene.FriendListChallengeScene.listTakesSegue,
+                                        sender: nil)
+        } else if viewController.challengeRequestType == .userChallenges {
+            viewController.performSegue(withIdentifier: SegueIdentifiers.ListChallengesScene.UserListChallengesScene.listTakesSegue,
+                                        sender: nil)
+        } else {
+            print("Invalid challenge request type")
+        }
     }
     
     func navigateToCreateTakeScene(challengeId: String, challengeImage: UIImage) {
@@ -65,15 +72,16 @@ class ListChallengesRouter: ListChallengesRouterInput {
     func passDataToNextScene(segue: UIStoryboardSegue) {
         // NOTE: Teach the router which scenes it can communicate with
         
-        if segue.identifier == "ShowSomewhereScene" {
-            passDataToSomewhereScene(segue: segue)
+        if segue.identifier == SegueIdentifiers.ListChallengesScene.FriendListChallengeScene.listTakesSegue ||
+            segue.identifier == SegueIdentifiers.ListChallengesScene.UserListChallengesScene.listTakesSegue {
+            passDataToListTakesScene(segue: segue)
         }
     }
     
-    func passDataToSomewhereScene(segue: UIStoryboardSegue) {
+    func passDataToListTakesScene(segue: UIStoryboardSegue) {
         // NOTE: Teach the router how to pass data to the next scene
         
-        // let someWhereViewController = segue.destinationViewController as! SomeWhereViewController
-        // someWhereViewController.output.name = viewController.output.name
+        let listTakesViewController = segue.destination as! ListTakesViewController
+        listTakesViewController.challengeId = self.challengeId
     }
 }

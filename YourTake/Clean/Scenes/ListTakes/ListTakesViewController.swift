@@ -20,29 +20,23 @@ protocol ListTakesViewControllerOutput {
     func voteForTake(request: ListTakes.VoteForTake.Request)
 }
 
-class ListTakesViewController: UICollectionViewController, ListTakesViewControllerInput {
+class ListTakesViewController: UIViewController, ListTakesViewControllerInput {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var noTakesTitle: UILabel!
+    @IBOutlet weak var noTakesDescription: UILabel!
+    
     var output: ListTakesViewControllerOutput!
     var router: ListTakesRouter!
-    
     var listTakesDataSource = ListTakesCollectionViewDataSource()
-    
-    let challengeId: String
+    var challengeId: String!
     
     // MARK: - Object lifecycle
     
-    init(challengeId: String) {
-        
-        self.challengeId = challengeId
-        
-        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = UICollectionViewScrollDirection.vertical
-        super.init(collectionViewLayout: layout)
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
         ListTakesConfigurator.sharedInstance.configure(viewController: self)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.hidesBottomBarWhenPushed = true
     }
     
     // MARK: - View lifecycle
@@ -50,14 +44,17 @@ class ListTakesViewController: UICollectionViewController, ListTakesViewControll
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        
+        self.collectionView?.delegate = self
+        self.collectionView?.collectionViewLayout = layout
         self.collectionView?.dataSource = listTakesDataSource
         self.collectionView?.backgroundColor = UIColor.white
         self.collectionView?.refreshControl = UIRefreshControl()
         self.collectionView?.refreshControl?.beginRefreshing()
         self.collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "")
         self.collectionView?.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
-        
-        self.navigationItem.title = "Takes"
         
         let nib = UINib(nibName: "TakeCollectionViewCell", bundle: nil)
         self.collectionView?.register(nib, forCellWithReuseIdentifier: "TakeCollectionViewCell")
@@ -82,6 +79,12 @@ class ListTakesViewController: UICollectionViewController, ListTakesViewControll
     func displayTakes(viewModel: ListTakes.FetchTakes.ViewModel) {
         // NOTE: Display the result from the Presenter
         listTakesDataSource.displayedTakes = viewModel.displayedTakes
+        collectionView?.isHidden = viewModel.areTakesHidden
+        noTakesTitle?.isHidden = viewModel.isNoTakesTitleHidden
+        noTakesTitle?.text = viewModel.noTakesTitle
+        noTakesDescription?.isHidden = viewModel.isNoTakesDescriptionHidden
+        noTakesDescription?.text = viewModel.noTakesDescription
+        
         collectionView?.reloadData()
         self.collectionView?.refreshControl?.endRefreshing()
     }
@@ -133,5 +136,4 @@ extension ListTakesViewController : UICollectionViewDelegateFlowLayout {
         // return the spacing between successive items in the rows or columns of a section
         return 5.0
     }
-    
 }
