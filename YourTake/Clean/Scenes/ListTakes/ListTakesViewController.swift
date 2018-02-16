@@ -59,9 +59,6 @@ class ListTakesViewController: UIViewController, ListTakesViewControllerInput {
         let nib = UINib(nibName: "TakeCollectionViewCell", bundle: nil)
         self.collectionView?.register(nib, forCellWithReuseIdentifier: "TakeCollectionViewCell")
         
-        let nib2 = UINib(nibName: "NoTakesCollectionViewCell", bundle: nil)
-        self.collectionView?.register(nib2, forCellWithReuseIdentifier: "NoTakesCollectionViewCell")
-        
         fetchTakesOnLoad()
     }
     
