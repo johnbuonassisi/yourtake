@@ -62,11 +62,15 @@ class ListTakesPresenter: ListTakesPresenterInput {
         // If there are no takes, indicate so to the user
         var noTakesTitle = ""
         var noTakesDescription = ""
-        if displayedTakes.isEmpty {
+        if displayedTakes.isEmpty && !response.isChallengeExpired {
             let randomNoTakesTitle = arc4random_uniform(UInt32(noTakesTitleOptions.count))
             noTakesTitle = noTakesTitleOptions[Int(randomNoTakesTitle)]
             let randomNoTakesDescription = arc4random_uniform(UInt32(noTakesDescriptionOptions.count))
             noTakesDescription = noTakesDescriptionOptions[Int(randomNoTakesDescription)]
+        }
+        if displayedTakes.isEmpty && response.isChallengeExpired {
+            noTakesTitle = "Unfortunate."
+            noTakesDescription = "No one completed this challenge"
         }
         
         let viewModel = ListTakes.FetchTakes.ViewModel(displayedTakes: displayedTakes,

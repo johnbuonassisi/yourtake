@@ -22,6 +22,7 @@ struct ListTakes {
         struct Response {
             var takes: [TakeDto]
             var votedForTakeId: String?
+            var isChallengeExpired: Bool
         }
         
         struct ViewModel {
