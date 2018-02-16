@@ -34,6 +34,11 @@ struct ListTakes {
             }
             
             var displayedTakes: [DisplayedTake]
+            var areTakesHidden: Bool
+            var isNoTakesTitleHidden: Bool
+            var isNoTakesDescriptionHidden: Bool
+            var noTakesTitle: String
+            var noTakesDescription: String
         }
     }
     

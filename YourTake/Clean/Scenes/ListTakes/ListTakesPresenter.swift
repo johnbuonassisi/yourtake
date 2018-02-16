@@ -26,6 +26,16 @@ class ListTakesPresenter: ListTakesPresenterInput {
     let notLikedButtonImage = UIImage(named: "Checked (Light Grey)", in: nil, compatibleWith: nil)!
     
     // MARK: - Presentation logic
+    let noTakesTitleOptions = ["Apologies.", "Lame!", "Oops...", "Can you believe it?",
+                               "Geez...", "Come on...", "Grrr!", "Awkward..."]
+    let noTakesDescriptionOptions = ["No users have responded yet",
+                                     "Your friends are lame and haven't responded yet",
+                                     "Tell your friends to stop snaping and complete this challenge!",
+                                     "Get your friends on the phone and tell them to respond to the challenge already!",
+                                     "Looks like you need more reliable friends that will respond to challenges",
+                                     "We've got nothing to show because no one has completed the challenge yet",
+                                     "This would normally be the fun part, but no one has completed the challenge yet",
+                                     "We're waiting for someone to complete the challenge"]
     
     func presentFetchedTakes(response: ListTakes.FetchTakes.Response) {
         // NOTE: Format the response from the Interactor and pass the result back to the View Controller
@@ -41,7 +51,7 @@ class ListTakesPresenter: ListTakesPresenterInput {
             }
             
             let displayedTake = ListTakes.FetchTakes.ViewModel.DisplayedTake(author: take.author,
-                numberOfVotes: "\(take.votes)",
+                numberOfVotes: String(take.votes),
                 likeButtonImage: likeButtonImage!,
                 takeImage: take.overlay,
                 voters: take.voters)
@@ -49,7 +59,22 @@ class ListTakesPresenter: ListTakesPresenterInput {
             displayedTakes.append(displayedTake)
         }
         
-        let viewModel = ListTakes.FetchTakes.ViewModel(displayedTakes: displayedTakes)
+        // If there are no takes, indicate so to the user
+        var noTakesTitle = ""
+        var noTakesDescription = ""
+        if displayedTakes.isEmpty {
+            let randomNoTakesTitle = arc4random_uniform(UInt32(noTakesTitleOptions.count))
+            noTakesTitle = noTakesTitleOptions[Int(randomNoTakesTitle)]
+            let randomNoTakesDescription = arc4random_uniform(UInt32(noTakesDescriptionOptions.count))
+            noTakesDescription = noTakesDescriptionOptions[Int(randomNoTakesDescription)]
+        }
+        
+        let viewModel = ListTakes.FetchTakes.ViewModel(displayedTakes: displayedTakes,
+                                                       areTakesHidden: displayedTakes.isEmpty,
+                                                       isNoTakesTitleHidden: !displayedTakes.isEmpty,
+                                                       isNoTakesDescriptionHidden: !displayedTakes.isEmpty,
+                                                       noTakesTitle: noTakesTitle,
+                                                       noTakesDescription: noTakesDescription)
         output.displayTakes(viewModel: viewModel)
     }
     
