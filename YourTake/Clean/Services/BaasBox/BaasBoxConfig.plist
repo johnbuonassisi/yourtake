@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>BaasBox Base URL</key>
-    <string>http://34.214.225.134:9000</string>
+	<string>https://backend.yourtake.ca</string>
 	<key>BaasBox App Code</key>
-	<string>1234567890</string>
+	<string>9857312241</string>
 </dict>
 </plist>
