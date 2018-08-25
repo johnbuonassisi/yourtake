@@ -29,9 +29,24 @@ class PhotoPreviewViewController: UIViewController,
     
     override func viewDidLoad() {
         
+        imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            presentCamera()
+            imagePicker?.sourceType = .camera
+            imagePicker?.showsCameraControls = false
+            Bundle.main.loadNibNamed("CameraOverlayView", owner: self, options: nil)
+            overlayView.frame = imagePicker!.cameraOverlayView!.frame
+            imagePicker!.cameraOverlayView = self.overlayView
+            self.overlayView = nil // break a strong reference cycle
+        } else if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePicker?.sourceType = .photoLibrary
+        } else {
+            imagePicker?.sourceType = .savedPhotosAlbum
         }
+        
+        imagePicker?.delegate = self
+        
+        // Why parent?? Because the view of this controller is detached??
+        self.parent?.present(imagePicker!, animated: false, completion:nil)
         
     }
     
@@ -41,7 +56,7 @@ class PhotoPreviewViewController: UIViewController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         // set picked image to previewImage
         var capturedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        if imagePicker?.cameraDevice == .front {
+        if imagePicker?.sourceType == .camera && imagePicker?.cameraDevice == .front {
             capturedImage = UIImage(cgImage: capturedImage!.cgImage!,
                                     scale: capturedImage!.scale,
                                     orientation: .leftMirrored)
@@ -69,7 +84,7 @@ class PhotoPreviewViewController: UIViewController,
     // MARK: Preview View Actions
     
     @IBAction func retake(_ sender: UIBarButtonItem) {
-        presentCamera()
+        self.viewDidLoad()
     }
     
     @IBAction func usePhoto(_ sender: UIBarButtonItem) {
@@ -111,6 +126,16 @@ class PhotoPreviewViewController: UIViewController,
         overlayView.frame = imagePicker!.cameraOverlayView!.frame
         imagePicker!.cameraOverlayView = self.overlayView
         self.overlayView = nil // break a strong reference cycle
+        
+        // Why parent?? Because the view of this controller is detached??
+        self.parent?.present(imagePicker!, animated: false, completion:nil)
+    }
+    
+    private func presentPhotoLibrary() {
+        
+        imagePicker = UIImagePickerController()
+        imagePicker?.sourceType = .photoLibrary
+        imagePicker?.delegate = self
         
         // Why parent?? Because the view of this controller is detached??
         self.parent?.present(imagePicker!, animated: false, completion:nil)

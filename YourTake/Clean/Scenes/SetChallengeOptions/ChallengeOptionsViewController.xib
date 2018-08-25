@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,29 +21,58 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="zXW-T3-dJL">
-                    <rect key="frame" x="0.0" y="72" width="375" height="216"/>
-                    <date key="date" timeIntervalSinceReferenceDate="509862437.24537098">
-                        <!--2017-02-27 04:27:17 +0000-->
-                    </date>
-                </datePicker>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K0E-1r-Iio">
-                    <rect key="frame" x="0.0" y="296" width="375" height="371"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEG-xp-Ut0">
+                    <rect key="frame" x="0.0" y="94" width="375" height="573"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="zXW-T3-dJL">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="146" id="t6S-i9-RIt"/>
+                            </constraints>
+                            <date key="date" timeIntervalSinceReferenceDate="509862437.24537098">
+                                <!--2017-02-27 04:27:17 +0000-->
+                            </date>
+                        </datePicker>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K0E-1r-Iio">
+                            <rect key="frame" x="0.0" y="154" width="375" height="426.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="separatorColor" cocoaTouchSystemColor="lightTextColor"/>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                    <constraints>
+                        <constraint firstItem="K0E-1r-Iio" firstAttribute="leading" secondItem="OEG-xp-Ut0" secondAttribute="leading" id="Bqb-5n-Cwt"/>
+                        <constraint firstAttribute="trailing" secondItem="zXW-T3-dJL" secondAttribute="trailing" id="FUJ-pd-5VI"/>
+                        <constraint firstAttribute="bottom" secondItem="K0E-1r-Iio" secondAttribute="bottom" constant="-7.5" id="Iqh-pm-4S6"/>
+                        <constraint firstItem="zXW-T3-dJL" firstAttribute="top" secondItem="OEG-xp-Ut0" secondAttribute="top" id="M2A-NA-Lg1"/>
+                        <constraint firstItem="K0E-1r-Iio" firstAttribute="top" secondItem="zXW-T3-dJL" secondAttribute="bottom" constant="8" id="TYQ-bT-IFg"/>
+                        <constraint firstItem="zXW-T3-dJL" firstAttribute="leading" secondItem="OEG-xp-Ut0" secondAttribute="leading" id="jog-8d-zAw"/>
+                        <constraint firstAttribute="trailing" secondItem="K0E-1r-Iio" secondAttribute="trailing" id="taM-ik-n58"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Expiry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttS-RT-5AE">
+                    <rect key="frame" x="16" y="64" width="359" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="2se-Bs-uOh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="zXW-T3-dJL" secondAttribute="trailing" id="Aal-cR-YlO"/>
-                <constraint firstItem="zXW-T3-dJL" firstAttribute="leading" secondItem="65p-mY-1Hv" secondAttribute="leading" id="F5b-47-xYt"/>
-                <constraint firstAttribute="bottom" secondItem="K0E-1r-Iio" secondAttribute="bottom" id="LhJ-Ub-nSN"/>
-                <constraint firstItem="K0E-1r-Iio" firstAttribute="leading" secondItem="65p-mY-1Hv" secondAttribute="leading" id="ipp-6S-ZIr"/>
-                <constraint firstItem="zXW-T3-dJL" firstAttribute="top" secondItem="65p-mY-1Hv" secondAttribute="top" constant="72" id="j9z-Wv-Z8T"/>
-                <constraint firstAttribute="trailing" secondItem="K0E-1r-Iio" secondAttribute="trailing" id="tYV-mt-JUu"/>
-                <constraint firstItem="K0E-1r-Iio" firstAttribute="top" secondItem="zXW-T3-dJL" secondAttribute="bottom" constant="8" id="yGS-9m-HZr"/>
+                <constraint firstItem="OEG-xp-Ut0" firstAttribute="leading" secondItem="65p-mY-1Hv" secondAttribute="leading" id="M7w-Cb-heB"/>
+                <constraint firstAttribute="bottom" secondItem="OEG-xp-Ut0" secondAttribute="bottom" id="P3H-sH-37c"/>
+                <constraint firstAttribute="trailing" secondItem="OEG-xp-Ut0" secondAttribute="trailing" id="Ye6-0c-8aP"/>
+                <constraint firstItem="ttS-RT-5AE" firstAttribute="leading" secondItem="65p-mY-1Hv" secondAttribute="leading" constant="16" id="d7I-e7-UOq"/>
+                <constraint firstItem="OEG-xp-Ut0" firstAttribute="top" secondItem="ttS-RT-5AE" secondAttribute="bottom" constant="2" id="jte-q5-00w"/>
+                <constraint firstAttribute="trailing" secondItem="ttS-RT-5AE" secondAttribute="trailing" id="mln-sY-uYg"/>
+                <constraint firstItem="ttS-RT-5AE" firstAttribute="top" secondItem="65p-mY-1Hv" secondAttribute="top" constant="64" id="vUj-K4-Ntt"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <point key="canvasLocation" x="-241" y="110"/>
+            <point key="canvasLocation" x="-241.5" y="109.5"/>
         </view>
     </objects>
 </document>
