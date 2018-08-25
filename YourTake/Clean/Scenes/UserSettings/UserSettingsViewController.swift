@@ -24,7 +24,7 @@ class UserSettingsViewController: UITableViewController {
         changeEmail()
       case 2:
         changePassword()
-      case 4:
+      case 3:
         signout()
       default:
         return
@@ -77,11 +77,12 @@ class UserSettingsViewController: UITableViewController {
     self.present(alert, animated: true, completion: nil)
     
     // Wait until all backend upload operations are complete, not doing so will cause permission problems
-    DispatchQueue.global(qos: .background).async {
+    DispatchQueue.global(qos: .userInteractive).async {
       let backend = Backend.sharedInstance
-      while !backend.challengesInProgress.isEmpty || !backend.takesInProgress.isEmpty { sleep(1) }
+      while !backend.challengesInProgress.isEmpty || !backend.takesInProgress.isEmpty {
+        sleep(1)
+        }
       
-      sleep(1)
       alert.dismiss(animated: true, completion:{
         // Delete the username and password from the keychain
         do {
