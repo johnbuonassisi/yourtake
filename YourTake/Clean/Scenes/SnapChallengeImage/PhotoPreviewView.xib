@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,9 +29,8 @@
                         <constraint firstAttribute="width" secondItem="8hW-Ym-eFS" secondAttribute="height" multiplier="1:1" id="AUq-hf-nDL"/>
                     </constraints>
                 </imageView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDJ-5X-nN3">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDJ-5X-nN3">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
                         <barButtonItem title="Retake" id="U2p-9V-j6h">
                             <connections>
@@ -48,11 +48,16 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="3dc-am-Z4y" firstAttribute="top" secondItem="8hW-Ym-eFS" secondAttribute="top" constant="5" id="76W-tY-I6k"/>
+                <constraint firstItem="3dc-am-Z4y" firstAttribute="bottom" secondItem="fDJ-5X-nN3" secondAttribute="bottom" id="A83-a7-hYw"/>
+                <constraint firstItem="fDJ-5X-nN3" firstAttribute="leading" secondItem="3dc-am-Z4y" secondAttribute="leading" id="MPv-CE-iXV"/>
                 <constraint firstItem="8hW-Ym-eFS" firstAttribute="leading" secondItem="hf3-2z-Jdf" secondAttribute="leading" id="PBv-iR-82Q"/>
                 <constraint firstAttribute="trailing" secondItem="8hW-Ym-eFS" secondAttribute="trailing" id="hPo-Om-HeR"/>
-                <constraint firstItem="8hW-Ym-eFS" firstAttribute="top" secondItem="hf3-2z-Jdf" secondAttribute="top" constant="59" id="j2t-6r-tI8"/>
+                <constraint firstItem="fDJ-5X-nN3" firstAttribute="trailing" secondItem="8hW-Ym-eFS" secondAttribute="trailing" id="mIN-MR-aCS"/>
+                <constraint firstItem="fDJ-5X-nN3" firstAttribute="top" secondItem="3dc-am-Z4y" secondAttribute="bottom" constant="-44" id="qma-vk-uBQ"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <viewLayoutGuide key="safeArea" id="3dc-am-Z4y"/>
             <point key="canvasLocation" x="26.5" y="-92.5"/>
         </view>
     </objects>

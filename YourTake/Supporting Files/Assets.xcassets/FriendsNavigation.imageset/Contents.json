@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "photo_camera_32px.png",
+      "filename" : "friends_32px.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "photo_camera_56px.png",
+      "filename" : "friends_56px.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "photo_camera_84px.png",
+      "filename" : "friends_84px.png",
       "scale" : "3x"
     }
   ],
